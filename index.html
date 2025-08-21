@@ -2965,7 +2965,7 @@
 
             const timeSkipRegex = /\[system-display:([\s\S]+?)\]/;
             const inviteRegex = /\[(.*?)가 (.*?)를 그룹 채팅에 초대했습니다\]/;
-            const renameRegex = /\[(.*?)그룹 이름을 변경했습니다:(.*?)\]/;
+            const renameRegex = /\[(.*?)가 그룹 이름을 변경:(.*?)\]/;
             const timeSkipMatch = content.match(timeSkipRegex);
             const inviteMatch = content.match(inviteRegex);
             const renameMatch = content.match(renameRegex);
@@ -2980,7 +2980,7 @@
                 let bubbleText = '';
                 if (timeSkipMatch) bubbleText = timeSkipMatch[1];
                 if (inviteMatch) bubbleText = `${inviteMatch[1]}${inviteMatch[2]}님을 그룹 채팅에 초대했습니다`;
-                if (renameMatch) bubbleText = `${renameMatch[1]}그룹 이름을 변경했습니다\"${renameMatch[2]}\"`;
+                if (renameMatch) bubbleText = `${renameMatch[1]}가 그룹 이름을 \"${renameMatch[2]}\"(으)로 변경했습니다`;
                 wrapper.innerHTML = `<div class="system-notification-bubble">${bubbleText}</div>`;
                 return wrapper;
             }
@@ -3241,7 +3241,7 @@
                 const match = text.match(renameRegex);
                 chat.name = match[2];
                 chatRoomTitle.textContent = chat.name;
-                messageContent = `[그룹 이름을 ${chat.me.nickname}로 변경했습니다:${chat.name}]`;
+                messageContent = `[${myName}가 그룹 이름을 변경:${chat.name}]`;
             } else if (systemRegex.test(text) || inviteRegex.test(text)) {
                 messageContent = text;
             } else {
@@ -3272,7 +3272,7 @@
         function sendSticker(sticker) {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            const messageContentForAI = `[${myName}의 이모티콘':${sticker.name}]`;
+            const messageContentForAI = `[${myName}의 이모티콘:${sticker.name}]`;
             const message = { id: `msg_${Date.now()}`, role: 'user', content: messageContentForAI, parts: [{ type: 'text', text: messageContentForAI }], timestamp: Date.now(), stickerData: sticker.data };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
             chat.history.push(message);
@@ -3286,7 +3286,7 @@
             if (!text) return;
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            const content = `[${myName}의 음성':${text}]`;
+            const content = `[${myName}의 음성:${text}]`;
             const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now() };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
             chat.history.push(message);
@@ -3321,7 +3321,7 @@
                 currentGroupAction.recipients.forEach(recipientId => {
                     const recipient = chat.members.find(m => m.id === recipientId);
                     if(recipient) {
-                        const content = `[${chat.me.nickname}의 송금 ${recipient.realName}:${amount}원;비고:${remark}]`;
+                        const content = `[${chat.me.nickname}가 ${recipient.realName}에게 송금:${amount}원;비고:${remark}]`
                         const message = { id: `msg_${Date.now()}_${recipientId}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), senderId: 'user_me' };
                         chat.history.push(message);
                         addMessageBubble(message);
@@ -3346,7 +3346,7 @@
                 currentGroupAction.recipients.forEach(recipientId => {
                     const recipient = chat.members.find(m => m.id === recipientId);
                     if(recipient) {
-                        const content = `[${chat.me.nickname}의 ${recipient.realName}에게 선물:${description}]`;
+                        const content = `[${chat.me.nickname}가 ${recipient.realName}에게 선물:${description}]`;
                         const message = { id: `msg_${Date.now()}_${recipientId}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), senderId: 'user_me' };
                         chat.history.push(message);
                         addMessageBubble(message);
@@ -3414,9 +3414,9 @@
             [${character.myName}의 선물: xxx]: I sent you a gift, xxx is the description of the gift.
             [${character.myName}의 음성: xxx]: I sent you a voice message with the content xxx.
             [${character.myName}의 사진/동영상: xxx]: I shared a photo or video with the description xxx with you.
-            [${character.myName}의 송금: xxx yuan; Note: xxx]: I transferred money to you.
+            [${character.myName}의 송금: xxx원; 비고: xxx]: I transferred money to you.
             [system: xxx]: This is a system command used to set a scene or provide context. This information should not be mentioned directly in the conversation; you just need to understand its content and apply it to subsequent dialogue.
-            5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [${character.realName}가 송금을 수신했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.
+            5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [${character.realName}가 선물을 수신했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.
             6. ✨Important✨ When I transfer money to you, you must respond. You have two options and must strictly follow one of the formats below. This command message itself will not be displayed to the user but will trigger a change in the transfer's status. You can choose to add a normal chat message to express your thoughts after sending this command. a) Accept transfer: [${character.realName}가 ${character.myName}의 송금을 수신했습니다] b) Return transfer: [${character.realName}가 ${character.myName}의 송금을 반송했습니다]
             7. ✨Important✨ You can also proactively transfer money or send a gift to me.
             a) The transfer format must be: [${character.realName}의 송금:xxx 원;비고: xxx].
@@ -3429,8 +3429,8 @@
             a) Normal message: [${character.realName}의 메시지: {message content}] 
             b) Gift to me: [${character.realName}의 선물: {gift description}] 
             c) Voice message: [${character.realName}의 음성: {voice content}] 
-            d) Photo/Video: [${character.realName}의 사진\동영상: {description}] 
-            e) Transfer to me: [${character.realName}의 송금: {amount} yuan; Note: {note}] 
+            d) Photo/Video: [${character.realName}의 사진/동영상: {description}] 
+            e) Transfer to me: [${character.realName}의 송금: {amount}원; 비고: {note}]
             f) Sticker/Image: [${character.realName}의 이모티콘: {sticker path}]. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "부끄러움vHLfrV3K/1.jpg". 
             g) Response to my gift (not displayed): [${character.realName}가 선물을 수신했습니다] 
             h) Response to my transfer (not displayed): [${character.realName}가 ${character.myName}의 송금을 수신했습니다] or [${character.realName}가 ${character.myName}의 송금을 반송했습니다] 
@@ -3467,17 +3467,17 @@
             }
 
             prompt += `3. **Parsing My Message Formats**: My (the user's) messages come in various formats. You need to understand their meanings and have the group members react accordingly:\n`;
-            prompt += `   - \`[Message from ${group.me.nickname}: ...]\`: My regular chat message.\n`;
-            prompt += `   - \`[${group.me.nickname} transfers to {a member's real name}: ...]\`: I have transferred money to a specific member.\n`;
-            prompt += `   - \`[Gift from ${group.me.nickname} to {a member's real name}: ...]\`: I have sent a gift to a specific member.\n`;
-            prompt += `   - \`[Sticker from ${group.me.nickname}: ...]\`, \`[Voice message from ${group.me.nickname}: ...]\`, \`[Photo/Video from ${group.me.nickname}: ...]\`: I have sent a special type of message, and group members can comment on it.\n`;
-            prompt += `   - \`[system: ...]\`, \`[...invited...to the group chat]\`, \`[...changed the group name to...]\`: System notifications or events. Group members should react accordingly, for example, by welcoming a new member, discussing the new group name, etc.\n\n`;
+            prompt += `   - \`[${group.me.nickname}의 메시지: ...]\`: My regular chat message.\n`;
+            prompt += `   - \`[${group.me.nickname}가 {멤버의 실명}에게 송금: ...]\`: I have transferred money to a specific member.\n`;
+            prompt += `   - \`[${group.me.nickname}가 {멤버의 실명}에게 선물: ...]\`: I have sent a gift to a specific member.\n`;
+            prompt += `   - \`[${group.me.nickname}의 이모티콘: ...]\`, \`[${group.me.nickname}의 음성: ...]\`, \`[${group.me.nickname}의 사진/동영상: ...]\`: I have sent a special type of message, and group members can comment on it.\n`;
+            prompt += `   - \`[system: ...]\`, \`[...가 ...를 그룹 채팅에 초대했습니다]\`, \`[...가 그룹 이름을 변경:...]\`: System notifications or events. Group members should react accordingly, for example, by welcoming a new member, discussing the new group name, etc.\n\n`;
 
             prompt += `4. **Your Output Format (Very Important)**: Each message you create must strictly follow one of the following formats. Each message occupies one line. Please fill in members with their **real names** in the format \`{member's Real Name}\`.\n`;
-            prompt += `   - **Normal Message**: \`[Message from {member's real name}: {message content}]\`\n`;
-            prompt += `   - **Sticker**: \`[Sticker from {member's real name}: {sticker path}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "부끄러움vHLfrV3K/1.jpg".\n`;
-            prompt += `   - **Voice**: \`[Voice message from {member's real name}: {transcribed text of the voice message}]\`\n`;
-            prompt += `   - **Photo/Video**: \`[Photo/Video from {member's real name}: {content description}]\`\n`;
+            prompt += `   - **Normal Message**: \`[{멤버의 실명}의 메시지: {메시지 내용}]\`\n`;
+            prompt += `   - **Sticker**: \`[{멤버의 실명}의 이모티콘: {스티커 경로}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "부끄러움vHLfrV3K/1.jpg".\n`;
+            prompt += `   - **Voice**: \`[{멤버의 실명}의 음성: {음성 메시지를 텍스트로 변환한 내용}]\`\n`;
+            prompt += `   - **Photo/Video**: \`[{멤버의 실명}의 사진/동영상: {내용 설명}]\`\n`;
             prompt += `   - **Important**: The group chat does not support special commands for AI members to accept/return transfers or receive gifts, nor does it support status updates. You should simply respond to transfers or gifts I send via normal messages.\n\n`;
 
             prompt += `5. **Simulating Group Chat Atmosphere**: To make the group chat appear realistic, active, and chaotic, every one of your responses must adhere to the following randomness requirements:\n`;
@@ -3603,7 +3603,7 @@
                 if (currentChatType === 'private') {
                     const character = chat;
                     const myName = character.myName;
-                    const messageRegex = new RegExp(`\\[${character.realName}(?:의(?:메시지|음성|송금|이모티콘)|이모티콘|사진\\/동영상|선물):[\\s\\S]+?\\]|\\[${character.realName}(?:수신|반송)${myName}의 송금\\]|\\[${character.realName}가 선물을 수신했습니다\\]|\\[${character.realName}의 상태 업데이트:.*?\\]`, "g");
+                    const messageRegex = new RegExp(`\\[${character.realName}(?:의 (?:메시지|음성|송금|이모티콘)|이모티콘|사진\\/동영상|선물):[\\s\\S]+?\\]|\\[${character.realName}(?:수신|반송)${myName}의 송금\\]|\\[${character.realName}가 선물을 수신했습니다\\]|\\[${character.realName}의 상태 업데이트:.*?\\]`, "g");
                     const messages = fullResponse.match(messageRegex) || [];
                     if (messages.length > 0) {
                         messages.forEach(msgContent => {
@@ -3858,7 +3858,7 @@
                     cardOnScreen.querySelector('.transfer-status').textContent = action === 'received' ? '수신 완료' : '반송됨';
                     cardOnScreen.style.cursor = 'default';
                 }
-                let contextMessageContent = (action === 'received') ? `[${character.myName}가 ${character.realName} 송금을 수신했습니다]` : `[${character.myName}가 ${character.realName}님의 송금을 반송합니다]`;
+                let contextMessageContent = (action === 'received') ? `[${character.myName}가 ${character.realName}의 송금을 수신했습니다]` : `[${character.myName}가 ${character.realName}의 송금을 반송했습니다]`;
                 const contextMessage = { id: `msg_${Date.now()}`, role: 'user', content: contextMessageContent, parts: [{ type: 'text', text: contextMessageContent }], timestamp: Date.now() };
                 character.history.push(contextMessage);
                 saveData();
