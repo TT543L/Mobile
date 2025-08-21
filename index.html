@@ -686,6 +686,7 @@
             width: 18px;
             height: 18px;
             flex-shrink: 0;
+            transform: rotate(360deg) translateY(1px) !important;
         }
 
         .voice-bubble .duration {
@@ -898,6 +899,7 @@
         .transfer-status {
             font-size: 12px;
             margin-top: 15px;
+            margin-bottom: 0px;
             padding-top: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             opacity: 0.8;
@@ -1708,7 +1710,7 @@
             <ul class="list-container" id="chat-list-container"></ul>
             <div class="placeholder-text" id="no-chats-placeholder" style="display: none;">
                 <p>아직 채팅 상대가 없어요~</p>
-                <p>오른쪽 상단을 클릭하여 만들어 보세요!</p>
+                <p>오른쪽 상단을 클릭하여\"+\"만들어 보세요!</p>
             </div>
         </main>
     </div>
@@ -1795,7 +1797,7 @@
             <ul class="list-container" id="world-book-list-container"></ul>
             <div class="placeholder-text" id="no-world-books-placeholder" style="display: none;">
                 <p>당신의 세계는 혼돈에 빠져있어요...</p>
-                <p>오른쪽 상단을 클릭하여 첫 번째 설정을 만들어 보세요!</p>
+                <p>오른쪽 상단을 클릭하여\"+\"첫 번째 설정을 만들어 보세요!</p>
             </div>
         </main>
     </div>
@@ -1844,10 +1846,10 @@
                     <label for="char-real-name">캐릭터 이름</label><input type="text" id="char-real-name" placeholder="캐릭터의 본명" required>
                 </div>
                 <div class="form-group">
-                    <label for="char-remark-name">캐릭터 메모 (닉네임)</label><input type="text" id="char-remark-name" placeholder="당신이 상대방을 부르는 호칭" required>
+                    <label for="char-remark-name">캐릭터 메모 (닉네임)</label><input type="text" id="char-remark-name" placeholder="당신이 Ta를 부르는 호칭" required>
                 </div>
                 <div class="form-group">
-                    <label for="my-name-for-char">내 이름</label><input type="text" id="my-name-for-char" placeholder="상대방이 당신을 어떻게 불러주기를 원하나요" required>
+                    <label for="my-name-for-char">내 이름</label><input type="text" id="my-name-for-char" placeholder="Ta가 당신을 어떻게 불러주기를 원하나요" required>
                 </div><button type="submit" class="btn btn-primary">생성</button>
             </form>
         </div>
@@ -1915,7 +1917,7 @@
             <form id="send-gift-form">
                 <div class="form-group">
                     <label for="gift-description-input">선물 설명</label>
-                    <textarea id="gift-description-input" placeholder="상대방에게 어떤 특별한 것을 보냈는지 알려주세요..." required rows="4"></textarea>
+                    <textarea id="gift-description-input" placeholder="Ta에게 어떤 특별한 것을 보냈는지 알려주세요..." required rows="4"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">보내기</button>
             </form>
