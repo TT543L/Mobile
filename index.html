@@ -12,11 +12,16 @@
         /* --- 전역 및 테마 스타일 --- */
         :root {
             --bg-color: #fce4ec;
+            --secondary-color: #f8bbd0;
+            --secondary-color-hover: #fce4ec;
             --primary-color: #ff80ab;
-            --secondary-color: #f48fb1;
+            --primary-color-hover: #fce4ec;
             --accent-color: #90caf9;
+            --accent-color-hover: #90caf9;
             --text-color: #444;
             --white-color: #fff;
+            --white-rgb: 255, 255, 255; /* 투명도 줄 때 사용 */
+            --border-color: #f0dbe2; /* 테두리 색상 변수 추가 */
             --border-radius: 18px;
             --phone-corner-radius: 0px;
             --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -34,11 +39,12 @@
             font-family: var(--font-family);
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            background: linear-gradient(135deg, var(--bg-color), var(--secondary-color));
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            color: var(--text-color); /* 글자색 변수 추가 */
         }
 
         .phone-screen {
@@ -83,9 +89,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(var(--white-rgb), 0.8); /* 투명 배경에 변수 사용 */
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color); /* 테두리 색에 변수 사용 */
             flex-shrink: 0;
             position: relative;
             z-index: 10;
@@ -394,7 +400,7 @@
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             padding: 10px;
-            padding-bottom: calc(10px + env(safe-area-inset-bottom));
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
             animation: slideUp 0.3s ease-out;
         }
 
@@ -441,7 +447,7 @@
         }
 
         .list-item:hover {
-            background-color: #fdf6f8;
+            background-color: var(--secondary-color);
         }
 
         .chat-item.pinned {
@@ -567,6 +573,32 @@
         .message-wrapper.multi-select-selected {
             background-color: rgba(144, 202, 249, 0.2);
             border-radius: var(--border-radius);
+        }
+
+        .unread-badge {
+            margin-left: auto; 
+            background-color: #ff3b30;
+            color: white; 
+            font-size: 12px;
+            font-weight: bold; 
+            padding: 2px 7px;
+            border-radius: 12px; 
+        }
+
+        .global-theme-selector { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+        }
+
+        .global-theme-selector .theme-circle { 
+            border: 20px solid var(--border-color); 
+            border-radius: 30px;
+        }
+
+        .global-theme-selector .theme-circle.selected { 
+            border-color: var(--primary-color); 
         }
 
         .message-info {
@@ -1046,8 +1078,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 35%;
-            max-height: 250px;
+            height: 45%;
+            max-height: 450px;
             background: #f7f7f7;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
@@ -1132,7 +1164,7 @@
             display: flex;
             align-items: center;
             padding: 10px;
-            padding-bottom: calc(10px + env(safe-area-inset-bottom));
+            padding-bottom: calc(50px + env(safe-area-inset-bottom));
             border-top: 1px solid #eee;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -1277,7 +1309,7 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #fce4ec;
+            border: 2px solid var(--secondary-color);
             border-radius: 10px;
             background-color: #fff;
             transition: border-color 0.3s;
@@ -1300,6 +1332,9 @@
 
         .form-group.radio-group label {
             margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .btn {
@@ -1324,8 +1359,8 @@
         }
 
         .btn-primary:hover {
-            background-color: var(--secondary-color);
-            box-shadow: 0 4px 15px rgba(255, 128, 171, 0.5);
+            background-color: var(--primary-color-hover);
+            box-shadow: 0 4px 15px var(--primary-color-hover);
         }
 
         label.btn-primary {
@@ -1341,12 +1376,12 @@
         .btn-secondary {
             background-color: var(--accent-color);
             color: var(--white-color);
-            margin-bottom: 15px;
+            /* margin-bottom: 15px; */
         }
 
         .btn-secondary:hover {
-            background-color: #64b5f6;
-            box-shadow: 0 4px 15px rgba(144, 202, 249, 0.5);
+            background-color: var(--accent-color-hover);
+            box-shadow: 0 4px 15px var(--accent-color-hover);
         }
 
         .btn-neutral {
@@ -1585,7 +1620,7 @@
         }
 
         #group-settings-sidebar .add-member-btn:hover .add-icon {
-            color: var(--primary-color);
+            color: var(--primary-color-hover);
             border-color: var(--primary-color);
         }
 
@@ -1710,7 +1745,7 @@
             <ul class="list-container" id="chat-list-container"></ul>
             <div class="placeholder-text" id="no-chats-placeholder" style="display: none;">
                 <p>아직 채팅 상대가 없어요~</p>
-                <p>오른쪽 상단을 클릭하여\"+\"만들어 보세요!</p>
+                <p>오른쪽 상단을 클릭하여 만들어 보세요!</p>
             </div>
         </main>
     </div>
@@ -1797,7 +1832,7 @@
             <ul class="list-container" id="world-book-list-container"></ul>
             <div class="placeholder-text" id="no-world-books-placeholder" style="display: none;">
                 <p>당신의 세계는 혼돈에 빠져있어요...</p>
-                <p>오른쪽 상단을 클릭하여\"+\"첫 번째 설정을 만들어 보세요!</p>
+                <p>오른쪽 상단을 클릭하여 첫 번째 설정을 만들어 보세요!</p>
             </div>
         </main>
     </div>
@@ -1846,10 +1881,10 @@
                     <label for="char-real-name">캐릭터 이름</label><input type="text" id="char-real-name" placeholder="캐릭터의 본명" required>
                 </div>
                 <div class="form-group">
-                    <label for="char-remark-name">캐릭터 메모 (닉네임)</label><input type="text" id="char-remark-name" placeholder="당신이 Ta를 부르는 호칭" required>
+                    <label for="char-remark-name">캐릭터 메모 (닉네임)</label><input type="text" id="char-remark-name" placeholder="당신이 상대방을 부르는 호칭" required>
                 </div>
                 <div class="form-group">
-                    <label for="my-name-for-char">내 이름</label><input type="text" id="my-name-for-char" placeholder="Ta가 당신을 어떻게 불러주기를 원하나요" required>
+                    <label for="my-name-for-char">내 이름</label><input type="text" id="my-name-for-char" placeholder="상대방이 당신을 어떻게 불러주기를 원하나요" required>
                 </div><button type="submit" class="btn btn-primary">생성</button>
             </form>
         </div>
@@ -1957,11 +1992,11 @@
             <form id="chat-settings-form">
                 <div class="avatar-setting"><img src="" alt="캐릭터 아바타" id="setting-char-avatar-preview" class="avatar-preview"><input type="file" id="setting-char-avatar-upload" accept="image/*" style="display:none;"><label for="setting-char-avatar-upload" class="btn btn-primary" style="flex-grow:1;">캐릭터 아바타 변경</label></div>
                 <div class="form-group"><label for="setting-char-remark">캐릭터 메모 (닉네임)</label><input type="text" id="setting-char-remark"></div>
-                <div class="form-group"><label for="setting-char-persona">캐릭터 인격 설정</label><textarea id="setting-char-persona" placeholder="캐릭터의 성격, 배경, 말하는 방식 등을 자세히 설명하세요."></textarea></div>
+                <div class="form-group"><label for="setting-char-persona">캐릭터 디스크립션</label><textarea id="setting-char-persona" placeholder="캐릭터의 성격, 배경, 말하는 방식 등을 자세히 설명하세요."></textarea></div>
                 <hr style="border:none; border-top:1px solid #eee; margin: 20px 0;">
                 <div class="avatar-setting"><img src="" alt="내 아바타" id="setting-my-avatar-preview" class="avatar-preview"><input type="file" id="setting-my-avatar-upload" accept="image/*" style="display:none;"><label for="setting-my-avatar-upload" class="btn btn-secondary" style="flex-grow:1;">내 아바타 변경</label></div>
                 <div class="form-group"><label for="setting-my-name">내 이름</label><input type="text" id="setting-my-name"></div>
-                <div class="form-group"><label for="setting-my-persona">내 인격 설정</label><textarea id="setting-my-persona" placeholder="대화에서 어떤 역할을 하고 싶은지 설명하세요."></textarea></div>
+                <div class="form-group"><label for="setting-my-persona">내 페르소나 설정</label><textarea id="setting-my-persona" placeholder="대화에서 어떤 역할을 하고 싶은지 설명하세요."></textarea></div>
                 <hr style="border:none; border-top:1px solid #eee; margin: 20px 0;">
                 <div class="form-group"><button type="button" class="btn btn-secondary" id="link-world-book-btn">월드인포 연결</button></div>
                 <div class="form-group"><label for="setting-theme-color">테마 색상 (상대방/나)</label><select id="setting-theme-color"></select></div>
@@ -2214,12 +2249,46 @@
         }
         // --- Initial HTML Injection ---
         document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 서비스 제공자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option></select></div><div class="form-group"><label for="api-url">API 주소(접미사를 추가할 필요 없음/v1)</label><input type="url" id="api-url" name="url" placeholder="서비스 제공자를 선택하면 자동으로 채워집니다" required></div><div class="form-group"><label for="api-key">키 (Key)</label><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required></div><button type="button" class="btn btn-secondary" id="fetch-models-btn"><span class="btn-text">모델 가져오기를 클릭하세요</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저장</span><div class="spinner"></div></button></form></main>`;
-        document.getElementById('wallpaper-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">배경화면 변경</h1></div><div class="placeholder"></div></header><main class="content"><div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div><input type="file" id="wallpaper-upload" accept="image/*" style="display: none;"><label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label></main>`;
+        document.getElementById('wallpaper-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">배경화면 & 테마</h1></div><div class="placeholder"></div></header><main class="content"><div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div><input type="file" id="wallpaper-upload" accept="image/*" style="display: none;"><label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label><hr style="border:none; border-top:1px solid #eee; margin: 30px 0 20px;"><h3 style="text-align:center; font-weight:500; font-size: 16px; margin-bottom: 20px;">기본 테마 색상</h3><div class="theme-selector" id="theme-selector-container"></div></main>`;
         document.getElementById('font-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">글꼴 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="font-settings-form"><div class="form-group"><label for="font-url">글꼴 링크 (ttf, woff, woff2)</label><input type="url" id="font-url" placeholder="https://.../font.ttf" required></div><p style="font-size:12px; color:#888; text-align:center;">예시: https://lf3-static.bytednsdoc.com/obj/eden-cn/jplptk/ljhwZthlaukjlkulzlp/portal/fonts/HarmonyOS_Sans_SC_Regular.woff2</p><button type="submit" class="btn btn-primary">글꼴 적용</button><button type="button" class="btn btn-neutral" id="restore-default-font-btn" style="margin-top: 15px;">기본 글꼴로 복원</button></form></main>`;
         document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">홈 화면 사용자 정의</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
         document.getElementById('tutorial-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
 
         // --- Global Variables and Constants ---
+        const globalThemes = {
+            'pink': { 
+                name: '핑크 (기본)', 
+                colors: { 
+                    '--bg-color': '#fce4ec', '--secondary-color': '#f8bbd0', '--secondary-color-hover': 'rgb(250 218 229)', '--primary-color': '#ff80ab', '--primary-color-hover': 'rgb(250 218 229)',
+                    '--accent-color': '#90caf9', '--accent-color-hover': 'rgb(217 236 252)','--text-color': '#444', '--white-color': '#fff', '--white-rgb': '255, 255, 255',
+                    '--border-color': '#f0dbe2', '--top-pinned-bg': '#fff0f5', '--online-status-color': '#4CAF50'
+                } 
+            },
+            'light': { 
+                name: '블루', 
+                colors: { 
+                    '--bg-color': '#f0f2f5', '--secondary-color': '#c6dbf9', '--secondary-color-hover': 'rgb(250 218 229)', '--primary-color': '#66abf5', '--primary-color-hover': 'rgb(203 224 247)', 
+                    '--accent-color': '#8f8dfa', '--accent-color-hover': 'rgb(212 211 255)', '--text-color': '#000', '--white-color': '#fff', '--white-rgb': '255, 255, 255',
+                    '--border-color': '#d1d1d6', '--top-pinned-bg': '#f5f5f7', '--online-status-color': '#34c759'
+                } 
+            },
+            'dark': { 
+                name: '다크', 
+                colors: { 
+                    '--bg-color': '#000000', '--secondary-color': '#1C1C1E', '--primary-color': '#0A84FF', 
+                    '--accent-color': '#5e5ce6', '--text-color': '#fff', '--white-color': '#1C1C1E', '--white-rgb': '28, 28, 30',
+                    '--border-color': '#3a3a3c', '--top-pinned-bg': '#1C1C1E', '--online-status-color': '#30d158'
+                } 
+            },
+            'mint': { 
+                name: '민트', 
+                colors: { 
+                    '--bg-color': '#f0fafa', '--secondary-color': '#e3f5f5', '--primary-color': '#00c7be', 
+                    '--accent-color': '#ff9f0a', '--text-color': '#2a3d3d', '--white-color': '#fff', '--white-rgb': '255, 255, 255',
+                    '--border-color': '#d9e7e7', '--top-pinned-bg': '#e6f7f7', '--online-status-color': '#34c759'
+                } 
+            },
+        };
         const colorThemes = {
             'white_pink': { name: '흰색/분홍색', received: { bg: 'rgba(255,255,255,0.9)', text: '#6D6D6D' }, sent: { bg: 'rgba(255,204,204,0.9)', text: '#A56767' } },
             'white_blue': { name: '흰색/파란색', received: { bg: 'rgba(255,255,255,0.9)', text: '#6D6D6D' }, sent: { bg: 'rgba(173,216,230,0.9)', text: '#4A6F8A' } },
@@ -2238,7 +2307,7 @@
             'api-settings-screen': { name: 'api', url: 'https://i.postimg.cc/50FqT8GL/chan-125.png' },
             'wallpaper-screen': { name: '배경화면', url: 'https://i.postimg.cc/3wqFttL3/chan-90.png' },
             'world-book-screen': { name: '월드인포', url: 'https://i.postimg.cc/prCWkrKT/chan-74.png' },
-            'customize-screen': { name: '사용자 정의', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
+            'customize-screen': { name: '홈 화면', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
             'font-settings-screen': { name: '글꼴', url: 'https://i.postimg.cc/FzVtC0x4/chan-21.png' },
             'tutorial-screen': { name: '튜토리얼', url: 'https://i.postimg.cc/6QgNzCFf/chan-118.png' },
             'day-mode-btn': { name: '', url: 'https://i.postimg.cc/Jz0tYqnT/chan-145.png' },
@@ -2291,13 +2360,16 @@
                 if (!c.worldBookIds) c.worldBookIds = [];
                 if (c.customBubbleCss === undefined) c.customBubbleCss = '';
                 if (c.useCustomBubbleCss === undefined) c.useCustomBubbleCss = false;
+                if (c.unreadCount === undefined) c.unreadCount = 0;
             });
             db.groups.forEach(g => {
                 if (g.isPinned === undefined) g.isPinned = false;
                 if (!g.worldBookIds) g.worldBookIds = [];
                 if (g.customBubbleCss === undefined) g.customBubbleCss = '';
                 if (g.useCustomBubbleCss === undefined) g.useCustomBubbleCss = false;
+                if (g.unreadCount === undefined) g.unreadCount = 0;
             });
+            applyGlobalTheme(db.globalTheme || 'pink');
         };
         const showToast = (message) => {
             toastElement.textContent = message;
@@ -2410,6 +2482,11 @@
                 if (backBtn) {
                     e.preventDefault();
                     switchScreen(backBtn.getAttribute('data-target'));
+                    const currentScreen = e.target.closest('.screen');
+                if (currentScreen && currentScreen.id === 'chat-room-screen') {
+                    currentChatId = null;
+                    currentChatType = null;
+                }
                 }
 
                 // Consolidated overlay closing logic
@@ -2614,7 +2691,7 @@
                 label: '채팅 삭제',
                 danger: true,
                 action: () => {
-                    if (confirm(`삭제를 확인하시겠습니까\"${itemName}\"의 채팅 기록입니까? 이 작업은 복구할 수 없습니다..`)) {
+                    if (confirm(`"${itemName}"의 채팅 기록을 삭제하시겠습니까? 이 작업은 복구할 수 없습니다.`)) {
                         if (chatType === 'private') { db.characters = db.characters.filter(c => c.id !== chatId); }
                         else { db.groups = db.groups.filter(g => g.id !== chatId); }
                         saveData();
@@ -2682,10 +2759,11 @@
                 const avatarClass = chat.type === 'group' ? 'group-avatar' : '';
                 const itemName = chat.type === 'private' ? chat.remarkName : chat.name;
                 const pinBadgeHTML = chat.isPinned ? '<span class="pin-badge">고정</span>' : '';
+                const unreadBadgeHTML = chat.unreadCount > 0 ? `<span class="unread-badge">${chat.unreadCount}</span>` : '';
                 li.innerHTML = `
                 <img src="${chat.avatar}" alt="${itemName}" class="chat-avatar ${avatarClass}">
                 <div class="item-details">
-                    <div class="item-details-row"><div class="item-name">${itemName}</div></div>
+                    <div class="item-details-row"><div class="item-name">${itemName}</div>${unreadBadgeHTML}</div>
                     <div class="item-preview-wrapper"><div class="item-preview">${lastMessageText}</div>${pinBadgeHTML}</div>
                 </div>`;
                 chatListContainer.appendChild(li);
@@ -2695,12 +2773,12 @@
         function setupAddCharModal() {
             addCharForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const newChar = { id: `char_${Date.now()}`, realName: document.getElementById('char-real-name').value, remarkName: document.getElementById('char-remark-name').value, persona: '', avatar: 'https://i.postimg.cc/Y96LPskq/o-o-2.jpg', myName: document.getElementById('my-name-for-char').value, myPersona: '', myAvatar: 'https://i.postimg.cc/GtbTnxhP/o-o-1.jpg', theme: 'white_pink', maxMemory: 10, chatBg: '', history: [], isPinned: false, status: '온라인', worldBookIds: [], useCustomBubbleCss: false, customBubbleCss: '' };
+                const newChar = { id: `char_${Date.now()}`, realName: document.getElementById('char-real-name').value, remarkName: document.getElementById('char-remark-name').value, persona: '', avatar: 'https://i.postimg.cc/Y96LPskq/o-o-2.jpg', myName: document.getElementById('my-name-for-char').value, myPersona: '', myAvatar: 'https://i.postimg.cc/GtbTnxhP/o-o-1.jpg', theme: db.defaultTheme || 'white_pink', maxMemory: 10, chatBg: '', history: [], isPinned: false, status: '온라인', worldBookIds: [], useCustomBubbleCss: false, customBubbleCss: '' };
                 db.characters.push(newChar);
                 saveData();
                 renderChatList();
                 addCharModal.classList.remove('visible');
-                showToast(`캐릭터\"${newChar.remarkName}\"생성 성공!`);
+                showToast(`캐릭터 "${newChar.remarkName}"생성 성공!`);
             });
         }
 
@@ -2898,6 +2976,11 @@
         function openChatRoom(chatId, type) {
             const chat = (type === 'private') ? db.characters.find(c => c.id === chatId) : db.groups.find(g => g.id === chatId);
             if (!chat) return;
+            if (chat.unreadCount > 0) {
+                chat.unreadCount = 0;
+                saveData();
+                renderChatList();
+            }
             exitMultiSelectMode();
             cancelMessageEdit();
             chatRoomTitle.textContent = (type === 'private') ? chat.remarkName : chat.name;
@@ -2982,7 +3065,7 @@
                 let bubbleText = '';
                 if (timeSkipMatch) bubbleText = timeSkipMatch[1];
                 if (inviteMatch) bubbleText = `${inviteMatch[1]}${inviteMatch[2]}님을 그룹 채팅에 초대했습니다`;
-                if (renameMatch) bubbleText = `${renameMatch[1]}가 그룹 이름을 \"${renameMatch[2]}\"(으)로 변경했습니다`;
+                if (renameMatch) bubbleText = `${renameMatch[1]}가 그룹 이름을 "${renameMatch[2]}"(으)로 변경했습니다`;
                 wrapper.innerHTML = `<div class="system-notification-bubble">${bubbleText}</div>`;
                 return wrapper;
             }
@@ -3503,25 +3586,39 @@
 
         async function getAiReply() {
             if (isGenerating) return;
-            const { url, key, model, provider } = db.apiSettings;
+
+            // --- 1. API 설정 정확하게 불러오기 ---
+            const provider = db.apiSettings.last_used_provider || 'newapi';
+            const currentSettings = db.apiSettings[provider] || {};
+            const key = currentSettings.key;
+            const model = currentSettings.model;
+            
+            // ★★★ 여기에 있던 결정적인 오타를 수정했습니다! ★★★
+            const providerUrls = { newapi: '', deepseek: 'https://api.deepseek.com', claude: 'https://api.anthropic.com', gemini: 'https://generativelanguage.googleapis.com' };
+            let url = provider === 'newapi' ? (currentSettings.url || '') : providerUrls[provider];
+            
             if (!url || !key || !model) {
-                showToast('먼저\"api\"앱에서 설정을 완료하세요!');
+                showToast('먼저 "api"앱에서 설정을 완료하세요!');
                 switchScreen('api-settings-screen');
                 return;
             }
+
+            // --- 2. 요청 준비 (이 부분은 기존과 동일합니다) ---
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             if (!chat) return;
             isGenerating = true;
             getReplyBtn.disabled = true;
             const typingName = currentChatType === 'private' ? chat.remarkName : chat.name;
-            typingIndicator.textContent = `\"${typingName}\"입력 중...`;
+            typingIndicator.textContent = `"${typingName}" 입력 중...`;
             typingIndicator.style.display = 'block';
             messageArea.scrollTop = messageArea.scrollHeight;
+
             try {
                 let systemPrompt, requestBody;
                 if (currentChatType === 'private') { systemPrompt = generatePrivateSystemPrompt(chat); }
                 else { systemPrompt = generateGroupSystemPrompt(chat); }
-                const historySlice = chat.history.slice(-chat.maxMemory);
+                const historySlice = chat.history.slice(-(chat.maxMemory || 10));
+
                 if (provider === 'gemini') {
                     const contents = historySlice.map(msg => {
                         const role = msg.role === 'assistant' ? 'model' : 'user';
@@ -3530,14 +3627,12 @@
                             parts = msg.parts.map(p => {
                                 if (p.type === 'text') { return { text: p.text }; }
                                 else if (p.type === 'image') {
-                                    const match = p.data.match(/^data:(image\/(.+));base64,(.*)$/);
+                                    const match = p.data.match(/^data:(image\/.+);base64,(.*)$/);
                                     if (match) { return { inline_data: { mime_type: match[1], data: match[3] } }; }
                                 }
                                 return null;
                             }).filter(p => p);
-                        } else {
-                            parts = [{ text: msg.content }];
-                        }
+                        } else { parts = [{ text: msg.content }]; }
                         return { role, parts };
                     });
                     requestBody = { contents: contents, system_instruction: { parts: [{ text: systemPrompt }] }, generationConfig: {} };
@@ -3556,10 +3651,19 @@
                     });
                     requestBody = { model: model, messages: messages, stream: true };
                 }
+
+                // --- 3. API 요청 보내기 (URL 끝에 '/'가 있어도 괜찮도록 수정) ---
+                if (url.endsWith('/')) {
+                    url = url.slice(0, -1);
+                }
+                
                 const endpoint = (provider === 'gemini') ? `${url}/v1beta/models/${model}:streamGenerateContent?key=${getRandomValue(key)}` : `${url}/v1/chat/completions`;
                 const headers = (provider === 'gemini') ? { 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` };
+                
                 const response = await fetch(endpoint, { method: 'POST', headers: headers, body: JSON.stringify(requestBody) });
+                
                 if (!response.ok) throw new Error(`API Error: ${response.status} ${await response.text()}`);
+                
                 await processStream(response, chat, provider);
             } catch (error) {
                 console.error('AI답변 실패:', error);
@@ -3571,7 +3675,7 @@
             }
         }
 
-        async function processStream(response, chat, apiType) {
+        async function processStream(response, originalChat, apiType) {
             const reader = response.body.getReader(), decoder = new TextDecoder();
             let fullResponse = "", accumulatedChunk = "";
             for (;;) {
@@ -3601,62 +3705,71 @@
                     return;
                 }
             }
+
             if (fullResponse) {
-                if (currentChatType === 'private') {
-                    const character = chat;
+                const messagesToAdd = [];
+                // 'members' 속성이 있는지 여부로 개인/그룹 채팅을 명확히 구분합니다.
+                const isPrivateChat = !originalChat.members;
+
+                if (isPrivateChat) {
+                    const character = originalChat;
                     const myName = character.myName;
-                    const messageRegex = new RegExp(`\\[${character.realName}(?:의 (?:메시지|음성|송금|이모티콘)|이모티콘|사진\\/동영상|선물):[\\s\\S]+?\\]|\\[${character.realName}(?:수신|반송)${myName}의 송금\\]|\\[${character.realName}가 선물을 수신했습니다\\]|\\[${character.realName}의 상태 업데이트:.*?\\]`, "g");
+                    const messageRegex = new RegExp(`\\[${character.realName}(?:의 (?:메시지|음성|송금|이모티콘|선물|사진\\/동영상)):[\\s\\S]+?\\]|\\[${character.realName}가 ${myName}의 송금을 (?:수신|반송)했습니다\\]|\\[${character.realName}가 선물을 수신했습니다\\]|\\[${character.realName}의 상태 업데이트:.*?\\]`, "g");
                     const messages = fullResponse.match(messageRegex) || [];
+
                     if (messages.length > 0) {
                         messages.forEach(msgContent => {
-                            const receivedTransferRegex = new RegExp(`\\[${character.realName}의 송금:.*?원;비고:.*?\\]`);
-                            const giftRegex = new RegExp(`\\[${character.realName}선물:.*?\\]`);
                             const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now() };
-                            if (receivedTransferRegex.test(message.content)) { message.transferStatus = 'pending'; }
-                            else if (giftRegex.test(message.content)) { message.giftStatus = 'sent'; }
-                            chat.history.push(message);
-                            addMessageBubble(message);
+                            messagesToAdd.push(message);
                         });
-                    } else {
-                        const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: fullResponse, parts: [{ type: 'text', text: fullResponse }], timestamp: Date.now() };
-                        chat.history.push(simpleMessage);
-                        addMessageBubble(simpleMessage);
+                    } else if (fullResponse.trim()) { // 빈 응답이 아닐 경우
+                        messagesToAdd.push({ id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: fullResponse, parts: [{ type: 'text', text: fullResponse }], timestamp: Date.now() });
                     }
-                } else if (currentChatType === 'group') {
-                    const group = chat;
+                } else { // Group Chat
+                    const group = originalChat;
                     const memberRealNames = group.members.map(m => m.realName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-                    const memberRegex = new RegExp(`\\[(${memberRealNames.join('|')})(?:의 메시지|의 음성|이모티콘|사진\\/동영상):[\\s\\S]+?\\]`, "g");
+                    
+                    // ★★★ 이 부분이 수정된 정규식입니다 ★★★
+                    const memberRegex = new RegExp(`\\[(${memberRealNames.join('|')})(?:의 (?:메시지|음성|이모티콘|사진\\/동영상)):[\\s\\S]+?\\]`, "g");
                     const messages = fullResponse.match(memberRegex) || [];
 
                     if (messages.length > 0) {
                         messages.forEach(msgContent => {
-                            const nameMatch = msgContent.match(/\[(.*?)((?:의 메시지|의 음성|이모티콘|사진\/동영상)):/);
+                            const nameMatch = msgContent.match(/\[(.*?)의 (?:메시지|음성|이모티콘|사진\/동영상):/);
                             if (nameMatch) {
                                 const senderName = nameMatch[1];
                                 const sender = group.members.find(m => m.realName === senderName);
                                 if (sender) {
-                                    const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now(), senderId: sender.id };
-                                    group.history.push(message);
-                                    addMessageBubble(message);
+                                    messagesToAdd.push({ id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now(), senderId: sender.id });
                                 }
                             }
                         });
-                    } else {
-                        console.warn("AI response did not match expected group format, treating as single message:", fullResponse);
+                    } else if (fullResponse.trim()){
                         const firstMember = group.members[Math.floor(Math.random() * group.members.length)];
                         if(firstMember) {
                             const simpleMessageContent = `[${firstMember.realName}의 메시지:${fullResponse}]`;
-                            const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: simpleMessageContent, parts: [{ type: 'text', text: simpleMessageContent }], timestamp: Date.now(), senderId: firstMember.id };
-                            group.history.push(simpleMessage);
-                            addMessageBubble(simpleMessage);
+                            messagesToAdd.push({ id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: simpleMessageContent, parts: [{ type: 'text', text: simpleMessageContent }], timestamp: Date.now(), senderId: firstMember.id });
                         }
                     }
                 }
+                
+                if (messagesToAdd.length > 0) {
+                    originalChat.history.push(...messagesToAdd);
+                    
+                    // 현재 열린 채팅방과 AI가 답변한 채팅방이 다를 경우
+                    if (currentChatId !== originalChat.id) {
+                        originalChat.unreadCount = (originalChat.unreadCount || 0) + messagesToAdd.length;
+                    } else {
+                        // 같다면 화면에 바로 메시지를 보여줌
+                        messagesToAdd.forEach(msg => addMessageBubble(msg));
+                    }
+                }
+                
                 saveData();
                 renderChatList();
             }
         }
-
+                
         // --- Other Sub-systems Setup (Stickers, Voice, etc.) ---
         function setupImageRecognition() {
             imageRecognitionBtn.addEventListener('click', () => { imageUploadInput.click(); });
@@ -3751,7 +3864,7 @@
                 if (!currentStickerActionTarget) return;
                 const sticker = db.myStickers.find(s => s.id === currentStickerActionTarget);
                 if (sticker) {
-                    if (confirm(`이모티콘을 삭제하시겠습니까\"${sticker.name}\"?`)) {
+                    if (confirm(`"${sticker.name}" 이모티콘을 삭제하시겠습니까?`)) {
                         db.myStickers = db.myStickers.filter(s => s.id !== currentStickerActionTarget);
                         saveData();
                         renderStickerGrid();
@@ -4099,7 +4212,7 @@
             clearChatHistoryBtn.addEventListener('click', () => {
                 const character = db.characters.find(c => c.id === currentChatId);
                 if (!character) return;
-                if (confirm(`정말로 비우시겠습니까\"${character.remarkName}\"의 모든 채팅 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!`)) {
+                if (confirm(`정말로 "${character.remarkName}"의 모든 채팅 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!`)) {
                     character.history = [];
                     saveData();
                     renderMessages(false, true);
@@ -4181,48 +4294,186 @@
         }
 
         function setupApiSettingsApp() {
-            const e = document.getElementById('api-form'), t = document.getElementById('fetch-models-btn'), a = document.getElementById('api-model'), n = document.getElementById('api-provider'), r = document.getElementById('api-url'), s = document.getElementById('api-key'), c = { newapi: '', deepseek: 'https://api.deepseek.com', claude: 'https://api.anthropic.com', gemini: 'https://generativelanguage.googleapis.com' };
-            db.apiSettings && (n.value = db.apiSettings.provider || 'newapi', r.value = db.apiSettings.url || '', s.value = db.apiSettings.key || '', db.apiSettings.model && (a.innerHTML = `<option value="${db.apiSettings.model}">${db.apiSettings.model}</option>`));
-            n.addEventListener('change', () => { r.value = c[n.value] || '' });
-            t.addEventListener('click', async () => {
-                let o = r.value.trim();
-                const l = s.value.trim();
-                if (!o || !l) return showToast('먼저 API 주소와 키를 입력해 주세요!');
-                o.endsWith('/') && (o = o.slice(0, -1));
-                const i = 'gemini' === n.value ? `${o}/v1beta/models?key=${getRandomValue(l)}` : `${o}/v1/models`;
-                t.classList.add('loading'), t.disabled = !0;
+            const apiForm = document.getElementById('api-form');
+            const fetchModelsBtn = document.getElementById('fetch-models-btn');
+            const modelSelect = document.getElementById('api-model');
+            const providerSelect = document.getElementById('api-provider');
+            const urlInput = document.getElementById('api-url');
+            const keyInput = document.getElementById('api-key');
+            const providerUrls = { newapi: '', deepseek: 'https://api.deepseek.com', claude: 'https://api.anthropic.com', gemini: 'https://generativelanguage.googleapis.com' };
+
+            // 현재 UI(입력창)에 보이는 값을 DB에 저장하는 함수
+            function saveCurrentUIToDB(providerToSave) {
+                if (!providerToSave) return;
+                if (!db.apiSettings[providerToSave]) db.apiSettings[providerToSave] = {};
+                
+                // newapi 일 때만 URL을 저장합니다.
+                if (providerToSave === 'newapi') {
+                    db.apiSettings[providerToSave].url = urlInput.value.trim();
+                }
+                db.apiSettings[providerToSave].key = keyInput.value.trim();
+                
+                // 모델 선택값이 있을 때만 저장합니다.
+                if (modelSelect.value) {
+                    db.apiSettings[providerToSave].model = modelSelect.value;
+                }
+            }
+
+            // 특정 제공자의 설정을 DB에서 불러와 UI(입력창)에 표시하는 함수
+            function loadSettingsToUI(provider) {
+                const settings = db.apiSettings[provider] || {};
+                
+                urlInput.value = (provider === 'newapi') ? (settings.url || '') : providerUrls[provider];
+                urlInput.readOnly = (provider !== 'newapi'); // newapi가 아니면 URL 입력창을 잠급니다.
+                
+                keyInput.value = settings.key || '';
+                
+                if (settings.model) {
+                    modelSelect.innerHTML = `<option value="${settings.model}" selected>${settings.model}</option>`;
+                } else {
+                    modelSelect.innerHTML = '<option value="">먼저 모델 목록을 가져오세요</option>';
+                }
+            }
+            
+            // 1. 페이지가 처음 열릴 때 실행
+            const lastProvider = db.apiSettings.last_used_provider || 'newapi';
+            providerSelect.value = lastProvider;
+            loadSettingsToUI(lastProvider);
+
+            // 2. 사용자가 제공자 선택을 바꿀 때 실행되는 가장 중요한 부분!
+            providerSelect.addEventListener('change', () => {
+                // 방금 전까지 선택되어 있던 제공자를 찾습니다.
+                const previousProvider = db.apiSettings.last_used_provider || 'newapi';
+                
+                // 바꾸기 전의 제공자 설정을 먼저 저장합니다.
+                saveCurrentUIToDB(previousProvider);
+
+                // 새로 선택한 제공자의 설정을 화면에 불러옵니다.
+                const newProvider = providerSelect.value;
+                loadSettingsToUI(newProvider);
+                
+                // 마지막으로 사용한 제공자를 DB에 기록합니다.
+                db.apiSettings.last_used_provider = newProvider;
+                saveData(); // 변경사항 즉시 저장
+            });
+
+            // 3. 모델 가져오기 버튼 클릭 (이 부분은 이전과 거의 동일)
+            fetchModelsBtn.addEventListener('click', async () => {
+                let apiUrl = urlInput.value.trim();
+                const apiKey = keyInput.value.trim();
+                const provider = providerSelect.value;
+
+                if (!apiUrl || !apiKey) return showToast('먼저 API 주소와 키를 입력해 주세요!');
+                if (apiUrl.endsWith('/')) apiUrl = apiUrl.slice(0, -1);
+
+                const endpoint = (provider === 'gemini') ? `${apiUrl}/v1beta/models?key=${getRandomValue(apiKey)}` : `${apiUrl}/v1/models`;
+                fetchModelsBtn.classList.add('loading'); fetchModelsBtn.disabled = true;
+
                 try {
-                    const d = 'gemini' === n.value ? {} : { Authorization: `Bearer ${l}` }, g = await fetch(i, { method: 'GET', headers: d });
-                    if (!g.ok) throw new Error(`네트워크 응답 오류: ${g.status}`);
-                    const u = await g.json();
-                    let p = [];
-                    'gemini' !== n.value && u.data ? p = u.data.map(e => e.id) : 'gemini' === n.value && u.models && (p = u.models.map(e => e.name.replace('models/', ''))), a.innerHTML = '', p.length > 0 ? p.forEach(e => { const t = document.createElement('option'); t.value = e, t.textContent = e, a.appendChild(t) }) : a.innerHTML = '<option value="">어떤 모델도 찾을 수 없습니다</option>', showToast('모델 목록 가져오기 성공!')
-                } catch (f) {
-                    showToast(`가져오기 실패: ${f.message}`), a.innerHTML = '<option value="">가져오기 실패</option>'
+                    const headers = (provider === 'gemini') ? {} : { 'Authorization': `Bearer ${apiKey}` };
+                    const response = await fetch(endpoint, { method: 'GET', headers });
+                    if (!response.ok) throw new Error(`네트워크 응답 오류: ${response.status}`);
+                    const json = await response.json();
+                    let models = [];
+                    if (provider !== 'gemini' && json.data) models = json.data.map(m => m.id);
+                    else if (provider === 'gemini' && json.models) models = json.models.map(m => m.name.replace('models/', ''));
+                    
+                    modelSelect.innerHTML = '';
+                    if (models.length > 0) {
+                        models.forEach(model => {
+                            const option = document.createElement('option');
+                            option.value = model; option.textContent = model;
+                            modelSelect.appendChild(option);
+                        });
+                        showToast('모델 목록 가져오기 성공!');
+                    } else {
+                        modelSelect.innerHTML = '<option value="">어떤 모델도 찾을 수 없습니다</option>';
+                    }
+                } catch (error) {
+                    showToast(`가져오기 실패: ${error.message}`);
+                    modelSelect.innerHTML = '<option value="">가져오기 실패</option>';
                 } finally {
-                    t.classList.remove('loading'), t.disabled = !1
+                    fetchModelsBtn.classList.remove('loading'); fetchModelsBtn.disabled = false;
                 }
             });
-            e.addEventListener('submit', e => {
+
+            // 4. 저장 버튼 클릭
+            apiForm.addEventListener('submit', e => {
                 e.preventDefault();
-                if (!a.value) return showToast('모델을 선택한 후 저장해 주세요!');
-                db.apiSettings = { provider: n.value, url: r.value, key: s.value, model: a.value }, saveData(), showToast('API설정이 저장되었습니다!')
-            })
+                if (!modelSelect.value) return showToast('모델을 선택한 후 저장해 주세요!');
+                
+                const currentProvider = providerSelect.value;
+                saveCurrentUIToDB(currentProvider); // 현재 화면의 내용을 저장
+                db.apiSettings.last_used_provider = currentProvider; // 마지막 쓴 제공자 기록
+                saveData();
+                showToast('API 설정이 저장되었습니다!');
+            });
+        }
+
+        function applyGlobalTheme(themeName) {
+            const theme = globalThemes[themeName] || globalThemes['pink'];
+            for (const [key, value] of Object.entries(theme.colors)) {
+                document.documentElement.style.setProperty(key, value);
+            }
+            db.globalTheme = themeName;
         }
 
         function setupWallpaperApp() {
-            const e = document.getElementById('wallpaper-upload'), t = document.getElementById('wallpaper-preview');
-            t.style.backgroundImage = `url(${db.wallpaper})`, t.textContent = '', e.addEventListener('change', async (a) => {
-                const n = a.target.files[0];
-                if (n) {
+            // --- 1. 배경화면 설정 부분 ---
+            const wallpaperUpload = document.getElementById('wallpaper-upload');
+            const wallpaperPreview = document.getElementById('wallpaper-preview');
+            wallpaperPreview.style.backgroundImage = `url(${db.wallpaper})`;
+            wallpaperPreview.textContent = '';
+            wallpaperUpload.addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (file) {
                     try {
-                        const r = await compressImage(n, { quality: 0.85, maxWidth: 1080, maxHeight: 1920 });
-                        db.wallpaper = r, applyWallpaper(r), t.style.backgroundImage = `url(${r})`, saveData(), showToast('배경화면 변경 성공!');
-                    } catch (s) { showToast('배경화면 압축 실패, 다시 시도해 주세요'); }
+                        const compressedUrl = await compressImage(file, { quality: .85, maxWidth: 1080, maxHeight: 1920 });
+                        db.wallpaper = compressedUrl;
+                        applyWallpaper(compressedUrl);
+                        wallpaperPreview.style.backgroundImage = `url(${compressedUrl})`;
+                        saveData();
+                        showToast('배경화면 변경 성공!');
+                    } catch (error) { showToast('배경화면 압축 실패, 다시 시도해 주세요'); }
                 }
             });
-        }
 
+            // --- 2. UI 테마 선택 부분 ---
+            const mainContent = document.querySelector('#wallpaper-screen main.content');
+            // 테마 선택 UI가 중복해서 생기지 않도록 확인
+            if (!document.getElementById('global-theme-selector')) {
+                mainContent.innerHTML += `
+                    <hr style="border:none; border-top:1px solid var(--border-color); margin: 30px 0 20px;">
+                    <h3 style="text-align:center; font-weight:500; font-size: 16px; margin-bottom: 20px; color: var(--text-color);">UI 테마</h3>
+                    <div class="global-theme-selector" id="global-theme-selector"></div>
+                `;
+            }
+
+            const themeContainer = document.getElementById('global-theme-selector');
+            themeContainer.innerHTML = ''; // 버튼을 새로 그리기 위해 비워줌
+            
+            Object.keys(globalThemes).forEach(key => {
+                const theme = globalThemes[key];
+                const circle = document.createElement('div');
+                circle.className = 'theme-circle';
+                circle.title = theme.name;
+                circle.style.background = `linear-gradient(to right, ${theme.colors['--bg-color']} 50%, ${theme.colors['--primary-color']} 50%)`;
+                
+                if (key === (db.globalTheme || 'pink')) {
+                    circle.classList.add('selected');
+                }
+                
+                circle.addEventListener('click', () => {
+                    applyGlobalTheme(key);
+                    saveData();
+                    document.querySelector('.global-theme-selector .theme-circle.selected')?.classList.remove('selected');
+                    circle.classList.add('selected');
+                    showToast(`UI 테마가 '${theme.name}'(으)로 변경되었습니다.`);
+                });
+                themeContainer.appendChild(circle);
+            });
+        }
+               
         // --- GROUP CHAT FUNCTIONS ---
         function setupGroupChatSystem() {
             createGroupBtn.addEventListener('click', () => {
@@ -4241,7 +4492,7 @@
                 saveData();
                 renderChatList();
                 createGroupModal.classList.remove('visible');
-                showToast(`그룹 채팅\"${groupName}\"생성 성공!`);
+                showToast(`그룹 채팅 "${groupName}" 생성 성공!`);
             });
             groupSettingsForm.addEventListener('submit', e => {
                 e.preventDefault();
@@ -4306,7 +4557,7 @@
             document.getElementById('clear-group-chat-history-btn').addEventListener('click', () => {
                 const group = db.groups.find(g => g.id === currentChatId);
                 if (!group) return;
-                if (confirm(`정말로 그룹 채팅을 비우시겠습니까\"${group.name}\"의 모든 채팅 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!`)) {
+                if (confirm(`정말로 그룹 채팅 "${group.name}"의 모든 채팅 기록을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다!`)) {
                     group.history = [];
                     saveData();
                     renderMessages(false, true);
