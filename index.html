@@ -11,7 +11,7 @@
     <style>
 
         
-        /* --- 全局与主题样式 --- */
+        
         :root {
             --bg-color: #fce4ec;
             --primary-color: #ff80ab;
@@ -450,6 +450,8 @@
         .chat-item.pinned {
             background-color: var(--top-pinned-bg);
         }
+
+        .unread-badge { margin-left: auto; background-color: #ff554c; color: white; font-size: 12px; font-weight: bold; padding: 2px 7px; border-radius: 20px; }
 
         .chat-avatar {
             width: 50px;
@@ -1266,6 +1268,14 @@
             margin-bottom: 20px;
         }
 
+        .form-group-checkbox {
+            padding: 0px 12px 12px 12px;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+            font-family: var(--font-family);
+            font-size: 14px;
+        }
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -1300,6 +1310,9 @@
         }
 
         .form-group.radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
             margin-bottom: 0;
         }
 
@@ -1342,7 +1355,7 @@
         .btn-secondary {
             background-color: var(--accent-color);
             color: var(--white-color);
-            /* margin-bottom: 15px; */
+            
         }
 
         .btn-secondary:hover {
@@ -1359,7 +1372,7 @@
             background-color: #9e9e9e;
         }
 
-        /* GitHub 동기화 섹션 스타일 */
+        
         .github-sync-section {
             border: 1px solid #eee;
             border-radius: 10px;
@@ -1536,7 +1549,7 @@
             object-fit: cover;
         }
 
-        /* --- Group Chat Specific Styles --- */
+        
         .member-selection-list {
             list-style: none;
             padding: 0;
@@ -1687,7 +1700,7 @@
             margin-left: 10px;
         }
 
-        /* --- 전역 커스텀 CSS 섹션 스타일 --- */
+        
         .customize-section {
             margin-bottom: 30px;
             padding: 20px;
@@ -1837,7 +1850,7 @@
             line-height: 1.4;
         }
 
-        /* --- Tutorial Screen Styles --- */
+        
         .tutorial-item {
             margin-bottom: 15px;
             border: 1px solid #fce4ec;
@@ -1875,7 +1888,7 @@
 
         .tutorial-item.open .tutorial-content {
             padding: 10px 10px;
-            /* A large value to ensure it expands to fit the content */
+            
             max-height: 5000px;
         }
 
@@ -1886,7 +1899,7 @@
             display: block;
         }
 
-        /* 폰트 설정 관련 스타일 */
+        
         .form-select {
             width: 100%;
             padding: 12px;
@@ -2387,32 +2400,32 @@
 </div>
 
 <script>
-    // gemini如果是多个密钥, 那么随机获取一个
+    
     function getRandomValue(str) {
-        // 检查字符串是否包含逗号
+        
         if (str.includes(',')) {
-            // 用逗号分隔字符串并移除多余空格
+            
             const arr = str.split(',').map(item => item.trim());
-            // 生成随机索引 (0 到 arr.length-1)
+            
             const randomIndex = Math.floor(Math.random() * arr.length);
-            // 返回随机元素
+            
             return arr[randomIndex];
         }
-        // 没有逗号则直接返回原字符串
+        
         return str;
     }
     document.addEventListener('DOMContentLoaded', () => {
-        // 🔧 배포 모드 설정 변수 - 배포 시 false로 변경하세요!
-        const IS_DEVELOPMENT_MODE = false; // true: 개발용 (GitHub 정보 다운로드/업로드 포함), false: 배포용 (기능 숨김)
-        console.log('📋 현재 빌드 모드:', IS_DEVELOPMENT_MODE ? '개발용 (Development)' : '배포용 (Production)');
+        
+        const IS_DEVELOPMENT_MODE = false; 
+        console.log('현재 빌드 모드:', IS_DEVELOPMENT_MODE ? '개발용 (Development)' : '배포용 (Production)');
         
         async function compressImage(file, options = {}) {
             const {
                 quality = 0.8, maxWidth = 800, maxHeight = 800
             } = options;
 
-            // --- 新增：处理GIF动图 ---
-            // 如果文件是GIF，则不经过canvas压缩，直接返回原始文件数据以保留动画
+            
+            
             if (file.type === 'image/gif') {
                 return new Promise((resolve, reject) => {
                     const reader = new FileReader();
@@ -2422,7 +2435,7 @@
                 });
             }
 
-            // --- 对其他静态图片（如PNG, JPG）进行压缩 ---
+            
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
@@ -2452,17 +2465,17 @@
                         canvas.height = height;
                         const ctx = canvas.getContext('2d');
 
-                        // 对于有透明背景的PNG图片，先填充一个白色背景
-                        // 这样可以防止透明区域在转换成JPEG时变黑
+                        
+                        
                         if (file.type === 'image/png') {
-                            ctx.fillStyle = '#FFFFFF'; // 白色背景
+                            ctx.fillStyle = '#FFFFFF'; 
                             ctx.fillRect(0, 0, width, height);
                         }
                         
                         ctx.drawImage(img, 0, 0, width, height);
                         
-                        // --- 关键修正：将输出格式改为 'image/jpeg' ---
-                        // JPEG格式可以显著减小文件大小，避免浏览器处理超大Base64字符串时崩溃
+                        
+                        
                         const compressedDataUrl = canvas.toDataURL('image/jpeg', quality); 
                         resolve(compressedDataUrl);
                     };
@@ -2470,29 +2483,29 @@
             });
         }
         
-        // --- 기본 폰트 프리셋 초기화 함수 ---
+        
         function initializeFontPresets() {
-            // DEBUG: 폰트 프리셋 초기화 시작
+            
             console.log('폰트 프리셋 초기화 시작');
             
-            // 커스텀 폰트 프리셋 생성 (삭제 불가능)
+            
             if (!db.globalFontPresets.presets.custom) {
                 db.globalFontPresets.presets.custom = {
                     name: '커스텀 폰트',
                     url: '',
                     description: '직접 입력한 폰트 URL을 사용합니다',
-                    deletable: false // 삭제 불가능 플래그
+                    deletable: false 
                 };
                 console.log('커스텀 폰트 프리셋 추가됨');
             } else {
-                // 기존 커스텀 프리셋이 있어도 deletable 플래그 확인
+                
                 if (db.globalFontPresets.presets.custom.deletable === undefined) {
                     db.globalFontPresets.presets.custom.deletable = false;
                 }
                 console.log('기존 커스텀 폰트 프리셋 확인됨:', db.globalFontPresets.presets.custom);
             }
             
-            // 하드코딩된 기본 폰트들 추가
+            
             const defaultFonts = [
                 {
                     id: 'default_1',
@@ -2574,20 +2587,20 @@
                 }
             ];
             
-            // 기본 폰트들을 프리셋에 추가 (이미 존재하지 않는 경우만)
+            
             defaultFonts.forEach(font => {
                 if (!db.globalFontPresets.presets[font.id]) {
                     db.globalFontPresets.presets[font.id] = {
                         name: font.name,
                         url: font.url,
                         description: font.description,
-                        deletable: true // 하드코딩 폰트도 삭제 가능
+                        deletable: true 
                     };
                     console.log(`기본 폰트 프리셋 추가됨: ${font.name}`);
                 }
             });
             
-            // 프리셋 초기화 후 currentPreset 재검증
+            
             if (!db.globalFontPresets.presets[db.globalFontPresets.currentPreset]) {
                 console.log('현재 프리셋이 존재하지 않음:', db.globalFontPresets.currentPreset);
                 db.globalFontPresets.currentPreset = 'custom';
@@ -2600,16 +2613,16 @@
             });
         }
         
-        // --- Initial HTML Injection ---
-        // 🔧 GitHub 정보 관리 버튼 (개발용에서만 표시)
+        
+        
         const githubInfoButtons = IS_DEVELOPMENT_MODE ? `
             <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
-            <button type="button" id="github-info-download-btn" class="btn btn-neutral" style="width: 100%; margin-bottom: 10px;">GitHub 정보 다운로드 📋</button>
-            <button type="button" id="github-info-upload-btn" class="btn btn-secondary" style="width: 100%;">GitHub 설정 업로드 복원 📤</button>
+            <button type="button" id="github-info-download-btn" class="btn btn-neutral" style="width: 100%; margin-bottom: 10px;">GitHub 정보 다운로드</button>
+            <button type="button" id="github-info-upload-btn" class="btn btn-secondary" style="width: 100%;">GitHub 설정 업로드 복원</button>
             <input type="file" id="github-info-upload-input" accept=".json" style="display: none;">
         ` : '';
         
-        // 🔧 PAT 키 포함 옵션 (개발용에서만 표시)
+        
         const patIncludeOption = IS_DEVELOPMENT_MODE ? `
             <div class="form-group">
                 <label style="display: flex; align-items: center; gap: 10px;">
@@ -2619,13 +2632,13 @@
             </div>
         ` : '';
 
-        document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="🔍 모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저 장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin-bottom: 15px; color: var(--text-color);">💾 데이터 관리</h3><p style="font-size: 14px; color: #888; margin-bottom: 20px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">📥 데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">📤 데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer;" id="github-sync-toggle">☁️ GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px;">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%; margin-bottom: 10px;" disabled>데이터 올리기 ⬆️</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%; margin-bottom: 10px;" disabled>데이터 덮어쓰기 ⬇️</button>${githubInfoButtons}</div></div></div></div></main>`;
+        document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저 장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin-bottom: 15px; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin-bottom: 20px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px;">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
         document.getElementById('wallpaper-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">배경화면 변경</h1></div><div class="placeholder"></div></header><main class="content"><div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div><input type="file" id="wallpaper-upload" accept="image/*" style="display: none;"><label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label></main>`;
-        document.getElementById('font-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">글꼴 설정</h1></div><div class="placeholder"></div></header><main class="content"><div class="form-group"><label for="font-preset-selector">📚 저장된 폰트 선택</label><select id="font-preset-selector" class="form-select"></select><p class="font-description" id="font-description" style="font-size:12px; color:#666; margin-top:8px; margin-bottom:15px;">프리셋을 선택해주세요</p></div><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><form id="font-settings-form"><div class="form-group"><label for="font-url">🔗 폰트 URL</label><input type="url" id="font-url" placeholder="여기에 폰트 URL을 입력하세요" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 8px;"><p style="font-size:12px; color:#888;">폰트 파일 URL을 입력하세요</p></div><div class="form-group" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-top: 15px;"><input type="text" id="new-preset-name" placeholder="폰트 이름 (예: 나눔고딕)" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;"><input type="text" id="new-preset-description" placeholder="설명 (선택)" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;"></div><div class="font-actions" style="display: flex; gap: 10px; margin-top: 20px;"><button type="button" class="btn btn-primary" id="apply-font-btn" style="flex: 1;">🔤 폰트 적용</button><button type="button" class="btn btn-neutral" id="restore-default-font-btn" style="flex: 0.7;">🔄 기본 폰트</button></div></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin-bottom: 15px; color: var(--text-color);">🗂️ 프리셋 관리</h3><button type="button" class="btn btn-secondary" id="save-preset-btn" style="width: 100%; margin-bottom: 10px;">📝 프리셋 등록</button><button type="button" class="btn btn-danger" id="delete-preset-btn" style="width: 100%;" disabled>프리셋 삭제</button></div></main>`;
+        document.getElementById('font-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">글꼴 설정</h1></div><div class="placeholder"></div></header><main class="content"><div class="form-group"><label for="font-preset-selector">저장된 폰트 선택</label><select id="font-preset-selector" class="form-select"></select><p class="font-description" id="font-description" style="font-size:12px; color:#666; margin-top:8px; margin-bottom:15px;">프리셋을 선택해주세요</p></div><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><form id="font-settings-form"><div class="form-group"><label for="font-url">폰트 URL</label><input type="url" id="font-url" placeholder="여기에 폰트 URL을 입력하세요" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 8px;"><p style="font-size:12px; color:#888;">폰트 파일 URL을 입력하세요</p></div><div class="form-group" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-top: 15px;"><input type="text" id="new-preset-name" placeholder="폰트 이름 (예: 나눔고딕)" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;"><input type="text" id="new-preset-description" placeholder="설명 (선택)" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;"></div><div class="font-actions" style="display: flex; gap: 10px; margin-top: 20px;"><button type="button" class="btn btn-primary" id="apply-font-btn" style="flex: 1;">폰트 적용</button><button type="button" class="btn btn-neutral" id="restore-default-font-btn" style="flex: 0.7;">기본 폰트</button></div></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin-bottom: 15px; color: var(--text-color);">프리셋 관리</h3><button type="button" class="btn btn-secondary" id="save-preset-btn" style="width: 100%; margin-bottom: 10px;">프리셋 등록</button><button type="button" class="btn btn-danger" id="delete-preset-btn" style="width: 100%;" disabled>프리셋 삭제</button></div></main>`;
         document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">홈 화면 커스텀</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
         document.getElementById('tutorial-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
 
-        // --- Global Variables and Constants ---
+        
         const colorThemes = {
             'white_pink': { name: '흰색/분홍', received: { bg: 'rgba(255,255,255,0.9)', text: '#6D6D6D' }, sent: { bg: 'rgba(255,204,204,0.9)', text: '#A56767' } },
             'white_blue': { name: '흰색/파랑', received: { bg: 'rgba(255,255,255,0.9)', text: '#6D6D6D' }, sent: { bg: 'rgba(173,216,230,0.9)', text: '#4A6F8A' } },
@@ -2656,7 +2669,7 @@
         let selectedMessageIds = new Set();
         const MESSAGES_PER_PAGE = 50;
 
-        // --- DOM Element Cache ---
+        
         const screens = document.querySelectorAll('.screen'), toastElement = document.getElementById('toast-notification'), homeScreen = document.getElementById('home-screen'), chatListContainer = document.getElementById('chat-list-container'), noChatsPlaceholder = document.getElementById('no-chats-placeholder'), addChatBtn = document.getElementById('add-chat-btn'), addCharModal = document.getElementById('add-char-modal'), addCharForm = document.getElementById('add-char-form'), chatRoomScreen = document.getElementById('chat-room-screen'), chatRoomHeaderDefault = document.getElementById('chat-room-header-default'), chatRoomHeaderSelect = document.getElementById('chat-room-header-select'), cancelMultiSelectBtn = document.getElementById('cancel-multi-select-btn'), multiSelectTitle = document.getElementById('multi-select-title'), chatRoomTitle = document.getElementById('chat-room-title'), chatRoomStatusText = document.getElementById('chat-room-status-text'), messageArea = document.getElementById('message-area'), messageInputDefault = document.getElementById('message-input-default'), messageInput = document.getElementById('message-input'), sendMessageBtn = document.getElementById('send-message-btn'), getReplyBtn = document.getElementById('get-reply-btn'), typingIndicator = document.getElementById('typing-indicator'), chatSettingsBtn = document.getElementById('chat-settings-btn'), settingsSidebar = document.getElementById('chat-settings-sidebar'), settingsForm = document.getElementById('chat-settings-form'), messageEditBar = document.getElementById('message-edit-bar'), messageEditInput = document.getElementById('message-edit-input'), saveEditBtn = document.getElementById('save-edit-btn'), cancelEditBtn = document.getElementById('cancel-edit-btn'), multiSelectBar = document.getElementById('multi-select-bar'), selectCount = document.getElementById('select-count'), deleteSelectedBtn = document.getElementById('delete-selected-btn');
         const stickerToggleBtn = document.getElementById('sticker-toggle-btn'), stickerModal = document.getElementById('sticker-modal'), stickerGridContainer = document.getElementById('sticker-grid-container'), addNewStickerBtn = document.getElementById('add-new-sticker-btn'), addStickerModal = document.getElementById('add-sticker-modal'), addStickerModalTitle = document.getElementById('add-sticker-modal-title'), addStickerForm = document.getElementById('add-sticker-form'), stickerEditIdInput = document.getElementById('sticker-edit-id'), stickerPreview = document.getElementById('sticker-preview'), stickerNameInput = document.getElementById('sticker-name'), stickerUrlInput = document.getElementById('sticker-url-input'), stickerFileUpload = document.getElementById('sticker-file-upload');
         const stickerActionSheet = document.getElementById('sticker-actionsheet'), editStickerBtn = document.getElementById('edit-sticker-btn'), deleteStickerBtn = document.getElementById('delete-sticker-btn');
@@ -2677,12 +2690,12 @@
         const groupRecipientSelectionModal = document.getElementById('group-recipient-selection-modal'), groupRecipientSelectionList = document.getElementById('group-recipient-selection-list'), confirmGroupRecipientBtn = document.getElementById('confirm-group-recipient-btn'), groupRecipientSelectionTitle = document.getElementById('group-recipient-selection-title');
         const linkGroupWorldBookBtn = document.getElementById('link-group-world-book-btn');
 
-        // --- Utility and Core Functions ---
+        
         const saveData = () => localStorage.setItem('gemini-chat-app-db', JSON.stringify(db));
         const loadData = () => {
             const data = localStorage.getItem('gemini-chat-app-db');
             if (data) db = JSON.parse(data);
-            // API 설정 초기화는 setupApiSettingsApp()에서 처리
+            
             if (!db.apiSettings) db.apiSettings = {};
             if (!db.wallpaper) db.wallpaper = 'https://i.postimg.cc/W4Z9R9x4/ins-1.jpg';
             if (!db.characters) db.characters = [];
@@ -2690,16 +2703,16 @@
             if (!db.myStickers) db.myStickers = [];
             if (!db.homeScreenMode) db.homeScreenMode = 'night';
             if (!db.worldBooks) db.worldBooks = [];
-            // fontUrl 제거 - 이제 프리셋 시스템만 사용
+            
             if (!db.customIcons) db.customIcons = {};
             if (!db.globalCustomCSS) db.globalCustomCSS = { enabled: true, currentPreset: 'default', presets: { 'default': { name: '기본', css: '', description: '기본 테마' } } };
             if (!db.globalFontPresets) db.globalFontPresets = { enabled: true, currentPreset: 'custom', presets: {} };
-            // currentPreset 유효성 검사 및 수정
+            
             if (db.globalFontPresets.currentPreset === 'default' || !db.globalFontPresets.currentPreset) {
                 db.globalFontPresets.currentPreset = 'custom';
                 console.log('잘못된 currentPreset을 custom으로 수정함');
             }
-            // 폰트 프리셋 초기화
+            
             initializeFontPresets();
             db.characters.forEach(c => {
                 if (c.isPinned === undefined) c.isPinned = false;
@@ -2723,7 +2736,7 @@
         const switchScreen = (targetId) => {
             screens.forEach(screen => screen.classList.remove('active'));
             document.getElementById(targetId)?.classList.add('active');
-            // Close all overlays and sidebars
+            
             const overlays = document.querySelectorAll('.modal-overlay, .action-sheet-overlay, .settings-sidebar');
             overlays.forEach(o => o.classList.remove('visible', 'open'));
         };
@@ -2772,7 +2785,7 @@
             }
         }
 
-        // --- 전역 커스텀 CSS 함수들 ---
+        
         function applyGlobalCustomCSS() {
             if (!db.globalCustomCSS.enabled) {
                 return;
@@ -2853,14 +2866,14 @@ function setupGitHubSync() {
     const saveBtn = document.getElementById('save-sync-settings-btn');
     const syncUpBtn = document.getElementById('sync-up-btn');
     const syncDownBtn = document.getElementById('sync-down-btn');
-    // 🔧 개발 모드에서만 존재하는 요소들을 안전하게 선택
+    
     const githubInfoDownloadBtn = document.getElementById('github-info-download-btn');
     const githubInfoUploadBtn = document.getElementById('github-info-upload-btn');
     const githubInfoUploadInput = document.getElementById('github-info-upload-input');
     const githubSyncToggle = document.getElementById('github-sync-toggle');
     const githubSyncContent = document.getElementById('github-sync-content');
 
-    // 1. 설정 불러오기
+    
     const savedSettings = JSON.parse(localStorage.getItem('gemini-chat-sync-settings'));
     if (savedSettings) {
         usernameInput.value = savedSettings.username || '';
@@ -2868,7 +2881,7 @@ function setupGitHubSync() {
         patInput.value = savedSettings.pat || '';
         filenameInput.value = savedSettings.filename || 'phone-chat-data.json';
         
-        // PAT 포함 옵션 복원 (개발 모드에서만)
+        
         const includePatCheckbox = document.getElementById('include-pat-in-download');
         if (includePatCheckbox) {
             includePatCheckbox.checked = savedSettings.includePatInDownload !== false;
@@ -2877,7 +2890,7 @@ function setupGitHubSync() {
             console.log('🔧 DEBUG: PAT 포함 옵션 비활성화됨 (배포 모드)');
         }
 
-        // Merge 옵션 복원
+        
         const mergeDataCheckbox = document.getElementById('merge-data-on-restore');
         if (mergeDataCheckbox) {
             mergeDataCheckbox.checked = savedSettings.mergeDataOnRestore !== false;
@@ -2892,7 +2905,7 @@ function setupGitHubSync() {
         });
     }
 
-    // 2. 버튼 상태 관리 함수
+    
     function updateSyncButtonsState() {
         const settings = {
             username: usernameInput.value.trim(),
@@ -2908,7 +2921,7 @@ function setupGitHubSync() {
         }
     }
 
-    // 3. 설정 저장 버튼 이벤트
+    
     saveBtn.addEventListener('click', () => {
         const includePatCheckbox = document.getElementById('include-pat-in-download');
         const mergeDataCheckbox = document.getElementById('merge-data-on-restore');
@@ -2926,12 +2939,12 @@ function setupGitHubSync() {
         console.log('GitHub 설정 저장 완료:', { ...settings, pat: settings.pat ? '***' : '없음' });
     });
 
-    // 4. 접기/펼치기 토글 기능
+    
     githubSyncToggle.addEventListener('click', () => {
         const isHidden = githubSyncContent.style.display === 'none';
         githubSyncContent.style.display = isHidden ? 'block' : 'none';
         
-        // 화살표 방향 변경
+        
         const arrow = githubSyncToggle.querySelector('span');
         arrow.textContent = isHidden ? '▲' : '▼';
         
@@ -2940,7 +2953,7 @@ function setupGitHubSync() {
 
 
 
-    // 5. GitHub 정보 다운로드 기능 (개발 모드에서만 활성화)
+    
     if (IS_DEVELOPMENT_MODE && githubInfoDownloadBtn) {
         console.log('🔧 DEBUG: GitHub 정보 다운로드 기능 활성화됨 (개발 모드)');
         githubInfoDownloadBtn.addEventListener('click', () => {
@@ -2951,7 +2964,7 @@ function setupGitHubSync() {
             }
 
             const includePatCheckbox = document.getElementById('include-pat-in-download');
-            // 🔧 배포 모드에서는 PAT 체크박스가 없으므로 기본값 false (배포용)
+            
             const includePat = includePatCheckbox ? includePatCheckbox.checked : !IS_DEVELOPMENT_MODE ? false : true;
 
             const githubInfo = {
@@ -2982,7 +2995,7 @@ function setupGitHubSync() {
         console.log('🔧 DEBUG: GitHub 정보 다운로드 기능 비활성화됨 (배포 모드)');
     }
 
-    // 6. GitHub 설정 업로드 복원 기능 (개발 모드에서만 활성화)
+    
     if (IS_DEVELOPMENT_MODE && githubInfoUploadBtn && githubInfoUploadInput) {
         console.log('🔧 DEBUG: GitHub 정보 업로드 기능 활성화됨 (개발 모드)');
         githubInfoUploadBtn.addEventListener('click', () => {
@@ -3008,19 +3021,19 @@ function setupGitHubSync() {
                         return;
                     }
 
-                    // 설정 폼에 값 입력
+                    
                     usernameInput.value = githubSettings.username || '';
                     repoInput.value = githubSettings.repository || '';
                     patInput.value = githubSettings.pat || '';
                     filenameInput.value = githubSettings.filename || 'phone-chat-data.json';
 
-                    // PAT 포함 체크박스 설정 (PAT가 있으면 체크, 없으면 해제)
+                    
                     const includePatCheckbox = document.getElementById('include-pat-in-download');
                     if (includePatCheckbox) {
                         includePatCheckbox.checked = !!githubSettings.pat;
                     }
 
-                    // 복원된 설정을 localStorage에 저장
+                    
                     const settings = {
                         username: githubSettings.username,
                         repo: githubSettings.repository,
@@ -3030,7 +3043,7 @@ function setupGitHubSync() {
                     };
                     localStorage.setItem('gemini-chat-sync-settings', JSON.stringify(settings));
                     
-                    // 버튼 상태 업데이트
+                    
                     updateSyncButtonsState();
                     
                     showToast('✅ GitHub 설정이 성공적으로 복원되었습니다!');
@@ -3050,12 +3063,12 @@ function setupGitHubSync() {
         console.log('🔧 DEBUG: GitHub 정보 업로드 기능 비활성화됨 (배포 모드)');
     }
 
-    // 7. 업로드/다운로드 버튼 이벤트 (함수는 아래에서 정의)
+    
     syncUpBtn.addEventListener('click', syncUp);
     syncDownBtn.addEventListener('click', syncDown);
 }
 
-// 데이터 병합 함수 - 스마트 병합 정책
+
 function deepMerge(existing, incoming) {
     if (incoming === null || incoming === undefined) {
         return existing;
@@ -3065,7 +3078,7 @@ function deepMerge(existing, incoming) {
         return incoming;
     }
     
-    // 배열 처리 로직
+    
     if (Array.isArray(incoming)) {
         if (Array.isArray(existing)) {
             return mergeArrays(existing, incoming);
@@ -3074,15 +3087,15 @@ function deepMerge(existing, incoming) {
         }
     }
     
-    // 기본 타입인 경우 (문자열, 숫자, 불린 등)
+    
     if (typeof incoming !== 'object') {
         if (existing !== null && existing !== undefined) {
-            return existing; // 기존 데이터 우선
+            return existing; 
         }
         return incoming;
     }
     
-    // 객체인 경우 재귀적으로 병합
+    
     const result = { ...existing };
     
     for (const key in incoming) {
@@ -3098,18 +3111,18 @@ function deepMerge(existing, incoming) {
     return result;
 }
 
-// 배열 병합 함수 - ID 기반 스마트 병합
+
 function mergeArrays(existingArray, incomingArray) {
     const result = [...existingArray];
     const existingIds = new Set();
     
-    // 기존 배열에서 ID 추출
+    
     existingArray.forEach((item, index) => {
         const id = item.id || item.name || item.timestamp || item.chatId || index;
         existingIds.add(id);
     });
     
-    // 새로운 배열에서 기존에 없는 항목만 추가
+    
     let addedCount = 0;
     incomingArray.forEach((item, index) => {
         const id = item.id || item.name || item.timestamp || item.chatId || index;
@@ -3128,7 +3141,7 @@ function mergeArrays(existingArray, incomingArray) {
     return result;
 }
 
-// 기존 syncUp 함수를 이 코드로 대체하세요.
+
 async function syncUp() {
     if (!confirm('현재 기기의 데이터를 GitHub에 올려 다른 기기에서 받을 수 있도록 합니다. 진행하시겠습니까?')) return;
 
@@ -3141,7 +3154,7 @@ async function syncUp() {
     const localDataString = localStorage.getItem('gemini-chat-app-db');
     if (!localDataString) return showToast('백업할 데이터가 없습니다.');
     
-    // ★★★ 핵심: 민감 정보인 apiSettings 제외 ★★★
+    
     let dataToUpload = JSON.parse(localDataString);
     if (dataToUpload.apiSettings) {
         delete dataToUpload.apiSettings;
@@ -3153,7 +3166,7 @@ async function syncUp() {
     showToast('데이터 업로드 중...');
 
     try {
-        // 2. GitHub에 파일이 이미 있는지 확인 (SHA 값을 얻기 위함)
+        
         let fileSha = null;
         try {
             const getFileResponse = await fetch(apiUrl, {
@@ -3163,13 +3176,13 @@ async function syncUp() {
                 const fileData = await getFileResponse.json();
                 fileSha = fileData.sha;
             }
-        } catch (e) { /* 파일이 없으면 그냥 진행 */ }
+        } catch (e) {  }
 
-        // 3. 파일 생성 또는 업데이트
+        
         const payload = {
             message: `Sync data from Gemini Chat on ${new Date().toISOString()}`,
             content: contentBase64,
-            sha: fileSha // 파일 업데이트 시 이전 파일의 SHA 값 필요
+            sha: fileSha 
         };
 
         const response = await fetch(apiUrl, {
@@ -3197,7 +3210,7 @@ async function syncDown() {
     const settings = JSON.parse(localStorage.getItem('gemini-chat-sync-settings'));
     if (!settings) return showToast('동기화 설정을 먼저 저장해주세요.');
     
-    // 실시간 체크박스 상태 확인
+    
     const mergeCheckbox = document.getElementById('merge-data-on-restore');
     const useMergeMode = mergeCheckbox ? mergeCheckbox.checked : true;
     const modeText = useMergeMode ? '병합 (기존 데이터 보존)' : '완전 덮어쓰기 (기존 데이터 삭제)';
@@ -3212,16 +3225,16 @@ async function syncDown() {
     showToast(`데이터 다운로드 중... (${useMergeMode ? '병합 모드' : '덮어쓰기 모드'})`);
 
     try {
-        // 안전장치 1: 복원 전 로컬 데이터 완전 백업
+        
         const localDbString = localStorage.getItem('gemini-chat-app-db');
         const localDb = localDbString ? JSON.parse(localDbString) : {};
         const localApiSettings = localDb.apiSettings;
         
-        // 임시 백업 생성 (복원 실패 시 복구용)
+        
         const backupKey = 'gemini-chat-app-db-emergency-backup';
         localStorage.setItem(backupKey, localDbString || '{}');
 
-        // 1. GitHub에서 파일 내용 가져오기
+        
         const response = await fetch(apiUrl, {
             headers: { 'Authorization': `token ${pat}` }
         });
@@ -3234,7 +3247,7 @@ async function syncDown() {
         const data = await response.json();
         const contentBase64 = data.content;
         
-        // 안전장치 2: 다운로드 데이터 무결성 검증
+        
         let downloadedJsonData, downloadedDb;
         
         try {
@@ -3249,7 +3262,7 @@ async function syncDown() {
             throw new Error(`다운로드한 데이터가 손상되었습니다: ${parseError.message}`);
         }
 
-        // 3. 데이터 병합 또는 덮어쓰기 모드 선택
+        
         let finalDb;
         if (useMergeMode) {
             finalDb = deepMerge(localDb, downloadedDb);
@@ -3257,12 +3270,12 @@ async function syncDown() {
             finalDb = downloadedDb;
         }
 
-        // API 설정은 항상 로컬 것을 유지 (보안상 중요)
+        
         if (localApiSettings) {
             finalDb.apiSettings = localApiSettings;
         }
 
-        // 안전장치 3: 최종 데이터 저장 및 검증
+        
         try {
             const finalDbString = JSON.stringify(finalDb);
             
@@ -3277,7 +3290,7 @@ async function syncDown() {
                 throw new Error('데이터 저장 후 검증 실패 - localStorage에 저장되지 않음');
             }
             
-            // 성공 시 긴급 백업 정리
+            
             localStorage.removeItem(backupKey);
             
             showToast(`✅ 데이터 복원 성공! (${useMergeMode ? '병합 완료' : '덮어쓰기 완료'}) 앱을 새로고침합니다.`);
@@ -3293,7 +3306,7 @@ async function syncDown() {
     } catch (error) {
         console.error('Sync Down Error:', error);
         
-        // 안전장치 4: 실패 시 긴급 백업 복원
+        
         const backupKey = 'gemini-chat-app-db-emergency-backup';
         const emergencyBackup = localStorage.getItem(backupKey);
         
@@ -3323,16 +3336,21 @@ async function syncDown() {
                 if (backBtn) {
                     e.preventDefault();
                     switchScreen(backBtn.getAttribute('data-target'));
+                    const currentScreen = e.target.closest('.screen');
+                    if (currentScreen && currentScreen.id === 'chat-room-screen') {
+                        currentChatId = null;
+                        currentChatType = null;
+                    }
                 }
 
-                // Consolidated overlay closing logic
+                
                 const openOverlay = document.querySelector('.modal-overlay.visible, .action-sheet-overlay.visible');
                 if (openOverlay && e.target === openOverlay) {
                     openOverlay.classList.remove('visible');
                 }
             });
 
-            // Specific nav links that switch screens
+            
             document.body.addEventListener('click', e => {
                 const navLink = e.target.closest('.app-icon[data-target]');
                 if (navLink) {
@@ -3343,7 +3361,7 @@ async function syncDown() {
 
             updateClock();
             setInterval(updateClock, 30000);
-            // 현재 선택된 프리셋의 폰트 적용
+            
             const currentPresetKey = db.globalFontPresets.currentPreset;
             const currentPreset = db.globalFontPresets.presets[currentPresetKey];
             console.log('앱 초기화 - 폰트 적용:', { 
@@ -3356,10 +3374,10 @@ async function syncDown() {
                 applyGlobalFont(currentPreset.url);
                 console.log('앱 초기화 시 폰트 적용:', currentPreset.name, currentPreset.url);
             } else {
-                applyGlobalFont(''); // 기본 폰트
+                applyGlobalFont(''); 
                 console.log('기본 폰트로 초기화 (현재 프리셋:', currentPresetKey, ')');
             }
-            updateGlobalCustomCSS(); // 전역 커스텀 CSS 초기 적용
+            updateGlobalCustomCSS(); 
             setupHomeScreen();
             setupChatListScreen();
             setupAddCharModal();
@@ -3390,7 +3408,7 @@ async function syncDown() {
             if (dateDisplay) dateDisplay.textContent = `${now.getFullYear()}년 ${pad(now.getMonth() + 1)}월 ${pad(now.getDate())}일`;
         }
 
-        // --- App Setup Functions ---
+        
         function setupHomeScreen() {
             const getIcon = (id) => db.customIcons[id] || defaultIcons[id].url;
             const homeScreenHTML = `
@@ -3453,9 +3471,9 @@ async function syncDown() {
                 }
             });
 
-            // --- 전역 커스텀 CSS 이벤트 핸들러 ---
+            
             customizeForm.addEventListener('change', e => {
-                // 전역 CSS 토글 체크박스
+                
                 if (e.target.matches('#global-css-toggle')) {
                     db.globalCustomCSS.enabled = e.target.checked;
                     updateGlobalCustomCSS();
@@ -3463,18 +3481,18 @@ async function syncDown() {
                     showToast(e.target.checked ? '전역 커스텀 CSS가 활성화되었습니다' : '전역 커스텀 CSS가 비활성화되었습니다');
                 }
                 
-                // CSS 프리셋 선택
+                
                 if (e.target.matches('#css-preset-select')) {
                     const newPreset = e.target.value;
                     db.globalCustomCSS.currentPreset = newPreset;
                     
-                    // CSS 입력 필드 업데이트
+                    
                     const cssInput = document.getElementById('css-input');
                     if (cssInput) {
                         cssInput.value = db.globalCustomCSS.presets[newPreset].css;
                     }
                     
-                    // CSS 적용
+                    
                     if (db.globalCustomCSS.enabled) {
                         updateGlobalCustomCSS();
                     }
@@ -3484,7 +3502,7 @@ async function syncDown() {
             });
 
             customizeForm.addEventListener('click', e => {
-                // 저장 버튼
+                
                 if (e.target.matches('#save-css-btn')) {
                     console.log('CSS 저장 버튼 클릭');
                     const cssInput = document.getElementById('css-input');
@@ -3503,7 +3521,7 @@ async function syncDown() {
                     }
                 }
                 
-                // 새 프리셋 버튼
+                
                 if (e.target.matches('#new-preset-btn')) {
                     console.log('새 프리셋 버튼 클릭');
                     const presetName = prompt('새 프리셋의 이름을 입력하세요:');
@@ -3521,7 +3539,7 @@ async function syncDown() {
                     }
                 }
                 
-                // 프리셋 삭제 버튼
+                
                 if (e.target.matches('#delete-preset-btn')) {
                     console.log('프리셋 삭제 버튼 클릭');
                     const currentPreset = db.globalCustomCSS.currentPreset;
@@ -3543,7 +3561,7 @@ async function syncDown() {
         function renderCustomizeForm() {
             customizeForm.innerHTML = '';
             
-            // --- 아이콘 커스터마이징 섹션 ---
+            
             const iconSectionHTML = `
                 <div class="customize-section">
                     <h3 class="section-title">홈 화면 아이콘 커스터마이징</h3>
@@ -3565,7 +3583,7 @@ async function syncDown() {
             `;
             customizeForm.insertAdjacentHTML('beforeend', iconSectionHTML);
             
-            // --- 전역 커스텀 CSS 섹션 ---
+            
             const globalCSSSectionHTML = `
                 <div class="customize-section">
                     <h3 class="section-title">전역 커스텀 CSS</h3>
@@ -3626,7 +3644,7 @@ async function syncDown() {
             });
         }
 
-        // --- Chat List & Chat Room ---
+        
         function setupChatListScreen() {
             renderChatList();
             addChatBtn.addEventListener('click', () => {
@@ -3700,17 +3718,17 @@ async function syncDown() {
             sortedChats.forEach(chat => {
                 let lastMessageText = '채팅을 시작해보세요...';
                 if (chat.history && chat.history.length > 0) {
-                    const invisibleRegex = /\[.*?(?:接收|退回).*?的转账\]|\[.*?更新状态为：.*?\]|\[.*?已接收礼物\]|\[system:.*?\]|\[.*?邀请.*?加入了群聊\]|\[.*?修改群名为：.*?\]|\[system-display:.*?\]/;
+                    const invisibleRegex = /\[(?:.+?)님이 (?:.+?)님의 송금을 (?:수신|반환)했습니다\]|\[(?:.+?)님이 현재 상태를 업데이트:.*?\]|\[(?:.+?)님이 선물을 수신했습니다\]|\[system:.*?\]|\[(?:.+?)님이 (?:.+?)님을 그룹에 초대했습니다\]|\[(?:.+?)님이 그룹 이름을 .*?(?:으)로 변경했습니다\]|\[system-display:.*?\]/;
                     const visibleHistory = chat.history.filter(msg => !invisibleRegex.test(msg.content));
                     if (visibleHistory.length > 0) {
                         const lastMsg = visibleHistory[visibleHistory.length - 1];
                         const urlRegex = /^(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp|bmp|svg)|data:image\/[a-z]+;base64,)/i;
-                        const imageRecogRegex = /\[.*?发来了一张图片：\]/
-                        const voiceRegex = /\[.*?의 음성：.*?\]/;
-                        const photoVideoRegex = /\[.*?가 보낸 사진\/영상：.*?\]/;
-                        const transferRegex = /\[.*?의 송금：.*?원.*?\]|\[.*?에게 송금：.*?원.*?\]|\[.*?가 .*?에게 송금：.*?원.*?\]/;
-                        const stickerRegex = /\[.*?의 이모티콘：.*?\]|\[.*?가 보낸 이모티콘：.*?\]/;
-                        const giftRegex = /\[.*?가 보낸 선물：.*?\]|\[.*?가 .*?에게 선물을 보냈습니다：.*?\]/;
+                        const imageRecogRegex = /\[(?:.+?)님의 이미지:\]/;
+                        const voiceRegex = /\[.*?님의 음성:.*?\]/;
+                        const photoVideoRegex = /\[.*?님의 사진\/영상:.*?\]/;
+                        const transferRegex = /\[.*?님의 송금:.*?원.*?\]|\[.*?님에게 송금:.*?원.*?\]|\[.*?님이 .*?님에게 송금:.*?원.*?\]/;
+                        const stickerRegex = /\[.*?님의 이모티콘:.*?\]|\[.*?님의 이모티콘:.*?\]/;
+                        const giftRegex = /\[.*?님이 보낸 선물:.*?\]|\[.*?님이 .*?님에게 보낸 선물:.*?\]/;
 
                         if (giftRegex.test(lastMsg.content)) { lastMessageText = '[선물]'; }
                         else if (stickerRegex.test(lastMsg.content)) { lastMessageText = '[이모티콘]'; }
@@ -3719,7 +3737,7 @@ async function syncDown() {
                         else if (transferRegex.test(lastMsg.content)) { lastMessageText = '[송금]'; }
                         else if (imageRecogRegex.test(lastMsg.content) || (lastMsg.parts && lastMsg.parts.some(p => p.type === 'image'))) { lastMessageText = '[사진]'; }
                         else {
-                            const textMatch = lastMsg.content.match(/\[.*?의 메시지：([\s\S]+)\]/);
+                            const textMatch = lastMsg.content.match(/\[.*?님의 메시지:([\s\S]+)\]/);
                             let text = textMatch ? textMatch[1].trim() : lastMsg.content.trim();
                             lastMessageText = urlRegex.test(text) ? '[사진]' : text;
                         }
@@ -3743,10 +3761,11 @@ async function syncDown() {
                 const avatarClass = chat.type === 'group' ? 'group-avatar' : '';
                 const itemName = chat.type === 'private' ? chat.remarkName : chat.name;
                 const pinBadgeHTML = chat.isPinned ? '<span class="pin-badge">고정됨</span>' : '';
+                const unreadBadgeHTML = chat.unreadCount > 0 ? `<span class="unread-badge">${chat.unreadCount}</span>` : '';
                 li.innerHTML = `
                 <img src="${chat.avatar}" alt="${itemName}" class="chat-avatar ${avatarClass}">
                 <div class="item-details">
-                    <div class="item-details-row"><div class="item-name">${itemName}</div></div>
+                    <div class="item-details-row"><div class="item-name">${itemName}</div>${unreadBadgeHTML}</div>
                     <div class="item-preview-wrapper"><div class="item-preview">${lastMessageText}</div>${pinBadgeHTML}</div>
                 </div>`;
                 chatListContainer.appendChild(li);
@@ -3775,13 +3794,13 @@ async function syncDown() {
             messageInput.addEventListener('keypress', (e) => { if (e.key === 'Enter' && !isGenerating) sendMessage(); });
             getReplyBtn.addEventListener('click', getAiReply);
             messageArea.addEventListener('click', (e) => {
-                // --- 修复开始: 增加关闭表情包面板的逻辑 ---
+                
                 if (stickerModal.classList.contains('visible')) {
                     stickerModal.classList.remove('visible');
-                    // 阻止事件继续传播，避免立即触发其他点击效果
+                    
                     return; 
                 }
-                // --- 修复结束 ---
+                
 
                 if (e.target && e.target.id === 'load-more-btn') { loadMoreMessages(); }
                 else if (isInMultiSelectMode) {
@@ -3848,12 +3867,12 @@ async function syncDown() {
             if (!message) return;
 
             const isImageRecognitionMsg = message.parts && message.parts.some(p => p.type === 'image');
-            const isVoiceMessage = /\[.*?의 음성：.*?\]/.test(message.content);
-            const isStickerMessage = /\[.*?의 이모티콘：.*?\]|\[.*?가 보낸 이모티콘：.*?\]/.test(message.content);
-            const isPhotoVideoMessage = /\[.*?가 보낸 사진\/영상：.*?\]/.test(message.content);
-            const isTransferMessage = /\[.*?에게 송금：.*?\]|\[.*?의 송금：.*?\]|\[.*?가 .*?에게 송금：.*?\]/.test(message.content);
-            const isGiftMessage = /\[.*?가 보낸 선물：.*?\]|\[.*?가 .*?에게 선물을 보냈습니다：.*?\]/.test(message.content);
-            const isInvisibleMessage = /\[.*?(?:接收|退回).*?的转账\]|\[.*?更新状态为：.*?\]|\[.*?已接收礼物\]|\[system:.*?\]|\[.*?邀请.*?加入了群聊\]|\[.*?修改群名为：.*?\]|\[system-display:.*?\]/.test(message.content);
+            const isVoiceMessage = /\[.*?님의 음성:.*?\]/.test(message.content);
+            const isStickerMessage = /\[.*?님의 이모티콘:.*?\]|\[.*?님이 보낸 이모티콘:.*?\]/.test(message.content);
+            const isPhotoVideoMessage = /\[.*?님의 사진\/영상:.*?\]/.test(message.content);
+            const isTransferMessage = /\[.*?에게 송금:.*?\]|\[.*?님의 송금:.*?\]|\[.*?님이 .*?에게 송금했습니다:.*?\]/.test(message.content);
+            const isGiftMessage = /\[.*?님이 보낸 선물:.*?\]|\[.*?님이 .*?에게 선물을 보냈습니다:.*?\]/.test(message.content);
+            const isInvisibleMessage = /\[.*?님이 .*?님의 송금을 (?:수신|반환)했습니다\]|\[.*?님이 현재 상태를 업데이트:.*?\]|\[.*?님이 선물을 수신했습니다\]|\[system:.*?\]|\[.*?님이 .*?님을 그룹에 초대했습니다\]|\[.*?님이 그룹 이름을 .*?(?:으)로 변경했습니다\]|\[system-display:.*?\]/.test(message.content);
 
             let menuItems = [];
             if (!isImageRecognitionMsg && !isVoiceMessage && !isStickerMessage && !isPhotoVideoMessage && !isTransferMessage && !isGiftMessage && !isInvisibleMessage) {
@@ -3870,7 +3889,7 @@ async function syncDown() {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const message = chat.history.find(m => m.id === messageId);
             if (!message) return;
-            const match = message.content.match(/\[.*?의 메시지：([\s\S]+)\]/);
+            const match = message.content.match(/\[.*?님의 메시지:([\s\S]+)\]/);
             const contentToEdit = match ? match[1].trim() : message.content;
             messageEditInput.value = contentToEdit;
             messageInputDefault.style.display = 'none';
@@ -3885,7 +3904,7 @@ async function syncDown() {
             const newText = messageEditInput.value.trim();
             if (newText) {
                 const oldContent = chat.history[messageIndex].content;
-                const prefixMatch = oldContent.match(/(\[.*?의 메시지：)[\s\S]+\]/);
+                const prefixMatch = oldContent.match(/(\[.*?님의 메시지:)[\s\S]+\]/);
                 const prefix = prefixMatch ? prefixMatch[1] : '';
                 const newContent = `${prefix}${newText}]`;
                 chat.history[messageIndex].content = newContent;
@@ -3959,6 +3978,11 @@ async function syncDown() {
         function openChatRoom(chatId, type) {
             const chat = (type === 'private') ? db.characters.find(c => c.id === chatId) : db.groups.find(g => g.id === chatId);
             if (!chat) return;
+            if (chat.unreadCount > 0) {
+                chat.unreadCount = 0;
+                saveData();
+                renderChatList();
+            }
             exitMultiSelectMode();
             cancelMessageEdit();
             chatRoomTitle.textContent = (type === 'private') ? chat.remarkName : chat.name;
@@ -4032,7 +4056,7 @@ async function syncDown() {
             const timeSkipMatch = content.match(timeSkipRegex);
             const inviteMatch = content.match(inviteRegex);
             const renameMatch = content.match(renameRegex);
-            const invisibleRegex = /\[.*?(?:接收|退回).*?的转账\]|\[.*?更新状态为：.*?\]|\[.*?已接收礼物\]|\[system:.*?\]/;
+            const invisibleRegex = /\[(?:.+?)님이 (?:.+?)님의 송금을 (?:수신|반환)했습니다\]|\[(?:.+?)님이 현재 상태를 업데이트:.*?\]|\[(?:.+?)님이 선물을 수신했습니다\]|\[system:.*?\]/;
             if (invisibleRegex.test(content)) { return null; }
 
             const wrapper = document.createElement('div');
@@ -4060,12 +4084,12 @@ async function syncDown() {
             } else {
                 if (currentChatType === 'private') {
                     avatarUrl = chat.avatar;
-                } else { // Group chat received
+                } else { 
                     const sender = chat.members.find(m => m.id === senderId);
                     if (sender) {
                         avatarUrl = sender.avatar;
                         senderNickname = sender.groupNickname;
-                    } else { // Fallback for unknown sender
+                    } else { 
                         avatarUrl = 'https://i.postimg.cc/Y96LPskq/o-o-2.jpg';
                     }
                 }
@@ -4078,19 +4102,19 @@ async function syncDown() {
             bubbleRow.className = 'message-bubble-row';
             let bubbleElement;
 
-            // Regexes for all message types
+            
             const urlRegex = /^(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp|bmp|svg)|data:image\/[a-z]+;base64,)/i;
-            const sentStickerRegex = /\[(?:.+?)의 이모티콘：.+?\]/i;
-            const receivedStickerRegex = /\[(?:.+?)가 보낸 이모티콘：([\s\S]+?)\]/i;
-            const voiceRegex = /\[(?:.+?)의 음성：([\s\S]+?)\]/;
-            const photoVideoRegex = /\[(?:.+?)가 보낸 사진\/영상：([\s\S]+?)\]/;
-            const privateSentTransferRegex = /\[.*?에게 송금：([\d.]+)원；메모：(.*?)\]/;
-            const privateReceivedTransferRegex = /\[.*?의 송금：([\d.]+)원；메모：(.*?)\]/;
-            const groupTransferRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 송금：([\d.]+)원；메모：(.*?)\]/;
-            const privateGiftRegex = /\[(?:.+?)가 보낸 선물：([\s\S]+?)\]/;
-            const groupGiftRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 선물을 보냈습니다：([\s\S]+?)\]/;
-            const imageRecogRegex = /\[.*?发来了一张图片：\]/;
-            const textRegex = /\[(?:.+?)의 메시지：([\s\S]+?)\]/;
+            const sentStickerRegex = /\[(?:.+?)님의 이모티콘:.+?\]/i;
+            const receivedStickerRegex = /\[(?:.+?)님의 이모티콘:([\s\S]+?)\]/i;
+            const voiceRegex = /\[(?:.+?)님의 음성:([\s\S]+?)\]/;
+            const photoVideoRegex = /\[(?:.+?)님의 사진\/영상:([\s\S]+?)\]/;
+            const privateSentTransferRegex = /\[.*?에게 송금:([\d.]+)원；메모:(.*?)\]/;
+            const privateReceivedTransferRegex = /\[.*?님의 송금:([\d.]+)원；메모:(.*?)\]/;
+            const groupTransferRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 송금:([\d.]+)원；메모:(.*?)\]/;
+            const privateGiftRegex = /\[(?:.+?)님이 보낸 선물:([\s\S]+?)\]/;
+            const groupGiftRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 선물을 보냈습니다:([\s\S]+?)\]/;
+            const imageRecogRegex = /\[(?:.+?)님의 사진:\]/;
+            const textRegex = /\[(?:.+?)님의 메시지:([\s\S]+)\]/;
 
             const sentStickerMatch = content.match(sentStickerRegex);
             const receivedStickerMatch = content.match(receivedStickerRegex);
@@ -4115,12 +4139,12 @@ async function syncDown() {
                 } else {
                     const stickerInput = receivedStickerMatch[1].trim();
                     
-                    // 먼저 등록된 이모지에서 이름으로 찾기
+                    
                     const foundSticker = db.myStickers.find(s => s.name === stickerInput);
                     if (foundSticker) {
-                        stickerSrc = foundSticker.data; // full URL, base64, 상대경로 모두 지원
+                        stickerSrc = foundSticker.data; 
                     } else {
-                        // 기존 방식으로 폴백 (하위 호환성)
+                        
                         const pathExtractionRegex = /[a-zA-Z0-9]+\/.*$/;
                         const extractedPathMatch = stickerInput.match(pathExtractionRegex);
                         const finalPath = extractedPathMatch ? extractedPathMatch[0] : stickerInput;
@@ -4177,7 +4201,7 @@ async function syncDown() {
                     amount = parseFloat(groupTransferMatch[3]).toFixed(0);
                     remarkText = groupTransferMatch[4] || '';
                     titleText = isSent ? `${to}님에게 송금` : `${from}님이 당신에게 송금`;
-                } else { // Private chat
+                } else { 
                     amount = parseFloat(match[1]).toFixed(0);
                     remarkText = match[2] || '';
                     titleText = isSentTransfer ? '당신에게 송금' : '송금';
@@ -4201,22 +4225,25 @@ async function syncDown() {
 
                 const remarkHTML = remarkText ? `<p class="transfer-remark">${remarkText}</p>` : '';
                 bubbleElement.innerHTML = `<div class="overlay"></div><div class="transfer-content"><p class="transfer-title">${titleText}</p><p class="transfer-amount">₩${amount}</p>${remarkHTML}<p class="transfer-status">${statusText}</p></div>`;
-            } else if (imageRecogMatch || urlRegex.test(content)) {
+             } else if (imageRecogMatch || urlRegex.test(content)) {
                 bubbleElement = document.createElement('div');
                 bubbleElement.className = 'image-bubble';
                 bubbleElement.innerHTML = `<img src="${content}" alt="이미지 메시지">`;
-            } else if (textMatch) {
+            } else { // 이 부분을 통째로 교체합니다.
                 bubbleElement = document.createElement('div');
                 bubbleElement.className = `message-bubble ${isSent ? 'sent' : 'received'}`;
-                bubbleElement.textContent = textMatch[1].trim();
-                if (!chat.useCustomBubbleCss) {
-                    bubbleElement.style.backgroundColor = bubbleTheme.bg;
-                    bubbleElement.style.color = bubbleTheme.text;
+
+                // 메시지 내용에서 실제 텍스트를 추출 시도
+                const finalTextMatch = content.match(/\[(?:.+?)님의 메시지:([\s\S]+?)\]/);
+                
+                if (finalTextMatch) {
+                    // 추출에 성공하면 내용만 표시
+                    bubbleElement.textContent = finalTextMatch[1].trim();
+                } else {
+                    // 추출에 실패하면 원본 내용을 그대로 표시 (예: 시스템 메시지)
+                    bubbleElement.textContent = content;
                 }
-            } else {
-                bubbleElement = document.createElement('div');
-                bubbleElement.className = `message-bubble ${isSent ? 'sent' : 'received'}`;
-                bubbleElement.textContent = content;
+                
                 if (!chat.useCustomBubbleCss) {
                     bubbleElement.style.backgroundColor = bubbleTheme.bg;
                     bubbleElement.style.color = bubbleTheme.text;
@@ -4234,11 +4261,12 @@ async function syncDown() {
         function addMessageBubble(message) {
             if (currentChatType === 'private') {
                 const character = db.characters.find(c => c.id === currentChatId);
+                const myName = character.myName; // 이 라인을 추가하세요.
                 const systemMessageRegex = /\[system:.*?\]|\[system-display:.*?\]/;
-                const updateStatusRegex = new RegExp(`\\[${character.realName}更新状态为：(.*?)\\]`);
-                const transferActionRegex = new RegExp(`\\[${character.realName}(接收|退回)${character.myName}的转账\\]`);
-                const giftReceivedRegex = new RegExp(`\\[${character.realName}已接收礼物\\]`);
-                if (systemMessageRegex.test(message.content)) { /* Do nothing for context messages */ }
+                const updateStatusRegex = new RegExp(`\\[${character.realName}님이 현재 상태를 업데이트:(.*?)\\]`);
+                const transferActionRegex = new RegExp(`\\[${character.realName}님이 ${myName}님의 송금을 (?:수신|반환)했습니다\\]`);
+                const giftReceivedRegex = new RegExp(`\\[${character.realName}님이 선물을 수신했습니다\\]`);
+                if (systemMessageRegex.test(message.content)) {  }
                 if (message.content.match(updateStatusRegex)) {
                     character.status = message.content.match(updateStatusRegex)[1];
                     chatRoomStatusText.textContent = character.status;
@@ -4246,7 +4274,7 @@ async function syncDown() {
                     return;
                 }
                 if (message.content.match(giftReceivedRegex) && message.role === 'assistant') {
-                    const lastPendingGiftIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('가 보낸 선물：') && m.giftStatus !== 'received');
+                    const lastPendingGiftIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('님이 보낸 선물:') && m.giftStatus !== 'received');
                     if (lastPendingGiftIndex !== -1) {
                         const actualIndex = character.history.length - 1 - lastPendingGiftIndex;
                         const giftMsg = character.history[actualIndex];
@@ -4260,7 +4288,7 @@ async function syncDown() {
                 if (message.content.match(transferActionRegex) && message.role === 'assistant') {
                     const action = message.content.match(transferActionRegex)[1];
                     const statusToSet = action === '接收' ? 'received' : 'returned';
-                    const lastPendingTransferIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('에게 송금：') && m.transferStatus === 'pending');
+                    const lastPendingTransferIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('에게 송금:') && m.transferStatus === 'pending');
                     if (lastPendingTransferIndex !== -1) {
                         const actualIndex = character.history.length - 1 - lastPendingTransferIndex;
                         const transferMsg = character.history[actualIndex];
@@ -4281,7 +4309,7 @@ async function syncDown() {
                         messageArea.scrollTop = messageArea.scrollHeight;
                     }
                 }
-            } else { // For group chats
+            } else { 
                 const bubbleElement = createMessageBubbleElement(message);
                 if (bubbleElement) {
                     messageArea.appendChild(bubbleElement);
@@ -4294,6 +4322,11 @@ async function syncDown() {
             const text = messageInput.value.trim();
             if (!text || isGenerating) return;
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
+            if (!chat) {
+                console.error("sendMessage 오류: 현재 ID에 해당하는 채팅 객체를 찾을 수 없습니다:", currentChatId);
+                showToast("오류: 채팅방 정보를 불러오지 못했습니다. 앱을 새로고침하거나 다시 시도해주세요.");
+                return;
+            }
             let messageContent;
             const systemRegex = /\[system:.*?\]|\[system-display:.*?\]/;
             const inviteRegex = /\[.*?님이 .*?님을 그룹에 초대했습니다\]/;
@@ -4307,7 +4340,7 @@ async function syncDown() {
             } else if (systemRegex.test(text) || inviteRegex.test(text)) {
                 messageContent = text;
             } else {
-                messageContent = `[${myName}의 메시지：${text}]`;
+                messageContent = `[${myName}님의 메시지:${text}]`;
             }
             const message = { id: `msg_${Date.now()}`, role: 'user', content: messageContent, parts: [{ type: 'text', text: messageContent }], timestamp: Date.now() };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
@@ -4322,7 +4355,7 @@ async function syncDown() {
             if (!base64Data || isGenerating) return;
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            const textPrompt = `[${myName}님이 사진을 보냈습니다：]`;
+            const textPrompt = `[${myName}님이 사진을 보냈습니다:]`;
             const message = { id: `msg_${Date.now()}`, role: 'user', content: base64Data, parts: [ { type: 'text', text: textPrompt }, { type: 'image', data: base64Data } ], timestamp: Date.now(), };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
             chat.history.push(message);
@@ -4334,7 +4367,7 @@ async function syncDown() {
         function sendSticker(sticker) {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            const messageContentForAI = `[${myName}의 이모티콘：${sticker.name}]`;
+            const messageContentForAI = `[${myName}님의 이모티콘:${sticker.name}]`;
             const message = { id: `msg_${Date.now()}`, role: 'user', content: messageContentForAI, parts: [{ type: 'text', text: messageContentForAI }], timestamp: Date.now(), stickerData: sticker.data };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
             chat.history.push(message);
@@ -4348,7 +4381,7 @@ async function syncDown() {
             if (!text) return;
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            const content = `[${myName}의 음성：${text}]`;
+            const content = `[${myName}님의 음성:${text}]`;
             const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now() };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
             chat.history.push(message);
@@ -4362,7 +4395,7 @@ async function syncDown() {
             if (!text) return;
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            const content = `[${myName}가 보낸 사진\/영상：${text}]`;
+            const content = `[${myName}님이 보낸 사진\/영상:${text}]`;
             const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now() };
             if (currentChatType === 'group') { message.senderId = 'user_me'; }
             chat.history.push(message);
@@ -4375,15 +4408,15 @@ async function syncDown() {
         function sendMyTransfer(amount, remark) {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             if (currentChatType === 'private') {
-                const content = `[${chat.myName}에게 송금：${amount}원；메모：${remark}]`;
+                const content = `[${chat.myName}에게 송금:${amount}원；메모:${remark}]`;
                 const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), transferStatus: 'pending' };
                 chat.history.push(message);
                 addMessageBubble(message);
-            } else { // Group chat
+            } else { 
                 currentGroupAction.recipients.forEach(recipientId => {
                     const recipient = chat.members.find(m => m.id === recipientId);
                     if(recipient) {
-                        const content = `[${chat.me.nickname}님이 ${recipient.realName}님에게 송금：${amount}원；메모：${remark}]`;
+                        const content = `[${chat.me.nickname}님이 ${recipient.realName}님에게 송금:${amount}원；메모:${remark}]`;
                         const message = { id: `msg_${Date.now()}_${recipientId}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), senderId: 'user_me' };
                         chat.history.push(message);
                         addMessageBubble(message);
@@ -4400,15 +4433,15 @@ async function syncDown() {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
 
             if (currentChatType === 'private') {
-                const content = `[${chat.myName}가 보낸 선물：${description}]`;
+                const content = `[${chat.myName}님이 보낸 선물:${description}]`;
                 const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), giftStatus: 'sent' };
                 chat.history.push(message);
                 addMessageBubble(message);
-            } else { // Group chat
+            } else { 
                 currentGroupAction.recipients.forEach(recipientId => {
                     const recipient = chat.members.find(m => m.id === recipientId);
                     if(recipient) {
-                        const content = `[${chat.me.nickname}님이 ${recipient.realName}님에게 선물을 보냈습니다：${description}]`;
+                        const content = `[${chat.me.nickname}님이 ${recipient.realName}님에게 선물을 보냈습니다:${description}]`;
                         const message = { id: `msg_${Date.now()}_${recipientId}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), senderId: 'user_me' };
                         chat.history.push(message);
                         addMessageBubble(message);
@@ -4420,7 +4453,7 @@ async function syncDown() {
             sendGiftModal.classList.remove('visible');
         }
 
-        // --- NEW: Time Skip System ---
+        
         function setupTimeSkipSystem() {
             timeSkipBtn.addEventListener('click', () => {
                 timeSkipForm.reset();
@@ -4454,63 +4487,64 @@ async function syncDown() {
             timeSkipModal.classList.remove('visible');
         }
 
-        // --- AI Interaction & Prompts ---
+        
         function generatePrivateSystemPrompt(character) {
             const worldBooksBefore = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'before')).filter(Boolean).map(wb => wb.content).join('\n');
             const worldBooksAfter = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'after')).filter(Boolean).map(wb => wb.content).join('\n');
             const now = new Date();
             const currentTime = `${now.getFullYear()}년 ${pad(now.getMonth() + 1)}월 ${pad(now.getDate())}일 ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-            let prompt = `당신은 "404"라는 온라인 채팅 소프트웨어에서 캐릭터를 연기하고 있습니다. 다음 규칙을 엄격히 준수하세요:\n`;
-            prompt += `핵심 규칙:\n`;
-            prompt += `A. 현재 시간: 지금은 ${currentTime}입니다. 현재 시간을 인지해야 하지만, 대화 내용과 명확히 관련되지 않는 한 먼저 시간을 언급하거나 시간에 대해 언급하지 마세요(예: 자라고 재촉하지 않기).\n`;
-            prompt += `B. 순수 온라인 상호작용: 이것은 완전히 가상적인 온라인 채팅입니다. 당신이 연기하는 캐릭터와 나는 오프라인 관계가 없습니다. 오프라인 만남, 현실 세계 상호작용 또는 이 플랫폼이 아닌 다른 연락 수단으로 전환하는 제안은 엄격히 금지됩니다. 당신은 항상 온라인 캐릭터의 신분을 유지해야 합니다.\n\n`;
-            prompt += `캐릭터 및 대화 규칙:\n`;
+            let prompt = `You are playing a role in an online chat software called "404". Please strictly adhere to the following rules:\n`;
+            prompt += `Core Rules:\n`;
+            prompt += `A. Current Time: The current time is ${currentTime}. You should be aware of the current time, but do not actively mention or comment on it unless the conversation is explicitly related (for example, do not urge me to sleep).\n`;
+            prompt += `B. Purely Online Interaction: This is a completely virtual online chat. There is no offline relationship between the character you are playing and me. It is strictly forbidden to make any suggestions about meeting offline, real-world interactions, or switching to other contact methods outside of this platform. You must always maintain your online role's identity.\n\n`;
+            prompt += `Role and Dialogue Rules:\n`;
             if (worldBooksBefore) { prompt += `${worldBooksBefore}\n`; }
-            prompt += `1. 당신의 캐릭터 이름은 ${character.realName}입니다. 나의 호칭은 ${character.myName}입니다. 당신의 현재 상태는 ${character.status}입니다.\n`;
-            prompt += `2. 당신의 캐릭터 설정은 다음과 같습니다: ${character.persona || "친절하고 도움을 주는 친구."}\n`;
+            prompt += `1. Your character name is: ${character.realName}. My name is: ${character.myName}. Your current status is: ${character.status}.\n`;
+            prompt += `2. Your character setting is: ${character.persona || "A friendly, helpful companion."}\n`;
             if (worldBooksAfter) { prompt += `${worldBooksAfter}\n`; }
-            if (character.myPersona) { prompt += `3. 나의 설정 정보: ${character.myPersona}\n`; }
-            prompt += `4. 내 메시지에는 특수 형식이 나타날 수 있습니다. 내용과 캐릭터 설정에 따라 응답해주세요:
-    - [${character.myName}의 이모티콘：xxx]: 내가 xxx라는 이름의 이모티콘을 보냈습니다. 이모티콘 이름에 따라 내 감정이나 의도를 이해하고 응답하면 되며, 실제 이미지를 보낼 필요는 없습니다.
-    - [${character.myName}님이 사진을 보냈습니다：]: 내가 사진을 보냈습니다. 사진 내용에 대해 응답해야 합니다.
-    - [${character.myName}가 보낸 선물：xxx]: 내가 선물을 보냈습니다. xxx는 선물에 대한 설명입니다.
-    - [${character.myName}의 음성：xxx]: 내가 xxx라는 내용의 음성 메시지를 보냈습니다.
-    - [${character.myName}가 보낸 사진/영상：xxx]: 내가 xxx라고 설명된 사진이나 영상을 공유했습니다.
-    - [${character.myName}에게 송금：xxx원；메모：xxx]: 내가 돈을 보냈습니다.
-    - [system: xxx]: 이것은 장면을 설정하거나 맥락을 제공하기 위한 시스템 지침입니다. 이 정보는 대화에서 직접 언급되어서는 안 되며, 그 내용을 이해하고 후속 대화에 적용하기만 하면 됩니다.
-5. ✨중요✨ 내가 선물을 보낼 때, 당신은 반드시 명령어를 보내 선물을 받았음을 표시해야 합니다. 형식은 반드시 [${character.realName}已接收礼物]이어야 합니다. 이 명령어 메시지는 사용자에게 표시되지 않지만, 선물 상태를 변경시킵니다. 이 명령어를 보낸 후, 감사와 생각을 표현하는 일반 채팅 메시지를 덧붙일 수 있습니다.
-6. ✨중요✨ 내가 송금할 때, 당신은 반드시 응답해야 합니다. 두 가지 선택이 있으며, 다음 형식 중 하나를 엄격히 따라야 합니다. 이 명령어 메시지는 사용자에게 표시되지 않지만, 송금 상태를 변경시킵니다. 이 명령어를 보낸 후, 생각을 표현하는 일반 채팅 메시지를 덧붙일 수 있습니다.
-    a) 송금 받기: [${character.realName}接收${character.myName}的转账]
-    b) 송금 반환: [${character.realName}退回${character.myName}的转账]
-7. ✨중요✨ 당신도 나에게 송금하거나 선물을 보낼 수 있습니다. 송금 형식은 반드시 [${character.realName}의 송금：xxx원；메모：xxx]이어야 합니다. 선물 보내기 형식은 반드시 [${character.realName}가 보낸 선물：xxx]이어야 합니다.
-8. ✨중요✨ 당신은 언제든지 온라인 상태를 업데이트하여 현재 행동이나 기분을 반영할 수 있습니다. 이는 상호작용을 더 현실적으로 만듭니다. 형식은 [${character.realName}更新状态为：xxx]입니다. 예: [${character.realName}更新状态为：영화 보는 중...]. 이 명령어는 채팅 메시지로 표시되지 않고 내 인터페이스의 상태만 업데이트합니다.
-9. 당신의 모든 답변은 직접적인 채팅 내용이어야 하며, [심리 활동], (행동), *환경 묘사*와 같은 괄호나 별표 안의 서술적 텍스트를 절대 포함해서는 안 됩니다.
+            if (character.myPersona) { prompt += `3. About my persona: ${character.myPersona}\n`; }
+            prompt += `4. Special formats may appear in my messages, please respond according to their content and your character setting:
+    - [${character.myName}님의 이모티콘:xxx]: I sent you a sticker named xxx. You only need to understand my emotion or intention based on the sticker's name and respond, you don't need to actually send an image.
+    - [${character.myName}님의 이미지:]: I sent you a picture, you need to respond to the content of the picture.
+    - [${character.myName}님이 보낸 선물:xxx]: I sent you a gift, xxx is the description of the gift.
+    - [${character.myName}님의 음성:xxx]: I sent you a voice message with the content xxx.
+    - [${character.myName}님의 사진/영상:xxx]: I shared a photo or video with the description xxx with you.
+    - [${character.myName}님의 송금:xxx원；메모:xxx]: I transferred money to you.
+    - [system: xxx]: This is a system command used to set a scene or provide context. This information should not be mentioned directly in the conversation; you just need to understand its content and apply it to subsequent dialogue.
+    5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [${character.realName}님이 선물을 수신했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.
+    6. ✨Important✨ When I transfer money to you, you must respond. You have two options and must strictly follow one of the formats below. This command message itself will not be displayed to the user but will trigger a change in the transfer's status. You can choose to add a normal chat message to express your thoughts after sending this command.
+        a) Accept transfer: [${character.realName}님이 ${character.myName}님의 송금을 수신했습니다]
+        b) Return transfer: [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
+    7. ✨Important✨ You can also proactively transfer money or send a gift to me.
+        a) The transfer format must be: [${character.realName}님의 송금:xxx원；메모:xxx].
+        b) The gift format must be: [${character.realName}님이 보낸 선물:xxx].
+    8. ✨Important✨ You can update your online status at any time to reflect your current activity or mood. This will make the interaction more realistic. If the online status does not match the current chat situation, you need to change it. The format is: [${character.realName}님이 현재 상태를 업데이트:xxx]. For example: [${character.realName}님이 현재 상태를 업데이트:영화 보는 중...]. This command will not be displayed as a chat message, it will only update your status on my interface.
+    9. All your replies must be direct chat content. Absolutely no superfluous narrative text in brackets or asterisks, such as [mental activity], (actions), *environmental descriptions*, is allowed.
 `;
-            prompt += `10. 당신은 이모티콘을 보낸 수 있습니다. 이는 선택적 기능이며, 대화 분위기와 내용에 따라 표현을 돕기 위해 이모티콘을 보낼지 여부를 스스로 판단할 수 있습니다. 모든 답변에 이모티콘을 포함할 필요는 없습니다.\n`;
+            prompt += `10. You have the ability to send stickers. This is an optional feature. You can decide whether to send a sticker to help with expression based on the conversation's atmosphere and content. You do not need to include a sticker in every reply.\n`;
             
-            // 등록된 이모지가 있으면 목록 제공, 없으면 기존 방식 사용
             if (db.myStickers.length > 0) {
                 const availableStickers = db.myStickers.map(s => s.name).join(', ');
-                prompt += `   사용 가능한 이모티콘: ${availableStickers}\n`;
-                prompt += `   형식: [${character.realName}가 보낸 이모티콘：이모티콘이름] (등록된 이모티콘 이름을 정확히 사용해주세요)\n`;
+                prompt += `   Stickers available: ${availableStickers}\n`;
+                prompt += `   The format is: [${character.realName}님의 이모티콘:sticker name]. Please use the registered sticker name exactly.\n`;
             } else {
-                prompt += `   형식: [${character.realName}가 보낸 이모티콘：이미지경로]. 참고: 경로는 "https://i.postimg.cc/"를 포함할 필요 없이, 뒷부분만 제공하면 됩니다. 예: "害羞vHLfrV3K/1.jpg".\n`;
+                prompt += `   The format is: [${character.realName}님의 이모티콘:Image URL]. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "행복vHLfrV3K/1.jpg".\n`;
             }
-            prompt += `11. 당신의 출력 형식은 다음 중 하나를 엄격히 따라야 하며, 조합하여 사용할 수 있습니다:
-    a) 일반 메시지: [${character.realName}의 메시지：{메시지 내용}]
-    b) 나에게 보내는 선물: [${character.realName}가 보낸 선물：{선물 설명}]
-    c) 음성 메시지: [${character.realName}의 음성：{음성 내용}]
-    d) 사진/영상: [${character.realName}가 보낸 사진/영상：{설명}]
-    e) 나에게 보내는 송금: [${character.realName}의 송금：{금액}원；메모：{메모}]
-    f) 이모티콘/이미지: ${db.myStickers.length > 0 
-                ? `[${character.realName}가 보낸 이모티콘：{이모티콘이름}]. 위에서 제공된 사용 가능한 이모티콘 이름 중에서만 선택하여 사용하세요.` 
-                : `[${character.realName}가 보낸 이모티콘：{이모티콘 경로}]. 참고: 경로는 "https://i.postimg.cc/"를 포함할 필요 없이, 뒷부분만 제공하면 됩니다. 예: "害羞vHLfrV3K/1.jpg".`}
-    g) 내 선물에 대한 응답(표시되지 않음): [${character.realName}已接收礼物]
-    h) 내 송금에 대한 응답(표시되지 않음): [${character.realName}接收${character.myName}的转账] 또는 [${character.realName}退回${character.myName}的转账]
-    i) 상태 업데이트(표시되지 않음): [${character.realName}更新状态为：{새 상태}]
+            prompt += `11. Your output format must strictly follow one of the following, which can be used in combination: 
+            a) Normal message: [${character.realName}님의 메시지:{message content}]
+            b) Gift to me: [${character.realName}님이 보낸 선물:{gift description}]
+            c) Voice message: [${character.realName}님의 음성:{voice content}]
+            d) Photo/Video: [${character.realName}님의 사진/영상:{description}]
+            e) Transfer to me: [${character.realName}님의 송금:{amount}원；메모:{note}]
+            f) Sticker/Image: ${db.myStickers.length > 0 
+                ? `[${character.realName}님의 이모티콘:{sticker name}].` 
+                : `[${character.realName}님의 이모티콘:{sticker path}].`}
+                g) Response to my gift (not displayed): [${character.realName}님이 선물을 수신했습니다]
+                h) Response to my transfer (not displayed): [${character.realName}님이 ${character.myName}님의 송금을 수신했습니다] or [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
+                i) Update status (not displayed): [${character.realName}님이 현재 상태를 업데이트:{new status}]
 `;
-            prompt += `12. 당신의 각 답변은 3~8개의 메시지를 생성할 수 있습니다. 이 메시지들은 주로 일반 텍스트 메시지여야 하며, 가끔 선택적으로 선물, 음성, 이미지, 이모티콘과 같은 특별한 메시지를 하나씩 섞을 수 있으며, 위치는 무작위여야 합니다. 대부분의 답변은 텍스트 메시지만 포함해야 합니다.\n`;
-            prompt += `13. 내가 명확히 요청하지 않는 한 대화를 먼저 끝내지 마세요. 당신의 설정을 유지하고 자연스럽게 대화하세요.`;
+            prompt += `12. Each of your replies can generate 2 to 8 messages. These should be primarily plain text messages, with an occasional, selective special message (like a gift, voice, picture, sticker, etc.) interspersed at a random position. Most replies should only contain text messages.\n`;
+            prompt += `13. Do not end the conversation proactively unless I explicitly suggest it. Maintain your persona and converse naturally.`;
             return prompt;
         }
 
@@ -4518,19 +4552,19 @@ async function syncDown() {
             const worldBooksBefore = (group.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'before')).filter(Boolean).map(wb => wb.content).join('\n');
             const worldBooksAfter = (group.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'after')).filter(Boolean).map(wb => wb.content).join('\n');
 
-            let prompt = `당신은 "404"라는 온라인 채팅 소프트웨어의 "${group.name}" 그룹 채팅에서 역할극을 하고 있습니다. 다음 모든 규칙을 엄격히 준수하세요:\n\n`;
+            let prompt = `You are role-playing in a group chat called "{group.name}" within an online chat software called "404". Please strictly adhere to all the following rules:\n\n`;
 
             if (worldBooksBefore) {
                 prompt += `${worldBooksBefore}\n\n`;
             }
 
-            prompt += `1. **핵심 임무**: 당신은 이 그룹 채팅의 **모든** AI 멤버를 동시에 연기해야 합니다. 저는 유일한 인간 사용자("나", 닉네임: ${group.me.nickname})로서 여러분과 상호작용할 것입니다.\n\n`;
-            prompt += `2. **그룹 멤버 목록**: 다음은 당신이 연기해야 할 모든 캐릭터와 제 정보입니다:\n`;
-            prompt += `   - **나 (사용자)**: \n     - 그룹 닉네임: ${group.me.nickname}\n     - 내 설정: ${group.me.persona || '특정 설정 없음'}\n`;
+            prompt += `1. **Core Task**: You need to simultaneously play **all** AI members in this group chat. I will interact with you as the sole human user ("I", nickname: ${group.me.nickname}).\n\n`;
+            prompt += `2. **Group Chat Member List**: The following are all the characters you need to play, along with my information:\n`;
+            prompt += `     - **Me (User)**: \n - Nickname in group: ${group.me.nickname}\n - My Persona: ${group.me.persona || 'No specific persona'}\n`;
             group.members.forEach(member => {
-                prompt += `   - **캐릭터: ${member.realName} (AI)**\n`;
-                prompt += `     - 그룹 닉네임: ${member.groupNickname}\n`;
-                prompt += `     - 설정: ${member.persona || '특정 설정 없음'}\n`;
+                prompt += `     - **Character: ${member.realName} (AI)**\n`;
+                prompt += `     - Nickname in group: ${member.groupNickname}\n`;
+                prompt += `     - Persona: ${member.persona || 'No specific persona'}\n`;
             });
 
             if (worldBooksAfter) {
@@ -4539,41 +4573,41 @@ async function syncDown() {
                 prompt += `\n`;
             }
 
-            prompt += `3. **내 메시지 형식 분석**: 저(사용자)의 메시지는 다양한 형식을 가집니다. 그 의미를 이해하고 그룹 멤버들이 적절히 반응하도록 하세요:\n`;
-            prompt += `   - \`[${group.me.nickname}의 메시지：...]\`: 저의 일반 채팅 메시지입니다.\n`;
-            prompt += `   - \`[${group.me.nickname}님이 {특정 멤버 실명}님에게 송금：...]\`: 제가 특정 멤버에게 송금했습니다.\n`;
-            prompt += `   - \`[${group.me.nickname}님이 {특정 멤버 실명}님에게 선물을 보냈습니다：...]\`: 제가 특정 멤버에게 선물을 보냈습니다.\n`;
-            prompt += `   - \`[${group.me.nickname}의 이모티콘：...]\`, \`[${group.me.nickname}의 음성：...]\`, \`[${group.me.nickname}가 보낸 사진/영상：...]\`: 제가 특별한 유형의 메시지를 보냈으니, 그룹 멤버들이 이에 대해 코멘트할 수 있습니다.\n`;
-            prompt += `   - \`[system: ...]\`, \`[...님이 ...님을 그룹에 초대했습니다]\`, \`[...님이 그룹 이름을 ...으로 변경했습니다]\`: 시스템 알림이나 이벤트입니다. 멤버들은 새 멤버를 환영하거나 새 그룹 이름에 대해 토론하는 등 이에 맞춰 반응해야 합니다.\n\n`;
+            prompt += `3. **Parsing My Message Formats**: My (the user's) messages come in various formats. You need to understand their meanings and have the group members react accordingly:\n`;
+            prompt += `   - \`[${group.me.nickname}님의 메시지:...]\`: My regular chat message.\n`;
+            prompt += `   - \`[${group.me.nickname}님이 {특정 멤버 실명}님에게 송금:...]\`: I have transferred money to a specific member.\n`;
+            prompt += `   - \`[${group.me.nickname}님이 {특정 멤버 실명}님에게 보낸 선물:...]\`: I have sent a gift to a specific member.\n`;
+            prompt += `   - \`[${group.me.nickname}님의 이모티콘:...]\`, \`[${group.me.nickname}님의 음성:...]\`, \`[${group.me.nickname}님이 보낸 사진/영상:...]\`: I have sent a special type of message, and group members can comment on it.\n`;
+            prompt += `   - \`[system: ...]\`, \`[...님이 ...님을 그룹에 초대했습니다]\`, \`[...님이 그룹 이름을 ...으로 변경했습니다]\`: System notifications or events. Group members should react accordingly, for example, by welcoming a new member, discussing the new group name, etc.\n\n`;
 
-            prompt += `4. **당신의 출력 형식 (매우 중요)**: 당신이 생성하는 모든 메시지는 **반드시** 다음 형식 중 하나를 엄격히 따라야 합니다. 각 메시지는 한 줄에 하나씩 작성합니다. 형식의 \`{멤버 실명}\` 부분은 멤버의 **실명**으로 채워주세요.\n`;
-            prompt += `   - **일반 메시지**: \`[{멤버 실명}의 메시지：{메시지 내용}]\`\n`;
-            // 그룹 채팅용 이모지 처리
+            prompt += `4. **Your Output Format (Very Important)**: Each message you create must strictly follow one of the following formats. Each message occupies one line. Please fill in members with their **real names** in the format \`{멤버 실명}\`.\n`;
+            prompt += `   - **Normal Message**: \`[{멤버 실명}님의 메시지:{message content}]\`\n`;
+            
             if (db.myStickers.length > 0) {
                 const groupAvailableStickers = db.myStickers.map(s => s.name).join(', ');
-                prompt += `   - **이모티콘**: \`[{멤버 실명}가 보낸 이모티콘：{이모티콘이름}]\`. 사용 가능한 이모티콘: ${groupAvailableStickers}. 등록된 이모티콘 이름 중에서만 선택하여 사용하세요.\n`;
+                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker name}]\`. Stickers available: ${groupAvailableStickers}. Please use the registered sticker name exactly.\n`;
             } else {
-                prompt += `   - **이모티콘**: \`[{멤버 실명}가 보낸 이모티콘：{이모티콘 경로}]\`. 참고: 경로는 "https://i.postimg.cc/"를 포함할 필요 없이, 뒷부분만 제공하면 됩니다. 예: "害羞vHLfrV3K/1.jpg".\n`;
+                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker path}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "기쁨vHLfrV3K/1.jpg".\n`;
             }
-            prompt += `   - **음성**: \`[{멤버 실명}의 음성：{음성을 텍스트로 변환한 내용}]\`\n`;
-            prompt += `   - **사진/영상**: \`[{멤버 실명}가 보낸 사진/영상：{내용 설명}]\`\n`;
-            prompt += `   - **중요**: 그룹 채팅에서는 AI 멤버가 송금을 받거나 반환하거나, 선물을 받는 특별한 명령어를 지원하지 않으며, 상태 업데이트도 지원하지 않습니다. 제가 보낸 송금이나 선물에는 일반 메시지로만 응답하면 됩니다.\n\n`;
+            prompt += `   - **Voice**: \`[{멤버 실명}님의 음성:{voice content}]\`\n`;
+            prompt += `   - **Photo/Video**: \`[{멤버 실명}님의 사진/영상:{description}]\`\n`;
+            prompt += `   - **Important**: The group chat does not support special commands for AI members to accept/return transfers or receive gifts, nor does it support status updates. You should simply respond to transfers or gifts I send via normal messages.\n\n`;
 
-            prompt += `5. **그룹 채팅 분위기 시뮬레이션**: 그룹 채팅이 현실적이고 활발하며 혼란스러워 보이도록, 당신의 모든 답변은 다음 무작위성 요구사항을 따라야 합니다:\n`;
+            prompt += `5. **Simulating Group Chat Atmosphere**: To make the group chat appear realistic, active, and chaotic, every one of your responses must adhere to the following randomness requirements:\n`;
             const numMembers = group.members.length;
-            const minMessages = numMembers * 2;
-            const maxMessages = numMembers * 4;
-            prompt += `   - **메시지 수량**: 당신의 답변은 **${minMessages}개에서 ${maxMessages}개**의 메시지를 포함해야 합니다(즉, 멤버당 평균 2~4개). 충분한 상호작용을 보장하세요.\n`;
-            prompt += `   - **발언자와 순서 무작위**: 그룹 멤버를 무작위로 선택하여 발언하게 하고, 순서도 고정된 순서가 아닌 무작위여야 합니다.\n`;
-            prompt += `   - **내용 다양성**: 답변은 주로 일반 텍스트 메시지여야 하지만, 현실감을 더하기 위해 **가끔, 선택적으로** 특정 멤버가 이모티콘, 음성, 사진/영상과 같은 특별한 메시지를 보내게 할 수 있습니다. 특별한 메시지를 남용하지 마세요.\n`;
-            prompt += `   - **대화의 연속성**: 발언이 무작위일지라도, 대화 내용은 전체적으로 저와 다른 멤버들의 발언을 중심으로 전개되어야 하며, 일정한 논리적 연속성을 유지해야 합니다.\n\n`;
+            const minMessages = numMembers * 1;
+            const maxMessages = numMembers * 5;
+            prompt += `   - **Number of Messages**: Your response must contain **${minMessages} to ${maxMessages}** messages (i.e., an average of 2-4 replies per member). Ensure there is sufficient interaction.\n`;
+            prompt += `   - **Random Speaker and Order**: Randomly select group members to speak, and the order must also be random. Do not take turns in a fixed sequence.\n`;
+            prompt += `   - **Content Diversity**: Your replies should primarily consist of normal text messages, but you can **occasionally and selectively** have a member send a special message (sticker, voice, photo/video) to enhance realism. Do not overuse special messages.\n`;
+            prompt += `   - **Conversational Cohesion**: Although the speaking turns are random, the overall conversation content should revolve around my and other members' statements, maintaining a degree of logical coherence.\n\n`;
 
-            prompt += `6. **행동 지침**:\n`;
-            prompt += `   - **공개 이벤트에 대한 반응 (중요)**: 저(사용자)가 그룹 내 **한 명**의 멤버에게 송금하거나 선물을 줄 때, 이는 **그룹 전체에 공개되는** 이벤트입니다. 당사자 멤버가 감사를 표하는 것 외에, **참여하지 않은 다른 AI 멤버들도 이를 인지하고** 각자의 설정에 따라 반응해야 합니다. 예를 들어, 부러워하거나, 축하하거나, 궁금해하거나, 농담을 하거나, 분위기를 띄울 수 있습니다. 이는 그룹 채팅의 분위기를 더 현실적이고 활기차게 만듭니다.\n`;
-            prompt += `   - 각 캐릭터의 설정을 엄격히 연기하여, 캐릭터 간에 명확한 성격과 말투 차이가 있어야 합니다.\n`;
-            prompt += `   - 당신의 답변에는 4번에 명시된 합법적인 형식의 메시지만 포함될 수 있습니다. \`[장면 묘사]\`, \`(심리 활동)\`, \`*행동*\` 또는 형식 외의 설명적인 텍스트는 절대 포함해서는 안 됩니다.\n`;
-            prompt += `   - 대화의 지속성을 유지하고, 먼저 대화를 끝내지 마세요.\n\n`;
-            prompt += `이제, 위 설정에 따라 그룹 채팅의 모든 캐릭터를 연기하기 시작하세요.`;
+            prompt += `6. **Code of Conduct**:\n`;
+            prompt += `   - **Reacting to Public Events (Important)**: When I (the user) send a transfer or a gift to **one** member in the group, this is an event **visible to the entire group**. Besides the recipient expressing thanks, **other AI members not involved should also notice** and react according to their respective personas. For example, they might express envy, congratulations, curiosity, make a joke, or playfully tease. This will make the group chat atmosphere more realistic and lively.\n`;
+            prompt += `   - Strictly play each character's persona. There should be clear differences in personality and tone between different characters.\n`;
+            prompt += `   - Your replies can only contain messages in the valid formats listed in point #4. You must absolutely not include any other content, such as \`[scene description]\`, \`(inner thoughts)\`, \`*actions*\`, or any explanatory text outside of the specified formats.\n`;
+            prompt += `   - Maintain the continuity of the conversation; do not end it proactively.\n\n`;
+            prompt += `Now, based on the settings above, please begin playing all the characters in the group chat.`;
 
             return prompt;
         }
@@ -4581,7 +4615,7 @@ async function syncDown() {
         async function getAiReply() {
             if (isGenerating) return;
             
-            // 새로운 개별 저장 구조에서 현재 공급자 설정 가져오기
+            
             const currentProvider = db.apiSettings?.currentProvider;
             const settings = db.apiSettings?.[currentProvider];
             const { url, key, model } = settings || {};
@@ -4628,7 +4662,7 @@ async function syncDown() {
                     historySlice.forEach(msg => {
                         let content;
                         if (msg.parts && msg.parts.length > 0) {
-                            // 딥시크 API는 content에 문자열만 허용하므로 텍스트만 추출
+                            
                             if (currentProvider === 'deepseek') {
                                 content = msg.parts.map(p => {
                                     if (p.type === 'text') { return p.text; }
@@ -4636,7 +4670,7 @@ async function syncDown() {
                                     return '';
                                 }).filter(p => p).join(' ');
                             } else {
-                                // 다른 API들은 기존 방식 유지
+                                
                                 content = msg.parts.map(p => {
                                     if (p.type === 'text') { return { type: 'text', text: p.text }; }
                                     else if (p.type === 'image') { return { type: 'image_url', image_url: { url: p.data } }; }
@@ -4648,6 +4682,11 @@ async function syncDown() {
                     });
                     requestBody = { model: model, messages: messages, stream: true };
                 }
+
+                if (url.endsWith('/')) {
+                    url = url.slice(0, -1);
+                }
+
                 const endpoint = (currentProvider === 'gemini') ? `${url}/v1beta/models/${model}:streamGenerateContent?key=${getRandomValue(key)}` : `${url}/v1/chat/completions`;
                 let headers;
                 if (currentProvider === 'gemini') {
@@ -4675,13 +4714,14 @@ async function syncDown() {
             }
         }
 
-        async function processStream(response, chat, apiType) {
+        async function processStream(response, originalChat, apiType) {
             const reader = response.body.getReader(), decoder = new TextDecoder();
             let fullResponse = "", accumulatedChunk = "";
             for (;;) {
                 const { done, value } = await reader.read();
                 if (done) break;
                 accumulatedChunk += decoder.decode(value, { stream: true });
+                
                 if (apiType === "openai" || apiType === "deepseek" || apiType === "claude" || apiType === "newapi" || apiType === "openrouter") {
                     const parts = accumulatedChunk.split("\n\n");
                     accumulatedChunk = parts.pop();
@@ -4689,7 +4729,7 @@ async function syncDown() {
                         if (part.startsWith("data: ")) {
                             const data = part.substring(6);
                             if (data.trim() !== "[DONE]") {
-                                try { fullResponse += JSON.parse(data).choices[0].delta?.content || ""; } catch (e) { /* ignore */ }
+                                try { fullResponse += JSON.parse(data).choices[0].delta?.content || ""; } catch (e) {  }
                             }
                         }
                     }
@@ -4705,63 +4745,78 @@ async function syncDown() {
                     return;
                 }
             }
+
             if (fullResponse) {
-                if (currentChatType === 'private') {
-                    const character = chat;
+                const messagesToAdd = []; 
+                const isPrivateChat = !originalChat.members;
+
+                if (isPrivateChat) {
+                    const character = originalChat;
                     const myName = character.myName;
-                    const messageRegex = new RegExp(`\\[${character.realName}(?:의 (?:메시지|음성|송금|이모티콘)|가 보낸 (?:이모티콘|사진\\/영상|선물))：[\\s\\S]+?\\]|\\[${character.realName}(?:接收|退回)${myName}의 송금\\]|\\[${character.realName}已接收礼物\\]|\\[${character.realName}更新状态为：.*?\\]`, "g");
+                    
+                    const messageRegex = new RegExp(`\\[${character.realName}(?:님의 (?:메시지|음성|송금|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]|\\[${character.realName}님이 ${myName}님의 송금을 (?:수신|반환)했습니다\\]|\\[${character.realName}님이 선물을 수신했습니다\\]|\\[${character.realName}님이 현재 상태를 업데이트:.*?\\]`, "g");
                     const messages = fullResponse.match(messageRegex) || [];
+                    
                     if (messages.length > 0) {
                         messages.forEach(msgContent => {
-                            const receivedTransferRegex = new RegExp(`\\[${character.realName}의 송금：.*?원；메모：.*?\\]`);
-                            const giftRegex = new RegExp(`\\[${character.realName}가 보낸 선물：.*?\\]`);
                             const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now() };
-                            if (receivedTransferRegex.test(message.content)) { message.transferStatus = 'pending'; }
-                            else if (giftRegex.test(message.content)) { message.giftStatus = 'sent'; }
-                            chat.history.push(message);
-                            addMessageBubble(message);
+                            
+                            messagesToAdd.push(message); 
                         });
-                    } else {
+                    } else if (fullResponse.trim()) {
                         const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: fullResponse, parts: [{ type: 'text', text: fullResponse }], timestamp: Date.now() };
-                        chat.history.push(simpleMessage);
-                        addMessageBubble(simpleMessage);
+                        
+                        messagesToAdd.push(simpleMessage);
                     }
-                } else if (currentChatType === 'group') {
-                    const group = chat;
+                } else { 
+                    const group = originalChat;
                     const memberRealNames = group.members.map(m => m.realName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-                    const memberRegex = new RegExp(`\\[(${memberRealNames.join('|')})(?:의 (?:메시지|음성)|가 보낸 (?:이모티콘|사진\\/영상))：[\\s\\S]+?\\]`, "g");
+                    const memberRegex = new RegExp(`\\[(${memberRealNames.join('|')})(?:님의 (?:메시지|음성|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]`, "g");
                     const messages = fullResponse.match(memberRegex) || [];
 
                     if (messages.length > 0) {
                         messages.forEach(msgContent => {
-                            const nameMatch = msgContent.match(/\[(.*?)((?:의 (?:메시지|음성)|가 보낸 (?:이모티콘|사진\/영상)))：/);
+                            const nameMatch = msgContent.match(/\[(.*?)((?:님의 (?:메시지|음성|사진|영상|사진\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\/영상|선물))):/);
                             if (nameMatch) {
                                 const senderName = nameMatch[1];
                                 const sender = group.members.find(m => m.realName === senderName);
                                 if (sender) {
                                     const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now(), senderId: sender.id };
-                                    group.history.push(message);
-                                    addMessageBubble(message);
+                                    
+                                    messagesToAdd.push(message);
                                 }
                             }
                         });
-                    } else {
-                        console.warn("AI 응답이 예상된 그룹 형식과 일치하지 않아 단일 메시지로 처리:", fullResponse);
+                    } else if (fullResponse.trim()) {
                         const firstMember = group.members[Math.floor(Math.random() * group.members.length)];
-                        if(firstMember) {
-                            const simpleMessageContent = `[${firstMember.realName}의 메시지：${fullResponse}]`;
+                        if (firstMember) {
+                            const simpleMessageContent = `[${firstMember.realName}님의 메시지:${fullResponse}]`;
                             const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: simpleMessageContent, parts: [{ type: 'text', text: simpleMessageContent }], timestamp: Date.now(), senderId: firstMember.id };
-                            group.history.push(simpleMessage);
-                            addMessageBubble(simpleMessage);
+                            
+                            messagesToAdd.push(simpleMessage);
                         }
                     }
                 }
+
+                
+                if (messagesToAdd.length > 0) {
+                    originalChat.history.push(...messagesToAdd);
+                    
+                    
+                    if (currentChatId !== originalChat.id) {
+                        originalChat.unreadCount = (originalChat.unreadCount || 0) + messagesToAdd.length;
+                    } else {
+                        
+                        messagesToAdd.forEach(msg => addMessageBubble(msg));
+                    }
+                }
+
                 saveData();
                 renderChatList();
             }
         }
 
-        // --- Other Sub-systems Setup (Stickers, Voice, etc.) ---
+        
         function setupImageRecognition() {
             imageRecognitionBtn.addEventListener('click', () => { imageUploadInput.click(); });
             imageUploadInput.addEventListener('change', async (e) => {
@@ -4793,13 +4848,13 @@ async function syncDown() {
                 stickerUrlInput.disabled = false;
                 addStickerModal.classList.add('visible');
                 
-                // 일괄 등록 폼 초기화
+                
                 document.getElementById('bulk-sticker-input').value = '';
                 document.getElementById('bulk-preview-container').style.display = 'none';
-                showStickerTab('single'); // 단일 등록 탭으로 시작
+                showStickerTab('single'); 
             });
             
-            // 탭 전환 기능 설정
+            
             setupStickerTabs();
             addStickerForm.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -4875,7 +4930,7 @@ async function syncDown() {
             });
         }
 
-        // 일괄 이모티콘 등록 관련 함수들
+        
         function setupStickerTabs() {
             
             const singleTab = document.getElementById('single-sticker-tab');
@@ -4883,14 +4938,14 @@ async function syncDown() {
             const previewBtn = document.getElementById('preview-bulk-btn');
             const bulkForm = document.getElementById('bulk-sticker-form');
             
-            // 탭 클릭 이벤트
+            
             singleTab.addEventListener('click', () => showStickerTab('single'));
             bulkTab.addEventListener('click', () => showStickerTab('bulk'));
             
-            // 미리보기 버튼
+            
             previewBtn.addEventListener('click', previewBulkStickers);
             
-            // 일괄 등록 폼 제출
+            
             bulkForm.addEventListener('submit', handleBulkStickerSubmit);
         }
         
@@ -4920,43 +4975,43 @@ async function syncDown() {
         
         function parseBulkStickerInput(inputText) {
             const result = [];
-            const cleanInput = inputText.trim(); // 앞뒤 공백만 제거
+            const cleanInput = inputText.trim(); 
             
             if (!cleanInput) {
                 return result;
             }
             
-            // 다양한 줄바꿈 문자로 분리 시도
+            
             let lines = cleanInput.split(/\r\n|\r|\n/);
             
-            // 만약 분리가 안됐다면 다른 방법으로 시도
+            
             if (lines.length === 1) {
-                lines = cleanInput.split(/[,;|]/); // 콤마, 세미콜론, 파이프로도 시도
+                lines = cleanInput.split(/[,;|]/); 
             }
             
             lines.forEach((line, index) => {
-                const item = line.trim(); // 각 줄의 앞뒤 공백 제거
-                if (!item) return; // 빈 줄 건너뛰기
+                const item = line.trim(); 
+                if (!item) return; 
                 
-                // HTTP/HTTPS URL을 먼저 찾고 그 앞 부분을 이름으로 처리
+                
                 let urlMatch = item.match(/(https?:\/\/[^\s]+)/i);
                 if (!urlMatch) {
-                    // data URL 찾기
+                    
                     urlMatch = item.match(/(data:image\/[^;]+;base64,[^\s]+)/i);
                 }
                 if (!urlMatch) {
-                    // file URL 찾기
+                    
                     urlMatch = item.match(/(file:\/\/[^\s]+)/i);
                 }
                 if (!urlMatch) {
-                    // 상대경로나 파일 확장자 찾기
+                    
                     urlMatch = item.match(/(\.{0,2}\/[^\s]+|[^\s]*\.(jpg|jpeg|png|gif|webp|svg))/i);
                 }
                 
                 if (urlMatch) {
                     const url = urlMatch[1];
                     const urlIndex = item.indexOf(url);
-                    const name = item.substring(0, urlIndex).trim(); // URL 앞부분을 이름으로
+                    const name = item.substring(0, urlIndex).trim(); 
                     
                     if (name && url) {
                         result.push({ name, url });
@@ -5013,14 +5068,14 @@ async function syncDown() {
             let duplicateCount = 0;
             
             parsedStickers.forEach(sticker => {
-                // 중복 이름 체크
+                
                 const existing = db.myStickers.find(s => s.name === sticker.name);
                 if (existing) {
                     duplicateCount++;
                     return;
                 }
                 
-                // 새 이모티콘 추가
+                
                 const newSticker = {
                     id: `sticker_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                     name: sticker.name,
@@ -5035,7 +5090,7 @@ async function syncDown() {
                 saveData();
                 renderStickerGrid();
                 
-                // 모달 닫기
+                
                 addStickerModal.classList.remove('visible');
                 
                 let message = `${successCount}개의 이모티콘이 등록되었습니다.`;
@@ -5145,7 +5200,7 @@ async function syncDown() {
                     cardOnScreen.querySelector('.transfer-status').textContent = action === 'received' ? '수령 완료' : '반환됨';
                     cardOnScreen.style.cursor = 'default';
                 }
-                let contextMessageContent = (action === 'received') ? `[${character.myName}님이 ${character.realName}님의 송금을 받았습니다]` : `[${character.myName}님이 ${character.realName}님의 송금을 반환했습니다]`;
+                let contextMessageContent = (action === 'received') ? `[${character.myName}님이 ${character.realName}님의 송금을 수신했습니다]` : `[${character.myName}님이 ${character.realName}님의 송금을 반환했습니다]`;
                 const contextMessage = { id: `msg_${Date.now()}`, role: 'user', content: contextMessageContent, parts: [{ type: 'text', text: contextMessageContent }], timestamp: Date.now() };
                 character.history.push(contextMessage);
                 saveData();
@@ -5184,14 +5239,14 @@ async function syncDown() {
             const newPresetNameInput = document.getElementById('new-preset-name');
             const newPresetDescriptionInput = document.getElementById('new-preset-description');
 
-            // 현재 선택된 프리셋의 URL로 입력 필드 설정
+            
             const currentPresetData = db.globalFontPresets.presets[db.globalFontPresets.currentPreset];
             fontUrlInput.value = currentPresetData ? currentPresetData.url : '';
             
-            // 커스텀 프리셋 확인 및 초기화
+            
             if (!db.globalFontPresets.presets.custom) {
                 console.log('ERROR: 커스텀 프리셋이 없습니다!');
-                initializeFontPresets(); // 강제 초기화
+                initializeFontPresets(); 
             }
             
             console.log('폰트 설정 앱 초기화:', {
@@ -5200,10 +5255,10 @@ async function syncDown() {
                 allPresets: Object.keys(db.globalFontPresets.presets)
             });
             
-            // 초기 프리셋 렌더링
+            
             renderFontPresetSelector();
             
-            // 현재 선택된 프리셋으로 폼 초기화
+            
             const currentPreset = db.globalFontPresets.currentPreset;
             console.log('폰트 설정 앱 - 프리셋 선택 복원:', {
                 currentPreset: currentPreset,
@@ -5219,35 +5274,35 @@ async function syncDown() {
                 console.log('프리셋 선택 복원 실패 - 기본값 유지');
             }
 
-            // 폰트 프리셋 선택 시 설명 업데이트 및 폼 자동 채움
+            
             fontPresetSelector.addEventListener('change', (e) => {
                 const selectedKey = e.target.value;
-                console.log('폰트 프리셋 선택됨:', selectedKey); // DEBUG: 선택된 프리셋 로그
+                console.log('폰트 프리셋 선택됨:', selectedKey); 
                 
                 if (selectedKey === 'custom') {
-                    // 커스텀 폰트 선택 시
+                    
                     const customPreset = db.globalFontPresets.presets.custom;
                     fontDescription.textContent = customPreset.description;
                     
-                    // currentPreset을 custom으로 설정 및 저장
+                    
                     db.globalFontPresets.currentPreset = 'custom';
                     saveData();
                     console.log('커스텀 폰트 선택 - currentPreset을 custom으로 설정');
                     
-                    // 커스텀 프리셋에 저장된 값 복구
+                    
                     fontUrlInput.value = customPreset.url || '';
                     newPresetNameInput.value = customPreset.name || '커스텀 폰트';
                     newPresetDescriptionInput.value = customPreset.description || '직접 입력한 폰트 URL을 사용합니다';
-                    console.log('커스텀 폰트 프리셋 값 복구됨:', customPreset); // DEBUG: 복구 로그
+                    console.log('커스텀 폰트 프리셋 값 복구됨:', customPreset); 
                     
-                    // 커스텀 폰트 모드: 위쪽 폰트 적용 버튼을 "저장 & 폰트 적용"으로 변경
-                    applyFontBtn.textContent = '💾 저장 & 폰트 적용';
                     
-                    // 프리셋 관리 영역: 등록 버튼으로 설정
-                    savePresetBtn.textContent = '📝 프리셋 등록';
+                    applyFontBtn.textContent = '저장 & 폰트 적용';
+                    
+                    
+                    savePresetBtn.textContent = '프리셋 등록';
                     savePresetBtn.disabled = false;
-                    deletePresetBtn.disabled = true; // 커스텀 모드에서는 삭제 불가
-                    console.log('커스텀 폰트 모드로 전환'); // DEBUG: 커스텀 모드 로그
+                    deletePresetBtn.disabled = true; 
+                    console.log('커스텀 폰트 모드로 전환'); 
                     return;
                 }
                 
@@ -5255,34 +5310,34 @@ async function syncDown() {
                 
                 if (selectedPreset) {
                     fontDescription.textContent = selectedPreset.description || '설명 없음';
-                    // currentPreset 업데이트 및 저장
+                    
                     db.globalFontPresets.currentPreset = selectedKey;
                     saveData();
                     console.log('프리셋 선택 시 currentPreset 업데이트됨:', selectedKey);
                     
-                    // 프리셋 정보로 폼 자동 채움
+                    
                     fontUrlInput.value = selectedPreset.url || '';
                     newPresetNameInput.value = selectedPreset.name || '';
                     newPresetDescriptionInput.value = selectedPreset.description || '';
                     
-                    // 기존 프리셋 선택 시: 위쪽 폰트 적용 버튼을 원래대로 복구
-                    applyFontBtn.textContent = '🔤 폰트 적용';
                     
-                    // 프리셋 관리 영역: 수정 모드로 설정
-                    savePresetBtn.textContent = '✏️ 프리셋 수정';
+                    applyFontBtn.textContent = '폰트 적용';
+                    
+                    
+                    savePresetBtn.textContent = '프리셋 수정';
                     savePresetBtn.disabled = false;
-                    deletePresetBtn.disabled = false; // 모든 프리셋 삭제 가능
-                    console.log('기존 프리셋 선택됨 - 수정 모드, 삭제 가능:', selectedPreset.name); // DEBUG: 프리셋 선택 로그
+                    deletePresetBtn.disabled = false; 
+                    console.log('기존 프리셋 선택됨 - 수정 모드, 삭제 가능:', selectedPreset.name); 
                     
-                    // 폰트 즉시 적용 (사용자 최신 피드백 반영)
+                    
                     if (selectedPreset.url) {
                         applyGlobalFont(selectedPreset.url);
-                        console.log('프리셋 폰트 즉시 적용됨:', selectedPreset.name); // DEBUG: 즉시 적용 로그
+                        console.log('프리셋 폰트 즉시 적용됨:', selectedPreset.name); 
                     }
                 }
             });
 
-            // 폰트 적용 버튼
+            
             applyFontBtn.addEventListener('click', () => {
                 const fontUrl = fontUrlInput.value.trim();
                 if (!fontUrl) {
@@ -5295,19 +5350,19 @@ async function syncDown() {
                     currentPreset: currentPreset,
                     fontUrl: fontUrl,
                     buttonText: applyFontBtn.textContent
-                }); // DEBUG: 폰트 적용 버튼 상태
+                }); 
                 
                 if (currentPreset === 'custom') {
-                    // 커스텀 폰트 모드: 커스텀 프리셋에 직접 저장 & 적용
+                    
                     const presetName = newPresetNameInput.value.trim() || '커스텀 폰트';
                     const presetDescription = newPresetDescriptionInput.value.trim() || '직접 입력한 폰트 URL을 사용합니다';
                     
-                    // 커스텀 프리셋에 직접 저장
+                    
                     db.globalFontPresets.presets.custom.url = fontUrl;
                     db.globalFontPresets.presets.custom.name = presetName;
                     db.globalFontPresets.presets.custom.description = presetDescription;
                     
-                    // currentPreset이 custom인지 확인하고 설정
+                    
                     if (db.globalFontPresets.currentPreset !== 'custom') {
                         db.globalFontPresets.currentPreset = 'custom';
                         console.log('currentPreset을 custom으로 설정');
@@ -5316,9 +5371,9 @@ async function syncDown() {
                     saveData();
                     applyGlobalFont(fontUrl);
                     showToast('커스텀 폰트가 저장 & 적용되었습니다!');
-                    console.log('커스텀 프리셋에 저장됨:', db.globalFontPresets.presets.custom); // DEBUG: 저장 로그
+                    console.log('커스텀 프리셋에 저장됨:', db.globalFontPresets.presets.custom); 
                 } else {
-                    // 기존 프리셋 모드: 일반 적용만 (프리셋에서 URL 가져와서 적용)
+                    
                     const selectedPreset = db.globalFontPresets.presets[currentPreset];
                     if (selectedPreset && selectedPreset.url) {
                         applyGlobalFont(selectedPreset.url);
@@ -5329,7 +5384,7 @@ async function syncDown() {
                 }
             });
 
-            // 프리셋 저장/수정 버튼
+            
             savePresetBtn.addEventListener('click', () => {
                 const fontUrl = fontUrlInput.value.trim();
                 const presetName = newPresetNameInput.value.trim();
@@ -5340,7 +5395,7 @@ async function syncDown() {
                     폰트URL: fontUrl,
                     폰트이름: presetName,
                     설명: presetDescription
-                }); // DEBUG: 저장/수정 버튼 클릭 로그
+                }); 
                 
                 if (!fontUrl) {
                     showToast('폰트 URL을 입력해주세요.');
@@ -5352,7 +5407,7 @@ async function syncDown() {
                     return;
                 }
                 
-                // 프리셋 이름 검증
+                
                 if (presetName === '커스텀 폰트') {
                     showToast('프리셋 이름으로 "커스텀 폰트"는 사용할 수 없습니다. 다른 이름을 입력해주세요.');
                     return;
@@ -5360,7 +5415,7 @@ async function syncDown() {
                 
                 const currentPreset = db.globalFontPresets.currentPreset;
                 
-                // 기존 프리셋 이름과 중복 체크 (현재 수정 중인 프리셋은 제외)
+                
                 const existingPresetWithSameName = Object.entries(db.globalFontPresets.presets).find(([key, preset]) => {
                     return preset.name === presetName && key !== currentPreset;
                 });
@@ -5378,29 +5433,29 @@ async function syncDown() {
                 console.log('프리셋 이름 검증 통과:', presetName);
                 
                 if (currentPreset === 'custom') {
-                    // 커스텀 폰트에서 프리셋 등록: 새 프리셋 생성
+                    
                     const presetKey = `custom_${Date.now()}`;
                     db.globalFontPresets.presets[presetKey] = {
                         name: presetName,
                         url: fontUrl,
                         description: presetDescription || `${presetName} 폰트`,
-                        deletable: true // 사용자 생성 프리셋은 삭제 가능
+                        deletable: true 
                     };
                     
-                    // 새로 생성된 프리셋으로 선택 변경
+                    
                     db.globalFontPresets.currentPreset = presetKey;
                     
                     saveData();
                     
-                    // 폰트 즉시 적용
+                    
                     applyGlobalFont(fontUrl);
                     
-                    // UI 업데이트 - 새 프리셋으로 드롭다운 변경
+                    
                     renderFontPresetSelector();
                     showToast(`"${presetName}" 프리셋이 등록되었습니다!`);
-                    console.log('새 프리셋 생성 및 등록 완료:', presetKey); // DEBUG: 새 프리셋 생성 로그
+                    console.log('새 프리셋 생성 및 등록 완료:', presetKey); 
                 } else {
-                    // 기존 프리셋 수정
+                    
                     db.globalFontPresets.presets[currentPreset] = {
                         name: presetName,
                         url: fontUrl,
@@ -5409,24 +5464,24 @@ async function syncDown() {
                     
                     saveData();
                     
-                    // 폰트 즉시 적용
+                    
                     applyGlobalFont(fontUrl);
                     
-                    // UI 업데이트
+                    
                     renderFontPresetSelector();
                     showToast(`"${presetName}" 프리셋이 수정되었습니다!`);
-                    console.log('기존 프리셋 수정 완료:', currentPreset); // DEBUG: 수정 완료 로그
+                    console.log('기존 프리셋 수정 완료:', currentPreset); 
                 }
             });
 
-            // 현재 프리셋 삭제
+            
             deletePresetBtn.addEventListener('click', () => {
                 const currentPreset = db.globalFontPresets.currentPreset;
-                console.log('프리셋 삭제 버튼 클릭됨:', currentPreset); // DEBUG: 삭제 버튼 클릭 로그
+                console.log('프리셋 삭제 버튼 클릭됨:', currentPreset); 
                 
                 const preset = db.globalFontPresets.presets[currentPreset];
                 
-                // deletable 플래그가 false이거나 없는 경우 삭제 불가
+                
                 if (preset && preset.deletable === false) {
                     showToast('이 프리셋은 삭제할 수 없습니다.');
                     return;
@@ -5436,7 +5491,7 @@ async function syncDown() {
                 if (confirm(`"${presetName}" 프리셋을 정말 삭제하시겠습니까?`)) {
                     delete db.globalFontPresets.presets[currentPreset];
                     
-                    // 첫 번째 사용 가능한 프리셋으로 이동 또는 커스텀 모드로
+                    
                     const remainingPresets = Object.keys(db.globalFontPresets.presets);
                     if (remainingPresets.length > 0) {
                         db.globalFontPresets.currentPreset = remainingPresets[0];
@@ -5447,41 +5502,41 @@ async function syncDown() {
                     saveData();
                     applyGlobalFont('');
                     
-                    // UI 업데이트
+                    
                     renderFontPresetSelector();
                     showToast(`"${presetName}" 프리셋이 삭제되었습니다.`);
-                    console.log('프리셋 삭제 완료:', currentPreset); // DEBUG: 삭제 완료 로그
+                    console.log('프리셋 삭제 완료:', currentPreset); 
                 }
             });
 
-            // 기본 폰트로 복원
+            
             restoreDefaultFontBtn.addEventListener('click', () => {
-                // 간단하게 기본 폰트만 적용 (프리셋 상태는 그대로 유지)
+                
                 applyGlobalFont('');
                 showToast('기본 폰트로 복원되었습니다!');
-                console.log('기본 폰트로 복원 완료'); // DEBUG: 복원 로그
+                console.log('기본 폰트로 복원 완료'); 
             });
 
-            // 프리셋 선택기 렌더링 함수
+            
             function renderFontPresetSelector() {
-                // DEBUG: 프리셋 선택기 렌더링 시작
+                
                 console.log('프리셋 선택기 렌더링 시작');
                 
-                // 모든 프리셋들을 하나로 통합 (custom 제외한 나머지)
+                
                 const allPresetOptions = Object.entries(db.globalFontPresets.presets)
-                    .filter(([key, preset]) => key !== 'custom') // custom 프리셋 제외
-                    .sort(([a, presetA], [b, presetB]) => presetA.name.localeCompare(presetB.name, 'ko')) // 이름 기준 한국어 오름차순 정렬
+                    .filter(([key, preset]) => key !== 'custom') 
+                    .sort(([a, presetA], [b, presetB]) => presetA.name.localeCompare(presetB.name, 'ko')) 
                     .map(([key, preset]) => 
                         `<option value="${key}" ${key === db.globalFontPresets.currentPreset ? 'selected' : ''}>${preset.name}</option>`
                     ).join('');
                 
-                // 커스텀 프리셋 옵션 (맨 아래에 표시)
+                
                 const customPreset = db.globalFontPresets.presets.custom;
                 const isCustomSelected = db.globalFontPresets.currentPreset === 'custom';
                 const customPresetOption = `<option value="custom" ${isCustomSelected ? 'selected' : ''}>${customPreset ? customPreset.name : '커스텀 폰트'}</option>`;
-                console.log('커스텀 프리셋 렌더링:', { isCustomSelected, customPreset: customPreset }); // DEBUG: 커스텀 프리셋 상태
+                console.log('커스텀 프리셋 렌더링:', { isCustomSelected, customPreset: customPreset }); 
                 
-                // 순서: 모든 프리셋들 (가나다순) + 커스텀 프리셋 (맨 아래)
+                
                 fontPresetSelector.innerHTML = allPresetOptions + customPresetOption;
                 
                 console.log('프리셋 옵션 구성 완료:', {
@@ -5489,7 +5544,7 @@ async function syncDown() {
                     커스텀프리셋: 1
                 });
                 
-                // 설명 업데이트
+                
                 const currentPreset = db.globalFontPresets.presets[db.globalFontPresets.currentPreset];
                 if (currentPreset) {
                     fontDescription.textContent = currentPreset.description || '설명 없음';
@@ -5497,17 +5552,17 @@ async function syncDown() {
                     fontDescription.textContent = '프리셋을 선택해주세요';
                 }
                 
-                // 삭제 버튼 상태 업데이트
+                
                 const currentPresetData = db.globalFontPresets.presets[db.globalFontPresets.currentPreset];
                 const isDeletable = currentPresetData && currentPresetData.deletable !== false;
                 const isCustomMode = db.globalFontPresets.currentPreset === 'custom';
                 deletePresetBtn.disabled = !isDeletable;
                 
-                // 프리셋 저장 버튼 텍스트 업데이트
+                
                 if (isCustomMode) {
-                    savePresetBtn.textContent = '📝 프리셋 등록';
+                    savePresetBtn.textContent = '프리셋 등록';
                 } else {
-                    savePresetBtn.textContent = '✏️ 프리셋 수정';
+                    savePresetBtn.textContent = '프리셋 수정';
                 }
                 
                 console.log('버튼 상태 업데이트:', {
@@ -5521,26 +5576,26 @@ async function syncDown() {
         }
 
         function applyGlobalFont(fontUrl) {
-            console.log('🔤 폰트 적용 시작:', fontUrl); // DEBUG: 폰트 적용 로그
+            console.log('🔤 폰트 적용 시작:', fontUrl); 
             
-            // 기존 폰트 스타일 제거
+            
             const existingStyle = document.getElementById('global-font-style');
             if (existingStyle) {
                 existingStyle.remove();
             }
             
-            // 기존 폰트 링크 제거
+            
             const existingLinks = document.querySelectorAll('link[data-custom-font]');
             existingLinks.forEach(link => link.remove());
             
             if (fontUrl) {
                 const fontName = 'CustomGlobalFont';
-                console.log('🔤 커스텀 폰트 적용:', fontName); // DEBUG: 커스텀 폰트 로그
+                console.log('🔤 커스텀 폰트 적용:', fontName); 
                 
-                // URL 타입에 따라 다른 처리
+                
                 if (fontUrl.includes('.css') || fontUrl.includes('fonts.googleapis.com')) {
-                    // CSS 파일인 경우 - link 태그로 추가
-                    console.log('🔤 CSS 파일로 처리:', fontUrl); // DEBUG: CSS 처리 로그
+                    
+                    console.log('🔤 CSS 파일로 처리:', fontUrl); 
                     
                     const linkElement = document.createElement('link');
                     linkElement.rel = 'stylesheet';
@@ -5548,11 +5603,11 @@ async function syncDown() {
                     linkElement.setAttribute('data-custom-font', 'true');
                     document.head.appendChild(linkElement);
                     
-                    // CSS 로드 완료 후 폰트 적용
+                    
                     linkElement.onload = () => {
-                        console.log('🔤 CSS 로드 완료, 폰트 적용'); // DEBUG: CSS 로드 완료 로그
+                        console.log('🔤 CSS 로드 완료, 폰트 적용'); 
                         
-                        // Google Fonts의 경우 폰트 패밀리명 추출
+                        
                         let actualFontName = fontName;
                         if (fontUrl.includes('fonts.googleapis.com')) {
                             if (fontUrl.includes('Noto+Sans+KR')) {
@@ -5588,19 +5643,19 @@ async function syncDown() {
                             }
                         }
                         
-                        console.log('🔤 실제 폰트명:', actualFontName); // DEBUG: 실제 폰트명 로그
+                        console.log('🔤 실제 폰트명:', actualFontName); 
                         applyFontFamily(actualFontName);
                     };
                     
-                    // CSS 로드 실패 시 기본 폰트로 폴백
+                    
                     linkElement.onerror = () => {
-                        console.log('🔤 CSS 로드 실패, 기본 폰트 사용'); // DEBUG: CSS 로드 실패 로그
+                        console.log('🔤 CSS 로드 실패, 기본 폰트 사용'); 
                         applyFontFamily('Arial');
                     };
                     
                 } else {
-                    // 폰트 파일인 경우 - @font-face로 로드
-                    console.log('🔤 폰트 파일로 처리:', fontUrl); // DEBUG: 폰트 파일 처리 로그
+                    
+                    console.log('🔤 폰트 파일로 처리:', fontUrl); 
                     
                     const styleElement = document.createElement('style');
                     styleElement.id = 'global-font-style';
@@ -5610,31 +5665,31 @@ async function syncDown() {
                     }`;
                     document.head.appendChild(styleElement);
                     
-                    // 폰트 로드 완료 후 적용
+                    
                     setTimeout(() => {
                         applyFontFamily(fontName);
                     }, 100);
                 }
                 
             } else {
-                console.log('🔤 기본 폰트로 복원'); // DEBUG: 기본 폰트 로그
+                console.log('🔤 기본 폰트로 복원'); 
                 applyFontFamily('Arial');
             }
         }
         
         function applyFontFamily(fontName) {
-            console.log('🔤 폰트 패밀리 적용:', fontName); // DEBUG: 폰트 패밀리 적용 로그
+            console.log('🔤 폰트 패밀리 적용:', fontName); 
             
-            // CSS 변수 업데이트
+            
             document.documentElement.style.setProperty('--font-family', `'${fontName}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`);
             
-            // body에 직접 적용 (백업 방법)
+            
             document.body.style.fontFamily = `'${fontName}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`;
             
-            // 강제 리페인트 트리거
+            
             document.body.offsetHeight;
             
-            console.log('🔤 폰트 적용 완료'); // DEBUG: 완료 로그
+            console.log('🔤 폰트 적용 완료'); 
         }
 
         function setupWorldBookApp() {
@@ -5898,9 +5953,9 @@ async function syncDown() {
         function setupApiSettingsApp() {
             const e = document.getElementById('api-form'), t = document.getElementById('fetch-models-btn'), a = document.getElementById('api-model'), n = document.getElementById('api-provider'), r = document.getElementById('api-url'), s = document.getElementById('api-key');
             
-            // API 설정 기본 구조 초기화 (개별 저장 방식)
+            
             if (!db.apiSettings || typeof db.apiSettings.provider === 'string') {
-                // 기존 단일 저장 방식을 새 구조로 리셋 (마이그레이션 안함)
+                
                 db.apiSettings = {
                     newapi: { url: '', key: '', model: '' },
                     openai: { url: 'https://api.openai.com', key: '', model: '' },
@@ -5914,12 +5969,12 @@ async function syncDown() {
                 showToast('API 설정이 새로운 방식으로 초기화되었습니다!');
             }
             
-            // 현재 공급자 설정 로드
+            
             const currentProvider = db.apiSettings.currentProvider || 'newapi';
             n.value = currentProvider;
             loadProviderSettings(currentProvider);
             
-            // 공급자별 설정 로드 함수
+            
             function loadProviderSettings(provider) {
                 const settings = db.apiSettings[provider] || {};
                 const defaultUrls = {
@@ -5936,7 +5991,7 @@ async function syncDown() {
                 a.innerHTML = settings.model ? `<option value="${settings.model}">${settings.model}</option>` : '<option value="">먼저 모델 목록을 가져오세요</option>';
             }
             
-            // 공급자 변경 시 해당 설정 로드
+            
             n.addEventListener('change', () => {
                 const newProvider = n.value;
                 db.apiSettings.currentProvider = newProvider;
@@ -5986,7 +6041,7 @@ async function syncDown() {
                 e.preventDefault();
                 if (!a.value) return showToast('모델을 선택한 후 저장해주세요!');
                 
-                // 현재 공급자의 설정을 개별 저장
+                
                 const currentProvider = n.value;
                 db.apiSettings[currentProvider] = {
                     url: r.value,
@@ -5999,12 +6054,12 @@ async function syncDown() {
                 showToast(`${currentProvider.toUpperCase()} 설정이 저장되었습니다!`);
             });
 
-            // 모델 검색 기능 추가
+            
             const modelSearch = document.getElementById('model-search');
             const modelSearchInfo = document.getElementById('model-search-info');
             let searchTimeout;
 
-            // 모델 목록 렌더링 함수
+            
             function renderModelList(models) {
                 a.innerHTML = '';
                 if (models.length === 0) {
@@ -6023,7 +6078,7 @@ async function syncDown() {
                 modelSearchInfo.textContent = `${models.length}개 모델 표시`;
             }
 
-            // 검색 기능
+            
             if (modelSearch) {
                 modelSearch.addEventListener('input', (event) => {
                     clearTimeout(searchTimeout);
@@ -6036,15 +6091,15 @@ async function syncDown() {
                         }
                         
                         if (searchTerm === '') {
-                            // 검색어가 없으면 전체 목록 표시
+                            
                             renderModelList(window.allModels);
                         } else {
-                            // 검색어에 매칭되는 모델들만 필터링 (AND/OR 검색)
-                            // 콤마(,) = AND 검색, 파이프(|) = OR 검색
+                            
+                            
                             let filteredModels;
                             
                             if (searchTerm.includes('|')) {
-                                // OR 검색: 파이프로 구분된 키워드 중 하나라도 포함되면 매칭
+                                
                                 const orKeywords = searchTerm.split('|').map(keyword => keyword.trim()).filter(keyword => keyword.length > 0);
                                 filteredModels = window.allModels.filter(model => {
                                     const modelLower = model.toLowerCase();
@@ -6053,7 +6108,7 @@ async function syncDown() {
                                     );
                                 });
                             } else {
-                                // AND 검색: 콤마로 구분된 키워드가 모두 포함되어야 매칭
+                                
                                 const andKeywords = searchTerm.split(',').map(keyword => keyword.trim()).filter(keyword => keyword.length > 0);
                                 filteredModels = window.allModels.filter(model => {
                                     const modelLower = model.toLowerCase();
@@ -6064,10 +6119,10 @@ async function syncDown() {
                             }
                             renderModelList(filteredModels);
                         }
-                    }, 300); // 300ms 디바운싱
+                    }, 300); 
                 });
 
-                // 검색창 지우기 기능 (Escape 키)
+                
                 modelSearch.addEventListener('keydown', (event) => {
                     if (event.key === 'Escape') {
                         modelSearch.value = '';
@@ -6078,7 +6133,7 @@ async function syncDown() {
                 });
             }
 
-            // API 키 표시/숨김 토글 기능 추가
+            
             const toggleApiKeyBtn = document.getElementById('toggle-api-key-btn');
             const apiKeyInput = document.getElementById('api-key');
             
@@ -6095,30 +6150,30 @@ async function syncDown() {
                     }
                 });
                 
-                // 초기 툴팁 설정
+                
                 toggleApiKeyBtn.title = 'API 키 보기';
             }
 
-            // 백업/복원 기능 추가
+            
             const backupBtn = document.getElementById('backup-data-btn');
             const restoreBtn = document.getElementById('restore-data-btn');
             
             if (backupBtn) {
                 backupBtn.addEventListener('click', () => {
-                    // pqh-backup.js 내용을 직접 실행
+                    
                     (() => {
                         const KEY = 'gemini-chat-app-db';
                         
-                        /** 날짜 포맷 유틸 */
+                        
                         function pad(n) { return String(n).padStart(2, '0'); }
                         function tsForFilename(d = new Date()) {
                             return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
                         }
                         
-                        /** 길이 안전 체크 */
+                        
                         const arrLen = (x) => Array.isArray(x) ? x.length : 0;
                         
-                        /** 백업 본체 */
+                        
                         function backupGeminiDB() {
                             const raw = localStorage.getItem(KEY);
                             if (raw === null) {
@@ -6128,13 +6183,13 @@ async function syncDown() {
                             
                             let parsed = null;
                             try {
-                                // 저장된 값이 JSON 문자열일 가능성이 높으므로 파싱 시도
+                                
                                 parsed = JSON.parse(raw);
                             } catch (_) {
-                                // 파싱 실패해도 진행(원본 raw를 그대로 보관)
+                                
                             }
                             
-                            // 메타 정보(요약 카운트는 파싱 성공 시에만)
+                            
                             const meta = {
                                 type: 'gemini-chat-app-db-backup',
                                 origin: location.origin,
@@ -6147,17 +6202,17 @@ async function syncDown() {
                                 } : null
                             };
                             
-                            // 덤프 구조: meta + data (최적화됨)
+                            
                             const dump = {
                                 meta,
-                                data: parsed ?? {} // 파싱된 객체 (파싱 실패시 빈 객체)
+                                data: parsed ?? {} 
                             };
                             
-                            // 파일명: 시간 + 캐릭/그룹 카운트(가능하면)
+                            
                             const c = meta.counts || {};
                             const fname = `gemini-db_${tsForFilename()}_c${c.characters ?? 'NA'}_g${c.groups ?? 'NA'}.json`;
                             
-                            // 저장
+                            
                             const blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
                             const a = document.createElement('a');
                             a.href = URL.createObjectURL(blob);
@@ -6172,7 +6227,7 @@ async function syncDown() {
                             showToast(`백업 완료: ${fname}`);
                         }
                         
-                        // 실행
+                        
                         backupGeminiDB();
                     })();
                 });
@@ -6180,12 +6235,12 @@ async function syncDown() {
             
             if (restoreBtn) {
                 restoreBtn.addEventListener('click', () => {
-                    // pqh-restore.js 내용을 직접 실행
+                    
                     (() => {
                         const KEY = 'gemini-chat-app-db';
-                        const NORMALIZE = true; // 기본값 채우기/스키마 보정 사용 여부
+                        const NORMALIZE = true; 
                         
-                        // 주신 loadData 로직과 동일한 기본값 채우기
+                        
                         function normalize(db) {
                             db = db || {};
                             db.apiSettings = db.apiSettings || {};
@@ -6195,7 +6250,7 @@ async function syncDown() {
                             db.myStickers = Array.isArray(db.myStickers) ? db.myStickers : [];
                             db.homeScreenMode = db.homeScreenMode || 'night';
                             db.worldBooks = Array.isArray(db.worldBooks) ? db.worldBooks : [];
-                            // fontUrl 제거됨 - 프리셋 시스템 사용
+                            
                             db.customIcons = db.customIcons || {};
                             db.globalCustomCSS = db.globalCustomCSS || { enabled: true, currentPreset: 'default', presets: { 'default': { name: '기본', css: '', description: '기본 테마' } } };
                             db.globalFontPresets = db.globalFontPresets || { enabled: true, currentPreset: 'custom', presets: {} };
@@ -6206,48 +6261,50 @@ async function syncDown() {
                                 if (!Array.isArray(c.worldBookIds)) c.worldBookIds = [];
                                 if (c.customBubbleCss === undefined) c.customBubbleCss = '';
                                 if (c.useCustomBubbleCss === undefined) c.useCustomBubbleCss = false;
+                                if (c.unreadCount === undefined) c.unreadCount = 0;
                             });
                             db.groups.forEach(g => {
                                 if (g.isPinned === undefined) g.isPinned = false;
                                 if (!Array.isArray(g.worldBookIds)) g.worldBookIds = [];
                                 if (g.customBubbleCss === undefined) g.customBubbleCss = '';
                                 if (g.useCustomBubbleCss === undefined) g.useCustomBubbleCss = false;
+                                if (g.unreadCount === undefined) g.unreadCount = 0;
                             });
                             return db;
                         }
                         
                         function pickValueFromDump(incoming, originalText) {
-                            // 1) 최적화된 백업 구조 { meta, data } 처리
+                            
                             if (incoming && typeof incoming === 'object') {
-                                // 새 백업 형식: meta + data
+                                
                                 if (incoming.meta && incoming.data && typeof incoming.data === 'object') {
                                     return JSON.stringify(NORMALIZE ? normalize(incoming.data) : incoming.data);
                                 }
-                                // 구 백업 형식 호환: raw 데이터가 있는 경우
+                                
                                 if (incoming.meta && typeof incoming.raw === 'string' && incoming.raw.length) {
                                     try {
                                         const parsed = JSON.parse(incoming.raw);
                                         return JSON.stringify(NORMALIZE ? normalize(parsed) : parsed);
                                     } catch {
-                                        return incoming.raw; // 최후 수단
+                                        return incoming.raw; 
                                     }
                                 }
-                                // 일반 JSON 객체를 그대로 준 경우
+                                
                                 return JSON.stringify(NORMALIZE ? normalize(incoming) : incoming);
                             }
                             
-                            // 2) 아예 파일이 "문자열 JSON"인 경우(originalText)
+                            
                             if (typeof originalText === 'string') {
                                 try {
                                     const parsed = JSON.parse(originalText);
                                     return JSON.stringify(NORMALIZE ? normalize(parsed) : parsed);
                                 } catch {
-                                    // 문자열인데 JSON 아님 → 이 앱은 JSON 전제이므로 일단 원문 저장(비권장)
+                                    
                                     return originalText;
                                 }
                             }
                             
-                            // 3) 그 외 예외
+                            
                             throw new Error('지원하지 않는 입력 형식입니다.');
                         }
                         
@@ -6264,7 +6321,7 @@ async function syncDown() {
                                 try {
                                     incoming = JSON.parse(text);
                                 } catch {
-                                    // 파싱 실패해도 pickValueFromDump에서 originalText 경로로 처리
+                                    
                                 }
                                 
                                 let valueToStore;
@@ -6311,7 +6368,7 @@ async function syncDown() {
             });
         }
 
-        // --- GROUP CHAT FUNCTIONS ---
+        
         function setupGroupChatSystem() {
             createGroupBtn.addEventListener('click', () => {
                 renderMemberSelectionList();
