@@ -10,8 +10,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
 
-        
-        
         :root {
             --bg-color: #fce4ec;
             --primary-color: #ff80ab;
@@ -4521,7 +4519,7 @@ async function syncDown() {
     8. ✨Important✨ You can update your online status at any time to reflect your current activity or mood. This will make the interaction more realistic. If the online status does not match the current chat situation, you need to change it. The format is: [${character.realName}님이 현재 상태를 업데이트:xxx]. For example: [${character.realName}님이 현재 상태를 업데이트:영화 보는 중...]. This command will not be displayed as a chat message, it will only update your status on my interface.
     9. All your replies must be direct chat content. Absolutely no superfluous narrative text in brackets or asterisks, such as [mental activity], (actions), *environmental descriptions*, is allowed.
 `;
-            prompt += `10. You have the ability to send stickers. This is an optional feature. You can decide whether to send a sticker to help with expression based on the conversation's atmosphere and content. You do not need to include a sticker in every reply.\n`;
+            prompt += `10. You have the ability to send stickers. This is an optional feature. You can decide whether to send a sticker to help with expression based on the conversation's atmosphere and content. You do not need to include a sticker in every reply. The use of stickers should be consistent with the character's personality. Avoid using them too often.\n`;
             
             if (db.myStickers.length > 0) {
                 const availableStickers = db.myStickers.map(s => s.name).join(', ');
@@ -4585,9 +4583,9 @@ async function syncDown() {
             
             if (db.myStickers.length > 0) {
                 const groupAvailableStickers = db.myStickers.map(s => s.name).join(', ');
-                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker name}]\`. Stickers available: ${groupAvailableStickers}. Please use the registered sticker name exactly.\n`;
+                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker name}]\`. Stickers available: ${groupAvailableStickers}. Please use the registered sticker name exactly. The use of stickers should be consistent with the characters' personality. Avoid using them too often.\n`;
             } else {
-                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker path}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "기쁨vHLfrV3K/1.jpg".\n`;
+                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker path}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "기쁨vHLfrV3K/1.jpg". The use of stickers should be consistent with the characters' personality. Avoid using them too often.\n`;
             }
             prompt += `   - **Voice**: \`[{멤버 실명}님의 음성:{voice content}]\`\n`;
             prompt += `   - **Photo/Video**: \`[{멤버 실명}님의 사진/영상:{description}]\`\n`;
