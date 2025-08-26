@@ -96,7 +96,7 @@
         .app-header .action-btn {
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 35px;
             font-weight: bold;
             color: var(--primary-color);
             cursor: pointer;
@@ -125,12 +125,12 @@
         }
 
         .app-header .action-btn-group .action-btn {
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 400;
             width: auto;
-            padding: 6px 8px;
+            padding: 10px;
             border-radius: 10px;
-            height: 30px;
+            height: 33px;
         }
 
         .app-header .action-btn-group #create-group-btn {
@@ -139,7 +139,7 @@
         }
 
         .app-header .action-btn-group #add-chat-btn {
-            font-size: 28px;
+            font-size: 35px;
             padding: 0;
             width: 40px;
             height: 40px;
@@ -164,8 +164,8 @@
         }
 
         .app-header .title {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 500;
             color: var(--text-color);
             margin: 0;
         }
@@ -325,6 +325,8 @@
             margin-top: 0;
             text-align: center;
             color: var(--primary-color);
+            font-size: 15px;
+            font-weight: 500;
         }
 
         @keyframes slideUp {
@@ -396,7 +398,7 @@
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             padding: 10px;
-            padding-bottom: calc(30px + env(safe-area-inset-bottom));
+            padding-bottom: calc(50px + env(safe-area-inset-bottom));
             animation: slideUp 0.3s ease-out;
         }
 
@@ -435,7 +437,7 @@
         .list-item {
             display: flex;
             align-items: center;
-            padding: 10px 20px;
+            padding: 14px 18px;
             cursor: pointer;
             border-bottom: 1px solid #f0f0f0;
             transition: background-color 0.2s ease;
@@ -453,8 +455,8 @@
         .unread-badge { margin-left: auto; background-color: #ff554c; color: white; font-size: 12px; font-weight: bold; padding: 2px 7px; border-radius: 20px; }
 
         .chat-avatar {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             margin-right: 12px;
             object-fit: cover;
@@ -478,9 +480,9 @@
         }
 
         .item-name {
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-color);
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .item-preview-wrapper {
@@ -518,7 +520,7 @@
         #chat-room-screen .content {
             display: flex;
             flex-direction: column;
-            padding: 10px;
+            padding: 0 10px;
             padding-bottom: 0px;
             transition: padding-bottom 0.3s ease;
         }
@@ -530,7 +532,7 @@
         .message-area {
             flex-grow: 1;
             overflow-y: auto;
-            padding: 0 10px;
+            padding: 0 2px;
             scroll-behavior: smooth;
         }
 
@@ -562,6 +564,10 @@
             display: flex;
             width: 100%;
             align-items: flex-end;
+        }
+
+        #message-area > .message-wrapper:first-of-type {
+            margin-top: 10px;
         }
 
         .message-wrapper.sent .message-bubble-row {
@@ -607,13 +613,13 @@
 
         .message-bubble {
             max-width: 260px;
-            padding: 8px 12px;
+            padding: 9px 12px;
             border-radius: var(--border-radius);
             word-wrap: break-word;
-            line-height: 1.2;
+            line-height: 1.3;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin: 0 8px 16px;
+            margin: 0 8px 8px;
             cursor: pointer;
             font-size: 14px;
         }
@@ -630,22 +636,23 @@
             background-color: rgba(200, 200, 200, 0.5);
             color: #666;
             font-size: 12px;
-            margin-bottom: 16px;
+            margin: 16px;
             padding: 4px 10px;
             border-radius: 10px;
             text-align: center;
         }
 
         .image-bubble {
-            width: 230px;
+            width: 150px;
             border-radius: calc(var(--border-radius) - 4px);
             border-bottom-right-radius: 4px;
-            margin: 0 8px 16px;
+            margin: 0 8px 8px;
             padding: 4px;
+            /*
             background-color: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
             cursor: pointer;
         }
 
@@ -668,11 +675,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 6px 8px;
+            padding: 9px 12px;
             border-radius: var(--border-radius);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin: 0 8px 16px;
+            margin: 0 8px 8px;
             cursor: pointer;
             transition: all 0.2s ease;
             min-width: 90px;
@@ -744,7 +751,7 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            margin: 0 8px 16px;
+            margin: 0 8px 8px;
         }
 
         .message-wrapper.sent .pv-card {
@@ -813,10 +820,10 @@
         }
 
         .transfer-card {
-            width: 240px;
+            width: 230px;
             height: auto;
             border-radius: var(--border-radius);
-            margin: 0 8px 16px;
+            margin: 0 8px 8px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -881,13 +888,13 @@
         }
 
         .transfer-title {
-            font-size: 12px;
+            font-size: 14px;
             margin: 0 0 5px 0;
             opacity: 0.9;
         }
 
         .transfer-amount {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             margin: 0;
         }
@@ -920,7 +927,7 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            margin: 0 8px 16px;
+            margin: 0 8px 8px;
             position: relative;
             overflow: hidden;
         }
@@ -951,7 +958,7 @@
             font-size: 12px;
             color: #555;
             background-color: rgba(240, 240, 240, 0.9);
-            padding: 6px 8px;
+            padding: 9px 12px;
             margin-top: 5px;
             margin-left: 54px;
             margin-right: 54px;
@@ -1026,7 +1033,7 @@
 
         #sticker-bar {
             flex-shrink: 0;
-            padding: 0 10px;
+            padding: 3px 10px;
             display: flex;
             align-items: center;
             background: rgba(255, 255, 255, 0.7);
@@ -1036,13 +1043,13 @@
         .sticker-bar-btn {
             background: none;
             border: none;
-            padding: 5px;
+            padding: 5px 6px;
             cursor: pointer;
         }
 
         .sticker-bar-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             fill: #888;
         }
 
@@ -1137,7 +1144,7 @@
             display: flex;
             align-items: flex-end;
             padding: 10px;
-            padding-bottom: calc(30px + env(safe-area-inset-bottom));
+            padding-bottom: calc(50px + env(safe-area-inset-bottom));
             border-top: 1px solid #eee;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -1151,7 +1158,7 @@
         .message-input-area textarea {
             flex-grow: 1;
             border: none;
-            padding: 6px 12px;
+            padding: 10px 12px;
             border-radius: 18px;
             background-color: #f0f0f0;
             resize: none; 
@@ -1176,8 +1183,8 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             cursor: pointer;
             flex-shrink: 0;
             display: flex;
@@ -1192,13 +1199,13 @@
         }
 
         .message-input-area .icon-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             fill: currentColor;
         }
 
         .message-input-area .icon-btn.send-btn {
-            font-size: 14px;
+            font-size: 17px;
         }
 
         #multi-select-bar {
@@ -1212,7 +1219,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            padding-bottom: calc(30px + env(safe-area-inset-bottom));
+            padding-bottom: calc(50px + env(safe-area-inset-bottom));
             border-top: 1px solid #eee;
             z-index: 20;
             border-bottom-left-radius: var(--phone-corner-radius);
@@ -1245,7 +1252,7 @@
         .settings-sidebar .header {
             padding: 15px;
             border-bottom: 1px solid #eee;
-            font-weight: bold;
+            font-weight: 500;
             text-align: center;
             color: var(--primary-color);
         }
@@ -1257,7 +1264,7 @@
         }
 
         .settings-sidebar .form-group textarea {
-            height: 100px;
+            height: 150px;
             resize: vertical;
         }
 
@@ -1269,8 +1276,8 @@
         }
 
         .settings-sidebar .avatar-preview {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary-color);
@@ -1282,7 +1289,7 @@
         }
 
         .form-group-checkbox {
-            padding: 0px 12px 12px 12px;
+            padding: 0px 5px 12px 5px;
             border-radius: 10px;
             transition: border-color 0.3s;
             font-family: var(--font-family);
@@ -1290,23 +1297,25 @@
         }
 
         .form-group label {
+            font-size: 13px;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            padding-left: 5px;
             color: var(--secondary-color);
-            font-weight: 600;
+            font-weight: 400;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 2px solid #fce4ec;
             border-radius: 10px;
             background-color: #fff;
             transition: border-color 0.3s;
             font-family: var(--font-family);
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .form-group input:focus,
@@ -1583,18 +1592,18 @@
         }
 
         .member-selection-item input[type="checkbox"] {
-            margin-right: 15px;
-            width: 20px;
-            height: 20px;
+            margin-right: 10px;
+            width: 15px;
+            height: 15px;
             flex-shrink: 0;
         }
 
         .member-selection-item img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         .member-selection-item label {
@@ -1672,7 +1681,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid #f0f0f0;
         }
@@ -1695,12 +1703,12 @@
 
         #customize-screen .icon-details p {
             margin: 0 0 8px 0;
-            font-weight: 600;
+            font-weight: 500;
         }
 
-        #customize-screen .icon-details input {
+        /* #customize-screen .icon-details input {
             width: calc(100% - 70px);
-        }
+        } */
 
         #customize-screen .reset-icon-btn {
             background: #e0e0e0;
@@ -1724,8 +1732,8 @@
 
         .section-title {
             margin: 0 0 20px 0;
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 500;
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 8px;
@@ -1874,7 +1882,7 @@
 
         .tutorial-header {
             padding: 12px 18px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--secondary-color);
             cursor: pointer;
             display: flex;
@@ -1978,7 +1986,10 @@
             <div class="typing-indicator" id="typing-indicator"></div>
         </main>
         <div class="chat-input-wrapper">
-            <div id="sticker-bar">
+            <button class="chat-toggle-btn" id="expand-input-features-btn">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg> <!-- Plus icon 예시 -->
+            </button>
+            <div id="sticker-bar" class="expanded-features-panel">
                 <button class="sticker-bar-btn" id="sticker-toggle-btn">
                     <svg viewBox="0 0 24 24">
                         <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" /></svg>
@@ -2112,7 +2123,7 @@
                     <div id="sticker-preview"><span>미리보기</span></div>
                     <div class="form-group"><label for="sticker-name">이모티콘 이름</label><input type="text" id="sticker-name" placeholder="예: 기쁨" required></div>
                     <div class="form-group"><label for="sticker-url-input">이모티콘 URL</label><input type="url" id="sticker-url-input" placeholder="이미지 URL 붙여넣기"></div>
-                    <p style="text-align:center; color:#888; margin: -10px 0 15px;">또는</p><input type="file" id="sticker-file-upload" accept="image/*" style="display:none;"><label for="sticker-file-upload" class="btn btn-secondary" style="width:100%; margin-bottom: 20px;">로컬에서 업로드</label><button type="submit" class="btn btn-primary">저장</button>
+                    <p style="text-align:center; color:#888; margin: -10px 0 15px; font-size: 14px;">또는</p><input type="file" id="sticker-file-upload" accept="image/*" style="display:none;"><label for="sticker-file-upload" class="btn btn-secondary" style="width:100%; margin-bottom: 10px;">로컬에서 업로드</label><button type="submit" class="btn btn-primary">저장</button>
                 </form>
             </div>
 
@@ -2257,7 +2268,7 @@
                     <button type="button" class="btn btn-neutral" id="reset-custom-bubble-css-btn" style="margin-top: 10px; width: auto; padding: 5px 15px; font-size: 14px;">기본값으로 복원</button>
                 </div>
 
-                <div class="form-group"><label for="setting-max-memory">최대 기억 턴 수</label><input type="number" id="setting-max-memory" value="10" min="1"></div>
+                <div class="form-group"><label for="setting-max-memory">최대 기억 턴 수</label><input type="number" id="setting-max-memory" value="100" min="1"></div>
                 <div class="form-group"><label for="setting-chat-bg-upload" class="btn btn-primary">채팅 배경 변경</label><input type="file" id="setting-chat-bg-upload" accept="image/*" style="display:none;"></div><button type="submit" class="btn btn-primary">설정 저장</button>
             </form>
             <hr style="border:none; border-top:1px solid #eee; margin: 20px 0;"><button type="button" class="btn btn-danger" id="clear-chat-history-btn">채팅 기록 삭제</button>
@@ -2645,7 +2656,7 @@
             </div>
         ` : '';
 
-        document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저 장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin-bottom: 15px; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin-bottom: 20px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px;">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
+        document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin: 13px 5px; font-size: 16px;     font-weight: 500; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin: 13px 5px 20px 5px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer; font-size: 14px;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px; margin: 8px 5px">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
         document.getElementById('wallpaper-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">배경화면 변경</h1></div><div class="placeholder"></div></header><main class="content"><div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div><input type="file" id="wallpaper-upload" accept="image/*" style="display: none;"><label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label></main>`;
         document.getElementById('font-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">글꼴 설정</h1></div><div class="placeholder"></div></header><main class="content"><div class="form-group"><label for="font-preset-selector">저장된 폰트 선택</label><select id="font-preset-selector" class="form-select"></select><p class="font-description" id="font-description" style="font-size:12px; color:#666; margin-top:8px; margin-bottom:15px;">프리셋을 선택해주세요</p></div><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><form id="font-settings-form"><div class="form-group"><label for="font-url">폰트 URL</label><input type="url" id="font-url" placeholder="여기에 폰트 URL을 입력하세요" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 8px;"><p style="font-size:12px; color:#888;">폰트 파일 URL을 입력하세요</p></div><div class="form-group" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-top: 15px;"><input type="text" id="new-preset-name" placeholder="폰트 이름 (예: 나눔고딕)" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;"><input type="text" id="new-preset-description" placeholder="설명 (선택)" style="padding: 12px; border: 1px solid #ddd; border-radius: 6px;"></div><div class="font-actions" style="display: flex; gap: 10px; margin-top: 20px;"><button type="button" class="btn btn-primary" id="apply-font-btn" style="flex: 1;">폰트 적용</button><button type="button" class="btn btn-neutral" id="restore-default-font-btn" style="flex: 0.7;">기본 폰트</button></div></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin-bottom: 15px; color: var(--text-color);">프리셋 관리</h3><button type="button" class="btn btn-secondary" id="save-preset-btn" style="width: 100%; margin-bottom: 10px;">프리셋 등록</button><button type="button" class="btn btn-danger" id="delete-preset-btn" style="width: 100%;" disabled>프리셋 삭제</button></div></main>`;
         document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">홈 화면 커스텀</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
@@ -2934,7 +2945,6 @@ function setupGitHubSync() {
         }
     }
 
-    
     saveBtn.addEventListener('click', () => {
         const includePatCheckbox = document.getElementById('include-pat-in-download');
         const mergeDataCheckbox = document.getElementById('merge-data-on-restore');
@@ -3737,7 +3747,7 @@ async function syncDown() {
             sortedChats.forEach(chat => {
                 let lastMessageText = '채팅을 시작해보세요...';
                 if (chat.history && chat.history.length > 0) {
-                    const invisibleRegex = /\[(?:.+?)님이 (?:.+?)님의 송금을 (?:수신|반환)했습니다\]|\[(?:.+?)님이 현재 상태를 업데이트:.*?\]|\[(?:.+?)님이 선물을 수신했습니다\]|\[system:.*?\]|\[(?:.+?)님이 (?:.+?)님을 그룹에 초대했습니다\]|\[(?:.+?)님이 그룹 이름을 .*?(?:으)로 변경했습니다\]|\[system-display:.*?\]/;
+                    const invisibleRegex = /\[(?:.+?)님이 (?:.+?)님의 송금을 (?:수령|반환)했습니다\]|\[(?:.+?)님이 현재 상태를 업데이트:.*?\]|\[(?:.+?)님이 선물을 수령했습니다\]|\[system:.*?\]|\[(?:.+?)님이 (?:.+?)님을 그룹에 초대했습니다\]|\[(?:.+?)님이 그룹 이름을 .*?(?:으)로 변경했습니다\]|\[system-display:.*?\]/;
                     const visibleHistory = chat.history.filter(msg => !invisibleRegex.test(msg.content));
                     if (visibleHistory.length > 0) {
                         const lastMsg = visibleHistory[visibleHistory.length - 1];
@@ -3891,7 +3901,7 @@ async function syncDown() {
             const isPhotoVideoMessage = /\[.*?님의 사진\/영상:.*?\]/.test(message.content);
             const isTransferMessage = /\[.*?에게 송금:.*?\]|\[.*?님의 송금:.*?\]|\[.*?님이 .*?에게 송금했습니다:.*?\]/.test(message.content);
             const isGiftMessage = /\[.*?님이 보낸 선물:.*?\]|\[.*?님이 .*?에게 선물을 보냈습니다:.*?\]/.test(message.content);
-            const isInvisibleMessage = /\[.*?님이 .*?님의 송금을 (?:수신|반환)했습니다\]|\[.*?님이 현재 상태를 업데이트:.*?\]|\[.*?님이 선물을 수신했습니다\]|\[system:.*?\]|\[.*?님이 .*?님을 그룹에 초대했습니다\]|\[.*?님이 그룹 이름을 .*?(?:으)로 변경했습니다\]|\[system-display:.*?\]/.test(message.content);
+            const isInvisibleMessage = /\[.*?님이 .*?님의 송금을 (?:수령|반환)했습니다\]|\[.*?님이 현재 상태를 업데이트:.*?\]|\[.*?님이 선물을 수령했습니다\]|\[system:.*?\]|\[.*?님이 .*?님을 그룹에 초대했습니다\]|\[.*?님이 그룹 이름을 .*?(?:으)로 변경했습니다\]|\[system-display:.*?\]/.test(message.content);
 
             let menuItems = [];
             if (!isImageRecognitionMsg && !isVoiceMessage && !isStickerMessage && !isPhotoVideoMessage && !isTransferMessage && !isGiftMessage && !isInvisibleMessage) {
@@ -4075,7 +4085,7 @@ async function syncDown() {
             const timeSkipMatch = content.match(timeSkipRegex);
             const inviteMatch = content.match(inviteRegex);
             const renameMatch = content.match(renameRegex);
-            const invisibleRegex = /\[(?:.+?)님이 (?:.+?)님의 송금을 (?:수신|반환)했습니다\]|\[(?:.+?)님이 현재 상태를 업데이트:.*?\]|\[(?:.+?)님이 선물을 수신했습니다\]|\[system:.*?\]/;
+            const invisibleRegex = /\[(?:.+?)님이 (?:.+?)님의 송금을 (?:수령|반환)했습니다\]|\[(?:.+?)님이 현재 상태를 업데이트:.*?\]|\[(?:.+?)님이 선물을 수령했습니다\]|\[system:.*?\]/;
             if (invisibleRegex.test(content)) { return null; }
 
             const wrapper = document.createElement('div');
@@ -4283,8 +4293,8 @@ async function syncDown() {
                 const myName = character.myName; // 이 라인을 추가하세요.
                 const systemMessageRegex = /\[system:.*?\]|\[system-display:.*?\]/;
                 const updateStatusRegex = new RegExp(`\\[${character.realName}님이 현재 상태를 업데이트:(.*?)\\]`);
-                const transferActionRegex = new RegExp(`\\[${character.realName}님이 ${myName}님의 송금을 (?:수신|반환)했습니다\\]`);
-                const giftReceivedRegex = new RegExp(`\\[${character.realName}님이 선물을 수신했습니다\\]`);
+                const transferActionRegex = new RegExp(`\\[${character.realName}님이 ${myName}님의 송금을 (?:수령|반환)했습니다\\]`);
+                const giftReceivedRegex = new RegExp(`\\[${character.realName}님이 선물을 수령했습니다\\]`);
                 if (systemMessageRegex.test(message.content)) {  }
                 if (message.content.match(updateStatusRegex)) {
                     character.status = message.content.match(updateStatusRegex)[1];
@@ -4306,7 +4316,7 @@ async function syncDown() {
                 }
                 if (message.content.match(transferActionRegex) && message.role === 'assistant') {
                     const action = message.content.match(transferActionRegex)[1];
-                    const statusToSet = action === '接收' ? 'received' : 'returned';
+                    const statusToSet = action === '수령' ? 'received' : 'returned';
                     const lastPendingTransferIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('에게 송금:') && m.transferStatus === 'pending');
                     if (lastPendingTransferIndex !== -1) {
                         const actualIndex = character.history.length - 1 - lastPendingTransferIndex;
@@ -4530,9 +4540,9 @@ async function syncDown() {
     - [${character.myName}님의 사진/영상:xxx]: I shared a photo or video with the description xxx with you.
     - [${character.myName}님의 송금:xxx원；메모:xxx]: I transferred money to you.
     - [system: xxx]: This is a system command used to set a scene or provide context. This information should not be mentioned directly in the conversation; you just need to understand its content and apply it to subsequent dialogue.
-    5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [${character.realName}님이 선물을 수신했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.
+    5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [${character.realName}님이 선물을 수령했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.
     6. ✨Important✨ When I transfer money to you, you must respond. You have two options and must strictly follow one of the formats below. This command message itself will not be displayed to the user but will trigger a change in the transfer's status. You can choose to add a normal chat message to express your thoughts after sending this command.
-        a) Accept transfer: [${character.realName}님이 ${character.myName}님의 송금을 수신했습니다]
+        a) Accept transfer: [${character.realName}님이 ${character.myName}님의 송금을 수령했습니다]
         b) Return transfer: [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
     7. ✨Important✨ You can also proactively transfer money or send a gift to me.
         a) The transfer format must be: [${character.realName}님의 송금:xxx원；메모:xxx].
@@ -4558,8 +4568,8 @@ async function syncDown() {
             f) Sticker/Image: ${db.myStickers.length > 0 
                 ? `[${character.realName}님의 이모티콘:{sticker name}].` 
                 : `[${character.realName}님의 이모티콘:{sticker path}].`}
-                g) Response to my gift (not displayed): [${character.realName}님이 선물을 수신했습니다]
-                h) Response to my transfer (not displayed): [${character.realName}님이 ${character.myName}님의 송금을 수신했습니다] or [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
+                g) Response to my gift (not displayed): [${character.realName}님이 선물을 수령했습니다]
+                h) Response to my transfer (not displayed): [${character.realName}님이 ${character.myName}님의 송금을 수령했습니다] or [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
                 i) Update status (not displayed): [${character.realName}님이 현재 상태를 업데이트:{new status}]
 `;
             prompt += `12. Each of your replies can generate 2 to 8 messages. These should be primarily plain text messages, with an occasional, selective special message (like a gift, voice, picture, sticker, etc.) interspersed at a random position. Most replies should only contain text messages.\n`;
@@ -4773,7 +4783,7 @@ async function syncDown() {
                     const character = originalChat;
                     const myName = character.myName;
                     
-                    const messageRegex = new RegExp(`\\[${character.realName}(?:님의 (?:메시지|음성|송금|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]|\\[${character.realName}님이 ${myName}님의 송금을 (?:수신|반환)했습니다\\]|\\[${character.realName}님이 선물을 수신했습니다\\]|\\[${character.realName}님이 현재 상태를 업데이트:.*?\\]`, "g");
+                    const messageRegex = new RegExp(`\\[${character.realName}(?:님의 (?:메시지|음성|송금|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]|\\[${character.realName}님이 ${myName}님의 송금을 (?:수령|반환)했습니다\\]|\\[${character.realName}님이 선물을 수령했습니다\\]|\\[${character.realName}님이 현재 상태를 업데이트:.*?\\]`, "g");
                     const messages = fullResponse.match(messageRegex) || [];
                     
                     if (messages.length > 0) {
@@ -5219,7 +5229,7 @@ async function syncDown() {
                     cardOnScreen.querySelector('.transfer-status').textContent = action === 'received' ? '수령 완료' : '반환됨';
                     cardOnScreen.style.cursor = 'default';
                 }
-                let contextMessageContent = (action === 'received') ? `[${character.myName}님이 ${character.realName}님의 송금을 수신했습니다]` : `[${character.myName}님이 ${character.realName}님의 송금을 반환했습니다]`;
+                let contextMessageContent = (action === 'received') ? `[${character.myName}님이 ${character.realName}님의 송금을 수령했습니다]` : `[${character.myName}님이 ${character.realName}님의 송금을 반환했습니다]`;
                 const contextMessage = { id: `msg_${Date.now()}`, role: 'user', content: contextMessageContent, parts: [{ type: 'text', text: contextMessageContent }], timestamp: Date.now() };
                 character.history.push(contextMessage);
                 saveData();
@@ -6615,7 +6625,7 @@ async function syncDown() {
             db.characters.forEach(char => {
                 const li = document.createElement('li');
                 li.className = 'member-selection-item';
-                li.innerHTML = `<input type="checkbox" id="select-${char.id}" value="${char.id}"><img src="${char.avatar}" alt="${char.remarkName}"><label for="select-${char.id}">${char.remarkName}</label>`;
+                li.innerHTML = `<input type="checkbox" id="select-${char.id}" value="${char.id}"><img src="${char.avatar}" alt="${char.remarkName}"><label for="select-${char.id}" style="margin-bottom: 0px">${char.remarkName}</label>`;
                 memberSelectionList.appendChild(li);
             });
         }
