@@ -3801,7 +3801,7 @@ async function syncDown() {
         function setupAddCharModal() {
             addCharForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const newChar = { id: `char_${Date.now()}`, realName: document.getElementById('char-real-name').value, remarkName: document.getElementById('char-remark-name').value, persona: '', avatar: 'https://i.postimg.cc/Y96LPskq/o-o-2.jpg', myName: document.getElementById('my-name-for-char').value, myPersona: '', myAvatar: 'https://i.postimg.cc/GtbTnxhP/o-o-1.jpg', theme: 'white_pink', maxMemory: 10, chatBg: '', history: [], isPinned: false, status: '온라인', worldBookIds: [], useCustomBubbleCss: false, customBubbleCss: '' };
+                const newChar = { id: `char_${Date.now()}`, realName: document.getElementById('char-real-name').value, remarkName: document.getElementById('char-remark-name').value, persona: '', avatar: 'https://i.postimg.cc/Y96LPskq/o-o-2.jpg', myName: document.getElementById('my-name-for-char').value, myPersona: '', myAvatar: 'https://i.postimg.cc/GtbTnxhP/o-o-1.jpg', theme: 'white_pink', maxMemory: 100, chatBg: '', history: [], isPinned: false, status: '온라인', worldBookIds: [], useCustomBubbleCss: false, customBubbleCss: '' };
                 db.characters.push(newChar);
                 saveData();
                 renderChatList();
@@ -6407,7 +6407,7 @@ async function syncDown() {
                 if (selectedMemberIds.length < 1) return showToast('그룹 멤버를 최소 한 명 선택해주세요.');
                 if (!groupName) return showToast('그룹채팅 이름을 입력해주세요.');
                 const firstChar = db.characters.length > 0 ? db.characters[0] : null;
-                const newGroup = { id: `group_${Date.now()}`, name: groupName, avatar: 'https://i.postimg.cc/fTLCngk1/image.jpg', me: { nickname: firstChar ? firstChar.myName : '나', persona: firstChar ? firstChar.myPersona : '', avatar: firstChar ? firstChar.myAvatar : 'https://i.postimg.cc/GtbTnxhP/o-o-1.jpg' }, members: selectedMemberIds.map(charId => { const char = db.characters.find(c => c.id === charId); return { id: `member_${char.id}`, originalCharId: char.id, realName: char.realName, groupNickname: char.remarkName, persona: char.persona, avatar: char.avatar }; }), theme: 'white_pink', maxMemory: 10, chatBg: '', history: [], isPinned: false, useCustomBubbleCss: false, customBubbleCss: '', worldBookIds: [] };
+                const newGroup = { id: `group_${Date.now()}`, name: groupName, avatar: 'https://i.postimg.cc/fTLCngk1/image.jpg', me: { nickname: firstChar ? firstChar.myName : '나', persona: firstChar ? firstChar.myPersona : '', avatar: firstChar ? firstChar.myAvatar : 'https://i.postimg.cc/GtbTnxhP/o-o-1.jpg' }, members: selectedMemberIds.map(charId => { const char = db.characters.find(c => c.id === charId); return { id: `member_${char.id}`, originalCharId: char.id, realName: char.realName, groupNickname: char.remarkName, persona: char.persona, avatar: char.avatar }; }), theme: 'white_pink', maxMemory: 100, chatBg: '', history: [], isPinned: false, useCustomBubbleCss: false, customBubbleCss: '', worldBookIds: [] };
                 db.groups.push(newGroup);
                 saveData();
                 renderChatList();
