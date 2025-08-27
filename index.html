@@ -44,7 +44,6 @@
 
         .phone-screen {
             width: 100%;
-            max-width: 420px;
             height: 100vh;
             max-height: 850px;
             background-color: var(--white-color);
@@ -612,13 +611,13 @@
 
         .message-bubble {
             max-width: 260px;
-            padding: 9px 12px;
+            padding: 10px 15px;
             border-radius: var(--border-radius);
             word-wrap: break-word;
             line-height: 1.3;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            margin: 8px;
+            margin: 7px;
             cursor: pointer;
             font-size: 14px;
         }
@@ -633,7 +632,12 @@
 
         .message-bubble.grouped-bubble.sent,
         .message-bubble.grouped-bubble.received {
-            border-radius: var(--border-radius); /* 그룹 중간/마지막 메시지는 모든 모서리를 둥글게 */
+            border-radius: var(--border-radius);
+         /* 그룹 중간/마지막 메시지는 모든 모서리를 둥글게 */
+        }
+
+        .message-bubble.grouped-bubble::first-child {
+            margin-bottom: 2px;
         }
 
         .message-wrapper.grouped .message-info {
@@ -1193,7 +1197,7 @@
 
         .message-input-area {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             padding: 10px;
             padding-bottom: calc(50px + env(safe-area-inset-bottom));
             border-top: 1px solid #eee;
@@ -1775,10 +1779,6 @@
             margin: 0 0 8px 0;
             font-weight: 500;
         }
-
-        /* #customize-screen .icon-details input {
-            width: calc(100% - 70px);
-        } */
 
         #customize-screen .reset-icon-btn {
             background: #e0e0e0;
@@ -4647,8 +4647,6 @@ function addMessageBubble(message) {
             timeSkipBtn.addEventListener('click', () => {
                 timeSkipForm.reset();
                 timeSkipModal.classList.add('visible');
-                stickerBar.classList.remove('visible');
-                attachmentToggleBtn.classList.remove('active');
             });
             timeSkipModal.addEventListener('click', (e) => {
                 if (e.target === timeSkipModal) timeSkipModal.classList.remove('visible');
@@ -4656,9 +4654,9 @@ function addMessageBubble(message) {
             timeSkipForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 sendTimeSkipMessage(timeSkipInput.value.trim());
+                stickerBar.classList.remove('visible');
+                attachmentToggleBtn.classList.remove('active');
             });
-            stickerBar.classList.remove('visible');
-            attachmentToggleBtn.classList.remove('active');
         }
 
         function sendTimeSkipMessage(text) {
