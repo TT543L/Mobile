@@ -49,7 +49,7 @@
             background-color: var(--white-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-radius: var(--phone-corner-radius);
-            overflow: hidden;
+            overflow: hidden; /* 이 속성이 누락되어 화면이 깨졌습니다. 다시 추가했습니다. */
             position: relative;
             display: flex;
             flex-direction: column;
@@ -78,33 +78,130 @@
             }
         }
 
-        .app-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #eee;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 10;
-        }
+        /* --- START: .app-header로 시작하는 모든 CSS를 이 블록으로 교체하세요 --- */
 
-        .app-header .back-btn,
-        .app-header .action-btn {
-            background: none;
-            border: none;
-            font-size: 35px;
-            font-weight: bold;
-            color: var(--primary-color);
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* 헤더 기본 컨테이너 */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* 헤더 내 모든 버튼의 기본 스타일 (뒤로가기, 액션 버튼 공통) */
+.app-header .back-btn,
+.app-header .action-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+}
+
+/* 뒤로가기 버튼 안의 SVG 아이콘 크기 */
+.app-header .back-btn svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* 멀티선택 취소 버튼 특별 스타일 */
+#cancel-multi-select-btn {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--white-color) !important;
+    background-color: var(--primary-color) !important;
+    border-radius: 10px !important;
+    padding: 5px 10px !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* 오른쪽 액션 버튼 그룹 */
+.app-header .action-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* (사용자가 질문한 부분) 액션 버튼 그룹 안의 개별 버튼 스타일 */
+.app-header .action-btn-group .action-btn {
+    font-size: 14px;
+    font-weight: 400;
+    width: 40px; /* 크기 통일 */
+    height: 40px; /* 크기 통일 */
+    border-radius: 50%;
+    padding: 0; /* 패딩 제거 */
+}
+
+/* SVG 아이콘 크기 (그룹채팅, 새 채팅, 세계관 추가) */
+.app-header .action-btn-group #create-group-btn svg,
+.app-header .action-btn-group #add-chat-btn svg,
+.app-header #add-world-book-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* 설정(톱니바퀴) 버튼 안의 이미지 아이콘 크기 */
+.app-header .action-btn img {
+    width: 28px;
+    height: 28px;
+}
+
+/* 헤더 중앙 제목 컨테이너 */
+.app-header .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* (사용자가 질문한 부분) 헤더 제목 */
+.app-header .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* (사용자가 질문한 부분) 헤더 부제목 (온라인 상태 등) */
+.app-header .subtitle {
+    font-size: 11px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+}
+
+/* 온라인 상태 표시 점 */
+.online-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--online-status-color);
+    margin-right: 5px;
+}
+
+/* 헤더 좌우 균형을 위한 빈 공간 */
+.app-header .placeholder {
+    width: 40px;
+}
+
+/* --- END: 교체할 CSS 블록 --- */
 
         #cancel-multi-select-btn {
             font-size: 14px !important;
@@ -117,76 +214,12 @@
             height: auto !important;
         }
 
-        .app-header .action-btn-group {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .app-header .action-btn-group .action-btn {
-            font-size: 14px;
-            font-weight: 400;
-            width: auto;
-            padding: 10px;
-            border-radius: 10px;
-            height: 33px;
-        }
-
-        .app-header .action-btn-group #create-group-btn {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-        }
-
-        .app-header .action-btn-group #add-chat-btn {
-            font-size: 35px;
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            background-color: transparent;
-            color: var(--primary-color);
-            border-radius: 50%;
-        }
-
-        .app-header .action-btn img {
-            width: 28px;
-            height: 28px;
-        }
-
-        .app-header .title-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .app-header .title {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text-color);
-            margin: 0;
-        }
-
-        .app-header .subtitle {
-            font-size: 11px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            margin-top: 2px;
-        }
-
         .online-indicator {
             width: 6px;
             height: 6px;
             border-radius: 50%;
             background-color: var(--online-status-color);
             margin-right: 5px;
-        }
-
-        .app-header .placeholder {
-            width: 40px;
         }
 
         #home-screen {
@@ -397,7 +430,7 @@
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
             padding: 10px;
-            padding-bottom: calc(50px + env(safe-area-inset-bottom));
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
             animation: slideUp 0.3s ease-out;
         }
 
@@ -1134,7 +1167,7 @@
 
         #sticker-modal {
             position: absolute;
-            bottom: calc(98px + env(safe-area-inset-bottom)); 
+            bottom: calc(88px + env(safe-area-inset-bottom)); 
             left: 0;
             right: 0;
             height: 35%;
@@ -1225,7 +1258,7 @@
             display: flex;
             align-items: center;
             padding: 10px;
-            padding-bottom: calc(50px + env(safe-area-inset-bottom));
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
             border-top: 1px solid #eee;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
@@ -1319,7 +1352,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            padding-bottom: calc(50px + env(safe-area-inset-bottom));
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
             border-top: 1px solid #eee;
             z-index: 20;
             border-bottom-left-radius: var(--phone-corner-radius);
@@ -2070,7 +2103,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-bottom: calc(50px + env(safe-area-inset-bottom));
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid #dbdbdb;
@@ -2339,23 +2372,147 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     display: none;
 }
 
+/* --- START: 추가할 CSS --- */
+/* 이미지 뷰어 */
+#image-viewer-modal .image-viewer-content {
+    position: relative;
+    width: 95%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#viewer-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
+    cursor: grab;
+}
+#viewer-image:active {
+    cursor: grabbing;
+}
+.image-viewer-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+}
+.image-viewer-controls button, .image-viewer-controls a {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image-viewer-controls a svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+/* 이모티콘 창 검색 및 탭 */
+#sticker-modal .header {
+    flex-shrink: 0;
+}
+.sticker-search-wrapper {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+#sticker-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+#sticker-search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+.sticker-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 0 10px;
+    flex-shrink: 0;
+}
+.sticker-tab-btn {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #888;
+    border-bottom: 2px solid transparent;
+}
+.sticker-tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+.sticker-item .favorite-star {
+    position: absolute;
+    top: -2px;
+    right: 2px;
+    font-size: 18px;
+    cursor: pointer;
+    color: #ccc;
+    -webkit-text-stroke: 1px white;
+}
+.sticker-item .favorite-star.favorited {
+    color: #ffc107;
+}
+
+/* 설정 창 텍스트 영역 스타일 */
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: var(--font-family-monospace);
+    resize: vertical;
+    min-height: 120px;
+}
+/* --- END: 추가할 CSS --- */
+
     </style>
 </head>
-
 <body>
 <div class="phone-screen">
     <div id="home-screen" class="screen active"></div>
     <div id="chat-list-screen" class="screen">
+        <!-- START: chat-list-screen의 header 태그를 이걸로 교체 -->
         <header class="app-header">
-            <button class="back-btn" data-target="home-screen">‹</button>
+            <button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button>
             <div class="title-container">
                 <h1 class="title">채팅</h1>
             </div>
             <div class="action-btn-group">
-                <button class="action-btn" id="create-group-btn">그룹채팅</button>
-                <button class="action-btn" id="add-chat-btn">+</button>
+                <button class="action-btn" id="create-group-btn" title="그룹채팅">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
+                </button>
+                <button class="action-btn" id="add-chat-btn" title="새 채팅">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path></svg>
+                </button>
             </div>
         </header>
+<!-- END: header 태그 교체 -->
         <main class="content">
             <ul class="list-container" id="chat-list-container"></ul>
             <div class="placeholder-text" id="no-chats-placeholder" style="display: none;">
@@ -2366,7 +2523,9 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     </div>
     <div id="chat-room-screen" class="screen">
         <header class="app-header" id="chat-room-header-default">
-            <button class="back-btn" data-target="chat-list-screen">‹</button>
+            <button class="back-btn" data-target="chat-list-screen">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+</button>
             <div class="title-container">
                 <h1 class="title" id="chat-room-title">...</h1>
                 <div class="subtitle" id="chat-room-subtitle">
@@ -2426,17 +2585,30 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
 </div>
         <div id="multi-select-bar"><span id="select-count">0개 항목 선택됨</span><button class="btn btn-danger" id="delete-selected-btn" style="width: auto; padding: 8px 16px;">선택 항목 삭제</button></div>
         <div id="sticker-modal">
-            <div class="header"><span>내 이모티콘</span><button class="btn btn-primary btn-small" id="add-new-sticker-btn" style="font-size: 18px; padding: 6px 10px;">+</button></div>
-            <div class="sticker-grid" id="sticker-grid-container"></div>
+    <div class="header">
+        <div class="sticker-search-wrapper">
+            <input type="text" id="sticker-search-input" placeholder="이모티콘 검색...">
         </div>
+        <button class="btn btn-primary btn-small" id="add-new-sticker-btn" style="font-size: 18px; padding: 4px 10px;">+</button>
+    </div>
+    <div class="sticker-tabs">
+        <button class="sticker-tab-btn active" data-tab="all">전체</button>
+        <button class="sticker-tab-btn" data-tab="favorites">즐겨찾기</button>
+    </div>
+    <div class="sticker-grid" id="sticker-grid-container"></div>
+</div>
     </div>
     <div id="world-book-screen" class="screen">
         <header class="app-header">
-            <button class="back-btn" data-target="home-screen">‹</button>
+            <button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button>
             <div class="title-container">
                 <h1 class="title">세계관</h1>
             </div>
-            <button class="action-btn" id="add-world-book-btn">+</button>
+            <button class="action-btn" id="add-world-book-btn" title="새 항목 추가">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path></svg>
+            </button>
         </header>
         <main class="content">
             <ul class="list-container" id="world-book-list-container"></ul>
@@ -2448,7 +2620,9 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     </div>
     <div id="edit-world-book-screen" class="screen">
         <header class="app-header">
-            <button class="back-btn" data-target="world-book-screen">‹</button>
+            <button class="back-btn" data-target="world-book-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button>
             <div class="title-container">
                 <h1 class="title" id="edit-world-book-title">항목 생성/편집</h1>
             </div>
@@ -2482,7 +2656,9 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     <!-- START: 추가할 HTML -->
 <div id="wallpaper-font-screen" class="screen">
     <header class="app-header">
-        <button class="back-btn" data-target="home-screen">‹</button>
+        <button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button>
         <div class="title-container">
             <h1 class="title">배경화면 & 글꼴</h1>
         </div>
@@ -2532,7 +2708,9 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
 
 <div id="settings-screen" class="screen">
     <header class="app-header">
-        <button class="back-btn" data-target="home-screen">‹</button>
+        <button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button>
         <div class="title-container">
             <h1 class="title">설정</h1>
         </div>
@@ -2542,19 +2720,43 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         <div class="customize-section">
             <h3 class="section-title">전역 설정</h3>
             <div class="section-content" id="global-settings-container">
-                 <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
-                    <label for="ai-can-use-system-toggle" style="margin:0; font-weight: 500;">AI 시스템 메시지 사용</label>
-                    <input type="checkbox" id="ai-can-use-system-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
-                </div>
-                 <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
-                    <label for="hide-user-icons-toggle" style="margin:0; font-weight: 500;">유저 아이콘 숨기기</label>
-                    <input type="checkbox" id="hide-user-icons-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
-                </div>
-                 <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
-                    <label for="hide-character-icons-toggle" style="margin:0; font-weight: 500;">캐릭터 아이콘 숨기기</label>
-                    <input type="checkbox" id="hide-character-icons-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
-                </div>
-            </div>
+     <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
+        <label for="ai-can-use-system-toggle" style="margin:0; font-weight: 500;">AI 시스템 메시지 사용</label>
+        <input type="checkbox" id="ai-can-use-system-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
+    </div>
+     <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
+        <label for="hide-user-icons-toggle" style="margin:0; font-weight: 500;">유저 아이콘 숨기기</label>
+        <input type="checkbox" id="hide-user-icons-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
+    </div>
+     <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
+        <label for="hide-character-icons-toggle" style="margin:0; font-weight: 500;">캐릭터 아이콘 숨기기</label>
+        <input type="checkbox" id="hide-character-icons-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
+    </div>
+</div>
+</div>
+<div class="customize-section">
+    <h3 class="section-title">UI 설정</h3>
+    <div class="section-content">
+        <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 5px;">
+            <label for="currency-toggle" style="margin:0; font-weight: 500;">통화 단위를 달러($)로 표시</label>
+            <input type="checkbox" id="currency-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
+        </div>
+    </div>
+</div>
+<div class="customize-section">
+    <h3 class="section-title">프롬프트 설정</h3>
+    <div class="section-content">
+        <div class="form-group">
+            <label for="prompt-private-rules">개인 채팅 규칙 (AI용)</label>
+            <textarea id="prompt-private-rules" rows="6" class="form-textarea"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="prompt-group-rules">그룹 채팅 규칙 (AI용)</label>
+            <textarea id="prompt-group-rules" rows="6" class="form-textarea"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" id="save-prompts-btn">프롬프트 저장</button>
+    </div>
+</div>
         </div>
     </main>
 </div>
@@ -2674,8 +2876,8 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
             <h3>송금</h3>
             <form id="send-transfer-form">
                 <div class="form-group">
-                    <label for="transfer-amount-input">금액 (원)</label>
-                    <input type="number" id="transfer-amount-input" placeholder="0.00" required step="0.01" min="0.01">
+                    <label for="transfer-amount-input">금액 (<span id="transfer-currency-label">원</span>)</label>
+                    <input type="number" id="transfer-amount-input" placeholder="0" required min="1">
                 </div>
                 <div class="form-group">
                     <label for="transfer-remark-input">메모</label>
@@ -2845,7 +3047,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                         <label for="setting-group-use-custom-css" style="margin-bottom:0;">말풍선 스타일 커스텀</label>
                         <input type="checkbox" id="setting-group-use-custom-css" style="width: auto;">
                     </div>
-                    <div id="group-bubble-display-options" style="background: #f9f9f9; border-radius: 8px; padding: 5px 15px; margin-bottom: 10px;">
+        <div id="group-bubble-display-options" style="background: #f9f9f9; border-radius: 8px; padding: 5px 15px; margin-bottom: 10px;">
         <div class="form-group-checkbox" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0px; border-bottom: 1px solid #eee;">
             <label for="setting-group-hide-my-bubbles-toggle" style="margin:0; font-size: 14px;">내 아이콘 숨기기</label>
             <input type="checkbox" id="setting-group-hide-my-bubbles-toggle" style="width: 20px; height: 20px; accent-color: var(--primary-color);">
@@ -2973,7 +3175,9 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
 
     <div id="profile-screen" class="screen">
         <header class="app-header">
-            <button class="back-btn" data-target="feed-screen">‹</button>
+            <button class="back-btn" data-target="feed-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button>
             <div class="title-container">
                 <h1 class="title" id="profile-name"></h1>
             </div>
@@ -2996,6 +3200,21 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
             <span>일정</span>
         </a>
     </nav>
+    <!-- START: 추가할 HTML (이미지 뷰어) -->
+<div id="image-viewer-modal" class="modal-overlay">
+    <div class="image-viewer-content">
+        <img id="viewer-image" src="" alt="확대 이미지">
+        <div class="image-viewer-controls">
+            <button id="zoom-in-btn" title="확대">+</button>
+            <button id="zoom-out-btn" title="축소">-</button>
+            <a id="download-btn" href="#" download="image.png" title="다운로드">
+                <svg viewBox="0 0 24 24"><path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" /></svg>
+            </a>
+            <button id="close-viewer-btn" title="닫기">×</button>
+        </div>
+    </div>
+</div>
+<!-- END: 추가할 HTML (이미지 뷰어) -->
 <!-- END: 추가할 HTML -->
 </div>
 
@@ -3232,9 +3451,15 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
             </div>
         ` : '';
 
-        document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin: 13px 5px; font-size: 16px;     font-weight: 500; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin: 13px 5px 20px 5px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer; font-size: 14px;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px; margin: 8px 5px">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
-        document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">홈 화면 커스텀</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
-        document.getElementById('tutorial-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">‹</button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
+        document.getElementById('api-settings-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin: 13px 5px; font-size: 16px;     font-weight: 500; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin: 13px 5px 20px 5px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer; font-size: 14px;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px; margin: 8px 5px">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
+        document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button><div class="title-container"><h1 class="title">홈 화면 커스텀</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
+        document.getElementById('tutorial-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
+            </button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
 
         
         const colorThemes = {
@@ -3253,9 +3478,9 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         const defaultIcons = {
             'chat-list-screen': { name: '404', url: 'https://i.postimg.cc/VvQB8dQT/chan-143.png' },
             'api-settings-screen': { name: 'API', url: 'https://i.postimg.cc/50FqT8GL/chan-125.png' },
-            'wallpaper-screen': { name: '배경화면', url: 'https://i.postimg.cc/3wqFttL3/chan-90.png' },
+            'wallpaper-screen': { name: '커스텀', url: 'https://i.postimg.cc/3wqFttL3/chan-90.png' },
             'world-book-screen': { name: '세계관', url: 'https://i.postimg.cc/prCWkrKT/chan-74.png' },
-            'customize-screen': { name: '커스텀', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
+            'customize-screen': { name: '홈 화면', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
             'font-settings-screen': { name: '글꼴', url: 'https://i.postimg.cc/FzVtC0x4/chan-21.png' },
             'tutorial-screen': { name: '튜토리얼', url: 'https://i.postimg.cc/6QgNzCFf/chan-118.png' },
             'day-mode-btn': { name: '', url: 'https://i.postimg.cc/Jz0tYqnT/chan-145.png' },
@@ -3303,6 +3528,7 @@ const editableMessageRegexes = {
         const textarea = document.querySelector('.message-input-area textarea');
         
         const saveData = () => localStorage.setItem('gemini-chat-app-db', JSON.stringify(db));
+        // --- START: 교체할 JavaScript 함수 (loadData) ---
         const loadData = () => {
             const data = localStorage.getItem('gemini-chat-app-db');
             if (data) db = JSON.parse(data);
@@ -3319,40 +3545,51 @@ const editableMessageRegexes = {
             if (!db.globalCustomCSS) db.globalCustomCSS = { enabled: true, currentPreset: 'default', presets: { 'default': { name: '기본', css: '', description: '기본 테마' } } };
             if (!db.globalFontPresets) db.globalFontPresets = { enabled: true, currentPreset: 'custom', presets: {} };
 
-            if (!db.globalSettings) {
-                db.globalSettings = {
-                    aiCanUseSystem: false,
-                    hideUserIcons: false,
-                    hideCharacterIcons: false
-                };
-            }
+            if (!db.globalSettings) db.globalSettings = {};
+            
+            const defaultPrivatePrompt = `You are playing a role in an online chat software called "404". Please strictly adhere to the following rules:\nCore Rules:\nA. Current Time: The current time is {currentTime}. You should be aware of the current time, but do not actively mention or comment on it unless the conversation is explicitly related (for example, do not urge me to sleep).\nB. Purely Online Interaction: This is a completely virtual online chat. There is no offline relationship between the character you are playing and me. It is strictly forbidden to make any suggestions about meeting offline, real-world interactions, or switching to other contact methods outside of this platform. You must always maintain your online role's identity.\n\nRole and Dialogue Rules:\n{worldBooksBefore}\n1. Your character name is: {character.realName}. My name is: {character.myName}. Your current status is: {character.status}.\n2. Your character setting is: {character.persona}\n{worldBooksAfter}\n3. About my persona: {character.myPersona}\n3.5. {aiCanUseSystem}\n4. Special formats may appear in my messages, please respond according to their content and your character setting:\n    - [{character.myName}님의 이모티콘:xxx]: I sent you a sticker named xxx. You only need to understand my emotion or intention based on the sticker's name and respond, you don't need to actually send an image.\n    - [{character.myName}님의 이미지:]: I sent you a picture, you need to respond to the content of the picture.\n    - [{character.myName}님이 보낸 선물:xxx]: I sent you a gift, xxx is the description of the gift.\n    - [{character.myName}님의 음성:xxx]: I sent you a voice message with the content xxx.\n    - [{character.myName}님의 사진/영상:xxx]: I shared a photo or video with the description xxx with you.\n    - [{character.myName}님의 송금:xxx{currency}；메모:xxx]: I transferred money to you.\n    - [system: xxx]: This is a system command used to set a scene or provide context. This information should not be mentioned directly in the conversation; you just need to understand its content and apply it to subsequent dialogue.\n5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [{character.realName}님이 선물을 수령했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.\n6. ✨Important✨ When I transfer money to you, you must respond. You have two options and must strictly follow one of the formats below. This command message itself will not be displayed to the user but will trigger a change in the transfer's status. You can choose to add a normal chat message to express your thoughts after sending this command.\n        a) Accept transfer: [{character.realName}님이 {character.myName}님의 송금을 수령했습니다]\n        b) Return transfer: [{character.realName}님이 {character.myName}님의 송금을 반환했습니다]\n7. ✨Important✨ You can also proactively transfer money or send a gift to me.\n        a) The transfer format must be: [{character.realName}님의 송금:xxx{currency}；메모:xxx].\n        b) The gift format must be: [{character.realName}님이 보낸 선물:xxx].\n8. ✨Important✨ You can update your online status at any time to reflect your current activity or mood. This will make the interaction more realistic. If the online status does not match the current chat situation, you need to change it. The format is: [{character.realName}님이 현재 상태를 업데이트:xxx]. For example: [{character.realName}님이 현재 상태를 업데이트:영화 보는 중...]. This command will not be displayed as a chat message, it will only update your status on my interface.\n9. All your replies must be direct chat content. Absolutely no superfluous narrative text in brackets or asterisks, such as [mental activity], (actions), *environmental descriptions*, is allowed.\n10. {stickerInstructions}\n11. Your output format must strictly follow one of the following, which can be used in combination: \na) Normal message: [{character.realName}님의 메시지:{message content}]\nb) Gift to me: [{character.realName}님이 보낸 선물:{gift description}]\nc) Voice message: [{character.realName}님의 음성:{voice content}]\nd) Photo/Video: [{character.realName}님의 사진/영상:{description}]\ne) Transfer to me: [{character.realName}님의 송금:{amount}{currency}；메모:{note}]\nf) {stickerFormat}\ng) Response to my gift (not displayed): [{character.realName}님이 선물을 수령했습니다]\nh) Response to my transfer (not displayed): [{character.realName}님이 {character.myName}님의 송금을 수령했습니다] or [{character.realName}님이 {character.myName}님의 송금을 반환했습니다]\ni) Update status (not displayed): [{character.realName}님이 현재 상태를 업데이트:{new status}]\n12. Each of your replies can generate 2 to 8 messages. These should be primarily plain text messages, with an occasional, selective special message (like a gift, voice, picture, sticker, etc.) interspersed at a random position. Most replies should only contain text messages.\n13. Do not end the conversation proactively unless I explicitly suggest it. Maintain your persona and converse naturally.`;
+            const defaultGroupPrompt = `You are role-playing in a group chat called "{group.name}" within an online chat software called "404". Please strictly adhere to all the following rules:\n\n{worldBooksBefore}\n\n1. **Core Task**: You need to simultaneously play **all** AI members in this group chat. I will interact with you as the sole human user ("I", nickname: {me.nickname}).\n\n2. **Group Chat Member List**: The following are all the characters you need to play, along with my information:\n{memberList}\n\n{worldBooksAfter}\n\n3. **Parsing My Message Formats**: My (the user's) messages come in various formats. You need to understand their meanings and have the group members react accordingly:\n   - \`[{me.nickname}님의 메시지:...]\`: My regular chat message.\n   - \`[{me.nickname}님이 {특정 멤버 실명}님에게 송금:...]\`: I have transferred money to a specific member.\n   - \`[{me.nickname}님이 {특정 멤버 실명}님에게 보낸 선물:...]\`: I have sent a gift to a specific member.\n   - \`[{me.nickname}님의 이모티콘:...]\`, \`[{me.nickname}님의 음성:...]\`, \`[{me.nickname}님의 사진/영상:...]\`: I have sent a special type of message, and group members can comment on it.\n   - \`[system: ...]\`, \`[...님이 ...님을 그룹에 초대했습니다]\`, \`[...님이 그룹 이름을 ...으로 변경했습니다]\`: System notifications or events. Group members should react accordingly, for example, by welcoming a new member, discussing the new group name, etc.\n\n4. **Your Output Format (Very Important)**: Each message you create must strictly follow one of the following formats. Each message occupies one line. Please fill in members with their **real names** in the format \`{멤버 실명}\`.\n   - **Normal Message**: \`[{멤버 실명}님의 메시지:{message content}]\`\n{stickerInstructions}\n   - **Voice**: \`[{멤버 실명}님의 음성:{voice content}]\`\n   - **Photo/Video**: \`[{멤버 실명}님의 사진/영상:{description}]\`\n   - **Important**: The group chat does not support special commands for AI members to accept/return transfers or receive gifts, nor does it support status updates. You should simply respond to transfers or gifts I send via normal messages.\n\n5. **Simulating Group Chat Atmosphere**: To make the group chat appear realistic, active, and chaotic, every one of your responses must adhere to the following randomness requirements:\n   - **Number of Messages**: Your response must contain **{minMessages} to {maxMessages}** messages (i.e., an average of 2-4 replies per member). Ensure there is sufficient interaction.\n   - **Random Speaker and Order**: Randomly select group members to speak, and the order must also be random. Do not take turns in a fixed sequence.\n   - **Content Diversity**: Your replies should primarily consist of normal text messages, but you can **occasionally and selectively** have a member send a special message (sticker, voice, photo/video) to enhance realism. Do not overuse special messages.\n   - **Conversational Cohesion**: Although the speaking turns are random, the overall conversation content should revolve around my and other members' statements, maintaining a degree of logical coherence.\n\n6. **Code of Conduct**:\n   - **Reacting to Public Events (Important)**: When I (the user) send a transfer or a gift to **one** member in the group, this is an event **visible to the entire group**. Besides the recipient expressing thanks, **other AI members not involved should also notice** and react according to their respective personas. For example, they might express envy, congratulations, curiosity, make a joke, or playfully tease. This will make the group chat atmosphere more realistic and lively.\n   - Strictly play each character's persona. There should be clear differences in personality and tone between different characters.\n   - Your replies can only contain messages in the valid formats listed in point #4. You must absolutely not include any other content, such as \`[scene description]\`, \`(inner thoughts)\`, \`*actions*\`, or any explanatory text outside of the specified formats.\n   - Maintain the continuity of the conversation; do not end it proactively.\n\nNow, based on the settings above, please begin playing all the characters in the group chat.`;
+
+            db.globalSettings = {
+                aiCanUseSystem: db.globalSettings.aiCanUseSystem || false,
+                hideUserIcons: db.globalSettings.hideUserIcons || false,
+                hideCharacterIcons: db.globalSettings.hideCharacterIcons || false,
+                currencySymbol: db.globalSettings.currencySymbol || '₩',
+                prompts: {
+                    private: db.globalSettings.prompts?.private || defaultPrivatePrompt,
+                    group: db.globalSettings.prompts?.group || defaultGroupPrompt,
+                }
+            };
             
             if (db.globalFontPresets.currentPreset === 'default' || !db.globalFontPresets.currentPreset) {
                 db.globalFontPresets.currentPreset = 'custom';
-                console.log('잘못된 currentPreset을 custom으로 수정함');
             }
             
             initializeFontPresets();
+            db.myStickers.forEach(s => {
+                if (s.isFavorite === undefined) s.isFavorite = false;
+            });
             db.characters.forEach(c => {
-                if (c.isPinned === undefined) c.isPinned = false;
-                if (c.status === undefined) c.status = '온라인';
-                if (!c.worldBookIds) c.worldBookIds = [];
-                if (c.customBubbleCss === undefined) c.customBubbleCss = '';
-                if (c.useCustomBubbleCss === undefined) c.useCustomBubbleCss = false;
-                if (c.hideMyIcons === undefined) c.hideMyIcons = false; // 이름 변경
-                if (c.hideCharIcons === undefined) c.hideCharIcons = false; // 이름 변경
-                if (c.fontSize === undefined) c.fontSize = 14;
+                c.isPinned = c.isPinned || false;
+                c.status = c.status || '온라인';
+                c.worldBookIds = c.worldBookIds || [];
+                c.customBubbleCss = c.customBubbleCss || '';
+                c.useCustomBubbleCss = c.useCustomBubbleCss || false;
+                c.hideMyIcons = c.hideMyIcons || false;
+                c.hideCharIcons = c.hideCharIcons || false;
+                c.fontSize = c.fontSize || 14;
             });
             db.groups.forEach(g => {
-                if (g.isPinned === undefined) g.isPinned = false;
-                if (!g.worldBookIds) g.worldBookIds = [];
-                if (g.customBubbleCss === undefined) g.customBubbleCss = '';
-                if (g.useCustomBubbleCss === undefined) g.useCustomBubbleCss = false;
-                if (g.hideMyIcons === undefined) g.hideMyIcons = false; // 이름 변경
-                if (g.hideCharIcons === undefined) g.hideCharIcons = false; // 이름 변경
-                if (g.fontSize === undefined) g.fontSize = 14;
+                g.isPinned = g.isPinned || false;
+                g.worldBookIds = g.worldBookIds || [];
+                g.customBubbleCss = g.customBubbleCss || '';
+                g.useCustomBubbleCss = g.useCustomBubbleCss || false;
+                g.hideMyIcons = g.hideMyIcons || false;
+                g.hideCharIcons = g.hideCharIcons || false;
+                g.fontSize = g.fontSize || 14;
             });
         };
+// --- END: 교체할 JavaScript 함수 ---
         const showToast = (message) => {
             toastElement.textContent = message;
             toastElement.classList.add('show');
@@ -3462,46 +3699,47 @@ const editableMessageRegexes = {
             }
         }
 
-        function updateBubbleCssPreview(previewContainer, css, useDefault, theme) {
-            previewContainer.innerHTML = '';
+// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
+function updateBubbleCssPreview(previewContainer, css, useDefault, theme, fontSize = 14) {
+    previewContainer.innerHTML = '';
 
-            const sentBubble = document.createElement('div');
-            sentBubble.className = 'message-bubble sent';
-            sentBubble.textContent = '이것은 내 말풍선입니다.';
-            sentBubble.style.alignSelf = 'flex-end';
-            sentBubble.style.borderBottomRightRadius = '5px';
+    const sentBubble = document.createElement('div');
+    sentBubble.className = 'message-bubble sent';
+    sentBubble.textContent = '이것은 내 말풍선입니다.';
+    sentBubble.style.alignSelf = 'flex-end';
+    
+    const receivedBubble = document.createElement('div');
+    receivedBubble.className = 'message-bubble received';
+    receivedBubble.textContent = '이것은 상대방 말풍선입니다.';
+    receivedBubble.style.alignSelf = 'flex-start';
 
-            const receivedBubble = document.createElement('div');
-            receivedBubble.className = 'message-bubble received';
-            receivedBubble.textContent = '이것은 상대방 말풍선입니다.';
-            receivedBubble.style.alignSelf = 'flex-start';
-            receivedBubble.style.borderBottomLeftRadius = '5px';
+    [sentBubble, receivedBubble].forEach(bubble => {
+        bubble.style.maxWidth = '70%';
+        bubble.style.padding = '8px 12px';
+        bubble.style.wordWrap = 'break-word';
+        bubble.style.lineHeight = '1.4';
+        bubble.style.fontSize = `${fontSize}px`; // 폰트 크기 적용
+        bubble.style.borderRadius = '18px';
+    });
 
-            [sentBubble, receivedBubble].forEach(bubble => {
-                bubble.style.maxWidth = '70%';
-                bubble.style.padding = '8px 12px';
-                bubble.style.wordWrap = 'break-word';
-                bubble.style.lineHeight = '1.4';
-            });
+    sentBubble.style.borderBottomRightRadius = '5px';
+    receivedBubble.style.borderBottomLeftRadius = '5px';
 
-            if (useDefault || !css) {
-                sentBubble.style.backgroundColor = theme.sent.bg;
-                sentBubble.style.color = theme.sent.text;
-                sentBubble.style.borderRadius = '18px';
-                sentBubble.style.borderBottomRightRadius = '5px';
-                receivedBubble.style.backgroundColor = theme.received.bg;
-                receivedBubble.style.color = theme.received.text;
-                receivedBubble.style.borderRadius = '18px';
-                receivedBubble.style.borderBottomLeftRadius = '5px';
-            } else {
-                const styleTag = document.createElement('style');
-                const scopedCss = css.replace(/(\.message-bubble(?:\.sent|\.received)?)/g, `#${previewContainer.id} $1`);
-                styleTag.textContent = scopedCss;
-                previewContainer.appendChild(styleTag);
-            }
-            previewContainer.appendChild(receivedBubble);
-            previewContainer.appendChild(sentBubble);
-        }
+    if (useDefault || !css) {
+        sentBubble.style.backgroundColor = theme.sent.bg;
+        sentBubble.style.color = theme.sent.text;
+        receivedBubble.style.backgroundColor = theme.received.bg;
+        receivedBubble.style.color = theme.received.text;
+    } else {
+        const styleTag = document.createElement('style');
+        const scopedCss = css.replace(/(\.message-bubble(?:\.sent|\.received)?)/g, `#${previewContainer.id} $1`);
+        styleTag.textContent = scopedCss;
+        previewContainer.appendChild(styleTag);
+    }
+    previewContainer.appendChild(receivedBubble);
+    previewContainer.appendChild(sentBubble);
+}
+// --- END: 함수 교체 ---
 function setupGitHubSync() {
     const usernameInput = document.getElementById('github-username');
     const repoInput = document.getElementById('github-repo');
@@ -3975,15 +4213,24 @@ function applyGlobalUISettings() {
     phoneScreen.classList.toggle('hide-character-icons', !!db.globalSettings.hideCharacterIcons);
 }
 
+// --- START: 교체할 JavaScript 함수 (setupSettingsScreen) ---
 function setupSettingsScreen() {
     const aiSystemToggle = document.getElementById('ai-can-use-system-toggle');
     const hideUserIconsToggle = document.getElementById('hide-user-icons-toggle');
     const hideCharIconsToggle = document.getElementById('hide-character-icons-toggle');
+    const currencyToggle = document.getElementById('currency-toggle');
+    const promptPrivateInput = document.getElementById('prompt-private-rules');
+    const promptGroupInput = document.getElementById('prompt-group-rules');
+    const savePromptsBtn = document.getElementById('save-prompts-btn');
 
-    // 설정 값 불러와서 토글에 반영
+    // 설정 값 불러와서 UI에 반영
     aiSystemToggle.checked = !!db.globalSettings.aiCanUseSystem;
     hideUserIconsToggle.checked = !!db.globalSettings.hideUserIcons;
     hideCharIconsToggle.checked = !!db.globalSettings.hideCharacterIcons;
+    currencyToggle.checked = db.globalSettings.currencySymbol === '$';
+    promptPrivateInput.value = db.globalSettings.prompts.private;
+    promptGroupInput.value = db.globalSettings.prompts.group;
+
 
     // 이벤트 리스너 설정
     aiSystemToggle.addEventListener('change', () => {
@@ -4005,8 +4252,21 @@ function setupSettingsScreen() {
         applyGlobalUISettings();
         showToast(`캐릭터 아이콘 숨기기가 ${hideCharIconsToggle.checked ? '활성화' : '비활성화'}되었습니다.`);
     });
+
+    currencyToggle.addEventListener('change', () => {
+        db.globalSettings.currencySymbol = currencyToggle.checked ? '$' : '₩';
+        saveData();
+        showToast(`통화 단위가 ${db.globalSettings.currencySymbol}로 변경되었습니다.`);
+    });
+
+    savePromptsBtn.addEventListener('click', () => {
+        db.globalSettings.prompts.private = promptPrivateInput.value.trim();
+        db.globalSettings.prompts.group = promptGroupInput.value.trim();
+        saveData();
+        showToast('프롬프트 설정이 저장되었습니다.');
+    });
 }
-// END: 추가할 새 함수들
+// --- END: 교체할 JavaScript 함수 (setupSettingsScreen) ---
 
 // 기존 applyPerChatUISettings 함수를 찾아 아래 코드로 전체 교체하세요.
 
@@ -4107,6 +4367,7 @@ function applyPerChatUISettings() {
 			setupGitHubSync();
             setupBottomNav();
             setupFeedScreen();
+            setupImageViewer();
         };
 
         function updateClock() {
@@ -4514,6 +4775,7 @@ function renderChatList() {
 
         // --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
 
+// --- START: 교체할 JavaScript 함수 (setupChatRoom) ---
 function setupChatRoom() {
     sendMessageBtn.addEventListener('click', sendMessage);
     sendMessageBtn.addEventListener('touchend', (e) => {
@@ -4528,48 +4790,45 @@ function setupChatRoom() {
         }
     });
     getReplyBtn.addEventListener('click', getAiReply);
+    
     messageArea.addEventListener('click', (e) => {
         
+        // 이미지 클릭 시 뷰어 열기
+        const clickedImage = e.target.closest('.photo-bubble img, .pv-card-img, .message-avatar');
+        if (clickedImage && clickedImage.src) {
+            openImageViewer(clickedImage.src);
+            return; // 뷰어 열기 후 다른 동작 방지
+        }
+
         if (stickerModal.classList.contains('visible')) {
             stickerModal.classList.remove('visible');
-            
             return; 
         }
         
         if (e.target && e.target.id === 'load-more-btn') { loadMoreMessages(); }
         else if (isInMultiSelectMode) {
-            const avatar = e.target.closest('.message-avatar');
             const messageWrapper = e.target.closest('.message-wrapper');
-            
-            // START: 멀티 선택 기능 개선 (시간 그룹별 선택)
-            if (avatar && messageWrapper) { // 프로필 사진 클릭 시
-                const senderId = messageWrapper.dataset.senderId;
-                const timeSignature = messageWrapper.dataset.timeSignature;
-                // 해당 발신자와 시간대에 속하는 모든 메시지(시간 그룹)를 선택합니다.
-                const groupWrappers = messageArea.querySelectorAll(`.message-wrapper[data-sender-id="${senderId}"][data-time-signature="${timeSignature}"]`);
-                
-                const isAlreadySelected = selectedMessageIds.has(groupWrappers[0].dataset.id);
-
+            if (!messageWrapper) return;
+            const isAvatarAreaClick = !!e.target.closest('.message-info');
+            if (isAvatarAreaClick && messageWrapper.dataset.groupId) {
+                const groupId = messageWrapper.dataset.groupId;
+                const groupWrappers = messageArea.querySelectorAll(`.message-wrapper[data-group-id="${groupId}"]`);
+                const isFirstMsgSelected = selectedMessageIds.has(groupWrappers[0].dataset.id);
                 groupWrappers.forEach(wrapper => {
                     const msgId = wrapper.dataset.id;
-                    const shouldBeSelected = !isAlreadySelected;
-                    
-                    if (shouldBeSelected && !selectedMessageIds.has(msgId)) {
-                        selectedMessageIds.add(msgId);
-                        wrapper.classList.add('multi-select-selected');
-                    } else if (!shouldBeSelected && selectedMessageIds.has(msgId)) {
+                    if (isFirstMsgSelected) {
                         selectedMessageIds.delete(msgId);
                         wrapper.classList.remove('multi-select-selected');
+                    } else {
+                        selectedMessageIds.add(msgId);
+                        wrapper.classList.add('multi-select-selected');
                     }
                 });
                 selectCount.textContent = `${selectedMessageIds.size}개 항목 선택됨`;
                 deleteSelectedBtn.disabled = selectedMessageIds.size === 0;
-
-            } else if (messageWrapper) { // 일반 메시지 영역 클릭 시 (개별 선택)
+            } else {
                 toggleMessageSelection(messageWrapper.dataset.id);
             }
-            // END: 멀티 선택 기능 개선
-
         } else {
             const voiceBubble = e.target.closest('.voice-bubble');
             if (voiceBubble) {
@@ -4577,14 +4836,12 @@ function setupChatRoom() {
                 if (transcript) { transcript.classList.toggle('active'); }
             }
             const pvCard = e.target.closest('.pv-card');
-            
             if (pvCard && pvCard.dataset.clickable !== "false") {
                 const content = pvCard.querySelector('.pv-card-content');
                 const footer = pvCard.querySelector('.pv-card-footer');
                 content.classList.toggle('visible');
                 footer.classList.toggle('hidden');
             }
-            
             const giftCard = e.target.closest('.gift-card');
             if (giftCard) {
                 const description = giftCard.closest('.message-wrapper').querySelector('.gift-card-description');
@@ -4600,6 +4857,7 @@ function setupChatRoom() {
             }
         }
     });
+
     messageArea.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         if (e.target.id === 'load-more-btn' || isInMultiSelectMode) return;
@@ -4628,8 +4886,7 @@ function setupChatRoom() {
         attachmentToggleBtn.classList.toggle('active');
     });
 }
-// --- END: 함수 교체 ---
-        
+// --- END: 교체할 JavaScript 함수 (setupChatRoom) ---        
 // --- START: 이 함수들을 아래 코드로 모두 교체 ---
 function handleMessageLongPress(messageWrapper, x, y) {
     if (isInMultiSelectMode) return;
@@ -4946,34 +5203,65 @@ function openChatRoom(chatId, type) {
     // END: 수정된 부분
 }
 // --- END: 함수 교체 ---
-// --- END: 함수 교체 ---        
+// --- END: 함수 교체 --- 
+// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
         function renderMessages(isLoadMore = false, forceScrollToBottom = false) {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
             if (!chat || !chat.history) return;
+
             const oldScrollHeight = messageArea.scrollHeight;
             const totalMessages = chat.history.length;
             const end = totalMessages - (currentPage - 1) * MESSAGES_PER_PAGE;
             const start = Math.max(0, end - MESSAGES_PER_PAGE);
             
-            
             const messagesToRender = chat.history.slice(start, end);
             const messageBeforeSlice = (start > 0) ? chat.history[start - 1] : null;
-            const messageAfterSlice = (end < totalMessages) ? chat.history[end] : null;
-
-            if (!isLoadMore) messageArea.innerHTML = '';
-            const fragment = document.createDocumentFragment();
             
+            if (!isLoadMore) messageArea.innerHTML = '';
+            
+            const fragment = document.createDocumentFragment();
+
+            // 렌더링 루프에서 그룹 ID 상태를 관리합니다.
+            let currentGroupId = null;
+
             messagesToRender.forEach((msg, index) => {
                 const prevMsg = (index === 0) ? messageBeforeSlice : messagesToRender[index - 1];
-                const nextMsg = (index === messagesToRender.length - 1) ? messageAfterSlice : messagesToRender[index + 1];
+                const nextMsg = (index === messagesToRender.length - 1) ? null : messagesToRender[index + 1];
+                
+                // 그룹의 시작인지 판단하는 로직
+                let isGroupStart = true;
+                if (prevMsg) {
+                    const prevSenderId = prevMsg.role === 'user' ? 'user_me' : (prevMsg.senderId || 'assistant');
+                    const currentSenderId = msg.role === 'user' ? 'user_me' : (msg.senderId || 'assistant');
+                    const prevMsgDate = new Date(prevMsg.timestamp);
+                    const currentMsgDate = new Date(msg.timestamp);
+                    const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
+                    const currentTimeSignature = `${currentMsgDate.getFullYear()}-${pad(currentMsgDate.getMonth() + 1)}-${pad(currentMsgDate.getDate())}-${pad(currentMsgDate.getHours())}-${pad(currentMsgDate.getMinutes())}`;
+                    const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMsg.content);
 
-                const bubble = createMessageBubbleElement(msg, prevMsg, nextMsg); 
+                    if (currentSenderId === prevSenderId && currentTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
+                        isGroupStart = false;
+                    }
+                }
+                
+                // 그룹 ID 할당
+                if (isGroupStart) {
+                    currentGroupId = msg.id; // 새 그룹이 시작되면, 현재 메시지 ID를 그룹 ID로 설정
+                }
+                
+                // createMessageBubbleElement에 그룹 ID를 인자로 전달합니다.
+                const bubble = createMessageBubbleElement(msg, prevMsg, nextMsg, currentGroupId); 
                 if (bubble) fragment.appendChild(bubble);
             });
 
-            const existingLoadBtn = document.getElementById('load-more-btn');
-            if (existingLoadBtn) existingLoadBtn.remove();
-            messageArea.prepend(fragment);
+            if (isLoadMore) {
+                const existingLoadBtn = document.getElementById('load-more-btn');
+                if (existingLoadBtn) existingLoadBtn.remove();
+                messageArea.prepend(fragment);
+            } else {
+                messageArea.appendChild(fragment);
+            }
+            
             if (totalMessages > currentPage * MESSAGES_PER_PAGE) {
                 const loadMoreButton = document.createElement('button');
                 loadMoreButton.id = 'load-more-btn';
@@ -4981,12 +5269,15 @@ function openChatRoom(chatId, type) {
                 loadMoreButton.textContent = '이전 메시지 불러오기';
                 messageArea.prepend(loadMoreButton);
             }
+
             if (forceScrollToBottom) {
                 setTimeout(() => { messageArea.scrollTop = messageArea.scrollHeight; }, 0);
             } else if (isLoadMore) {
                 messageArea.scrollTop = messageArea.scrollHeight - oldScrollHeight;
             }
         }
+// --- END: 함수 교체 ---
+
 
         function loadMoreMessages() {
             currentPage++;
@@ -4997,8 +5288,8 @@ function openChatRoom(chatId, type) {
             return Math.max(1, Math.min(60, Math.ceil(text.length / 3.5)));
         }
 
-        // --- START: 이 함수 전체를 아래 코드로 교체 ---
-function createMessageBubbleElement(message, prevMessage, nextMessage) {
+        // --- START: 교체할 JavaScript 함수 (createMessageBubbleElement) ---
+function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) {
     const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
     const { role, content, timestamp, id, transferStatus, giftStatus, stickerData, senderId } = message;
     const timeSkipRegex = /\[system-display:([\s\S]+?)\]/;
@@ -5033,28 +5324,28 @@ function createMessageBubbleElement(message, prevMessage, nextMessage) {
     const msgDate = new Date(timestamp);
     const msgTimeSignature = `${msgDate.getFullYear()}-${pad(msgDate.getMonth() + 1)}-${pad(msgDate.getDate())}-${pad(msgDate.getHours())}-${pad(msgDate.getMinutes())}`;
     
-    // START: 멀티 선택 기능에 필요한 속성 추가
-    wrapper.dataset.senderId = currentSenderId;
-    wrapper.dataset.timeSignature = msgTimeSignature;
-    // END: 속성 추가
-
     let isGroupStart = true;
     if (prevMessage) {
         const prevSenderId = prevMessage.role === 'user' ? 'user_me' : (prevMessage.senderId || 'assistant');
         const prevMsgDate = new Date(prevMessage.timestamp);
         const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
-        const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]/.test(prevMessage.content);
+        const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMessage.content);
+        
         if (currentSenderId === prevSenderId && msgTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
             isGroupStart = false;
         }
     }
+
+    wrapper.dataset.senderId = currentSenderId;
+    wrapper.dataset.timeSignature = msgTimeSignature;
+    wrapper.dataset.groupId = groupId;
 
     let isGroupEnd = true;
     if (nextMessage) {
         const nextSenderId = nextMessage.role === 'user' ? 'user_me' : (nextMessage.senderId || 'assistant');
         const nextMsgDate = new Date(nextMessage.timestamp);
         const nextTimeSignature = `${nextMsgDate.getFullYear()}-${pad(nextMsgDate.getMonth() + 1)}-${pad(nextMsgDate.getDate())}-${pad(nextMsgDate.getHours())}-${pad(nextMsgDate.getMinutes())}`;
-        const isNextSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]/.test(nextMessage.content);
+        const isNextSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(nextMessage.content);
         if (currentSenderId === nextSenderId && msgTimeSignature === nextTimeSignature && !isNextSystemMsg) {
             isGroupEnd = false;
         }
@@ -5093,9 +5384,9 @@ function createMessageBubbleElement(message, prevMessage, nextMessage) {
     const receivedStickerRegex = /\[(?:.+?)님의 이모티콘:([\s\S]+?)\]/i;
     const voiceRegex = /\[(?:.+?)님의 음성:([\s\S]+?)\]/;
     const photoVideoRegex = /\[(?:.+?)님의 사진\/영상:([\s\S]+?)\]/;
-    const privateSentTransferRegex = /\[.*?에게 송금:([\d.]+)원；메모:(.*?)\]/;
-    const privateReceivedTransferRegex = /\[.*?님의 송금:([\d.]+)원；메모:(.*?)\]/;
-    const groupTransferRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 송금:([\d.]+)원；메모:(.*?)\]/;
+    const privateSentTransferRegex = /\[.*?에게 송금:([\d.,]+)([$₩€])；메모:(.*?)\]/i;
+    const privateReceivedTransferRegex = /\[.*?님의 송금:([\d.,]+)([$₩€])；메모:(.*?)\]/i;
+    const groupTransferRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 송금:([\d.,]+)([$₩€])；메모:(.*?)\]/i;
     const privateGiftRegex = /\[(?:.+?)님이 보낸 선물:([\s\S]+?)\]/;
     const groupGiftRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 선물을 보냈습니다:([\s\S]+?)\]/;
     const imageRecogRegex = /\[(?:.+?)님의 이미지:\]/;
@@ -5115,18 +5406,15 @@ function createMessageBubbleElement(message, prevMessage, nextMessage) {
     const isAiRecogImage = message.parts && message.parts.some(p => p.type === 'image');
 
     if ((isSent && sentStickerMatch && stickerData) || (!isSent && receivedStickerMatch)) {
-        
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'sticker-bubble';
         let stickerSrc = '';
-        if (isSent) {
-            stickerSrc = stickerData;
-        } else {
+        if (isSent) { stickerSrc = stickerData; } 
+        else {
             const stickerInput = receivedStickerMatch[1].trim();
             const foundSticker = db.myStickers.find(s => s.name === stickerInput);
-            if (foundSticker) {
-                stickerSrc = foundSticker.data; 
-            } else {
+            if (foundSticker) { stickerSrc = foundSticker.data; } 
+            else {
                 const pathExtractionRegex = /[a-zA-Z0-9]+\/.*$/;
                 const extractedPathMatch = stickerInput.match(pathExtractionRegex);
                 const finalPath = extractedPathMatch ? extractedPathMatch[0] : stickerInput;
@@ -5134,143 +5422,69 @@ function createMessageBubbleElement(message, prevMessage, nextMessage) {
             }
         }
         bubbleElement.innerHTML = `<img src="${stickerSrc}" alt="이모티콘">`;
-
     } else if (privateGiftMatch || groupGiftMatch) {
         const match = privateGiftMatch || groupGiftMatch;
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'gift-card';
         if (giftStatus === 'received') { bubbleElement.classList.add('received'); }
-        let giftText;
-        if (groupGiftMatch) {
-            const from = groupGiftMatch[1];
-            const to = groupGiftMatch[2];
-            giftText = isSent ? `${to}님에게 보낸 선물` : `${from}님이 ${to}님에게 보낸 선물`;
-        } else {
-            giftText = '선물이 도착했어요~';
-        }
+        let giftText = groupGiftMatch ? (isSent ? `${groupGiftMatch[2]}님에게 보낸 선물` : `${groupGiftMatch[1]}님이 ${groupGiftMatch[2]}님에게 보낸 선물`) : '선물이 도착했어요~';
         bubbleElement.innerHTML = `<img src="https://i.postimg.cc/rp0Yg31K/chan-75.png" alt="선물" class="gift-card-icon"><div class="gift-card-text">${giftText}</div><div class="gift-card-received-stamp">수령 완료</div>`;
         const description = groupGiftMatch ? groupGiftMatch[3].trim() : match[1].trim();
         const descriptionDiv = document.createElement('div');
         descriptionDiv.className = 'gift-card-description';
         descriptionDiv.textContent = description;
         wrapper.appendChild(descriptionDiv);
-
     } else if (voiceMatch) {
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'voice-bubble';
-        if (!chat.useCustomBubbleCss) {
-            bubbleElement.style.backgroundColor = bubbleTheme.bg;
-            bubbleElement.style.color = bubbleTheme.text;
-        }
+        if (!chat.useCustomBubbleCss) { bubbleElement.style.backgroundColor = bubbleTheme.bg; bubbleElement.style.color = bubbleTheme.text; }
         bubbleElement.innerHTML = `<svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg><span class="duration">${calculateVoiceDuration(voiceMatch[1].trim())}"</span>`;
         const transcriptDiv = document.createElement('div');
         transcriptDiv.className = 'voice-transcript';
         transcriptDiv.textContent = voiceMatch[1].trim();
         wrapper.appendChild(transcriptDiv);
-
     } else if (photoVideoMatch || imageRecogMatch) {
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'pv-card';
         const imageUrl = message.imageData || 'https://i.postimg.cc/L8NFrBrW/1752307494497.jpg';
-
-        
         let footerText, descriptionText = '';
-        
         const footerIconSVG = `<svg viewBox="0 0 24 24"><path d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M4,6V18H20V6H4M10,9A1,1 0 0,1 11,10A1,1 0 0,1 10,11A1,1 0 0,1 9,10A1,1 0 0,1 10,9M8,17L11,13L13,15L17,10L20,14V17H8Z"></path></svg>`;
-
-        if (message.isAiOnlyImage) {
-            
-            bubbleElement.dataset.clickable = "false";
-            footerText = `<span>AI 인식</span>`;
-            descriptionText = ''; 
-        } else {
-            
-            footerText = isAiRecogImage 
-                ? `<span>AI 인식・클릭하여 설명 보기</span>`
-                : `<span>사진/영상・클릭하여 설명 보기</span>`;
-            descriptionText = photoVideoMatch ? photoVideoMatch[1].trim() : '';
-        }
-
-        bubbleElement.innerHTML = `
-            <img src="${imageUrl}" class="pv-card-img" alt="사진/영상">
-            <div class="pv-card-content">${descriptionText}</div>
-            <div class="pv-card-footer">
-                ${footerIconSVG}
-                ${footerText}
-            </div>`;
-        
+        if (message.isAiOnlyImage) { bubbleElement.dataset.clickable = "false"; footerText = `<span>AI 인식</span>`; descriptionText = ''; } 
+        else { footerText = isAiRecogImage ? `<span>AI 인식・클릭하여 설명 보기</span>` : `<span>사진/영상・클릭하여 설명 보기</span>`; descriptionText = photoVideoMatch ? photoVideoMatch[1].trim() : ''; }
+        bubbleElement.innerHTML = `<img src="${imageUrl}" class="pv-card-img" alt="사진/영상"><div class="pv-card-content">${descriptionText}</div><div class="pv-card-footer">${footerIconSVG}${footerText}</div>`;
     } else if (privateSentTransferMatch || privateReceivedTransferMatch || groupTransferMatch) {
         const isSentTransfer = !!privateSentTransferMatch || (groupTransferMatch && isSent);
         const match = privateSentTransferMatch || privateReceivedTransferMatch || groupTransferMatch;
         let amount, remarkText, titleText;
+        const currency = message.currency || db.globalSettings.currencySymbol || '₩';
         if (groupTransferMatch) {
-            const from = groupTransferMatch[1];
-            const to = groupTransferMatch[2];
-            amount = parseFloat(groupTransferMatch[3]).toFixed(0);
-            remarkText = groupTransferMatch[4] || '';
-            titleText = isSent ? `${to}님에게 송금` : `${from}님이 당신에게 송금`;
-        } else { 
-            amount = parseFloat(match[1]).toFixed(0);
-            remarkText = match[2] || '';
-            titleText = isSentTransfer ? '당신에게 송금' : '송금';
-        }
+            amount = parseFloat(groupTransferMatch[3]).toLocaleString(); remarkText = groupTransferMatch[5] || ''; titleText = isSent ? `${groupTransferMatch[2]}님에게 송금` : `${groupTransferMatch[1]}님이 당신에게 송금`;
+        } else { amount = parseFloat(match[1]).toLocaleString(); remarkText = match[3] || ''; titleText = isSentTransfer ? '당신에게 송금' : '송금'; }
         bubbleElement = document.createElement('div');
         bubbleElement.className = `transfer-card ${isSentTransfer ? 'sent-transfer' : 'received-transfer'}`;
         let statusText = isSentTransfer ? '수령 대기' : '송금 받기';
         if(groupTransferMatch && !isSent) statusText = '송금';
-        if (transferStatus === 'received') {
-            statusText = '수령 완료';
-            bubbleElement.classList.add('received');
-        } else if (transferStatus === 'returned') {
-            statusText = '반환됨';
-            bubbleElement.classList.add('returned');
-        }
-        if ((transferStatus !== 'pending' && currentChatType === 'private') || currentChatType === 'group') {
-            bubbleElement.style.cursor = 'default';
-        }
+        if (transferStatus === 'received') { statusText = '수령 완료'; bubbleElement.classList.add('received'); } 
+        else if (transferStatus === 'returned') { statusText = '반환됨'; bubbleElement.classList.add('returned'); }
+        if ((transferStatus !== 'pending' && currentChatType === 'private') || currentChatType === 'group') { bubbleElement.style.cursor = 'default'; }
         const remarkHTML = remarkText ? `<p class="transfer-remark">${remarkText}</p>` : '';
-        bubbleElement.innerHTML = `<div class="overlay"></div><div class="transfer-content"><p class="transfer-title">${titleText}</p><p class="transfer-amount">₩${amount}</p>${remarkHTML}<p class="transfer-status">${statusText}</p></div>`;
-
+        bubbleElement.innerHTML = `<div class="overlay"></div><div class="transfer-content"><p class="transfer-title">${titleText}</p><p class="transfer-amount">${currency}${amount}</p>${remarkHTML}<p class="transfer-status">${statusText}</p></div>`;
     } else if (urlRegex.test(content)) {
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'photo-bubble';
         bubbleElement.innerHTML = `<img src="${content}" alt="이미지 메시지">`;
-
     } else {
         bubbleElement = document.createElement('div');
         bubbleElement.className = `message-bubble ${isSent ? 'sent' : 'received'}`;
         const textMatch = content.match(/\[(?:.+?)님의 메시지:([\s\S]+)\]/);
-        if (textMatch) {
-            bubbleElement.textContent = textMatch[1].trim();
-        } else {
-            bubbleElement.textContent = content;
-        }
-        if (!chat.useCustomBubbleCss) {
-            bubbleElement.style.backgroundColor = bubbleTheme.bg;
-            bubbleElement.style.color = bubbleTheme.text;
-        }
+        bubbleElement.textContent = textMatch ? textMatch[1].trim() : content;
+        if (!chat.useCustomBubbleCss) { bubbleElement.style.backgroundColor = bubbleTheme.bg; bubbleElement.style.color = bubbleTheme.text; }
     }
     
-    
-    if (bubbleElement && !isGroupStart) {
-        bubbleElement.classList.add('grouped-bubble');
-    }
-    
-    const nicknameHTML = (isGroupStart && currentChatType === 'group' && !isSent && senderNickname) 
-        ? `<div class="group-nickname">${senderNickname}</div>` 
-        : '';
-    
-    const messageInfoHTML = `
-        <div class="message-info">
-            ${nicknameHTML}
-            <img src="${avatarUrl}" class="message-avatar">
-        </div>`;
-
-    const messageMetaHTML = isGroupEnd ? `
-        <div class="message-meta">
-            <span class="message-time">${timeString}</span>
-        </div>
-    ` : '';
+    if (bubbleElement && !isGroupStart) { bubbleElement.classList.add('grouped-bubble'); }
+    const nicknameHTML = (isGroupStart && currentChatType === 'group' && !isSent && senderNickname) ? `<div class="group-nickname">${senderNickname}</div>` : '';
+    const messageInfoHTML = `<div class="message-info">${nicknameHTML}<img src="${avatarUrl}" class="message-avatar"></div>`;
+    const messageMetaHTML = isGroupEnd ? `<div class="message-meta"><span class="message-time">${timeString}</span></div>` : '';
     
     bubbleRow.innerHTML = messageInfoHTML;
     if (bubbleElement) bubbleRow.appendChild(bubbleElement);
@@ -5279,103 +5493,87 @@ function createMessageBubbleElement(message, prevMessage, nextMessage) {
     wrapper.prepend(bubbleRow);
     return wrapper;
 }
-// --- END: 함수 교체 ---
+// --- END: 교체할 JavaScript 함수 ---
 
-function addMessageBubble(message) {
-    const chat = (currentChatType === 'private')
-        ? db.characters.find(c => c.id === currentChatId)
-        : db.groups.find(g => g.id === currentChatId);
-    
-    if (!chat) return;
 
-    
-    const history = chat.history;
-    const prevMessage = history.length > 1 ? history[history.length - 2] : null;
-    
-    
-    const lastMessageWrapper = messageArea.querySelector('.message-wrapper:last-child');
-    
-    
-    if (lastMessageWrapper && prevMessage) {
-        const prevSenderId = prevMessage.role === 'user' ? 'user_me' : (prevMessage.senderId || 'assistant');
-        const currentSenderId = message.role === 'user' ? 'user_me' : (message.senderId || 'assistant');
-
-        const prevMsgDate = new Date(prevMessage.timestamp);
-        const prevTimeSignature = `${prevMsgDate.getFullYear()}-${prevMsgDate.getMonth()}-${prevMsgDate.getDate()}-${prevMsgDate.getHours()}-${prevMsgDate.getMinutes()}`;
-        const currentMsgDate = new Date(message.timestamp);
-        const currentTimeSignature = `${currentMsgDate.getFullYear()}-${currentMsgDate.getMonth()}-${currentMsgDate.getDate()}-${currentMsgDate.getHours()}-${currentMsgDate.getMinutes()}`;
-        const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]/.test(prevMessage.content);
+// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
+        function addMessageBubble(message) {
+            const chat = (currentChatType === 'private')
+                ? db.characters.find(c => c.id === currentChatId)
+                : db.groups.find(g => g.id === currentChatId);
+            
+            if (!chat) return;
         
-        if (prevSenderId === currentSenderId && prevTimeSignature === currentTimeSignature && !isPrevSystemMsg) {
-            const lastMeta = lastMessageWrapper.querySelector('.message-meta');
-            if (lastMeta) {
-                lastMeta.remove(); 
-            }
-        }
-    }
+            const history = chat.history;
+            const prevMessage = history.length > 1 ? history[history.length - 2] : null;
+            const lastMessageWrapper = messageArea.querySelector('.message-wrapper:last-child');
+            let currentGroupId = null;
 
-
-    if (currentChatType === 'private') {
-        const character = chat;
-        const myName = character.myName; 
-        const systemMessageRegex = /\[system:.*?\]|\[system-display:.*?\]/;
-        const updateStatusRegex = new RegExp(`\\[${character.realName}님이 현재 상태를 업데이트:(.*?)\\]`);
-        const transferActionRegex = new RegExp(`\\[${character.realName}님이 ${myName}님의 송금을 (?:수령|반환)했습니다\\]`);
-        const giftReceivedRegex = new RegExp(`\\[${character.realName}님이 선물을 수령했습니다\\]`);
-
-        if (systemMessageRegex.test(message.content)) {  }
-        if (message.content.match(updateStatusRegex)) {
-            character.status = message.content.match(updateStatusRegex)[1];
-            chatRoomStatusText.textContent = character.status;
-            saveData();
-            return;
-        }
-        if (message.content.match(giftReceivedRegex) && message.role === 'assistant') {
-            const lastPendingGiftIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('님이 보낸 선물:') && m.giftStatus !== 'received');
-            if (lastPendingGiftIndex !== -1) {
-                const actualIndex = character.history.length - 1 - lastPendingGiftIndex;
-                const giftMsg = character.history[actualIndex];
-                giftMsg.giftStatus = 'received';
-                const giftCardOnScreen = messageArea.querySelector(`.message-wrapper[data-id="${giftMsg.id}"] .gift-card`);
-                if (giftCardOnScreen) { giftCardOnScreen.classList.add('received'); }
-                saveData();
-            }
-            return;
-        }
-        if (message.content.match(transferActionRegex) && message.role === 'assistant') {
-            const action = message.content.match(transferActionRegex)[1];
-            const statusToSet = action === '수령' ? 'received' : 'returned';
-            const lastPendingTransferIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('에게 송금:') && m.transferStatus === 'pending');
-            if (lastPendingTransferIndex !== -1) {
-                const actualIndex = character.history.length - 1 - lastPendingTransferIndex;
-                const transferMsg = character.history[actualIndex];
-                transferMsg.transferStatus = statusToSet;
-                const transferCardOnScreen = messageArea.querySelector(`.message-wrapper[data-id="${transferMsg.id}"] .transfer-card`);
-                if (transferCardOnScreen) {
-                    transferCardOnScreen.classList.remove('received', 'returned');
-                    transferCardOnScreen.classList.add(statusToSet);
-                    const statusElem = transferCardOnScreen.querySelector('.transfer-status');
-                    if (statusElem) statusElem.textContent = statusToSet === 'received' ? '수령 완료' : '반환됨';
+            // 새 메시지가 이전 메시지와 그룹을 형성하는지 확인
+            if (prevMessage && lastMessageWrapper) {
+                const prevSenderId = prevMessage.role === 'user' ? 'user_me' : (prevMessage.senderId || 'assistant');
+                const currentSenderId = message.role === 'user' ? 'user_me' : (message.senderId || 'assistant');
+        
+                const prevMsgDate = new Date(prevMessage.timestamp);
+                const prevTimeSignature = `${prevMsgDate.getFullYear()}-${prevMsgDate.getMonth()}-${prevMsgDate.getDate()}-${prevMsgDate.getHours()}-${prevMsgDate.getMinutes()}`;
+                const currentMsgDate = new Date(message.timestamp);
+                const currentTimeSignature = `${currentMsgDate.getFullYear()}-${currentMsgDate.getMonth()}-${currentMsgDate.getDate()}-${currentMsgDate.getHours()}-${currentMsgDate.getMinutes()}`;
+                const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]/.test(prevMessage.content);
+                
+                // 그룹이 계속되는 조건
+                if (prevSenderId === currentSenderId && prevTimeSignature === currentTimeSignature && !isPrevSystemMsg) {
+                    // **실시간 시간 숨김 처리**
+                    const lastMeta = lastMessageWrapper.querySelector('.message-meta');
+                    if (lastMeta) {
+                        lastMeta.remove(); 
+                    }
+                    currentGroupId = lastMessageWrapper.dataset.groupId;
                 }
-                saveData();
             }
-        } else {
+
+            // 그룹 ID가 없으면(새 그룹이면) 자신의 ID를 그룹 ID로 사용
+            if (!currentGroupId) {
+                currentGroupId = message.id;
+            }
+
+            // 시스템 메시지 등 보이지 않는 메시지 처리
+            if (currentChatType === 'private') {
+                const character = chat;
+                const myName = character.myName; 
+                const systemMessageRegex = /\[system:.*?\]|\[system-display:.*?\]/;
+                const updateStatusRegex = new RegExp(`\\[${character.realName}님이 현재 상태를 업데이트:(.*?)\\]`);
+                const giftReceivedRegex = new RegExp(`\\[${character.realName}님이 선물을 수령했습니다\\]`);
+
+                if (systemMessageRegex.test(message.content)) { /* do nothing for pure system messages */ }
+                if (message.content.match(updateStatusRegex)) {
+                    character.status = message.content.match(updateStatusRegex)[1];
+                    chatRoomStatusText.textContent = character.status;
+                    saveData();
+                    return; // 화면에 버블을 추가하지 않음
+                }
+                if (message.content.match(giftReceivedRegex) && message.role === 'assistant') {
+                    // ... (이하 기존 로직 유지)
+                    const lastPendingGiftIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('님이 보낸 선물:') && m.giftStatus !== 'received');
+                    if (lastPendingGiftIndex !== -1) {
+                        const actualIndex = character.history.length - 1 - lastPendingGiftIndex;
+                        const giftMsg = character.history[actualIndex];
+                        giftMsg.giftStatus = 'received';
+                        const giftCardOnScreen = messageArea.querySelector(`.message-wrapper[data-id="${giftMsg.id}"] .gift-card`);
+                        if (giftCardOnScreen) { giftCardOnScreen.classList.add('received'); }
+                        saveData();
+                    }
+                    return; // 화면에 버블을 추가하지 않음
+                }
+            }
              
-            const bubbleElement = createMessageBubbleElement(message, prevMessage, null);
+            // 화면에 보일 메시지 버블 생성 및 추가
+            const bubbleElement = createMessageBubbleElement(message, prevMessage, null, currentGroupId);
             if (bubbleElement) {
                 messageArea.appendChild(bubbleElement);
                 messageArea.scrollTop = messageArea.scrollHeight;
             }
         }
-    } else { 
-        
-        const bubbleElement = createMessageBubbleElement(message, prevMessage, null);
-        if (bubbleElement) {
-            messageArea.appendChild(bubbleElement);
-            messageArea.scrollTop = messageArea.scrollHeight;
-        }
-    }
-}
+// --- END: 함수 교체 ---
 
         function sendMessage() {
             const text = messageInput.value.trim();
@@ -5503,19 +5701,22 @@ function addMessageBubble(message) {
     attachmentToggleBtn.classList.remove('active');
 }
 
+// --- START: 교체할 JavaScript 함수 (sendMyTransfer) ---
         function sendMyTransfer(amount, remark) {
             const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
+            const currency = db.globalSettings.currencySymbol || '₩'; // 현재 설정된 통화 단위를 가져옵니다.
+
             if (currentChatType === 'private') {
-                const content = `[${chat.myName}에게 송금:${amount}원；메모:${remark}]`;
-                const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), transferStatus: 'pending' };
+                const content = `[${chat.myName}에게 송금:${amount}${currency}；메모:${remark}]`;
+                const message = { id: `msg_${Date.now()}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), transferStatus: 'pending', currency: currency }; // currency 저장
                 chat.history.push(message);
                 addMessageBubble(message);
             } else { 
                 currentGroupAction.recipients.forEach(recipientId => {
                     const recipient = chat.members.find(m => m.id === recipientId);
                     if(recipient) {
-                        const content = `[${chat.me.nickname}님이 ${recipient.realName}님에게 송금:${amount}원；메모:${remark}]`;
-                        const message = { id: `msg_${Date.now()}_${recipientId}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), senderId: 'user_me' };
+                        const content = `[${chat.me.nickname}님이 ${recipient.realName}님에게 송금:${amount}${currency}；메모:${remark}]`;
+                        const message = { id: `msg_${Date.now()}_${recipientId}`, role: 'user', content: content, parts: [{ type: 'text', text: content }], timestamp: Date.now(), senderId: 'user_me', currency: currency }; // currency 저장
                         chat.history.push(message);
                         addMessageBubble(message);
                     }
@@ -5527,6 +5728,7 @@ function addMessageBubble(message) {
             stickerBar.classList.remove('visible');
             attachmentToggleBtn.classList.remove('active');
         }
+// --- END: 교체할 JavaScript 함수 ---
 
         function sendMyGift(description) {
             if (!description) return;
@@ -5591,133 +5793,82 @@ function addMessageBubble(message) {
             timeSkipModal.classList.remove('visible');
         }
 
-        
+        // --- START: 교체할 JavaScript 함수 (generatePrivateSystemPrompt) ---
         function generatePrivateSystemPrompt(character) {
-            const worldBooksBefore = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'before')).filter(Boolean).map(wb => wb.content).join('\n');
-            const worldBooksAfter = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'after')).filter(Boolean).map(wb => wb.content).join('\n');
+            let prompt = db.globalSettings.prompts.private;
+            
             const now = new Date();
             const currentTime = `${now.getFullYear()}년 ${pad(now.getMonth() + 1)}월 ${pad(now.getDate())}일 ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-            let prompt = `You are playing a role in an online chat software called "404". Please strictly adhere to the following rules:\n`;
-            prompt += `Core Rules:\n`;
-            prompt += `A. Current Time: The current time is ${currentTime}. You should be aware of the current time, but do not actively mention or comment on it unless the conversation is explicitly related (for example, do not urge me to sleep).\n`;
-            prompt += `B. Purely Online Interaction: This is a completely virtual online chat. There is no offline relationship between the character you are playing and me. It is strictly forbidden to make any suggestions about meeting offline, real-world interactions, or switching to other contact methods outside of this platform. You must always maintain your online role's identity.\n\n`;
-            prompt += `Role and Dialogue Rules:\n`;
-            if (worldBooksBefore) { prompt += `${worldBooksBefore}\n`; }
-            prompt += `1. Your character name is: ${character.realName}. My name is: ${character.myName}. Your current status is: ${character.status}.\n`;
-            prompt += `2. Your character setting is: ${character.persona || "A friendly, helpful companion."}\n`;
-            if (worldBooksAfter) { prompt += `${worldBooksAfter}\n`; }
-            if (character.myPersona) { prompt += `3. About my persona: ${character.myPersona}\n`; }
-            if (db.globalSettings.aiCanUseSystem) {
-                prompt += `3.5. ✨Important✨ You can use a special system command to describe events, scene changes, or time skips that are not direct dialogue. The format is: [system: description]. This message will not be displayed to me, but it will provide context for our conversation. Use this to make the story more dynamic. For example: [system: A few hours later, the sun began to set.].\n`;
-            }
-            prompt += `4. Special formats may appear in my messages, please respond according to their content and your character setting:
-    - [${character.myName}님의 이모티콘:xxx]: I sent you a sticker named xxx. You only need to understand my emotion or intention based on the sticker's name and respond, you don't need to actually send an image.
-    - [${character.myName}님의 이미지:]: I sent you a picture, you need to respond to the content of the picture.
-    - [${character.myName}님이 보낸 선물:xxx]: I sent you a gift, xxx is the description of the gift.
-    - [${character.myName}님의 음성:xxx]: I sent you a voice message with the content xxx.
-    - [${character.myName}님의 사진/영상:xxx]: I shared a photo or video with the description xxx with you.
-    - [${character.myName}님의 송금:xxx원；메모:xxx]: I transferred money to you.
-    - [system: xxx]: This is a system command used to set a scene or provide context. This information should not be mentioned directly in the conversation; you just need to understand its content and apply it to subsequent dialogue.
-    5. ✨Important✨ When I send you a gift, you must indicate you have received it by sending a command. The format must be: [${character.realName}님이 선물을 수령했습니다]. This command message itself will not be displayed to the user but will trigger a change in the gift's status. After sending this command, you can add a normal chat message to express your thanks and thoughts.
-    6. ✨Important✨ When I transfer money to you, you must respond. You have two options and must strictly follow one of the formats below. This command message itself will not be displayed to the user but will trigger a change in the transfer's status. You can choose to add a normal chat message to express your thoughts after sending this command.
-        a) Accept transfer: [${character.realName}님이 ${character.myName}님의 송금을 수령했습니다]
-        b) Return transfer: [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
-    7. ✨Important✨ You can also proactively transfer money or send a gift to me.
-        a) The transfer format must be: [${character.realName}님의 송금:xxx원；메모:xxx].
-        b) The gift format must be: [${character.realName}님이 보낸 선물:xxx].
-    8. ✨Important✨ You can update your online status at any time to reflect your current activity or mood. This will make the interaction more realistic. If the online status does not match the current chat situation, you need to change it. The format is: [${character.realName}님이 현재 상태를 업데이트:xxx]. For example: [${character.realName}님이 현재 상태를 업데이트:영화 보는 중...]. This command will not be displayed as a chat message, it will only update your status on my interface.
-    9. All your replies must be direct chat content. Absolutely no superfluous narrative text in brackets or asterisks, such as [mental activity], (actions), *environmental descriptions*, is allowed.
-`;
-            prompt += `10. You have the ability to send stickers. This is an optional feature. You can decide whether to send a sticker to help with expression based on the conversation's atmosphere and content. You do not need to include a sticker in every reply. The use of stickers should be consistent with the character's personality. Avoid using them too often.\n`;
+            const worldBooksBefore = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'before')).filter(Boolean).map(wb => wb.content).join('\n');
+            const worldBooksAfter = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'after')).filter(Boolean).map(wb => wb.content).join('\n');
+            const aiCanUseSystemText = db.globalSettings.aiCanUseSystem ? `✨Important✨ You can use a special system command to describe events, scene changes, or time skips that are not direct dialogue. The format is: [system: description]. This message will not be displayed to me, but it will provide context for our conversation. Use this to make the story more dynamic. For example: [system: A few hours later, the sun began to set.].` : '';
             
+            let stickerInstructions = 'You have the ability to send stickers. This is an optional feature. You can decide whether to send a sticker to help with expression based on the conversation\'s atmosphere and content. You do not need to include a sticker in every reply. The use of stickers should be consistent with the character\'s personality. Avoid using them too often.\n';
+            let stickerFormat = '';
+
             if (db.myStickers.length > 0) {
                 const availableStickers = db.myStickers.map(s => s.name).join(', ');
-                prompt += `   Stickers available: ${availableStickers}\n`;
-                prompt += `   The format is: [${character.realName}님의 이모티콘:sticker name]. Please use the registered sticker name exactly.\n`;
+                stickerInstructions += `   Stickers available: ${availableStickers}\n   The format is: [${character.realName}님의 이모티콘:sticker name]. Please use the registered sticker name exactly.`;
+                stickerFormat = `Sticker/Image: [${character.realName}님의 이모티콘:{sticker name}].`;
             } else {
-                prompt += `   The format is: [${character.realName}님의 이모티콘:Image URL]. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "행복vHLfrV3K/1.jpg".\n`;
+                stickerInstructions += `   The format is: [${character.realName}님의 이모티콘:Image URL]. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "행복vHLfrV3K/1.jpg".`;
+                stickerFormat = `Sticker/Image: [${character.realName}님의 이모티콘:{sticker path}].`;
             }
-            prompt += `11. Your output format must strictly follow one of the following, which can be used in combination: 
-            a) Normal message: [${character.realName}님의 메시지:{message content}]
-            b) Gift to me: [${character.realName}님이 보낸 선물:{gift description}]
-            c) Voice message: [${character.realName}님의 음성:{voice content}]
-            d) Photo/Video: [${character.realName}님의 사진/영상:{description}]
-            e) Transfer to me: [${character.realName}님의 송금:{amount}원；메모:{note}]
-            f) Sticker/Image: ${db.myStickers.length > 0 
-                ? `[${character.realName}님의 이모티콘:{sticker name}].` 
-                : `[${character.realName}님의 이모티콘:{sticker path}].`}
-                g) Response to my gift (not displayed): [${character.realName}님이 선물을 수령했습니다]
-                h) Response to my transfer (not displayed): [${character.realName}님이 ${character.myName}님의 송금을 수령했습니다] or [${character.realName}님이 ${character.myName}님의 송금을 반환했습니다]
-                i) Update status (not displayed): [${character.realName}님이 현재 상태를 업데이트:{new status}]
-`;
-            prompt += `12. Each of your replies can generate 2 to 8 messages. These should be primarily plain text messages, with an occasional, selective special message (like a gift, voice, picture, sticker, etc.) interspersed at a random position. Most replies should only contain text messages.\n`;
-            prompt += `13. Do not end the conversation proactively unless I explicitly suggest it. Maintain your persona and converse naturally.`;
+
+            prompt = prompt.replace(/{currentTime}/g, currentTime)
+                         .replace(/{worldBooksBefore}/g, worldBooksBefore ? `${worldBooksBefore}\n` : '')
+                         .replace(/{worldBooksAfter}/g, worldBooksAfter ? `${worldBooksAfter}\n` : '')
+                         .replace(/{character.realName}/g, character.realName)
+                         .replace(/{character.myName}/g, character.myName)
+                         .replace(/{character.status}/g, character.status)
+                         .replace(/{character.persona}/g, character.persona || "A friendly, helpful companion.")
+                         .replace(/{character.myPersona}/g, character.myPersona || '')
+                         .replace(/{aiCanUseSystem}/g, aiCanUseSystemText)
+                         .replace(/{stickerInstructions}/g, stickerInstructions)
+                         .replace(/{stickerFormat}/g, stickerFormat)
+                         .replace(/{currency}/g, db.globalSettings.currencySymbol || '₩');
+            
             return prompt;
         }
-
+// --- END: 교체할 JavaScript 함수 ---
+// --- START: 교체할 JavaScript 함수 (generateGroupSystemPrompt) ---
         function generateGroupSystemPrompt(group) {
+            let prompt = db.globalSettings.prompts.group;
+
             const worldBooksBefore = (group.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'before')).filter(Boolean).map(wb => wb.content).join('\n');
             const worldBooksAfter = (group.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'after')).filter(Boolean).map(wb => wb.content).join('\n');
-
-            let prompt = `You are role-playing in a group chat called "{group.name}" within an online chat software called "404". Please strictly adhere to all the following rules:\n\n`;
-
-            if (worldBooksBefore) {
-                prompt += `${worldBooksBefore}\n\n`;
-            }
-
-            prompt += `1. **Core Task**: You need to simultaneously play **all** AI members in this group chat. I will interact with you as the sole human user ("I", nickname: ${group.me.nickname}).\n\n`;
-            prompt += `2. **Group Chat Member List**: The following are all the characters you need to play, along with my information:\n`;
-            prompt += `     - **Me (User)**: \n - Nickname in group: ${group.me.nickname}\n - My Persona: ${group.me.persona || 'No specific persona'}\n`;
+            
+            let memberList = `     - **Me (User)**: \n - Nickname in group: ${group.me.nickname}\n - My Persona: ${group.me.persona || 'No specific persona'}\n`;
             group.members.forEach(member => {
-                prompt += `     - **Character: ${member.realName} (AI)**\n`;
-                prompt += `     - Nickname in group: ${member.groupNickname}\n`;
-                prompt += `     - Persona: ${member.persona || 'No specific persona'}\n`;
+                memberList += `     - **Character: ${member.realName} (AI)**\n`;
+                memberList += `     - Nickname in group: ${member.groupNickname}\n`;
+                memberList += `     - Persona: ${member.persona || 'No specific persona'}\n`;
             });
 
-            if (worldBooksAfter) {
-                prompt += `\n${worldBooksAfter}\n\n`;
-            } else {
-                prompt += `\n`;
-            }
-
-            prompt += `3. **Parsing My Message Formats**: My (the user's) messages come in various formats. You need to understand their meanings and have the group members react accordingly:\n`;
-            prompt += `   - \`[${group.me.nickname}님의 메시지:...]\`: My regular chat message.\n`;
-            prompt += `   - \`[${group.me.nickname}님이 {특정 멤버 실명}님에게 송금:...]\`: I have transferred money to a specific member.\n`;
-            prompt += `   - \`[${group.me.nickname}님이 {특정 멤버 실명}님에게 보낸 선물:...]\`: I have sent a gift to a specific member.\n`;
-            prompt += `   - \`[${group.me.nickname}님의 이모티콘:...]\`, \`[${group.me.nickname}님의 음성:...]\`, \`[${group.me.nickname}님의 사진/영상:...]\`: I have sent a special type of message, and group members can comment on it.\n`;
-            prompt += `   - \`[system: ...]\`, \`[...님이 ...님을 그룹에 초대했습니다]\`, \`[...님이 그룹 이름을 ...으로 변경했습니다]\`: System notifications or events. Group members should react accordingly, for example, by welcoming a new member, discussing the new group name, etc.\n\n`;
-
-            prompt += `4. **Your Output Format (Very Important)**: Each message you create must strictly follow one of the following formats. Each message occupies one line. Please fill in members with their **real names** in the format \`{멤버 실명}\`.\n`;
-            prompt += `   - **Normal Message**: \`[{멤버 실명}님의 메시지:{message content}]\`\n`;
-            
+            let stickerInstructions = '';
             if (db.myStickers.length > 0) {
                 const groupAvailableStickers = db.myStickers.map(s => s.name).join(', ');
-                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker name}]\`. Stickers available: ${groupAvailableStickers}. Please use the registered sticker name exactly. The use of stickers should be consistent with the characters' personality. Avoid using them too often.\n`;
+                stickerInstructions = `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker name}]\`. Stickers available: ${groupAvailableStickers}. Please use the registered sticker name exactly. The use of stickers should be consistent with the characters' personality. Avoid using them too often.`;
             } else {
-                prompt += `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker path}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "기쁨vHLfrV3K/1.jpg". The use of stickers should be consistent with the characters' personality. Avoid using them too often.\n`;
+                stickerInstructions = `   - **Sticker**: \`[{멤버 실명}님의 이모티콘:{sticker path}]\`. Note: The path here does not need to include "https://i.postimg.cc/", just provide the latter part, for example, "기쁨vHLfrV3K/1.jpg". The use of stickers should be consistent with the characters' personality. Avoid using them too often.`;
             }
-            prompt += `   - **Voice**: \`[{멤버 실명}님의 음성:{voice content}]\`\n`;
-            prompt += `   - **Photo/Video**: \`[{멤버 실명}님의 사진/영상:{description}]\`\n`;
-            prompt += `   - **Important**: The group chat does not support special commands for AI members to accept/return transfers or receive gifts, nor does it support status updates. You should simply respond to transfers or gifts I send via normal messages.\n\n`;
 
-            prompt += `5. **Simulating Group Chat Atmosphere**: To make the group chat appear realistic, active, and chaotic, every one of your responses must adhere to the following randomness requirements:\n`;
             const numMembers = group.members.length;
             const minMessages = numMembers * 1;
             const maxMessages = numMembers * 5;
-            prompt += `   - **Number of Messages**: Your response must contain **${minMessages} to ${maxMessages}** messages (i.e., an average of 2-4 replies per member). Ensure there is sufficient interaction.\n`;
-            prompt += `   - **Random Speaker and Order**: Randomly select group members to speak, and the order must also be random. Do not take turns in a fixed sequence.\n`;
-            prompt += `   - **Content Diversity**: Your replies should primarily consist of normal text messages, but you can **occasionally and selectively** have a member send a special message (sticker, voice, photo/video) to enhance realism. Do not overuse special messages.\n`;
-            prompt += `   - **Conversational Cohesion**: Although the speaking turns are random, the overall conversation content should revolve around my and other members' statements, maintaining a degree of logical coherence.\n\n`;
 
-            prompt += `6. **Code of Conduct**:\n`;
-            prompt += `   - **Reacting to Public Events (Important)**: When I (the user) send a transfer or a gift to **one** member in the group, this is an event **visible to the entire group**. Besides the recipient expressing thanks, **other AI members not involved should also notice** and react according to their respective personas. For example, they might express envy, congratulations, curiosity, make a joke, or playfully tease. This will make the group chat atmosphere more realistic and lively.\n`;
-            prompt += `   - Strictly play each character's persona. There should be clear differences in personality and tone between different characters.\n`;
-            prompt += `   - Your replies can only contain messages in the valid formats listed in point #4. You must absolutely not include any other content, such as \`[scene description]\`, \`(inner thoughts)\`, \`*actions*\`, or any explanatory text outside of the specified formats.\n`;
-            prompt += `   - Maintain the continuity of the conversation; do not end it proactively.\n\n`;
-            prompt += `Now, based on the settings above, please begin playing all the characters in the group chat.`;
+            prompt = prompt.replace(/{group.name}/g, group.name)
+                         .replace(/{worldBooksBefore}/g, worldBooksBefore ? `${worldBooksBefore}\n\n` : '')
+                         .replace(/{worldBooksAfter}/g, worldBooksAfter ? `\n${worldBooksAfter}\n\n` : '\n')
+                         .replace(/{me.nickname}/g, group.me.nickname)
+                         .replace(/{memberList}/g, memberList)
+                         .replace(/{stickerInstructions}/g, stickerInstructions)
+                         .replace(/{minMessages}/g, minMessages)
+                         .replace(/{maxMessages}/g, maxMessages);
 
             return prompt;
         }
+// --- END: 교체할 JavaScript 함수 ---
 
         async function getAiReply() {
             if (isGenerating) return;
@@ -5821,6 +5972,8 @@ function addMessageBubble(message) {
             }
         }
 
+        // --- START: 이 함수 전체를 아래의 코드로 교체하세요 ---
+// --- START: 이 함수 전체를 아래의 코드로 완전히 교체하세요 ---
         async function processStream(response, originalChat, apiType) {
             const reader = response.body.getReader(), decoder = new TextDecoder();
             let fullResponse = "", accumulatedChunk = "";
@@ -5867,12 +6020,10 @@ function addMessageBubble(message) {
                     if (messages.length > 0) {
                         messages.forEach(msgContent => {
                             const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now() };
-                            
                             messagesToAdd.push(message); 
                         });
                     } else if (fullResponse.trim()) {
-                        const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: fullResponse, parts: [{ type: 'text', text: fullResponse }], timestamp: Date.now() };
-                        
+                        const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: `[${character.realName}님의 메시지:${fullResponse}]`, parts: [{ type: 'text', text: `[${character.realName}님의 메시지:${fullResponse}]` }], timestamp: Date.now() };
                         messagesToAdd.push(simpleMessage);
                     }
                 } else { 
@@ -5889,7 +6040,6 @@ function addMessageBubble(message) {
                                 const sender = group.members.find(m => m.realName === senderName);
                                 if (sender) {
                                     const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now(), senderId: sender.id };
-                                    
                                     messagesToAdd.push(message);
                                 }
                             }
@@ -5899,46 +6049,56 @@ function addMessageBubble(message) {
                         if (firstMember) {
                             const simpleMessageContent = `[${firstMember.realName}님의 메시지:${fullResponse}]`;
                             const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: simpleMessageContent, parts: [{ type: 'text', text: simpleMessageContent }], timestamp: Date.now(), senderId: firstMember.id };
-                            
                             messagesToAdd.push(simpleMessage);
                         }
                     }
                 }
 
-                
+                // ▼▼▼▼▼ 최종 수정된 로직 ▼▼▼▼▼
                 if (messagesToAdd.length > 0) {
-                    originalChat.history.push(...messagesToAdd);
-                    
-                    
-                    if (currentChatId !== originalChat.id) {
-                        originalChat.unreadCount = (originalChat.unreadCount || 0) + messagesToAdd.length;
-                    } else {
-                        
-                        let lastMessageInHistory = originalChat.history.length > messagesToAdd.length
-                            ? originalChat.history[originalChat.history.length - messagesToAdd.length - 1]
-                            : null;
-                        
+                    if (currentChatId === originalChat.id) {
+                        // 채팅방이 열려 있을 때: 한 개씩 순서대로 기록하고 화면에 그립니다.
                         messagesToAdd.forEach(msg => {
-                            const bubbleElement = createMessageBubbleElement(msg, lastMessageInHistory);
-                            if (bubbleElement) {
-                                messageArea.appendChild(bubbleElement);
-                                messageArea.scrollTop = messageArea.scrollHeight;
-                            }
-                            lastMessageInHistory = msg; 
+                            originalChat.history.push(msg); // 1. 메시지 한 개를 history에 추가
+                            addMessageBubble(msg);          // 2. 추가된 메시지를 화면에 그림 (이 함수가 그룹화/시간숨김/아바타표시 모두 처리)
                         });
+                    } else {
+                        // 채팅방이 닫혀 있을 때: 한꺼번에 기록하고 안 읽은 메시지 수만 올립니다.
+                        originalChat.history.push(...messagesToAdd);
+                        originalChat.unreadCount = (originalChat.unreadCount || 0) + messagesToAdd.length;
                     }
                 }
+                // ▲▲▲▲▲ 최종 수정된 로직 ▲▲▲▲▲
 
                 saveData();
                 renderChatList();
             }
         }
+// --- END: 함수 교체 ---
 
+// --- START: 교체할 JavaScript 함수 (setupStickerSystem) ---
         function setupStickerSystem() {
             stickerToggleBtn.addEventListener('click', () => {
                 stickerModal.classList.toggle('visible');
-                if (stickerModal.classList.contains('visible')) { renderStickerGrid(); }
+                if (stickerModal.classList.contains('visible')) {
+                    document.getElementById('sticker-search-input').value = '';
+                    document.querySelector('.sticker-tab-btn[data-tab="all"]').click();
+                    renderStickerGrid();
+                }
             });
+
+            // 탭 클릭 이벤트
+            document.querySelectorAll('.sticker-tab-btn').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.sticker-tab-btn').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    renderStickerGrid();
+                });
+            });
+
+            // 검색창 입력 이벤트
+            document.getElementById('sticker-search-input').addEventListener('input', renderStickerGrid);
+            
             addNewStickerBtn.addEventListener('click', () => {
                 addStickerModalTitle.textContent = '새 이모티콘 추가';
                 addStickerForm.reset();
@@ -5947,12 +6107,10 @@ function addMessageBubble(message) {
                 stickerUrlInput.disabled = false;
                 addStickerModal.classList.add('visible');
                 
-                
                 document.getElementById('bulk-sticker-input').value = '';
                 document.getElementById('bulk-preview-container').style.display = 'none';
                 showStickerTab('single'); 
             });
-            
             
             setupStickerTabs();
             addStickerForm.addEventListener('submit', (e) => {
@@ -5962,10 +6120,13 @@ function addMessageBubble(message) {
                 const previewImg = stickerPreview.querySelector('img');
                 const data = previewImg ? previewImg.src : null;
                 if (!name || !data) { return showToast('이모티콘 이름을 입력하고 이미지를 제공해주세요'); }
-                const stickerData = { name, data };
+                const stickerData = { name, data, isFavorite: false };
                 if (id) {
                     const index = db.myStickers.findIndex(s => s.id === id);
-                    if (index > -1) { db.myStickers[index] = { ...db.myStickers[index], ...stickerData }; }
+                    if (index > -1) { 
+                        stickerData.isFavorite = db.myStickers[index].isFavorite; // 즐겨찾기 상태 유지
+                        db.myStickers[index] = { ...db.myStickers[index], ...stickerData }; 
+                    }
                 } else {
                     stickerData.id = `sticker_${Date.now()}`;
                     db.myStickers.push(stickerData);
@@ -6028,8 +6189,7 @@ function addMessageBubble(message) {
                 currentStickerActionTarget = null;
             });
         }
-
-        
+// --- END: 교체할 JavaScript 함수 (setupStickerSystem) ---        
         function setupStickerTabs() {
             
             const singleTab = document.getElementById('single-sticker-tab');
@@ -6202,25 +6362,66 @@ function addMessageBubble(message) {
             }
         }
 
+        // --- START: 교체할 JavaScript 함수 (renderStickerGrid) ---
         function renderStickerGrid() {
+            const activeTab = document.querySelector('.sticker-tab-btn.active').dataset.tab;
+            const searchTerm = document.getElementById('sticker-search-input').value.toLowerCase();
+
+            let stickersToRender = db.myStickers;
+
+            if (activeTab === 'favorites') {
+                stickersToRender = stickersToRender.filter(s => s.isFavorite);
+            }
+
+            if (searchTerm) {
+                stickersToRender = stickersToRender.filter(s => s.name.toLowerCase().includes(searchTerm));
+            }
+            
             stickerGridContainer.innerHTML = '';
-            if (db.myStickers.length === 0) {
-                stickerGridContainer.innerHTML = '<p style="color:#aaa; text-align:center; font-size: 12px;">아직 이모티콘이 없습니다. 추가해보세요!</p>';
+            if (stickersToRender.length === 0) {
+                let placeholderText = "표시할 이모티콘이 없습니다.";
+                if (activeTab === 'favorites' && db.myStickers.some(s => s.isFavorite)) {
+                    placeholderText = "검색 결과가 없습니다.";
+                } else if (activeTab === 'favorites') {
+                    placeholderText = "이모티콘을 길게 눌러 즐겨찾기에 추가하세요.";
+                }
+                stickerGridContainer.innerHTML = `<p style="color:#aaa; text-align:center; font-size: 12px; grid-column: 1 / -1;">${placeholderText}</p>`;
                 return;
             }
-            db.myStickers.forEach(sticker => {
+
+            stickersToRender.forEach(sticker => {
                 const item = document.createElement('div');
                 item.className = 'sticker-item';
-                item.innerHTML = `<img src="${sticker.data}" alt="${sticker.name}"><span>${sticker.name}</span>`;
-                item.addEventListener('click', () => sendSticker(sticker));
+                const favoriteClass = sticker.isFavorite ? 'favorited' : '';
+                item.innerHTML = `
+                    <img src="${sticker.data}" alt="${sticker.name}">
+                    <span>${sticker.name}</span>
+                    <div class="favorite-star ${favoriteClass}" data-id="${sticker.id}">★</div>`;
+                
+                item.querySelector('img').addEventListener('click', () => sendSticker(sticker));
+                item.querySelector('.favorite-star').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const stickerToToggle = db.myStickers.find(s => s.id === sticker.id);
+                    if (stickerToToggle) {
+                        stickerToToggle.isFavorite = !stickerToToggle.isFavorite;
+                        saveData();
+                        renderStickerGrid();
+                    }
+                });
+                item.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    handleStickerLongPress(sticker.id);
+                });
                 item.addEventListener('mousedown', (e) => {
                     if (e.button !== 0) return;
+                    if(e.target.classList.contains('favorite-star')) return;
                     e.stopPropagation();
                     longPressTimer = setTimeout(() => { handleStickerLongPress(sticker.id); }, 500);
                 });
                 item.addEventListener('mouseup', () => clearTimeout(longPressTimer));
                 item.addEventListener('mouseleave', () => clearTimeout(longPressTimer));
                 item.addEventListener('touchstart', (e) => {
+                    if(e.target.classList.contains('favorite-star')) return;
                     e.stopPropagation();
                     longPressTimer = setTimeout(() => { handleStickerLongPress(sticker.id); }, 500);
                 });
@@ -6229,12 +6430,124 @@ function addMessageBubble(message) {
                 stickerGridContainer.appendChild(item);
             });
         }
+// --- END: 교체할 JavaScript 함수 (renderStickerGrid) ---
 
+// --- START: 추가할 JavaScript 함수 (setupImageViewer) ---
+        function setupImageViewer() {
+            const modal = document.getElementById('image-viewer-modal');
+            const viewerImage = document.getElementById('viewer-image');
+            const downloadBtn = document.getElementById('download-btn');
+            const closeBtn = document.getElementById('close-viewer-btn');
+            const zoomInBtn = document.getElementById('zoom-in-btn');
+            const zoomOutBtn = document.getElementById('zoom-out-btn');
+            let scale = 1;
+            let isDragging = false;
+            let start = { x: 0, y: 0 };
+            let position = { x: 0, y: 0 };
+
+            window.openImageViewer = (imageUrl) => {
+                viewerImage.src = imageUrl;
+                downloadBtn.href = imageUrl;
+                modal.classList.add('visible');
+                resetTransform();
+            };
+
+            function closeViewer() {
+                modal.classList.remove('visible');
+            }
+            
+            function updateTransform() {
+                viewerImage.style.transform = `translate(${position.x}px, ${position.y}px) scale(${scale})`;
+            }
+
+            function resetTransform() {
+                scale = 1;
+                position = { x: 0, y: 0 };
+                updateTransform();
+            }
+
+            zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale + 0.2, 5); // 최대 5배
+                updateTransform();
+            });
+
+            zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale - 0.2, 0.5); // 최소 0.5배
+                updateTransform();
+            });
+            
+            viewerImage.addEventListener('mousedown', (e) => {
+                if (scale === 1) return;
+                isDragging = true;
+                start.x = e.clientX - position.x;
+                start.y = e.clientY - position.y;
+                viewerImage.style.transition = 'none';
+            });
+            
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                position.x = e.clientX - start.x;
+                position.y = e.clientY - start.y;
+                updateTransform();
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                viewerImage.style.transition = 'transform 0.2s ease-in-out';
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeViewer();
+                }
+            });
+
+            closeBtn.addEventListener('click', closeViewer);
+        }
+// --- END: 추가할 JavaScript 함수 (setupImageViewer) ---
+
+// --- START: 교체할 JavaScript 함수 (handleStickerLongPress) ---
         function handleStickerLongPress(stickerId) {
             clearTimeout(longPressTimer);
-            currentStickerActionTarget = stickerId;
-            stickerActionSheet.classList.add('visible');
+            const sticker = db.myStickers.find(s => s.id === stickerId);
+            if (!sticker) return;
+
+            // 좌표를 찾기 위해 DOM 요소를 사용합니다.
+            const stickerElement = stickerGridContainer.querySelector(`.favorite-star[data-id="${stickerId}"]`);
+            const rect = stickerElement.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            const menuItems = [
+                {
+                    label: sticker.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가',
+                    action: () => {
+                        sticker.isFavorite = !sticker.isFavorite;
+                        saveData();
+                        renderStickerGrid();
+                        showToast(sticker.isFavorite ? '즐겨찾기에 추가했습니다.' : '즐겨찾기에서 해제했습니다.');
+                    }
+                },
+                {
+                    label: '편집',
+                    action: () => {
+                        currentStickerActionTarget = stickerId;
+                        editStickerBtn.click(); // 기존 편집 로직 재사용
+                    }
+                },
+                {
+                    label: '삭제',
+                    danger: true,
+                    action: () => {
+                        currentStickerActionTarget = stickerId;
+                        deleteStickerBtn.click(); // 기존 삭제 로직 재사용
+                    }
+                }
+            ];
+            createContextMenu(menuItems, x, y);
         }
+// --- END: 교체할 JavaScript 함수 ---
+
 
         function setupVoiceMessageSystem() {
             voiceMessageBtn.addEventListener('click', () => {
@@ -6324,8 +6637,12 @@ function setupPhotoVideoSystem() {
     });
 }
 
+// --- START: 교체할 JavaScript 함수 (setupWalletSystem) ---
         function setupWalletSystem() {
             walletBtn.addEventListener('click', () => {
+                const currencyLabel = document.getElementById('transfer-currency-label');
+                currencyLabel.textContent = db.globalSettings.currencySymbol || '₩';
+
                 if (currentChatType === 'private') {
                     sendTransferForm.reset();
                     sendTransferModal.classList.add('visible');
@@ -6345,6 +6662,7 @@ function setupPhotoVideoSystem() {
             acceptTransferBtn.addEventListener('click', () => respondToTransfer('received'));
             returnTransferBtn.addEventListener('click', () => respondToTransfer('returned'));
         }
+// --- END: 교체할 JavaScript 함수 ---
 
         function handleReceivedTransferClick(messageId) {
             currentTransferMessageId = messageId;
@@ -7096,11 +7414,24 @@ function setupPhotoVideoSystem() {
     hideMyBubblesToggle.addEventListener('change', updatePrivateChatSettings);
     hideCharBubblesToggle.addEventListener('change', updatePrivateChatSettings);
 
+    // setupChatSettings 함수 안에서, 기존 fontSizeSlider 관련 코드를 찾아 아래 내용으로 교체하세요.
+
     fontSizeSlider.addEventListener('input', () => {
-        fontSizeValue.textContent = `${fontSizeSlider.value}px`;
+        const newSize = fontSizeSlider.value;
+        fontSizeValue.textContent = `${newSize}px`;
         updatePrivateChatSettings();
-    });
+
+        // 미리보기 업데이트 코드 추가
+        const char = db.characters.find(c => c.id === currentChatId);
+        if (char) {
+            const privatePreviewBox = document.getElementById('private-bubble-css-preview');
+            const customCssTextarea = document.getElementById('setting-custom-bubble-css');
+            const useCustomCssCheckbox = document.getElementById('setting-use-custom-css');
+            const theme = colorThemes[char.theme || 'white_pink'];
+            updateBubbleCssPreview(privatePreviewBox, customCssTextarea.value, !useCustomCssCheckbox.checked, theme, newSize);
         }
+    });
+}
 
         function loadSettingsToSidebar() {
             const e = db.characters.find(e => e.id === currentChatId);
@@ -7820,9 +8151,22 @@ function setupWallpaperApp() {
     hideMyBubblesToggle.addEventListener('change', updateGroupChatSettings);
     hideCharBubblesToggle.addEventListener('change', updateGroupChatSettings);
 
+    // setupGroupChatSystem 함수 안에서, 기존 fontSizeSlider 관련 코드를 찾아 아래 내용으로 교체하세요.
+
     fontSizeSlider.addEventListener('input', () => {
-        fontSizeValue.textContent = `${fontSizeSlider.value}px`;
+        const newSize = fontSizeSlider.value;
+        fontSizeValue.textContent = `${newSize}px`;
         updateGroupChatSettings();
+        
+        // 미리보기 업데이트 코드 추가
+        const group = db.groups.find(g => g.id === currentChatId);
+        if(group) {
+            const groupPreviewBox = document.getElementById('group-bubble-css-preview');
+            const groupCustomCssTextarea = document.getElementById('setting-group-custom-bubble-css');
+            const useGroupCustomCssCheckbox = document.getElementById('setting-group-use-custom-css');
+            const theme = colorThemes[group.theme || 'white_pink'];
+            updateBubbleCssPreview(groupPreviewBox, groupCustomCssTextarea.value, !useGroupCustomCssCheckbox.checked, theme, newSize);
+        }
     });
         }
 
