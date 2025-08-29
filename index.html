@@ -54,8 +54,7 @@
             display: flex;
             flex-direction: column;
         }
-
-        .screen {
+.screen {
             display: none;
             flex-direction: column;
             width: 100%;
@@ -78,14 +77,11 @@
             }
         }
 
-        /* --- START: .app-header로 시작하는 모든 CSS를 이 블록으로 교체하세요 --- */
-
-/* 헤더 기본 컨테이너 */
 .app-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 7px 15px;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #eee;
@@ -94,7 +90,6 @@
     z-index: 10;
 }
 
-/* 헤더 내 모든 버튼의 기본 스타일 (뒤로가기, 액션 버튼 공통) */
 .app-header .back-btn,
 .app-header .action-btn {
     background: none;
@@ -110,13 +105,11 @@
     border-radius: 50%;
 }
 
-/* 뒤로가기 버튼 안의 SVG 아이콘 크기 */
 .app-header .back-btn svg {
     width: 32px;
     height: 32px;
 }
 
-/* 멀티선택 취소 버튼 특별 스타일 */
 #cancel-multi-select-btn {
     font-size: 14px !important;
     font-weight: 500 !important;
@@ -128,24 +121,21 @@
     height: auto !important;
 }
 
-/* 오른쪽 액션 버튼 그룹 */
 .app-header .action-btn-group {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-/* (사용자가 질문한 부분) 액션 버튼 그룹 안의 개별 버튼 스타일 */
 .app-header .action-btn-group .action-btn {
     font-size: 14px;
     font-weight: 400;
-    width: 40px; /* 크기 통일 */
-    height: 40px; /* 크기 통일 */
+    width: 40px; 
+    height: 40px; 
     border-radius: 50%;
-    padding: 0; /* 패딩 제거 */
+    padding: 0; 
 }
 
-/* SVG 아이콘 크기 (그룹채팅, 새 채팅, 세계관 추가) */
 .app-header .action-btn-group #create-group-btn svg,
 .app-header .action-btn-group #add-chat-btn svg,
 .app-header #add-world-book-btn svg {
@@ -153,13 +143,11 @@
     height: 28px;
 }
 
-/* 설정(톱니바퀴) 버튼 안의 이미지 아이콘 크기 */
 .app-header .action-btn img {
     width: 28px;
     height: 28px;
 }
 
-/* 헤더 중앙 제목 컨테이너 */
 .app-header .title-container {
     display: flex;
     flex-direction: column;
@@ -170,7 +158,6 @@
     transform: translateX(-50%);
 }
 
-/* (사용자가 질문한 부분) 헤더 제목 */
 .app-header .title {
     font-size: 16px;
     font-weight: 500;
@@ -178,7 +165,6 @@
     margin: 0;
 }
 
-/* (사용자가 질문한 부분) 헤더 부제목 (온라인 상태 등) */
 .app-header .subtitle {
     font-size: 11px;
     color: #888;
@@ -187,7 +173,6 @@
     margin-top: 2px;
 }
 
-/* 온라인 상태 표시 점 */
 .online-indicator {
     width: 6px;
     height: 6px;
@@ -196,12 +181,9 @@
     margin-right: 5px;
 }
 
-/* 헤더 좌우 균형을 위한 빈 공간 */
 .app-header .placeholder {
     width: 40px;
 }
-
-/* --- END: 교체할 CSS 블록 --- */
 
         #cancel-multi-select-btn {
             font-size: 14px !important;
@@ -568,7 +550,7 @@
         }
 
         #chat-room-screen.multi-select-active .content {
-            padding-bottom: 70px;
+            padding-bottom: 80px;
         }
 
         .message-area {
@@ -715,7 +697,6 @@
             border-radius: var(--border-radius);
         }
 
-        
         .photo-bubble {
             width: 60%;
             max-width: 400px;
@@ -812,7 +793,6 @@
             margin-right: auto;
         }
 
-
 .pv-card {
     width: 60%;
     max-width: 400px; 
@@ -824,7 +804,6 @@
     margin: 8px;
     background-color: #eee; 
 }
-
 
 .pv-card-img {
     display: block; 
@@ -839,7 +818,6 @@
 .message-wrapper.received .pv-card {
     border-top-left-radius: 5px;
 }
-
 
 .pv-card-content {
     position: absolute;
@@ -859,7 +837,6 @@
     pointer-events: none; 
     transition: opacity 0.3s ease;
 }
-
 
 .pv-card-content.visible {
     opacity: 1;
@@ -1195,6 +1172,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 5px;
         }
 
         .sticker-grid {
@@ -1527,7 +1505,6 @@
             background-color: #9e9e9e;
         }
 
-        
         .github-sync-section {
             border: 1px solid #eee;
             border-radius: 10px;
@@ -1704,7 +1681,6 @@
             object-fit: cover;
         }
 
-        
         .member-selection-list {
             list-style: none;
             padding: 0;
@@ -1850,7 +1826,6 @@
             margin-left: 10px;
         }
 
-        
         .customize-section {
             margin-bottom: 30px;
             padding: 20px;
@@ -2000,7 +1975,6 @@
             line-height: 1.4;
         }
 
-        
         .tutorial-item {
             margin-bottom: 15px;
             border: 1px solid #fce4ec;
@@ -2049,7 +2023,6 @@
             display: block;
         }
 
-        
         .form-select {
             width: 100%;
             padding: 12px;
@@ -2080,12 +2053,10 @@
             white-space: nowrap;
         }
 
-        
 button:focus, a:focus, input:focus, textarea:focus, select:focus {
     outline: none;
     -webkit-tap-highlight-color: transparent; 
 }
-
 
 .back-btn:focus, .action-btn:focus, .icon-btn:focus, .sticker-bar-btn:focus, .app-icon:focus {
     outline: none !important;
@@ -2093,9 +2064,8 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* --- START: 이 코드로 CSS를 교체 또는 추가하세요 --- */
 .phone-screen.has-bottom-nav .content {
-    padding: 10px 0px 120px 0px; /* 하단 네비게이션 바 높이만큼 여백 추가 */
+    padding: 10px 0px 120px 0px; 
 }
 
 .bottom-nav {
@@ -2133,7 +2103,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     color: var(--primary-color);
 }
 
-/* 채팅 목록 검색창 */
 .search-bar-container {
     padding: 10px 15px;
     background-color: #fff;
@@ -2151,7 +2120,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     outline: none;
 }
 
-/* 피드 화면 스타일 개선 */
 #feed-screen .content {
     padding: 0;
     background-color: #fafafa;
@@ -2245,7 +2213,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     color: #8e8e8e;
 }
 
-/* 프로필 화면 스타일 개선 */
 #profile-screen .content {
     background-color: #fafafa;
 }
@@ -2358,13 +2325,10 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     display: none;
 }
 
-/* 캐릭터(received) 아이콘 숨기기 */
 .phone-screen.hide-character-icons .message-wrapper.received .message-info {
     display: none;
 }
 
-/* --- START: 추가할 CSS --- */
-/* 채팅방별 메시지 숨기기 */
 #chat-room-screen.hide-my-icons .message-wrapper.sent .message-info {
     display: none;
 }
@@ -2372,13 +2336,74 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     display: none;
 }
 
+.sticker-tabs {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+}
+.sticker-tab-btn {
+    background: none;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+.sticker-tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+.sticker-tab-btn.active svg {
+    fill: var(--primary-color);
+}
+.sticker-tab-btn[data-tab="favorites"] svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle; /* 아이콘과 텍스트 정렬을 위해 추가 */
+}
+.sticker-search-wrapper {
+    padding: 0; /* 기존 padding: 5px 15px 10px; 제거 */
+    border-bottom: none; /* 기존 border-bottom: 1px solid #eee; 제거 */
+    flex-grow: 1; /* 새로 추가 */
+    display: flex; /* 새로 추가 */
+    align-items: center; /* 새로 추가 */
+}
+#sticker-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    font-size: 13px;
+}
+.sticker-item .favorite-star {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    display: none;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
+}
+
+.sticker-item .favorite-star svg {
+    width: 100%;
+    height: 100%;
+    fill: gold;
+}
+.sticker-item.is-favorite .favorite-star {
+    display: block;
+}
     </style>
 </head>
 <body>
 <div class="phone-screen">
     <div id="home-screen" class="screen active"></div>
     <div id="chat-list-screen" class="screen">
-        <!-- START: chat-list-screen의 header 태그를 이걸로 교체 -->
+        
         <header class="app-header">
             <button class="back-btn" data-target="home-screen">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
@@ -2395,7 +2420,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 </button>
             </div>
         </header>
-<!-- END: header 태그 교체 -->
+
         <main class="content">
             <ul class="list-container" id="chat-list-container"></ul>
             <div class="placeholder-text" id="no-chats-placeholder" style="display: none;">
@@ -2456,19 +2481,32 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 </button>
             </div>
         </div>
-        <!-- 일반 모드 버튼 -->
+        
         <button id="send-message-btn" class="icon-btn send-btn">➤</button>
         <button id="get-reply-btn" class="icon-btn">
             <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 1,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 1,1 20,12A8,8 0 0,1 12,20M16.24,7.76C15.07,6.58 13.53,6 12,6V12L7.76,16.24C10.1,18.58 13.9,18.58 16.24,16.24C18.58,13.9 18.58,10.1 16.24,7.76Z" /></svg>
         </button>
-        <!-- 편집 모드 버튼 (초기 숨김) -->
+        
         <button id="save-edit-btn" class="icon-btn send-btn" style="display: none;">✓</button>
         <button id="cancel-edit-btn" class="icon-btn" style="background-color: #aaa; display: none;">✗</button>
     </div>
 </div>
         <div id="multi-select-bar"><span id="select-count">0개 항목 선택됨</span><button class="btn btn-danger" id="delete-selected-btn" style="width: auto; padding: 8px 16px;">선택 항목 삭제</button></div>
         <div id="sticker-modal">
-            <div class="header"><span>내 이모티콘</span><button class="btn btn-primary btn-small" id="add-new-sticker-btn" style="font-size: 18px; padding: 6px 10px;">+</button></div>
+            <div class="header">
+                <div id="sticker-tabs" class="sticker-tabs">
+                    <button class="sticker-tab-btn active" data-tab="all">전체</button>
+                    <button class="sticker-tab-btn" data-tab="favorites">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
+                    </svg>
+                </button>
+                </div>
+                <div class="sticker-search-wrapper">
+                    <input type="text" id="sticker-search-input" placeholder="이모티콘 검색...">
+                </div>
+                <button class="btn btn-primary btn-small" id="add-new-sticker-btn" style="font-size: 18px; padding: 6px 12px;">+</button>
+            </div>
             <div class="sticker-grid" id="sticker-grid-container"></div>
         </div>
     </div>
@@ -2527,7 +2565,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     </div>
     <div id="api-settings-screen" class="screen"></div>
     <div id="wallpaper-screen" class="screen"></div>
-    <!-- START: 추가할 HTML -->
+    
 <div id="wallpaper-font-screen" class="screen">
     <header class="app-header">
         <button class="back-btn" data-target="home-screen">
@@ -2539,14 +2577,14 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         <div class="placeholder"></div>
     </header>
     <main class="content">
-        <!-- 배경화면 설정이 여기에 위치합니다 -->
+        
         <div class="customize-section" style="margin-top:0;">
              <h3 class="section-title">배경화면 변경</h3>
              <div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div>
              <input type="file" id="wallpaper-upload" accept="image/*" style="display: none;">
              <label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label>
         </div>
-        <!-- 글꼴 설정이 여기에 위치합니다 -->
+        
         <div class="customize-section">
             <h3 class="section-title">글꼴 설정</h3>
             <div class="form-group">
@@ -2610,7 +2648,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         </div>
     </main>
 </div>
-<!-- END: 추가할 HTML -->
+
     <div id="customize-screen" class="screen"></div>
     <div id="tutorial-screen" class="screen"></div>
     <div id="toast-notification" class="toast"></div>
@@ -2634,14 +2672,12 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     <div id="add-sticker-modal" class="modal-overlay">
         <div class="modal-window">
             <h3 id="add-sticker-modal-title">새 이모티콘 추가</h3>
-            
-            
+
             <div class="sticker-tabs" style="display: flex; margin-bottom: 15px; border-bottom: 1px solid #ddd;">
                 <button type="button" id="single-sticker-tab" class="sticker-tab-btn active" style="flex: 1; padding: 10px; border: none; background: none; cursor: pointer; border-bottom: 2px solid #4CAF50;">단일 등록</button>
                 <button type="button" id="bulk-sticker-tab" class="sticker-tab-btn" style="flex: 1; padding: 10px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent;">일괄 등록</button>
             </div>
 
-            
             <div id="single-sticker-content" class="sticker-tab-content">
                 <form id="add-sticker-form"><input type="hidden" id="sticker-edit-id">
                     <div id="sticker-preview"><span>미리보기</span></div>
@@ -2651,7 +2687,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 </form>
             </div>
 
-            
             <div id="bulk-sticker-content" class="sticker-tab-content" style="display: none;">
                 <form id="bulk-sticker-form">
                     <div class="form-group">
@@ -2680,7 +2715,11 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         </div>
     </div>
     <div id="sticker-actionsheet" class="action-sheet-overlay">
-        <div class="action-sheet"><button class="action-sheet-button" id="edit-sticker-btn">편집</button><button class="action-sheet-button danger" id="delete-sticker-btn">삭제</button></div>
+        <div class="action-sheet">
+            <button class="action-sheet-button" id="toggle-favorite-sticker-btn">즐겨찾기 추가/해제</button>
+            <button class="action-sheet-button" id="edit-sticker-btn">편집</button>
+            <button class="action-sheet-button danger" id="delete-sticker-btn">삭제</button>
+        </div>
     </div>
     <div id="send-voice-modal" class="modal-overlay">
         <div class="modal-window">
@@ -2994,7 +3033,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
             </form>
         </div>
     </div>
-    <!-- START: 추가할 HTML (새로운 화면들) -->
+    
     <div id="feed-screen" class="screen">
         <header class="app-header">
             <div class="placeholder"></div>
@@ -3004,7 +3043,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
             <div class="placeholder"></div>
         </header>
         <main class="content" id="feed-container" style="padding: 10px; padding-bottom: calc(120px + env(safe-area-inset-bottom));background-color: #f0f2f5;">
-            <!-- 피드 게시물은 JS로 렌더링 됩니다 -->
+            
         </main>
     </div>
 
@@ -3050,10 +3089,14 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
             <span>일정</span>
         </a>
     </nav>
-<!-- END: 추가할 HTML -->
+
 </div>
 
 <script>
+
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $&는 일치한 전체 문자열을 의미
+        }
     
     function getRandomValue(str) {
         
@@ -3078,8 +3121,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 quality = 0.8, maxWidth = 800, maxHeight = 800
             } = options;
 
-            
-            
             if (file.type === 'image/gif') {
                 return new Promise((resolve, reject) => {
                     const reader = new FileReader();
@@ -3089,7 +3130,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 });
             }
 
-            
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
@@ -3119,30 +3159,24 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                         canvas.height = height;
                         const ctx = canvas.getContext('2d');
 
-                        
-                        
                         if (file.type === 'image/png') {
                             ctx.fillStyle = '#FFFFFF'; 
                             ctx.fillRect(0, 0, width, height);
                         }
                         
                         ctx.drawImage(img, 0, 0, width, height);
-                        
-                        
-                        
+
                         const compressedDataUrl = canvas.toDataURL('image/jpeg', quality); 
                         resolve(compressedDataUrl);
                     };
                 };
             });
         }
-        
-        
+
         function initializeFontPresets() {
             
             console.log('폰트 프리셋 초기화 시작');
-            
-            
+
             if (!db.globalFontPresets.presets.custom) {
                 db.globalFontPresets.presets.custom = {
                     name: '커스텀 폰트',
@@ -3158,8 +3192,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 }
                 console.log('기존 커스텀 폰트 프리셋 확인됨:', db.globalFontPresets.presets.custom);
             }
-            
-            
+
             const defaultFonts = [
                 {
                     id: 'default_1',
@@ -3240,8 +3273,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                     description: '귀엽고 아기자기한 폰트'
                 }
             ];
-            
-            
+
             defaultFonts.forEach(font => {
                 if (!db.globalFontPresets.presets[font.id]) {
                     db.globalFontPresets.presets[font.id] = {
@@ -3253,8 +3285,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                     console.log(`기본 폰트 프리셋 추가됨: ${font.name}`);
                 }
             });
-            
-            
+
             if (!db.globalFontPresets.presets[db.globalFontPresets.currentPreset]) {
                 console.log('현재 프리셋이 존재하지 않음:', db.globalFontPresets.currentPreset);
                 db.globalFontPresets.currentPreset = 'custom';
@@ -3266,17 +3297,14 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 availablePresets: Object.keys(db.globalFontPresets.presets)
             });
         }
-        
-        
-        
+
         const githubInfoButtons = IS_DEVELOPMENT_MODE ? `
             <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
             <button type="button" id="github-info-download-btn" class="btn btn-neutral" style="width: 100%; margin-bottom: 10px;">GitHub 정보 다운로드</button>
             <button type="button" id="github-info-upload-btn" class="btn btn-secondary" style="width: 100%;">GitHub 설정 업로드 복원</button>
             <input type="file" id="github-info-upload-input" accept=".json" style="display: none;">
         ` : '';
-        
-        
+
         const patIncludeOption = IS_DEVELOPMENT_MODE ? `
             <div class="form-group">
                 <label style="display: flex; align-items: center; gap: 10px;">
@@ -3296,7 +3324,6 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
             </button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
 
-        
         const colorThemes = {
             'white_pink': { name: '흰색/분홍', received: { bg: 'rgba(255,255,255,0.9)', text: '#6D6D6D' }, sent: { bg: 'rgba(255,204,204,0.9)', text: '#A56767' } },
             'white_blue': { name: '흰색/파랑', received: { bg: 'rgba(255,255,255,0.9)', text: '#6D6D6D' }, sent: { bg: 'rgba(173,216,230,0.9)', text: '#4A6F8A' } },
@@ -3327,7 +3354,7 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         let selectedMessageIds = new Set();
         const MESSAGES_PER_PAGE = 50;
 
-        let editingMessageContext = null; // 편집 컨텍스트 저장용
+        let editingMessageContext = null; 
 const editableMessageRegexes = {
     text: /\[(?:.+?)님의 메시지:([\s\S]+)\]/,
     voice: /\[(?:.+?)님의 음성:([\s\S]+?)\]/,
@@ -3335,7 +3362,7 @@ const editableMessageRegexes = {
     gift: /\[(?:.+?)님이 보낸 선물:([\s\S]+?)\]|\[(?:.+?)님이 (?:.+?)님에게 선물을 보냈습니다:([\s\S]+?)\]/,
     sticker: /\[(?:.+?)님의 이모티콘:([\s\S]+?)\]/,
     systemDisplay: /\[system-display:([\s\S]+?)\]/,
-    // 송금 관련 정규식을 하나로 통합하고, 전체 내용을 캡처하도록 변경
+    
     transfer: /(\[(?:.*?에게 송금|.*?님의 송금|.*?님이 .*?님에게 송금):[\d.]+원；메모:.*?\])/
 };
         
@@ -3399,8 +3426,8 @@ const editableMessageRegexes = {
                 if (!c.worldBookIds) c.worldBookIds = [];
                 if (c.customBubbleCss === undefined) c.customBubbleCss = '';
                 if (c.useCustomBubbleCss === undefined) c.useCustomBubbleCss = false;
-                if (c.hideMyIcons === undefined) c.hideMyIcons = false; // 이름 변경
-                if (c.hideCharIcons === undefined) c.hideCharIcons = false; // 이름 변경
+                if (c.hideMyIcons === undefined) c.hideMyIcons = false; 
+                if (c.hideCharIcons === undefined) c.hideCharIcons = false; 
                 if (c.fontSize === undefined) c.fontSize = 14;
             });
             db.groups.forEach(g => {
@@ -3408,8 +3435,8 @@ const editableMessageRegexes = {
                 if (!g.worldBookIds) g.worldBookIds = [];
                 if (g.customBubbleCss === undefined) g.customBubbleCss = '';
                 if (g.useCustomBubbleCss === undefined) g.useCustomBubbleCss = false;
-                if (g.hideMyIcons === undefined) g.hideMyIcons = false; // 이름 변경
-                if (g.hideCharIcons === undefined) g.hideCharIcons = false; // 이름 변경
+                if (g.hideMyIcons === undefined) g.hideMyIcons = false; 
+                if (g.hideCharIcons === undefined) g.hideCharIcons = false; 
                 if (g.fontSize === undefined) g.fontSize = 14;
             });
         };
@@ -3418,8 +3445,7 @@ const editableMessageRegexes = {
             toastElement.classList.add('show');
             setTimeout(() => toastElement.classList.remove('show'), 3000);
         };
-        
-                // 기존 switchScreen 함수를 아래 코드로 교체
+
         const switchScreen = (targetId) => {
             const phoneScreen = document.querySelector('.phone-screen');
             screens.forEach(screen => screen.classList.remove('active'));
@@ -3433,14 +3459,14 @@ const editableMessageRegexes = {
             
             if (screensWithNav.includes(targetId)) {
                 navBar.style.display = 'flex';
-                phoneScreen.classList.add('has-bottom-nav'); // 클래스 추가
+                phoneScreen.classList.add('has-bottom-nav'); 
                 const navButtons = navBar.querySelectorAll('.nav-btn');
                 navButtons.forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.target === targetId);
                 });
             } else {
                 navBar.style.display = 'none';
-                phoneScreen.classList.remove('has-bottom-nav'); // 클래스 제거
+                phoneScreen.classList.remove('has-bottom-nav'); 
             }
         };
 
@@ -3489,7 +3515,6 @@ const editableMessageRegexes = {
             }
         }
 
-        
         function applyGlobalCustomCSS() {
             if (!db.globalCustomCSS.enabled) {
                 return;
@@ -3522,7 +3547,6 @@ const editableMessageRegexes = {
             }
         }
 
-// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
 function updateBubbleCssPreview(previewContainer, css, useDefault, theme, fontSize = 14) {
     previewContainer.innerHTML = '';
 
@@ -3541,7 +3565,7 @@ function updateBubbleCssPreview(previewContainer, css, useDefault, theme, fontSi
         bubble.style.padding = '8px 12px';
         bubble.style.wordWrap = 'break-word';
         bubble.style.lineHeight = '1.4';
-        bubble.style.fontSize = `${fontSize}px`; // 폰트 크기 적용
+        bubble.style.fontSize = `${fontSize}px`; 
         bubble.style.borderRadius = '18px';
     });
 
@@ -3562,7 +3586,7 @@ function updateBubbleCssPreview(previewContainer, css, useDefault, theme, fontSi
     previewContainer.appendChild(receivedBubble);
     previewContainer.appendChild(sentBubble);
 }
-// --- END: 함수 교체 ---
+
 function setupGitHubSync() {
     const usernameInput = document.getElementById('github-username');
     const repoInput = document.getElementById('github-repo');
@@ -3578,15 +3602,13 @@ function setupGitHubSync() {
     const githubSyncToggle = document.getElementById('github-sync-toggle');
     const githubSyncContent = document.getElementById('github-sync-content');
 
-    
     const savedSettings = JSON.parse(localStorage.getItem('gemini-chat-sync-settings'));
     if (savedSettings) {
         usernameInput.value = savedSettings.username || '';
         repoInput.value = savedSettings.repo || '';
         patInput.value = savedSettings.pat || '';
         filenameInput.value = savedSettings.filename || 'phone-chat-data.json';
-        
-        
+
         const includePatCheckbox = document.getElementById('include-pat-in-download');
         if (includePatCheckbox) {
             includePatCheckbox.checked = savedSettings.includePatInDownload !== false;
@@ -3595,7 +3617,6 @@ function setupGitHubSync() {
             console.log('🔧 DEBUG: PAT 포함 옵션 비활성화됨 (배포 모드)');
         }
 
-        
         const mergeDataCheckbox = document.getElementById('merge-data-on-restore');
         if (mergeDataCheckbox) {
             mergeDataCheckbox.checked = savedSettings.mergeDataOnRestore !== false;
@@ -3610,7 +3631,6 @@ function setupGitHubSync() {
         });
     }
 
-    
     function updateSyncButtonsState() {
         const settings = {
             username: usernameInput.value.trim(),
@@ -3643,21 +3663,16 @@ function setupGitHubSync() {
         console.log('GitHub 설정 저장 완료:', { ...settings, pat: settings.pat ? '***' : '없음' });
     });
 
-    
     githubSyncToggle.addEventListener('click', () => {
         const isHidden = githubSyncContent.style.display === 'none';
         githubSyncContent.style.display = isHidden ? 'block' : 'none';
-        
-        
+
         const arrow = githubSyncToggle.querySelector('span');
         arrow.textContent = isHidden ? '▲' : '▼';
         
         console.log('GitHub 동기화 섹션 토글:', isHidden ? '펼침' : '접음');
     });
 
-
-
-    
     if (IS_DEVELOPMENT_MODE && githubInfoDownloadBtn) {
         console.log('🔧 DEBUG: GitHub 정보 다운로드 기능 활성화됨 (개발 모드)');
         githubInfoDownloadBtn.addEventListener('click', () => {
@@ -3699,7 +3714,6 @@ function setupGitHubSync() {
         console.log('🔧 DEBUG: GitHub 정보 다운로드 기능 비활성화됨 (배포 모드)');
     }
 
-    
     if (IS_DEVELOPMENT_MODE && githubInfoUploadBtn && githubInfoUploadInput) {
         console.log('🔧 DEBUG: GitHub 정보 업로드 기능 활성화됨 (개발 모드)');
         githubInfoUploadBtn.addEventListener('click', () => {
@@ -3725,19 +3739,16 @@ function setupGitHubSync() {
                         return;
                     }
 
-                    
                     usernameInput.value = githubSettings.username || '';
                     repoInput.value = githubSettings.repository || '';
                     patInput.value = githubSettings.pat || '';
                     filenameInput.value = githubSettings.filename || 'phone-chat-data.json';
 
-                    
                     const includePatCheckbox = document.getElementById('include-pat-in-download');
                     if (includePatCheckbox) {
                         includePatCheckbox.checked = !!githubSettings.pat;
                     }
 
-                    
                     const settings = {
                         username: githubSettings.username,
                         repo: githubSettings.repository,
@@ -3746,8 +3757,7 @@ function setupGitHubSync() {
                         includePatInDownload: !!githubSettings.pat
                     };
                     localStorage.setItem('gemini-chat-sync-settings', JSON.stringify(settings));
-                    
-                    
+
                     updateSyncButtonsState();
                     
                     showToast('✅ GitHub 설정이 성공적으로 복원되었습니다!');
@@ -3767,11 +3777,9 @@ function setupGitHubSync() {
         console.log('🔧 DEBUG: GitHub 정보 업로드 기능 비활성화됨 (배포 모드)');
     }
 
-    
     syncUpBtn.addEventListener('click', syncUp);
     syncDownBtn.addEventListener('click', syncDown);
 }
-
 
 function deepMerge(existing, incoming) {
     if (incoming === null || incoming === undefined) {
@@ -3781,8 +3789,7 @@ function deepMerge(existing, incoming) {
     if (existing === null || existing === undefined) {
         return incoming;
     }
-    
-    
+
     if (Array.isArray(incoming)) {
         if (Array.isArray(existing)) {
             return mergeArrays(existing, incoming);
@@ -3790,16 +3797,14 @@ function deepMerge(existing, incoming) {
             return incoming;
         }
     }
-    
-    
+
     if (typeof incoming !== 'object') {
         if (existing !== null && existing !== undefined) {
             return existing; 
         }
         return incoming;
     }
-    
-    
+
     const result = { ...existing };
     
     for (const key in incoming) {
@@ -3815,18 +3820,15 @@ function deepMerge(existing, incoming) {
     return result;
 }
 
-
 function mergeArrays(existingArray, incomingArray) {
     const result = [...existingArray];
     const existingIds = new Set();
-    
-    
+
     existingArray.forEach((item, index) => {
         const id = item.id || item.name || item.timestamp || item.chatId || index;
         existingIds.add(id);
     });
-    
-    
+
     let addedCount = 0;
     incomingArray.forEach((item, index) => {
         const id = item.id || item.name || item.timestamp || item.chatId || index;
@@ -3845,7 +3847,6 @@ function mergeArrays(existingArray, incomingArray) {
     return result;
 }
 
-
 async function syncUp() {
     if (!confirm('현재 기기의 데이터를 GitHub에 올려 다른 기기에서 받을 수 있도록 합니다. 진행하시겠습니까?')) return;
 
@@ -3857,8 +3858,7 @@ async function syncUp() {
     
     const localDataString = localStorage.getItem('gemini-chat-app-db');
     if (!localDataString) return showToast('백업할 데이터가 없습니다.');
-    
-    
+
     let dataToUpload = JSON.parse(localDataString);
     if (dataToUpload.apiSettings) {
         delete dataToUpload.apiSettings;
@@ -3882,7 +3882,6 @@ async function syncUp() {
             }
         } catch (e) {  }
 
-        
         const payload = {
             message: `Sync data from Gemini Chat on ${new Date().toISOString()}`,
             content: contentBase64,
@@ -3913,8 +3912,7 @@ async function syncUp() {
 async function syncDown() {
     const settings = JSON.parse(localStorage.getItem('gemini-chat-sync-settings'));
     if (!settings) return showToast('동기화 설정을 먼저 저장해주세요.');
-    
-    
+
     const mergeCheckbox = document.getElementById('merge-data-on-restore');
     const useMergeMode = mergeCheckbox ? mergeCheckbox.checked : true;
     const modeText = useMergeMode ? '병합 (기존 데이터 보존)' : '완전 덮어쓰기 (기존 데이터 삭제)';
@@ -3933,12 +3931,10 @@ async function syncDown() {
         const localDbString = localStorage.getItem('gemini-chat-app-db');
         const localDb = localDbString ? JSON.parse(localDbString) : {};
         const localApiSettings = localDb.apiSettings;
-        
-        
+
         const backupKey = 'gemini-chat-app-db-emergency-backup';
         localStorage.setItem(backupKey, localDbString || '{}');
 
-        
         const response = await fetch(apiUrl, {
             headers: { 'Authorization': `token ${pat}` }
         });
@@ -3950,8 +3946,7 @@ async function syncDown() {
 
         const data = await response.json();
         const contentBase64 = data.content;
-        
-        
+
         let downloadedJsonData, downloadedDb;
         
         try {
@@ -3966,7 +3961,6 @@ async function syncDown() {
             throw new Error(`다운로드한 데이터가 손상되었습니다: ${parseError.message}`);
         }
 
-        
         let finalDb;
         if (useMergeMode) {
             finalDb = deepMerge(localDb, downloadedDb);
@@ -3974,12 +3968,10 @@ async function syncDown() {
             finalDb = downloadedDb;
         }
 
-        
         if (localApiSettings) {
             finalDb.apiSettings = localApiSettings;
         }
 
-        
         try {
             const finalDbString = JSON.stringify(finalDb);
             
@@ -3993,8 +3985,7 @@ async function syncDown() {
             if (!savedData) {
                 throw new Error('데이터 저장 후 검증 실패 - localStorage에 저장되지 않음');
             }
-            
-            
+
             localStorage.removeItem(backupKey);
             
             showToast(`✅ 데이터 복원 성공! (${useMergeMode ? '병합 완료' : '덮어쓰기 완료'}) 앱을 새로고침합니다.`);
@@ -4009,8 +4000,7 @@ async function syncDown() {
 
     } catch (error) {
         console.error('Sync Down Error:', error);
-        
-        
+
         const backupKey = 'gemini-chat-app-db-emergency-backup';
         const emergencyBackup = localStorage.getItem(backupKey);
         
@@ -4028,8 +4018,6 @@ async function syncDown() {
     }
 }
 
-// START: 추가할 새 함수들
-
 function applyGlobalUISettings() {
     const phoneScreen = document.querySelector('.phone-screen');
     phoneScreen.classList.toggle('hide-user-icons', !!db.globalSettings.hideUserIcons);
@@ -4041,12 +4029,10 @@ function setupSettingsScreen() {
     const hideUserIconsToggle = document.getElementById('hide-user-icons-toggle');
     const hideCharIconsToggle = document.getElementById('hide-character-icons-toggle');
 
-    // 설정 값 불러와서 토글에 반영
     aiSystemToggle.checked = !!db.globalSettings.aiCanUseSystem;
     hideUserIconsToggle.checked = !!db.globalSettings.hideUserIcons;
     hideCharIconsToggle.checked = !!db.globalSettings.hideCharacterIcons;
 
-    // 이벤트 리스너 설정
     aiSystemToggle.addEventListener('change', () => {
         db.globalSettings.aiCanUseSystem = aiSystemToggle.checked;
         saveData();
@@ -4067,9 +4053,6 @@ function setupSettingsScreen() {
         showToast(`캐릭터 아이콘 숨기기가 ${hideCharIconsToggle.checked ? '활성화' : '비활성화'}되었습니다.`);
     });
 }
-// END: 추가할 새 함수들
-
-// 기존 applyPerChatUISettings 함수를 찾아 아래 코드로 전체 교체하세요.
 
 function applyPerChatUISettings() {
     const chat = (currentChatType === 'private') 
@@ -4078,11 +4061,9 @@ function applyPerChatUISettings() {
 
     if (!chat) return;
 
-    // 클래스 이름 변경
     chatRoomScreen.classList.toggle('hide-my-icons', !!chat.hideMyIcons);
     chatRoomScreen.classList.toggle('hide-char-icons', !!chat.hideCharIcons);
 
-    // 폰트 크기 적용 (이 부분이 중요합니다)
     const fontSize = chat.fontSize || 14;
     const messageArea = document.getElementById('message-area');
     if (messageArea) {
@@ -4110,14 +4091,12 @@ function applyPerChatUISettings() {
                     }
                 }
 
-                
                 const openOverlay = document.querySelector('.modal-overlay.visible, .action-sheet-overlay.visible');
                 if (openOverlay && e.target === openOverlay) {
                     openOverlay.classList.remove('visible');
                 }
             });
 
-            
             document.body.addEventListener('click', e => {
                 const navLink = e.target.closest('.app-icon[data-target]');
                 if (navLink) {
@@ -4178,7 +4157,6 @@ function applyPerChatUISettings() {
             if (dateDisplay) dateDisplay.textContent = `${now.getFullYear()}년 ${pad(now.getMonth() + 1)}월 ${pad(now.getDate())}일`;
         }
 
-        
         function setupHomeScreen() {
             const getIcon = (id) => db.customIcons[id] || defaultIcons[id].url;
             const homeScreenHTML = `
@@ -4203,7 +4181,7 @@ function applyPerChatUISettings() {
             document.getElementById('day-mode-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyHomeScreenMode('day'); });
             document.getElementById('night-mode-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyHomeScreenMode('night'); });
             document.querySelector('[data-target="wallpaper-font-screen"]').addEventListener('click', () => {
-    // wallpaper-font-screen으로 전환될 때 특별히 실행할 로직이 있다면 여기에 추가
+    
 });
             document.querySelector('[data-target="world-book-screen"]').addEventListener('click', renderWorldBookList);
             document.querySelector('[data-target="customize-screen"]').addEventListener('click', renderCustomizeForm);
@@ -4244,7 +4222,6 @@ function applyPerChatUISettings() {
                 }
             });
 
-            
             customizeForm.addEventListener('change', e => {
                 
                 if (e.target.matches('#global-css-toggle')) {
@@ -4253,19 +4230,16 @@ function applyPerChatUISettings() {
                     saveData();
                     showToast(e.target.checked ? '전역 커스텀 CSS가 활성화되었습니다' : '전역 커스텀 CSS가 비활성화되었습니다');
                 }
-                
-                
+
                 if (e.target.matches('#css-preset-select')) {
                     const newPreset = e.target.value;
                     db.globalCustomCSS.currentPreset = newPreset;
-                    
-                    
+
                     const cssInput = document.getElementById('css-input');
                     if (cssInput) {
                         cssInput.value = db.globalCustomCSS.presets[newPreset].css;
                     }
-                    
-                    
+
                     if (db.globalCustomCSS.enabled) {
                         updateGlobalCustomCSS();
                     }
@@ -4293,8 +4267,7 @@ function applyPerChatUISettings() {
                         showToast('CSS 코드를 입력해주세요');
                     }
                 }
-                
-                
+
                 if (e.target.matches('#new-preset-btn')) {
                     console.log('새 프리셋 버튼 클릭');
                     const presetName = prompt('새 프리셋의 이름을 입력하세요:');
@@ -4311,8 +4284,7 @@ function applyPerChatUISettings() {
                         showToast(`"${presetName}" 프리셋이 생성되었습니다`);
                     }
                 }
-                
-                
+
                 if (e.target.matches('#delete-preset-btn')) {
                     console.log('프리셋 삭제 버튼 클릭');
                     const currentPreset = db.globalCustomCSS.currentPreset;
@@ -4333,8 +4305,7 @@ function applyPerChatUISettings() {
 
         function renderCustomizeForm() {
             customizeForm.innerHTML = '';
-            
-            
+
             const iconSectionHTML = `
                 <div class="customize-section">
                     <h3 class="section-title">홈 화면 아이콘 커스터마이징</h3>
@@ -4355,8 +4326,7 @@ function applyPerChatUISettings() {
                 </div>
             `;
             customizeForm.insertAdjacentHTML('beforeend', iconSectionHTML);
-            
-            
+
             const globalCSSSectionHTML = `
                 <div class="customize-section">
                     <h3 class="section-title">전역 커스텀 CSS</h3>
@@ -4484,7 +4454,6 @@ function applyPerChatUISettings() {
             createContextMenu(menuItems, x, y);
         }
 
-        
 function renderChatList() {
     chatListContainer.innerHTML = '';
     const allChats = [ ...db.characters.map(c => ({ ...c, type: 'private' })), ...db.groups.map(g => ({ ...g, type: 'group' })) ];
@@ -4549,8 +4518,7 @@ function renderChatList() {
         const pinBadgeHTML = chat.isPinned ? '<span class="pin-badge">고정됨</span>' : '';
         const unreadBadgeHTML = chat.unreadCount > 0 ? `<span class="unread-badge">${chat.unreadCount}</span>` : '';
         const timeHTML = lastMessageTime ? `<span class="item-time">${lastMessageTime}</span>` : ''; 
-        
-        
+
         li.innerHTML = `
         <img src="${chat.avatar}" alt="${itemName}" class="chat-avatar ${avatarClass}">
         <div class="item-details">
@@ -4573,8 +4541,6 @@ function renderChatList() {
             });
         }
 
-        // --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
-
 function setupChatRoom() {
     sendMessageBtn.addEventListener('click', sendMessage);
     sendMessageBtn.addEventListener('touchend', (e) => {
@@ -4589,81 +4555,80 @@ function setupChatRoom() {
         }
     });
     getReplyBtn.addEventListener('click', getAiReply);
-    // --- START: setupChatRoom 함수 내 messageArea의 click 이벤트 리스너를 이걸로 교체 ---
-    messageArea.addEventListener('click', (e) => {
-        
-        if (stickerModal.classList.contains('visible')) {
-            stickerModal.classList.remove('visible');
-            
-            return; 
-        }
-        
-        if (e.target && e.target.id === 'load-more-btn') { loadMoreMessages(); }
-        else if (isInMultiSelectMode) {
-               const messageWrapper = e.target.closest('.message-wrapper');
-        if (!messageWrapper) return; // 메시지 영역이 아닌 곳을 클릭하면 무시
 
-        // 클릭된 곳이 프로필 사진 영역('.message-info')인지 확인
+    // setupChatRoom 함수 내에서 기존 messageArea.addEventListener('click', ...) 부분을
+// 아래 코드로 통째로 교체하세요.
+
+messageArea.addEventListener('click', (e) => {
+    if (stickerModal.classList.contains('visible')) {
+        stickerModal.classList.remove('visible');
+        return; 
+    }
+    
+    if (e.target && e.target.id === 'load-more-btn') { 
+        loadMoreMessages(); 
+    } else if (isInMultiSelectMode) {
+        const messageWrapper = e.target.closest('.message-wrapper');
+        if (!messageWrapper) return;
+
+        // 클릭된 영역이 프로필 사진/닉네임 영역(.message-info)인지 확인
         const isAvatarAreaClick = !!e.target.closest('.message-info');
 
         if (isAvatarAreaClick && messageWrapper.dataset.groupId) {
-            // --- 이것이 바로 원하셨던 그룹 선택 기능입니다 ---
-            // 프로필 사진 영역을 클릭했고, 그룹 ID가 있으면 그룹 전체를 선택합니다.
+            // 그룹 전체 선택/해제 로직
             const groupId = messageWrapper.dataset.groupId;
             const groupWrappers = messageArea.querySelectorAll(`.message-wrapper[data-group-id="${groupId}"]`);
             
-            // 그룹의 첫 메시지가 이미 선택되었는지 확인하여 전체 선택/해제를 결정합니다.
+            // 그룹의 첫번째 메시지가 이미 선택되었는지 여부로 전체 선택/해제 결정
             const isFirstMsgSelected = selectedMessageIds.has(groupWrappers[0].dataset.id);
 
             groupWrappers.forEach(wrapper => {
                 const msgId = wrapper.dataset.id;
-                if (isFirstMsgSelected) { // 이미 선택된 상태면, 그룹 전체 해제
+                if (isFirstMsgSelected) { // 이미 선택되었다면 그룹 전체 해제
                     selectedMessageIds.delete(msgId);
                     wrapper.classList.remove('multi-select-selected');
-                } else { // 선택되지 않은 상태면, 그룹 전체 선택
+                } else { // 선택되지 않았다면 그룹 전체 선택
                     selectedMessageIds.add(msgId);
                     wrapper.classList.add('multi-select-selected');
                 }
             });
-            selectCount.textContent = `${selectedMessageIds.size}개 항목 선택됨`;
-            deleteSelectedBtn.disabled = selectedMessageIds.size === 0;
-
         } else {
-            // 프로필 사진 영역이 아닌, 말풍선 자체를 클릭하면 개별 메시지만 선택/해제합니다.
+            // 단일 메시지 선택/해제 로직
             toggleMessageSelection(messageWrapper.dataset.id);
         }
+        // 선택된 항목 수 업데이트
+        selectCount.textContent = `${selectedMessageIds.size}개 항목 선택됨`;
+        deleteSelectedBtn.disabled = selectedMessageIds.size === 0;
 
-        } else {
-            const voiceBubble = e.target.closest('.voice-bubble');
-            if (voiceBubble) {
-                const transcript = voiceBubble.closest('.message-wrapper').querySelector('.voice-transcript');
-                if (transcript) { transcript.classList.toggle('active'); }
-            }
-            const pvCard = e.target.closest('.pv-card');
-            
-            if (pvCard && pvCard.dataset.clickable !== "false") {
-                const content = pvCard.querySelector('.pv-card-content');
-                const footer = pvCard.querySelector('.pv-card-footer');
-                content.classList.toggle('visible');
-                footer.classList.toggle('hidden');
-            }
-            
-            const giftCard = e.target.closest('.gift-card');
-            if (giftCard) {
-                const description = giftCard.closest('.message-wrapper').querySelector('.gift-card-description');
-                if (description) { description.classList.toggle('active'); }
-            }
-            const transferCard = e.target.closest('.transfer-card.received-transfer');
-            if (transferCard && currentChatType === 'private') {
-                const messageWrapper = transferCard.closest('.message-wrapper');
-                const messageId = messageWrapper.dataset.id;
-                const character = db.characters.find(c => c.id === currentChatId);
-                const message = character.history.find(m => m.id === messageId);
-                if (message && message.transferStatus === 'pending') { handleReceivedTransferClick(messageId); }
-            }
+    } else { // 멀티선택 모드가 아닐 때의 일반 클릭 이벤트
+        const voiceBubble = e.target.closest('.voice-bubble');
+        if (voiceBubble) {
+            const transcript = voiceBubble.closest('.message-wrapper').querySelector('.voice-transcript');
+            if (transcript) { transcript.classList.toggle('active'); }
         }
-    });
-// --- END: 이벤트 리스너 교체 ---
+        const pvCard = e.target.closest('.pv-card');
+        if (pvCard && pvCard.dataset.clickable !== "false") {
+            const content = pvCard.querySelector('.pv-card-content');
+            const footer = pvCard.querySelector('.pv-card-footer');
+            content.classList.toggle('visible');
+            footer.classList.toggle('hidden');
+        }
+        const giftCard = e.target.closest('.gift-card');
+        if (giftCard) {
+            const description = giftCard.closest('.message-wrapper').querySelector('.gift-card-description');
+            if (description) { description.classList.toggle('active'); }
+        }
+        const transferCard = e.target.closest('.transfer-card.received-transfer');
+        if (transferCard && currentChatType === 'private') {
+            const messageWrapper = transferCard.closest('.message-wrapper');
+            const messageId = messageWrapper.dataset.id;
+            const character = db.characters.find(c => c.id === currentChatId);
+            const message = character.history.find(m => m.id === messageId);
+            if (message && message.transferStatus === 'pending') { handleReceivedTransferClick(messageId); }
+        }
+    }
+});
+
     messageArea.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         if (e.target.id === 'load-more-btn' || isInMultiSelectMode) return;
@@ -4692,9 +4657,7 @@ function setupChatRoom() {
         attachmentToggleBtn.classList.toggle('active');
     });
 }
-// --- END: 함수 교체 ---
-        
-// --- START: 이 함수들을 아래 코드로 모두 교체 ---
+
 function handleMessageLongPress(messageWrapper, x, y) {
     if (isInMultiSelectMode) return;
     clearTimeout(longPressTimer);
@@ -4702,8 +4665,7 @@ function handleMessageLongPress(messageWrapper, x, y) {
     const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
     const message = chat.history.find(m => m.id === messageId);
     if (!message) return;
-    
-    // START: 편집 가능 로직 변경
+
     const isInvisibleMessage = /\[.*?님이 .*?님의 송금을 (?:수령|반환)했습니다\]|\[.*?님이 현재 상태를 업데이트:.*?\]|\[.*?님이 선물을 수령했습니다\]|\[system:.*?\]|\[.*?님이 .*?님을 그룹에 초대했습니다\]|\[.*?님이 그룹 이름을 .*?(?:으)로 변경했습니다\]/.test(message.content);
     const isImageOnlyRecog = message.isAiOnlyImage === true;
 
@@ -4719,14 +4681,11 @@ function handleMessageLongPress(messageWrapper, x, y) {
     if (isEditable && !isInvisibleMessage && !isImageOnlyRecog) {
         menuItems.push({ label: '편집', action: () => startMessageEdit(messageId) });
     }
-    // END: 편집 가능 로직 변경
 
     menuItems.push({ label: '삭제', action: () => enterMultiSelectMode(messageId) });
 
     if (menuItems.length > 0) { createContextMenu(menuItems, x, y); }
 }
-
-// --- START: 아래 2개 함수를 찾아서 통째로 교체하세요 ---
 
 function startMessageEdit(messageId) {
     exitMultiSelectMode();
@@ -4741,7 +4700,7 @@ function startMessageEdit(messageId) {
     for (const key in editableMessageRegexes) {
         const match = message.content.match(editableMessageRegexes[key]);
         if (match) {
-            contentToEdit = match[1] || ''; // 첫 번째 캡처 그룹 사용
+            contentToEdit = match[1] || ''; 
             matchedKey = key;
             break;
         }
@@ -4757,7 +4716,6 @@ function startMessageEdit(messageId) {
         matchedKey: matchedKey
     };
 
-    // UI 변경: 기존 입력창(textarea) 사용 및 버튼 교체
     messageInput.value = contentToEdit.trim();
     sendMessageBtn.style.display = 'none';
     getReplyBtn.style.display = 'none';
@@ -4780,7 +4738,7 @@ function saveMessageEdit() {
         const { originalContent, matchedKey } = editingMessageContext;
         
         let newContent;
-        // 송금 메시지는 전체를 교체, 나머지는 내용만 교체
+        
         if (matchedKey === 'transfer') {
             newContent = newText;
         } else {
@@ -4790,7 +4748,7 @@ function saveMessageEdit() {
                 const textToReplace = match.slice(1).find(m => m !== undefined);
                 newContent = originalContent.replace(textToReplace, newText);
             } else {
-                newContent = originalContent; // 매칭 실패 시 원본 유지
+                newContent = originalContent; 
             }
         }
         
@@ -4806,8 +4764,6 @@ function saveMessageEdit() {
     }
     cancelMessageEdit();
 }
-
-// --- END: 함수 2개 교체 ---
 
 function startMessageEdit(messageId) {
     exitMultiSelectMode();
@@ -4838,7 +4794,6 @@ function startMessageEdit(messageId) {
         matchedKey: matchedKey
     };
 
-    // UI 변경: 기존 입력창(textarea) 사용 및 버튼 교체
     messageInput.value = contentToEdit.trim();
     sendMessageBtn.style.display = 'none';
     getReplyBtn.style.display = 'none';
@@ -4846,7 +4801,7 @@ function startMessageEdit(messageId) {
     cancelEditBtn.style.display = 'flex';
     
     messageInput.focus();
-    autoResize(); // 편집 내용에 맞게 textarea 높이 조절
+    autoResize(); 
 }
 
 function saveMessageEdit() {
@@ -4856,7 +4811,7 @@ function saveMessageEdit() {
     const messageIndex = chat.history.findIndex(m => m.id === editingMessageId);
     if (messageIndex === -1) return;
 
-    const newText = messageInput.value.trim(); // 이제 messageInput (textarea)에서 값을 가져옴
+    const newText = messageInput.value.trim(); 
     if (newText) {
         const { originalContent, matchedKey } = editingMessageContext;
         const regex = editableMessageRegexes[matchedKey];
@@ -4880,9 +4835,8 @@ function saveMessageEdit() {
     cancelMessageEdit();
 }
 
-// --- START: 이 함수 전체를 아래 코드로 교체 ---
 function cancelMessageEdit() {
-    // 이미 편집 모드가 아니면 함수를 종료합니다.
+    
     if (editingMessageId === null) return;
 
     editingMessageId = null;
@@ -4895,9 +4849,6 @@ function cancelMessageEdit() {
     cancelEditBtn.style.display = 'none';
     autoResize(); 
 }
-// --- END: 함수 교체 ---
-
-// --- END: 함수 3개 교체 ---
 
         function enterMultiSelectMode(initialMessageId) {
             isInMultiSelectMode = true;
@@ -4910,7 +4861,6 @@ function cancelMessageEdit() {
             if (initialMessageId) { toggleMessageSelection(initialMessageId); }
         }
 
-        // --- START: 이 함수 전체를 아래 코드로 교체 ---
 function exitMultiSelectMode() {
     isInMultiSelectMode = false;
     chatRoomHeaderDefault.style.display = 'flex';
@@ -4924,14 +4874,11 @@ function exitMultiSelectMode() {
     });
     selectedMessageIds.clear();
 
-    // START: 추가된 코드
-    // 삭제 모드 종료 시 편집 모드도 함께 종료
     if (editingMessageId) {
         cancelMessageEdit();
     }
-    // END: 추가된 코드
+    
 }
-// --- END: 함수 교체 ---
 
         function toggleMessageSelection(messageId) {
             const el = messageArea.querySelector(`.message-wrapper[data-id="${messageId}"]`);
@@ -4960,8 +4907,6 @@ function exitMultiSelectMode() {
             showToast(`${deletedCount}개의 메시지를 삭제했습니다`);
         }
 
-// --- START: 이 함수 전체를 아래 코드로 교체 ---
-// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
 function openChatRoom(chatId, type) {
     const chat = (type === 'private') ? db.characters.find(c => c.id === chatId) : db.groups.find(g => g.id === chatId);
     if (!chat) return;
@@ -4992,101 +4937,21 @@ function openChatRoom(chatId, type) {
     chatRoomScreen.style.setProperty('--bubble-font-size', '14px'); 
     applyPerChatUISettings();
     updateCustomBubbleStyle(chatId, chat.customBubbleCss, chat.useCustomBubbleCss);
-    
-    // 메시지를 먼저 렌더링하고 화면을 전환합니다.
+
     renderMessages(false, true);
     stickerBar.classList.remove('visible');
     attachmentToggleBtn.classList.remove('active');
-    
-    // 화면 전환
+
     switchScreen('chat-room-screen');
 
-    // START: 수정된 부분
-    // 화면이 완전히 전환된 후(아주 약간의 딜레이 후) 높이를 계산하도록 변경
     setTimeout(() => {
-        messageInput.value = ''; // 입력창 비우기
-        autoResize(); // 입력창 높이 초기화
-    }, 0); // 0ms 지연으로 다음 렌더링 사이클에 실행되도록 함
-    // END: 수정된 부분
+        messageInput.value = ''; 
+        autoResize(); 
+    }, 0); 
+    
 }
-// --- END: 함수 교체 ---
-// --- END: 함수 교체 --- 
-// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
-        function renderMessages(isLoadMore = false, forceScrollToBottom = false) {
-            const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
-            if (!chat || !chat.history) return;
 
-            const oldScrollHeight = messageArea.scrollHeight;
-            const totalMessages = chat.history.length;
-            const end = totalMessages - (currentPage - 1) * MESSAGES_PER_PAGE;
-            const start = Math.max(0, end - MESSAGES_PER_PAGE);
-            
-            const messagesToRender = chat.history.slice(start, end);
-            const messageBeforeSlice = (start > 0) ? chat.history[start - 1] : null;
-            
-            if (!isLoadMore) messageArea.innerHTML = '';
-            
-            const fragment = document.createDocumentFragment();
-
-            // 렌더링 루프에서 그룹 ID 상태를 관리합니다.
-            let currentGroupId = null;
-
-            messagesToRender.forEach((msg, index) => {
-                const prevMsg = (index === 0) ? messageBeforeSlice : messagesToRender[index - 1];
-                const nextMsg = (index === messagesToRender.length - 1) ? null : messagesToRender[index + 1];
-                
-                // 그룹의 시작인지 판단하는 로직
-                let isGroupStart = true;
-                if (prevMsg) {
-                    const prevSenderId = prevMsg.role === 'user' ? 'user_me' : (prevMsg.senderId || 'assistant');
-                    const currentSenderId = msg.role === 'user' ? 'user_me' : (msg.senderId || 'assistant');
-                    const prevMsgDate = new Date(prevMsg.timestamp);
-                    const currentMsgDate = new Date(msg.timestamp);
-                    const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
-                    const currentTimeSignature = `${currentMsgDate.getFullYear()}-${pad(currentMsgDate.getMonth() + 1)}-${pad(currentMsgDate.getDate())}-${pad(currentMsgDate.getHours())}-${pad(currentMsgDate.getMinutes())}`;
-                    const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMsg.content);
-
-                    if (currentSenderId === prevSenderId && currentTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
-                        isGroupStart = false;
-                    }
-                }
-                
-                // 그룹 ID 할당
-                if (isGroupStart) {
-                    currentGroupId = msg.id; // 새 그룹이 시작되면, 현재 메시지 ID를 그룹 ID로 설정
-                }
-                
-                // createMessageBubbleElement에 그룹 ID를 인자로 전달합니다.
-                const bubble = createMessageBubbleElement(msg, prevMsg, nextMsg, currentGroupId); 
-                if (bubble) fragment.appendChild(bubble);
-            });
-
-            if (isLoadMore) {
-                const existingLoadBtn = document.getElementById('load-more-btn');
-                if (existingLoadBtn) existingLoadBtn.remove();
-                messageArea.prepend(fragment);
-            } else {
-                messageArea.appendChild(fragment);
-            }
-            
-            if (totalMessages > currentPage * MESSAGES_PER_PAGE) {
-                const loadMoreButton = document.createElement('button');
-                loadMoreButton.id = 'load-more-btn';
-                loadMoreButton.className = 'load-more-btn';
-                loadMoreButton.textContent = '이전 메시지 불러오기';
-                messageArea.prepend(loadMoreButton);
-            }
-
-            if (forceScrollToBottom) {
-                setTimeout(() => { messageArea.scrollTop = messageArea.scrollHeight; }, 0);
-            } else if (isLoadMore) {
-                messageArea.scrollTop = messageArea.scrollHeight - oldScrollHeight;
-            }
-        }
-// --- END: 함수 교체 ---
-
-
-        function loadMoreMessages() {
+function loadMoreMessages() {
             currentPage++;
             renderMessages(true, false);
         }
@@ -5095,8 +4960,92 @@ function openChatRoom(chatId, type) {
             return Math.max(1, Math.min(60, Math.ceil(text.length / 3.5)));
         }
 
-        // --- START: 이 함수 전체를 아래 코드로 교-체하세요 ---
-function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) {
+
+        // 기존 renderMessages 함수를 아래 코드로 통째로 교체하세요.
+
+function renderMessages(isLoadMore = false, forceScrollToBottom = false) {
+    const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
+    if (!chat || !chat.history) return;
+
+    const oldScrollHeight = messageArea.scrollHeight;
+    const totalMessages = chat.history.length;
+    const end = totalMessages - (currentPage - 1) * MESSAGES_PER_PAGE;
+    const start = Math.max(0, end - MESSAGES_PER_PAGE);
+    
+    const messagesToRender = chat.history.slice(start, end);
+    const messageBeforeSlice = (start > 0) ? chat.history[start - 1] : null;
+    
+    if (!isLoadMore) messageArea.innerHTML = '';
+    
+    const fragment = document.createDocumentFragment();
+    let currentGroupId = null; // 그룹 ID를 추적할 변수
+
+    messagesToRender.forEach((msg, index) => {
+        const prevMsg = (index === 0) ? messageBeforeSlice : messagesToRender[index - 1];
+        const nextMsg = (index === messagesToRender.length - 1) ? null : messagesToRender[index + 1];
+
+        let isGroupStart = true;
+        let isGroupEnd = true;
+        
+        const currentSenderId = msg.role === 'user' ? 'user_me' : (msg.senderId || 'assistant');
+        const currentMsgDate = new Date(msg.timestamp);
+        const currentTimeSignature = `${currentMsgDate.getFullYear()}-${pad(currentMsgDate.getMonth() + 1)}-${pad(currentMsgDate.getDate())}-${pad(currentMsgDate.getHours())}-${pad(currentMsgDate.getMinutes())}`;
+
+        if (prevMsg) {
+            const prevSenderId = prevMsg.role === 'user' ? 'user_me' : (prevMsg.senderId || 'assistant');
+            const prevMsgDate = new Date(prevMsg.timestamp);
+            const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
+            const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMsg.content);
+
+            if (currentSenderId === prevSenderId && currentTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
+                isGroupStart = false;
+            }
+        }
+
+        if (isGroupStart) {
+            currentGroupId = msg.id; // 새 그룹이 시작되면, 첫 메시지의 ID를 그룹 ID로 사용
+        }
+
+        if (nextMsg) {
+            const nextSenderId = nextMsg.role === 'user' ? 'user_me' : (nextMsg.senderId || 'assistant');
+            const nextMsgDate = new Date(nextMsg.timestamp);
+            const nextTimeSignature = `${nextMsgDate.getFullYear()}-${pad(nextMsgDate.getMonth() + 1)}-${pad(nextMsgDate.getDate())}-${pad(nextMsgDate.getHours())}-${pad(nextMsgDate.getMinutes())}`;
+            const isNextSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(nextMsg.content);
+            if (currentSenderId === nextSenderId && currentTimeSignature === nextTimeSignature && !isNextSystemMsg) {
+                isGroupEnd = false;
+            }
+        }
+        
+        const bubble = createMessageBubbleElement(msg, isGroupStart, isGroupEnd, currentGroupId);
+        if (bubble) fragment.appendChild(bubble);
+    });
+
+    if (isLoadMore) {
+        const existingLoadBtn = document.getElementById('load-more-btn');
+        if (existingLoadBtn) existingLoadBtn.remove();
+        messageArea.prepend(fragment);
+    } else {
+        messageArea.appendChild(fragment);
+    }
+    
+    if (totalMessages > currentPage * MESSAGES_PER_PAGE) {
+        const loadMoreButton = document.createElement('button');
+        loadMoreButton.id = 'load-more-btn';
+        loadMoreButton.className = 'load-more-btn';
+        loadMoreButton.textContent = '이전 메시지 불러오기';
+        messageArea.prepend(loadMoreButton);
+    }
+
+    if (forceScrollToBottom) {
+        setTimeout(() => { messageArea.scrollTop = messageArea.scrollHeight; }, 0);
+    } else if (isLoadMore) {
+        messageArea.scrollTop = messageArea.scrollHeight - oldScrollHeight;
+    }
+}
+
+// 기존 createMessageBubbleElement 함수를 아래 코드로 통째로 교체하세요.
+
+function createMessageBubbleElement(message, isGroupStart, isGroupEnd, groupId) {
     const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
     const { role, content, timestamp, id, transferStatus, giftStatus, stickerData, senderId } = message;
     const timeSkipRegex = /\[system-display:([\s\S]+?)\]/;
@@ -5111,6 +5060,7 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
 
     const wrapper = document.createElement('div');
     wrapper.dataset.id = id;
+    wrapper.dataset.groupId = groupId; // 그룹 ID를 DOM에 명시적으로 추가
 
     if (timeSkipMatch || inviteMatch || renameMatch) {
         wrapper.className = 'message-wrapper system-notification';
@@ -5127,40 +5077,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
     const themeKey = chat.theme || 'white_pink';
     const theme = colorThemes[themeKey] || colorThemes['white_pink'];
     
-    const currentSenderId = isSent ? 'user_me' : (senderId || 'assistant');
-    const msgDate = new Date(timestamp);
-    const msgTimeSignature = `${msgDate.getFullYear()}-${pad(msgDate.getMonth() + 1)}-${pad(msgDate.getDate())}-${pad(msgDate.getHours())}-${pad(msgDate.getMinutes())}`;
-    
-    // ▼▼▼▼▼ 오류 수정 부분 ▼▼▼▼▼
-    // 중복 선언되던 let isGroupStart;를 여기서 한 번만 선언합니다.
-    let isGroupStart = true;
-    if (prevMessage) {
-        const prevSenderId = prevMessage.role === 'user' ? 'user_me' : (prevMessage.senderId || 'assistant');
-        const prevMsgDate = new Date(prevMessage.timestamp);
-        const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
-        const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMessage.content);
-        
-        if (currentSenderId === prevSenderId && msgTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
-            isGroupStart = false;
-        }
-    }
-    // ▲▲▲▲▲ 오류 수정 부분 ▲▲▲▲▲
-
-    wrapper.dataset.senderId = currentSenderId;
-    wrapper.dataset.timeSignature = msgTimeSignature;
-    wrapper.dataset.groupId = groupId; // 인자로 받은 groupId를 바로 할당
-
-    let isGroupEnd = true;
-    if (nextMessage) {
-        const nextSenderId = nextMessage.role === 'user' ? 'user_me' : (nextMessage.senderId || 'assistant');
-        const nextMsgDate = new Date(nextMessage.timestamp);
-        const nextTimeSignature = `${nextMsgDate.getFullYear()}-${pad(nextMsgDate.getMonth() + 1)}-${pad(nextMsgDate.getDate())}-${pad(nextMsgDate.getHours())}-${pad(nextMsgDate.getMinutes())}`;
-        const isNextSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(nextMessage.content);
-        if (currentSenderId === nextSenderId && msgTimeSignature === nextTimeSignature && !isNextSystemMsg) {
-            isGroupEnd = false;
-        }
-    }
-
     if (isSent) {
         avatarUrl = (currentChatType === 'private') ? chat.myAvatar : chat.me.avatar;
         bubbleTheme = theme.sent;
@@ -5178,8 +5094,10 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
         }
         bubbleTheme = theme.received;
     }
+    const msgDate = new Date(timestamp);
     const timeString = `${pad(msgDate.getHours())}:${pad(msgDate.getMinutes())}`;
     wrapper.className = `message-wrapper ${isSent ? 'sent' : 'received'}`;
+    
     if (!isGroupStart) {
         wrapper.classList.add('grouped');
     }
@@ -5189,6 +5107,7 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
     bubbleRow.className = 'message-bubble-row';
     let bubbleElement;
 
+    // ... (이하 bubbleElement를 생성하는 모든 if/else 로직은 기존과 동일하므로 생략)
     const urlRegex = /^(https?:\/\/[^\s]+\.(?:jpg|jpeg|png|gif|webp|bmp|svg)|data:image\/[a-z]+;base64,)/i;
     const sentStickerRegex = /\[(?:.+?)님의 이모티콘:.+?\]/i;
     const receivedStickerRegex = /\[(?:.+?)님의 이모티콘:([\s\S]+?)\]/i;
@@ -5200,7 +5119,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
     const privateGiftRegex = /\[(?:.+?)님이 보낸 선물:([\s\S]+?)\]/;
     const groupGiftRegex = /\[(.*?)\s*님이\s*(.*?)\s*님에게 선물을 보냈습니다:([\s\S]+?)\]/;
     const imageRecogRegex = /\[(?:.+?)님의 이미지:\]/;
-    const textRegex = /\[(?:.+?)님의 메시지:([\s\S]+)\]/;
 
     const sentStickerMatch = content.match(sentStickerRegex);
     const receivedStickerMatch = content.match(receivedStickerRegex);
@@ -5212,11 +5130,9 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
     const privateGiftMatch = content.match(privateGiftRegex);
     const groupGiftMatch = content.match(groupGiftRegex);
     const imageRecogMatch = content.match(imageRecogRegex);
-    const textMatch = content.match(textRegex);
     const isAiRecogImage = message.parts && message.parts.some(p => p.type === 'image');
 
     if ((isSent && sentStickerMatch && stickerData) || (!isSent && receivedStickerMatch)) {
-        
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'sticker-bubble';
         let stickerSrc = '';
@@ -5235,7 +5151,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             }
         }
         bubbleElement.innerHTML = `<img src="${stickerSrc}" alt="이모티콘">`;
-
     } else if (privateGiftMatch || groupGiftMatch) {
         const match = privateGiftMatch || groupGiftMatch;
         bubbleElement = document.createElement('div');
@@ -5255,7 +5170,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
         descriptionDiv.className = 'gift-card-description';
         descriptionDiv.textContent = description;
         wrapper.appendChild(descriptionDiv);
-
     } else if (voiceMatch) {
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'voice-bubble';
@@ -5268,24 +5182,18 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
         transcriptDiv.className = 'voice-transcript';
         transcriptDiv.textContent = voiceMatch[1].trim();
         wrapper.appendChild(transcriptDiv);
-
     } else if (photoVideoMatch || imageRecogMatch) {
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'pv-card';
         const imageUrl = message.imageData || 'https://i.postimg.cc/L8NFrBrW/1752307494497.jpg';
-
-        
         let footerText, descriptionText = '';
-        
         const footerIconSVG = `<svg viewBox="0 0 24 24"><path d="M4,4H20A2,2 0 0,1 22,6V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V6A2,2 0 0,1 4,4M4,6V18H20V6H4M10,9A1,1 0 0,1 11,10A1,1 0 0,1 10,11A1,1 0 0,1 9,10A1,1 0 0,1 10,9M8,17L11,13L13,15L17,10L20,14V17H8Z"></path></svg>`;
 
         if (message.isAiOnlyImage) {
-            
             bubbleElement.dataset.clickable = "false";
             footerText = `<span>AI 인식</span>`;
             descriptionText = ''; 
         } else {
-            
             footerText = isAiRecogImage 
                 ? `<span>AI 인식・클릭하여 설명 보기</span>`
                 : `<span>사진/영상・클릭하여 설명 보기</span>`;
@@ -5299,7 +5207,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
                 ${footerIconSVG}
                 ${footerText}
             </div>`;
-        
     } else if (privateSentTransferMatch || privateReceivedTransferMatch || groupTransferMatch) {
         const isSentTransfer = !!privateSentTransferMatch || (groupTransferMatch && isSent);
         const match = privateSentTransferMatch || privateReceivedTransferMatch || groupTransferMatch;
@@ -5331,12 +5238,10 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
         }
         const remarkHTML = remarkText ? `<p class="transfer-remark">${remarkText}</p>` : '';
         bubbleElement.innerHTML = `<div class="overlay"></div><div class="transfer-content"><p class="transfer-title">${titleText}</p><p class="transfer-amount">₩${amount}</p>${remarkHTML}<p class="transfer-status">${statusText}</p></div>`;
-
     } else if (urlRegex.test(content)) {
         bubbleElement = document.createElement('div');
         bubbleElement.className = 'photo-bubble';
         bubbleElement.innerHTML = `<img src="${content}" alt="이미지 메시지">`;
-
     } else {
         bubbleElement = document.createElement('div');
         bubbleElement.className = `message-bubble ${isSent ? 'sent' : 'received'}`;
@@ -5379,121 +5284,117 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
     wrapper.prepend(bubbleRow);
     return wrapper;
 }
-// --- END: 함수 교체 ---
 
+function addMessageBubble(message) {
+    const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
+    if (!chat) return;
 
-// --- START: 이 함수 전체를 아래 코드로 교체하세요 ---
-        function addMessageBubble(message) {
-            const chat = (currentChatType === 'private')
-                ? db.characters.find(c => c.id === currentChatId)
-                : db.groups.find(g => g.id === currentChatId);
-            
-            if (!chat) return;
-        
-            const history = chat.history;
-            const prevMessage = history.length > 1 ? history[history.length - 2] : null;
-            const lastMessageWrapper = messageArea.querySelector('.message-wrapper:last-child');
-            let currentGroupId = null;
+    // AI의 시스템 메시지는 UI에 표시하지 않음
+    if (message.role === 'assistant') {
+        const character = chat;
+        const myName = character.myName;
+        const updateStatusRegex = new RegExp(`\\[${escapeRegex(character.realName)}님이 현재 상태를 업데이트:(.*?)\\]`);
+        const giftReceivedRegex = new RegExp(`\\[${escapeRegex(character.realName)}님이 선물을 수령했습니다\\]`);
+        const transferRegex = new RegExp(`\\[${escapeRegex(character.realName)}님이 ${escapeRegex(myName)}님의 송금을 (?:수령|반환)했습니다\\]`);
 
-            // 새 메시지가 이전 메시지와 그룹을 형성하는지 확인
-            if (prevMessage && lastMessageWrapper) {
-                const prevSenderId = prevMessage.role === 'user' ? 'user_me' : (prevMessage.senderId || 'assistant');
-                const currentSenderId = message.role === 'user' ? 'user_me' : (message.senderId || 'assistant');
-        
-                const prevMsgDate = new Date(prevMessage.timestamp);
-                const prevTimeSignature = `${prevMsgDate.getFullYear()}-${prevMsgDate.getMonth()}-${prevMsgDate.getDate()}-${prevMsgDate.getHours()}-${prevMsgDate.getMinutes()}`;
-                const currentMsgDate = new Date(message.timestamp);
-                const currentTimeSignature = `${currentMsgDate.getFullYear()}-${currentMsgDate.getMonth()}-${currentMsgDate.getDate()}-${currentMsgDate.getHours()}-${currentMsgDate.getMinutes()}`;
-                const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]/.test(prevMessage.content);
-                
-                // 그룹이 계속되는 조건
-                if (prevSenderId === currentSenderId && prevTimeSignature === currentTimeSignature && !isPrevSystemMsg) {
-                    // **실시간 시간 숨김 처리**
-                    const lastMeta = lastMessageWrapper.querySelector('.message-meta');
-                    if (lastMeta) {
-                        lastMeta.remove(); 
-                    }
-                    currentGroupId = lastMessageWrapper.dataset.groupId;
-                }
-            }
-
-            // 그룹 ID가 없으면(새 그룹이면) 자신의 ID를 그룹 ID로 사용
-            if (!currentGroupId) {
-                currentGroupId = message.id;
-            }
-
-            // 시스템 메시지 등 보이지 않는 메시지 처리
-            if (currentChatType === 'private') {
-                const character = chat;
-                const myName = character.myName; 
-                const systemMessageRegex = /\[system:.*?\]|\[system-display:.*?\]/;
-                const updateStatusRegex = new RegExp(`\\[${character.realName}님이 현재 상태를 업데이트:(.*?)\\]`);
-                const giftReceivedRegex = new RegExp(`\\[${character.realName}님이 선물을 수령했습니다\\]`);
-
-                if (systemMessageRegex.test(message.content)) { /* do nothing for pure system messages */ }
-                if (message.content.match(updateStatusRegex)) {
-                    character.status = message.content.match(updateStatusRegex)[1];
-                    chatRoomStatusText.textContent = character.status;
-                    saveData();
-                    return; // 화면에 버블을 추가하지 않음
-                }
-                if (message.content.match(giftReceivedRegex) && message.role === 'assistant') {
-                    // ... (이하 기존 로직 유지)
-                    const lastPendingGiftIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('님이 보낸 선물:') && m.giftStatus !== 'received');
-                    if (lastPendingGiftIndex !== -1) {
-                        const actualIndex = character.history.length - 1 - lastPendingGiftIndex;
-                        const giftMsg = character.history[actualIndex];
-                        giftMsg.giftStatus = 'received';
-                        const giftCardOnScreen = messageArea.querySelector(`.message-wrapper[data-id="${giftMsg.id}"] .gift-card`);
-                        if (giftCardOnScreen) { giftCardOnScreen.classList.add('received'); }
-                        saveData();
-                    }
-                    return; // 화면에 버블을 추가하지 않음
-                }
-            }
-             
-            // 화면에 보일 메시지 버블 생성 및 추가
-            const bubbleElement = createMessageBubbleElement(message, prevMessage, null, currentGroupId);
-            if (bubbleElement) {
-                messageArea.appendChild(bubbleElement);
-                messageArea.scrollTop = messageArea.scrollHeight;
-            }
-        }
-// --- END: 함수 교체 ---
-
-        function sendMessage() {
-            const text = messageInput.value.trim();
-            if (!text || isGenerating) return;
-            const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
-            if (!chat) {
-                console.error("sendMessage 오류: 현재 ID에 해당하는 채팅 객체를 찾을 수 없습니다:", currentChatId);
-                showToast("오류: 채팅방 정보를 불러오지 못했습니다. 앱을 새로고침하거나 다시 시도해주세요.");
-                return;
-            }
-            let messageContent;
-            const systemRegex = /\[system:.*?\]|\[system-display:.*?\]/;
-            const inviteRegex = /\[.*?님이 .*?님을 그룹에 초대했습니다\]/;
-            const renameRegex = /\[(.*?)님이 그룹 이름을 ‘(.*?)’(으)로 변경했습니다\]/;
-            const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
-            if (renameRegex.test(text)) {
-                const match = text.match(renameRegex);
-                chat.name = match[2];
-                chatRoomTitle.textContent = chat.name;
-                messageContent = `[${chat.me.nickname}님이 그룹 이름을 ‘${chat.name}’(으)로 변경했습니다]`;
-            } else if (systemRegex.test(text) || inviteRegex.test(text)) {
-                messageContent = text;
-            } else {
-                messageContent = `[${myName}님의 메시지:${text}]`;
-            }
-            const message = { id: `msg_${Date.now()}`, role: 'user', content: messageContent, parts: [{ type: 'text', text: messageContent }], timestamp: Date.now() };
-            if (currentChatType === 'group') { message.senderId = 'user_me'; }
-            chat.history.push(message);
-            addMessageBubble(message);
+        if (updateStatusRegex.test(message.content)) {
+            character.status = message.content.match(updateStatusRegex)[1];
+            chatRoomStatusText.textContent = character.status;
             saveData();
-            renderChatList();
-            messageInput.value = '';
-            autoResize();
+            return;
         }
+        if (giftReceivedRegex.test(message.content)) {
+            const lastPendingGiftIndex = character.history.slice().reverse().findIndex(m => m.role === 'user' && m.content.includes('님이 보낸 선물:') && m.giftStatus !== 'received');
+            if (lastPendingGiftIndex !== -1) {
+                const actualIndex = character.history.length - 1 - lastPendingGiftIndex;
+                const giftMsg = character.history[actualIndex];
+                giftMsg.giftStatus = 'received';
+                const giftCardOnScreen = messageArea.querySelector(`.message-wrapper[data-id="${giftMsg.id}"] .gift-card`);
+                if (giftCardOnScreen) giftCardOnScreen.classList.add('received');
+                saveData();
+            }
+            return;
+        }
+        if (transferRegex.test(message.content)) {
+            return; // 송금 수령/반환 메시지는 AI 응답에서는 UI에 그리지 않음
+        }
+    }
+    
+    const history = chat.history;
+    const prevMessage = history.length > 1 ? history[history.length - 2] : null;
+
+    let isGroupStart = true;
+    let isGroupEnd = true; // 새로 추가되는 메시지는 항상 그룹의 끝
+
+    const currentSenderId = message.role === 'user' ? 'user_me' : (message.senderId || 'assistant');
+    const currentMsgDate = new Date(message.timestamp);
+    const currentTimeSignature = `${currentMsgDate.getFullYear()}-${pad(currentMsgDate.getMonth() + 1)}-${pad(currentMsgDate.getDate())}-${pad(currentMsgDate.getHours())}-${pad(currentMsgDate.getMinutes())}`;
+    
+    // 이전 메시지와 그룹화될 수 있는지 확인
+    if (prevMessage) {
+        const prevSenderId = prevMessage.role === 'user' ? 'user_me' : (prevMessage.senderId || 'assistant');
+        const prevMsgDate = new Date(prevMessage.timestamp);
+        const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
+        const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMessage.content);
+        
+        if (currentSenderId === prevSenderId && currentTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
+            isGroupStart = false;
+            // 이전 메시지 DOM에서 시간 제거
+            const lastMessageWrapper = messageArea.querySelector('.message-wrapper:last-child');
+            if(lastMessageWrapper) {
+                const lastMeta = lastMessageWrapper.querySelector('.message-meta');
+                if (lastMeta) lastMeta.remove();
+            }
+        }
+    }
+
+    const bubbleElement = createMessageBubbleElement(message, isGroupStart, isGroupEnd);
+    if (bubbleElement) {
+        messageArea.appendChild(bubbleElement);
+        messageArea.scrollTop = messageArea.scrollHeight;
+    }
+}
+// END: 교체할 함수 3개
+
+// 기존 sendMessage 함수를 아래 코드로 통째로 교체하세요.
+
+function sendMessage() {
+    const text = messageInput.value.trim();
+    if (!text || isGenerating) return;
+    const chat = (currentChatType === 'private') ? db.characters.find(c => c.id === currentChatId) : db.groups.find(g => g.id === currentChatId);
+    if (!chat) {
+        console.error("sendMessage 오류: 현재 ID에 해당하는 채팅 객체를 찾을 수 없습니다:", currentChatId);
+        showToast("오류: 채팅방 정보를 불러오지 못했습니다. 앱을 새로고침하거나 다시 시도해주세요.");
+        return;
+    }
+    let messageContent;
+    const systemRegex = /\[system:.*?\]|\[system-display:.*?\]/;
+    const inviteRegex = /\[.*?님이 .*?님을 그룹에 초대했습니다\]/;
+    const renameRegex = /\[(.*?)님이 그룹 이름을 ‘(.*?)’(으)로 변경했습니다\]/;
+    const myName = (currentChatType === 'private') ? chat.myName : chat.me.nickname;
+    if (renameRegex.test(text)) {
+        const match = text.match(renameRegex);
+        chat.name = match[2];
+        chatRoomTitle.textContent = chat.name;
+        messageContent = `[${chat.me.nickname}님이 그룹 이름을 ‘${chat.name}’(으)로 변경했습니다]`;
+    } else if (systemRegex.test(text) || inviteRegex.test(text)) {
+        messageContent = text;
+    } else {
+        messageContent = `[${myName}님의 메시지:${text}]`;
+    }
+    const message = { id: `msg_${Date.now()}`, role: 'user', content: messageContent, parts: [{ type: 'text', text: messageContent }], timestamp: Date.now() };
+    if (currentChatType === 'group') { message.senderId = 'user_me'; }
+    chat.history.push(message);
+    
+    // addMessageBubble 대신 renderMessages 호출
+    currentPage = 1; 
+    renderMessages(false, true); 
+
+    saveData();
+    renderChatList();
+    messageInput.value = '';
+    autoResize();
+}
 
         function sendImageForRecognition(base64Data) {
             if (!base64Data || isGenerating) return;
@@ -5639,7 +5540,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             attachmentToggleBtn.classList.remove('active');
         }
 
-        
         function setupTimeSkipSystem() {
             timeSkipBtn.addEventListener('click', () => {
                 timeSkipForm.reset();
@@ -5675,7 +5575,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             timeSkipModal.classList.remove('visible');
         }
 
-        
         function generatePrivateSystemPrompt(character) {
             const worldBooksBefore = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'before')).filter(Boolean).map(wb => wb.content).join('\n');
             const worldBooksAfter = (character.worldBookIds || []).map(id => db.worldBooks.find(wb => wb.id === id && wb.position === 'after')).filter(Boolean).map(wb => wb.content).join('\n');
@@ -5805,8 +5704,7 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
 
         async function getAiReply() {
             if (isGenerating) return;
-            
-            
+
             const currentProvider = db.apiSettings?.currentProvider;
             const settings = db.apiSettings?.[currentProvider];
             const { url, key, model } = settings || {};
@@ -5905,114 +5803,112 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             }
         }
 
-        // --- START: 이 함수 전체를 아래의 코드로 교체하세요 ---
-// --- START: 이 함수 전체를 아래의 코드로 완전히 교체하세요 ---
-        async function processStream(response, originalChat, apiType) {
-            const reader = response.body.getReader(), decoder = new TextDecoder();
-            let fullResponse = "", accumulatedChunk = "";
-            for (;;) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                accumulatedChunk += decoder.decode(value, { stream: true });
-                
-                if (apiType === "openai" || apiType === "deepseek" || apiType === "claude" || apiType === "newapi" || apiType === "openrouter") {
-                    const parts = accumulatedChunk.split("\n\n");
-                    accumulatedChunk = parts.pop();
-                    for (const part of parts) {
-                        if (part.startsWith("data: ")) {
-                            const data = part.substring(6);
-                            if (data.trim() !== "[DONE]") {
-                                try { fullResponse += JSON.parse(data).choices[0].delta?.content || ""; } catch (e) {  }
-                            }
-                        }
+        // 기존 processStream 함수를 아래 코드로 통째로 교체하세요.
+
+async function processStream(response, originalChat, apiType) {
+    const reader = response.body.getReader(), decoder = new TextDecoder();
+    let fullResponse = "", accumulatedChunk = "";
+    for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        accumulatedChunk += decoder.decode(value, { stream: true });
+        
+        if (apiType === "openai" || apiType === "deepseek" || apiType === "claude" || apiType === "newapi" || apiType === "openrouter") {
+            const parts = accumulatedChunk.split("\n\n");
+            accumulatedChunk = parts.pop();
+            for (const part of parts) {
+                if (part.startsWith("data: ")) {
+                    const data = part.substring(6);
+                    if (data.trim() !== "[DONE]") {
+                        try { fullResponse += JSON.parse(data).choices[0].delta?.content || ""; } catch (e) {  }
                     }
                 }
-            }
-            if (apiType === "gemini") {
-                try {
-                    const parsedStream = JSON.parse(accumulatedChunk);
-                    fullResponse = parsedStream.map(item => item.candidates?.[0]?.content?.parts?.[0]?.text || "").join('');
-                } catch (e) {
-                    console.error("Gemini 스트림 파싱 오류:", e, "Chunk:", accumulatedChunk);
-                    showToast("Gemini 응답 파싱 실패");
-                    return;
-                }
-            }
-
-            if (fullResponse) {
-                const messagesToAdd = []; 
-                const isPrivateChat = !originalChat.members;
-
-                if (isPrivateChat) {
-                    const character = originalChat;
-                    const myName = character.myName;
-                    
-                    const messageRegex = new RegExp(`\\[${character.realName}(?:님의 (?:메시지|음성|송금|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]|\\[${character.realName}님이 ${myName}님의 송금을 (?:수령|반환)했습니다\\]|\\[${character.realName}님이 선물을 수령했습니다\\]|\\[${character.realName}님이 현재 상태를 업데이트:.*?\\]`, "g");
-                    const messages = fullResponse.match(messageRegex) || [];
-                    
-                    if (messages.length > 0) {
-                        messages.forEach(msgContent => {
-                            const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now() };
-                            messagesToAdd.push(message); 
-                        });
-                    } else if (fullResponse.trim()) {
-                        const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: `[${character.realName}님의 메시지:${fullResponse}]`, parts: [{ type: 'text', text: `[${character.realName}님의 메시지:${fullResponse}]` }], timestamp: Date.now() };
-                        messagesToAdd.push(simpleMessage);
-                    }
-                } else { 
-                    const group = originalChat;
-                    const memberRealNames = group.members.map(m => m.realName.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-                    const memberRegex = new RegExp(`\\[(${memberRealNames.join('|')})(?:님의 (?:메시지|음성|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]`, "g");
-                    const messages = fullResponse.match(memberRegex) || [];
-
-                    if (messages.length > 0) {
-                        messages.forEach(msgContent => {
-                            const nameMatch = msgContent.match(/\[(.*?)((?:님의 (?:메시지|음성|사진|영상|사진\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\/영상|선물))):/);
-                            if (nameMatch) {
-                                const senderName = nameMatch[1];
-                                const sender = group.members.find(m => m.realName === senderName);
-                                if (sender) {
-                                    const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now(), senderId: sender.id };
-                                    messagesToAdd.push(message);
-                                }
-                            }
-                        });
-                    } else if (fullResponse.trim()) {
-                        const firstMember = group.members[Math.floor(Math.random() * group.members.length)];
-                        if (firstMember) {
-                            const simpleMessageContent = `[${firstMember.realName}님의 메시지:${fullResponse}]`;
-                            const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: simpleMessageContent, parts: [{ type: 'text', text: simpleMessageContent }], timestamp: Date.now(), senderId: firstMember.id };
-                            messagesToAdd.push(simpleMessage);
-                        }
-                    }
-                }
-
-                // ▼▼▼▼▼ 최종 수정된 로직 ▼▼▼▼▼
-                if (messagesToAdd.length > 0) {
-                    if (currentChatId === originalChat.id) {
-                        // 채팅방이 열려 있을 때: 한 개씩 순서대로 기록하고 화면에 그립니다.
-                        messagesToAdd.forEach(msg => {
-                            originalChat.history.push(msg); // 1. 메시지 한 개를 history에 추가
-                            addMessageBubble(msg);          // 2. 추가된 메시지를 화면에 그림 (이 함수가 그룹화/시간숨김/아바타표시 모두 처리)
-                        });
-                    } else {
-                        // 채팅방이 닫혀 있을 때: 한꺼번에 기록하고 안 읽은 메시지 수만 올립니다.
-                        originalChat.history.push(...messagesToAdd);
-                        originalChat.unreadCount = (originalChat.unreadCount || 0) + messagesToAdd.length;
-                    }
-                }
-                // ▲▲▲▲▲ 최종 수정된 로직 ▲▲▲▲▲
-
-                saveData();
-                renderChatList();
             }
         }
-// --- END: 함수 교체 ---
+    }
+    if (apiType === "gemini") {
+        try {
+            const parsedStream = JSON.parse(accumulatedChunk);
+            fullResponse = parsedStream.map(item => item.candidates?.[0]?.content?.parts?.[0]?.text || "").join('');
+        } catch (e) {
+            console.error("Gemini 스트림 파싱 오류:", e, "Chunk:", accumulatedChunk);
+            showToast("Gemini 응답 파싱 실패");
+            return;
+        }
+    }
 
-        function setupStickerSystem() {
+    if (fullResponse) {
+        const messagesToAdd = []; 
+        const isPrivateChat = !originalChat.members;
+
+        if (isPrivateChat) {
+            const character = originalChat;
+            const myName = character.myName;
+            
+            const messageRegex = new RegExp(`\\[${escapeRegex(character.realName)}(?:님의 (?:메시지|음성|송금|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]|\\[${escapeRegex(character.realName)}님이 ${escapeRegex(myName)}님의 송금을 (?:수령|반환)했습니다\\]|\\[${escapeRegex(character.realName)}님이 선물을 수령했습니다\\]|\\[${escapeRegex(character.realName)}님이 현재 상태를 업데이트:.*?\\]`, "g");
+            const messages = fullResponse.match(messageRegex) || [];
+            
+            if (messages.length > 0) {
+                messages.forEach(msgContent => {
+                    const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now() };
+                    messagesToAdd.push(message); 
+                });
+            } else if (fullResponse.trim()) {
+                const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: `[${character.realName}님의 메시지:${fullResponse}]`, parts: [{ type: 'text', text: `[${character.realName}님의 메시지:${fullResponse}]` }], timestamp: Date.now() };
+                messagesToAdd.push(simpleMessage);
+            }
+        } else { 
+            const group = originalChat;
+            const memberRealNames = group.members.map(m => escapeRegex(m.realName));
+            const memberRegex = new RegExp(`\\[(${memberRealNames.join('|')})(?:님의 (?:메시지|음성|사진|영상|사진\\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\\/영상|선물)):[\\s\\S]+?\\]`, "g");
+            const messages = fullResponse.match(memberRegex) || [];
+
+            if (messages.length > 0) {
+                messages.forEach(msgContent => {
+                    const nameMatch = msgContent.match(/\[(.*?)((?:님의 (?:메시지|음성|사진|영상|사진\/영상|선물|이모티콘)|님이 보낸 (?:이모티콘|사진\/영상|선물))):/);
+                    if (nameMatch) {
+                        const senderName = nameMatch[1];
+                        const sender = group.members.find(m => m.realName === senderName);
+                        if (sender) {
+                            const message = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: msgContent.trim(), parts: [{ type: 'text', text: msgContent.trim() }], timestamp: Date.now(), senderId: sender.id };
+                            messagesToAdd.push(message);
+                        }
+                    }
+                });
+            } else if (fullResponse.trim()) {
+                const firstMember = group.members[Math.floor(Math.random() * group.members.length)];
+                if (firstMember) {
+                    const simpleMessageContent = `[${firstMember.realName}님의 메시지:${fullResponse}]`;
+                    const simpleMessage = { id: `msg_${Date.now()}_${Math.random()}`, role: 'assistant', content: simpleMessageContent, parts: [{ type: 'text', text: simpleMessageContent }], timestamp: Date.now(), senderId: firstMember.id };
+                    messagesToAdd.push(simpleMessage);
+                }
+            }
+        }
+
+        if (messagesToAdd.length > 0) {
+            originalChat.history.push(...messagesToAdd);
+            
+            if (currentChatId === originalChat.id) {
+                // addMessageBubble 대신 renderMessages 호출
+                currentPage = 1; 
+                renderMessages(false, true);
+            } else {
+                originalChat.unreadCount = (originalChat.unreadCount || 0) + messagesToAdd.length;
+            }
+        }
+
+        saveData();
+        renderChatList();
+    }
+}
+
+                function setupStickerSystem() {
             stickerToggleBtn.addEventListener('click', () => {
                 stickerModal.classList.toggle('visible');
-                if (stickerModal.classList.contains('visible')) { renderStickerGrid(); }
+                if (stickerModal.classList.contains('visible')) { 
+                    document.querySelector('#sticker-tabs .sticker-tab-btn[data-tab="all"]').click();
+                    renderStickerGrid(); 
+                }
             });
             addNewStickerBtn.addEventListener('click', () => {
                 addStickerModalTitle.textContent = '새 이모티콘 추가';
@@ -6021,14 +5917,12 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
                 stickerPreview.innerHTML = '<span>미리보기</span>';
                 stickerUrlInput.disabled = false;
                 addStickerModal.classList.add('visible');
-                
-                
+
                 document.getElementById('bulk-sticker-input').value = '';
                 document.getElementById('bulk-preview-container').style.display = 'none';
                 showStickerTab('single'); 
             });
-            
-            
+
             setupStickerTabs();
             addStickerForm.addEventListener('submit', (e) => {
                 e.preventDefault();
@@ -6040,9 +5934,13 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
                 const stickerData = { name, data };
                 if (id) {
                     const index = db.myStickers.findIndex(s => s.id === id);
-                    if (index > -1) { db.myStickers[index] = { ...db.myStickers[index], ...stickerData }; }
+                    if (index > -1) { 
+                        const existingSticker = db.myStickers[index];
+                        db.myStickers[index] = { ...existingSticker, ...stickerData }; 
+                    }
                 } else {
                     stickerData.id = `sticker_${Date.now()}`;
+                    stickerData.isFavorite = false; // 즐겨찾기 속성 초기화
                     db.myStickers.push(stickerData);
                 }
                 saveData();
@@ -6102,24 +6000,50 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
                 stickerActionSheet.classList.remove('visible');
                 currentStickerActionTarget = null;
             });
+
+            const stickerTabsContainer = document.getElementById('sticker-tabs');
+            stickerTabsContainer.addEventListener('click', (e) => {
+                const clickedTab = e.target.closest('.sticker-tab-btn'); // e.target 대신 closest 사용
+                if (clickedTab) {
+                    // 이미 활성화된 탭이면 아무것도 안 함
+                    if (clickedTab.classList.contains('active')) return;
+
+                    stickerTabsContainer.querySelector('.active').classList.remove('active');
+                    clickedTab.classList.add('active');
+                    renderStickerGrid();
+                }
+            });
+            
+            document.getElementById('sticker-search-input').addEventListener('input', () => {
+                renderStickerGrid();
+            });
+
+            document.getElementById('toggle-favorite-sticker-btn').addEventListener('click', () => {
+                if (!currentStickerActionTarget) return;
+                const sticker = db.myStickers.find(s => s.id === currentStickerActionTarget);
+                if (sticker) {
+                    sticker.isFavorite = !sticker.isFavorite;
+                    saveData();
+                    renderStickerGrid();
+                    showToast(sticker.isFavorite ? '즐겨찾기에 추가했습니다.' : '즐겨찾기에서 해제했습니다.');
+                }
+                stickerActionSheet.classList.remove('visible');
+                currentStickerActionTarget = null;
+            });
         }
 
-        
         function setupStickerTabs() {
             
             const singleTab = document.getElementById('single-sticker-tab');
             const bulkTab = document.getElementById('bulk-sticker-tab');
             const previewBtn = document.getElementById('preview-bulk-btn');
             const bulkForm = document.getElementById('bulk-sticker-form');
-            
-            
+
             singleTab.addEventListener('click', () => showStickerTab('single'));
             bulkTab.addEventListener('click', () => showStickerTab('bulk'));
-            
-            
+
             previewBtn.addEventListener('click', previewBulkStickers);
-            
-            
+
             bulkForm.addEventListener('submit', handleBulkStickerSubmit);
         }
         
@@ -6154,11 +6078,9 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             if (!cleanInput) {
                 return result;
             }
-            
-            
+
             let lines = cleanInput.split(/\r\n|\r|\n/);
-            
-            
+
             if (lines.length === 1) {
                 lines = cleanInput.split(/[,;|]/); 
             }
@@ -6166,8 +6088,7 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             lines.forEach((line, index) => {
                 const item = line.trim(); 
                 if (!item) return; 
-                
-                
+
                 let urlMatch = item.match(/(https?:\/\/[^\s]+)/i);
                 if (!urlMatch) {
                     
@@ -6248,8 +6169,7 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
                     duplicateCount++;
                     return;
                 }
-                
-                
+
                 const newSticker = {
                     id: `sticker_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
                     name: sticker.name,
@@ -6263,8 +6183,7 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             if (successCount > 0) {
                 saveData();
                 renderStickerGrid();
-                
-                
+
                 addStickerModal.classList.remove('visible');
                 
                 let message = `${successCount}개의 이모티콘이 등록되었습니다.`;
@@ -6277,24 +6196,47 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             }
         }
 
-        function renderStickerGrid() {
+                function renderStickerGrid() {
             stickerGridContainer.innerHTML = '';
-            if (db.myStickers.length === 0) {
-                stickerGridContainer.innerHTML = '<p style="color:#aaa; text-align:center; font-size: 12px;">아직 이모티콘이 없습니다. 추가해보세요!</p>';
+
+            const activeTab = document.querySelector('#sticker-tabs .active').dataset.tab;
+            const searchTerm = document.getElementById('sticker-search-input').value.toLowerCase();
+            
+            let filteredStickers = db.myStickers;
+
+            if (activeTab === 'favorites') {
+                filteredStickers = filteredStickers.filter(s => s.isFavorite);
+            }
+
+            if (searchTerm) {
+                filteredStickers = filteredStickers.filter(s => s.name.toLowerCase().includes(searchTerm));
+            }
+
+            if (filteredStickers.length === 0) {
+                let placeholderText = '표시할 이모티콘이 없습니다.';
+                if (activeTab === 'favorites' && db.myStickers.some(s => s.isFavorite)) {
+                    placeholderText = '검색 결과가 없습니다.';
+                } else if (activeTab === 'favorites') {
+                    placeholderText = '즐겨찾기한 이모티콘이 없습니다.';
+                }
+                stickerGridContainer.innerHTML = `<p style="color:#aaa; text-align:center; font-size: 12px; grid-column: 1 / -1;">${placeholderText}</p>`;
                 return;
             }
-            db.myStickers.forEach(sticker => {
+
+            filteredStickers.forEach(sticker => {
                 const item = document.createElement('div');
                 item.className = 'sticker-item';
-                item.innerHTML = `<img src="${sticker.data}" alt="${sticker.name}"><span>${sticker.name}</span>`;
+                if (sticker.isFavorite) {
+                    item.classList.add('is-favorite');
+                }
+                item.innerHTML = `<img src="${sticker.data}" alt="${sticker.name}"><span class="sticker-name">${sticker.name}</span><div class="favorite-star"><svg viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path></svg></div>`;
                 item.addEventListener('click', () => sendSticker(sticker));
-                item.addEventListener('mousedown', (e) => {
-                    if (e.button !== 0) return;
-                    e.stopPropagation();
-                    longPressTimer = setTimeout(() => { handleStickerLongPress(sticker.id); }, 500);
+                
+                // 롱프레스 이벤트 리스너는 그대로 유지
+                item.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    handleStickerLongPress(sticker.id);
                 });
-                item.addEventListener('mouseup', () => clearTimeout(longPressTimer));
-                item.addEventListener('mouseleave', () => clearTimeout(longPressTimer));
                 item.addEventListener('touchstart', (e) => {
                     e.stopPropagation();
                     longPressTimer = setTimeout(() => { handleStickerLongPress(sticker.id); }, 500);
@@ -6308,6 +6250,13 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
         function handleStickerLongPress(stickerId) {
             clearTimeout(longPressTimer);
             currentStickerActionTarget = stickerId;
+            
+            const sticker = db.myStickers.find(s => s.id === stickerId);
+            const favBtn = document.getElementById('toggle-favorite-sticker-btn');
+            if (sticker && favBtn) {
+                favBtn.textContent = sticker.isFavorite ? '즐겨찾기 해제' : '즐겨찾기 추가';
+            }
+            
             stickerActionSheet.classList.add('visible');
         }
 
@@ -6323,7 +6272,6 @@ function createMessageBubbleElement(message, prevMessage, nextMessage, groupId) 
             });
         }
 
-        
 function setupPhotoVideoSystem() {
     const pvImageUpload = document.getElementById('pv-image-upload');
     const pvImagePreview = document.getElementById('pv-image-preview');
@@ -6347,7 +6295,6 @@ function setupPhotoVideoSystem() {
         const description = pvTextInput.value.trim();
         const useAiRecognition = aiRecogCheckbox.checked;
 
-        
         if (!imageData && !description) {
             return showToast('사진을 첨부하거나 설명을 입력해주세요.');
         }
@@ -6378,7 +6325,6 @@ function setupPhotoVideoSystem() {
                 pvImagePreview.innerHTML = '';
                 pvImagePreview.dataset.imageDataUrl = compressedUrl;
 
-                
                 aiRecogWrapper.style.display = 'block';
                 pvTextInput.required = false; 
 
@@ -6389,7 +6335,6 @@ function setupPhotoVideoSystem() {
         }
     });
 
-    
     aiRecogCheckbox.addEventListener('change', () => {
         if (aiRecogCheckbox.checked) {
             pvTextInput.required = false;
@@ -6478,11 +6423,9 @@ function setupPhotoVideoSystem() {
             const newPresetNameInput = document.getElementById('new-preset-name');
             const newPresetDescriptionInput = document.getElementById('new-preset-description');
 
-            
             const currentPresetData = db.globalFontPresets.presets[db.globalFontPresets.currentPreset];
             fontUrlInput.value = currentPresetData ? currentPresetData.url : '';
-            
-            
+
             if (!db.globalFontPresets.presets.custom) {
                 console.log('ERROR: 커스텀 프리셋이 없습니다!');
                 initializeFontPresets(); 
@@ -6493,11 +6436,9 @@ function setupPhotoVideoSystem() {
                 customPreset: db.globalFontPresets.presets.custom,
                 allPresets: Object.keys(db.globalFontPresets.presets)
             });
-            
-            
+
             renderFontPresetSelector();
-            
-            
+
             const currentPreset = db.globalFontPresets.currentPreset;
             console.log('폰트 설정 앱 - 프리셋 선택 복원:', {
                 currentPreset: currentPreset,
@@ -6513,7 +6454,6 @@ function setupPhotoVideoSystem() {
                 console.log('프리셋 선택 복원 실패 - 기본값 유지');
             }
 
-            
             fontPresetSelector.addEventListener('change', (e) => {
                 const selectedKey = e.target.value;
                 console.log('폰트 프리셋 선택됨:', selectedKey); 
@@ -6522,22 +6462,18 @@ function setupPhotoVideoSystem() {
                     
                     const customPreset = db.globalFontPresets.presets.custom;
                     fontDescription.textContent = customPreset.description;
-                    
-                    
+
                     db.globalFontPresets.currentPreset = 'custom';
                     saveData();
                     console.log('커스텀 폰트 선택 - currentPreset을 custom으로 설정');
-                    
-                    
+
                     fontUrlInput.value = customPreset.url || '';
                     newPresetNameInput.value = customPreset.name || '커스텀 폰트';
                     newPresetDescriptionInput.value = customPreset.description || '직접 입력한 폰트 URL을 사용합니다';
                     console.log('커스텀 폰트 프리셋 값 복구됨:', customPreset); 
-                    
-                    
+
                     applyFontBtn.textContent = '저장 & 폰트 적용';
-                    
-                    
+
                     savePresetBtn.textContent = '프리셋 등록';
                     savePresetBtn.disabled = false;
                     deletePresetBtn.disabled = true; 
@@ -6553,22 +6489,18 @@ function setupPhotoVideoSystem() {
                     db.globalFontPresets.currentPreset = selectedKey;
                     saveData();
                     console.log('프리셋 선택 시 currentPreset 업데이트됨:', selectedKey);
-                    
-                    
+
                     fontUrlInput.value = selectedPreset.url || '';
                     newPresetNameInput.value = selectedPreset.name || '';
                     newPresetDescriptionInput.value = selectedPreset.description || '';
-                    
-                    
+
                     applyFontBtn.textContent = '폰트 적용';
-                    
-                    
+
                     savePresetBtn.textContent = '프리셋 수정';
                     savePresetBtn.disabled = false;
                     deletePresetBtn.disabled = false; 
                     console.log('기존 프리셋 선택됨 - 수정 모드, 삭제 가능:', selectedPreset.name); 
-                    
-                    
+
                     if (selectedPreset.url) {
                         applyGlobalFont(selectedPreset.url);
                         console.log('프리셋 폰트 즉시 적용됨:', selectedPreset.name); 
@@ -6576,7 +6508,6 @@ function setupPhotoVideoSystem() {
                 }
             });
 
-            
             applyFontBtn.addEventListener('click', () => {
                 const fontUrl = fontUrlInput.value.trim();
                 if (!fontUrl) {
@@ -6595,13 +6526,11 @@ function setupPhotoVideoSystem() {
                     
                     const presetName = newPresetNameInput.value.trim() || '커스텀 폰트';
                     const presetDescription = newPresetDescriptionInput.value.trim() || '직접 입력한 폰트 URL을 사용합니다';
-                    
-                    
+
                     db.globalFontPresets.presets.custom.url = fontUrl;
                     db.globalFontPresets.presets.custom.name = presetName;
                     db.globalFontPresets.presets.custom.description = presetDescription;
-                    
-                    
+
                     if (db.globalFontPresets.currentPreset !== 'custom') {
                         db.globalFontPresets.currentPreset = 'custom';
                         console.log('currentPreset을 custom으로 설정');
@@ -6623,7 +6552,6 @@ function setupPhotoVideoSystem() {
                 }
             });
 
-            
             savePresetBtn.addEventListener('click', () => {
                 const fontUrl = fontUrlInput.value.trim();
                 const presetName = newPresetNameInput.value.trim();
@@ -6645,16 +6573,14 @@ function setupPhotoVideoSystem() {
                     showToast('폰트 이름을 입력해주세요.');
                     return;
                 }
-                
-                
+
                 if (presetName === '커스텀 폰트') {
                     showToast('프리셋 이름으로 "커스텀 폰트"는 사용할 수 없습니다. 다른 이름을 입력해주세요.');
                     return;
                 }
                 
                 const currentPreset = db.globalFontPresets.currentPreset;
-                
-                
+
                 const existingPresetWithSameName = Object.entries(db.globalFontPresets.presets).find(([key, preset]) => {
                     return preset.name === presetName && key !== currentPreset;
                 });
@@ -6680,16 +6606,13 @@ function setupPhotoVideoSystem() {
                         description: presetDescription || `${presetName} 폰트`,
                         deletable: true 
                     };
-                    
-                    
+
                     db.globalFontPresets.currentPreset = presetKey;
                     
                     saveData();
-                    
-                    
+
                     applyGlobalFont(fontUrl);
-                    
-                    
+
                     renderFontPresetSelector();
                     showToast(`"${presetName}" 프리셋이 등록되었습니다!`);
                     console.log('새 프리셋 생성 및 등록 완료:', presetKey); 
@@ -6702,25 +6625,21 @@ function setupPhotoVideoSystem() {
                     };
                     
                     saveData();
-                    
-                    
+
                     applyGlobalFont(fontUrl);
-                    
-                    
+
                     renderFontPresetSelector();
                     showToast(`"${presetName}" 프리셋이 수정되었습니다!`);
                     console.log('기존 프리셋 수정 완료:', currentPreset); 
                 }
             });
 
-            
             deletePresetBtn.addEventListener('click', () => {
                 const currentPreset = db.globalFontPresets.currentPreset;
                 console.log('프리셋 삭제 버튼 클릭됨:', currentPreset); 
                 
                 const preset = db.globalFontPresets.presets[currentPreset];
-                
-                
+
                 if (preset && preset.deletable === false) {
                     showToast('이 프리셋은 삭제할 수 없습니다.');
                     return;
@@ -6729,8 +6648,7 @@ function setupPhotoVideoSystem() {
                 const presetName = preset.name;
                 if (confirm(`"${presetName}" 프리셋을 정말 삭제하시겠습니까?`)) {
                     delete db.globalFontPresets.presets[currentPreset];
-                    
-                    
+
                     const remainingPresets = Object.keys(db.globalFontPresets.presets);
                     if (remainingPresets.length > 0) {
                         db.globalFontPresets.currentPreset = remainingPresets[0];
@@ -6740,15 +6658,13 @@ function setupPhotoVideoSystem() {
                     
                     saveData();
                     applyGlobalFont('');
-                    
-                    
+
                     renderFontPresetSelector();
                     showToast(`"${presetName}" 프리셋이 삭제되었습니다.`);
                     console.log('프리셋 삭제 완료:', currentPreset); 
                 }
             });
 
-            
             restoreDefaultFontBtn.addEventListener('click', () => {
                 
                 applyGlobalFont('');
@@ -6756,48 +6672,41 @@ function setupPhotoVideoSystem() {
                 console.log('기본 폰트로 복원 완료'); 
             });
 
-            
             function renderFontPresetSelector() {
                 
                 console.log('프리셋 선택기 렌더링 시작');
-                
-                
+
                 const allPresetOptions = Object.entries(db.globalFontPresets.presets)
                     .filter(([key, preset]) => key !== 'custom') 
                     .sort(([a, presetA], [b, presetB]) => presetA.name.localeCompare(presetB.name, 'ko')) 
                     .map(([key, preset]) => 
                         `<option value="${key}" ${key === db.globalFontPresets.currentPreset ? 'selected' : ''}>${preset.name}</option>`
                     ).join('');
-                
-                
+
                 const customPreset = db.globalFontPresets.presets.custom;
                 const isCustomSelected = db.globalFontPresets.currentPreset === 'custom';
                 const customPresetOption = `<option value="custom" ${isCustomSelected ? 'selected' : ''}>${customPreset ? customPreset.name : '커스텀 폰트'}</option>`;
                 console.log('커스텀 프리셋 렌더링:', { isCustomSelected, customPreset: customPreset }); 
-                
-                
+
                 fontPresetSelector.innerHTML = allPresetOptions + customPresetOption;
                 
                 console.log('프리셋 옵션 구성 완료:', {
                     전체프리셋: allPresetOptions.split('</option>').length - 1,
                     커스텀프리셋: 1
                 });
-                
-                
+
                 const currentPreset = db.globalFontPresets.presets[db.globalFontPresets.currentPreset];
                 if (currentPreset) {
                     fontDescription.textContent = currentPreset.description || '설명 없음';
                 } else {
                     fontDescription.textContent = '프리셋을 선택해주세요';
                 }
-                
-                
+
                 const currentPresetData = db.globalFontPresets.presets[db.globalFontPresets.currentPreset];
                 const isDeletable = currentPresetData && currentPresetData.deletable !== false;
                 const isCustomMode = db.globalFontPresets.currentPreset === 'custom';
                 deletePresetBtn.disabled = !isDeletable;
-                
-                
+
                 if (isCustomMode) {
                     savePresetBtn.textContent = '프리셋 등록';
                 } else {
@@ -6816,22 +6725,19 @@ function setupPhotoVideoSystem() {
 
         function applyGlobalFont(fontUrl) {
             console.log('🔤 폰트 적용 시작:', fontUrl); 
-            
-            
+
             const existingStyle = document.getElementById('global-font-style');
             if (existingStyle) {
                 existingStyle.remove();
             }
-            
-            
+
             const existingLinks = document.querySelectorAll('link[data-custom-font]');
             existingLinks.forEach(link => link.remove());
             
             if (fontUrl) {
                 const fontName = 'CustomGlobalFont';
                 console.log('🔤 커스텀 폰트 적용:', fontName); 
-                
-                
+
                 if (fontUrl.includes('.css') || fontUrl.includes('fonts.googleapis.com')) {
                     
                     console.log('🔤 CSS 파일로 처리:', fontUrl); 
@@ -6841,12 +6747,10 @@ function setupPhotoVideoSystem() {
                     linkElement.href = fontUrl;
                     linkElement.setAttribute('data-custom-font', 'true');
                     document.head.appendChild(linkElement);
-                    
-                    
+
                     linkElement.onload = () => {
                         console.log('🔤 CSS 로드 완료, 폰트 적용'); 
-                        
-                        
+
                         let actualFontName = fontName;
                         if (fontUrl.includes('fonts.googleapis.com')) {
                             if (fontUrl.includes('Noto+Sans+KR')) {
@@ -6885,8 +6789,7 @@ function setupPhotoVideoSystem() {
                         console.log('🔤 실제 폰트명:', actualFontName); 
                         applyFontFamily(actualFontName);
                     };
-                    
-                    
+
                     linkElement.onerror = () => {
                         console.log('🔤 CSS 로드 실패, 기본 폰트 사용'); 
                         applyFontFamily('Arial');
@@ -6903,8 +6806,7 @@ function setupPhotoVideoSystem() {
                         src: url('${fontUrl}') format('woff2'), url('${fontUrl}') format('woff'), url('${fontUrl}') format('ttf'); 
                     }`;
                     document.head.appendChild(styleElement);
-                    
-                    
+
                     setTimeout(() => {
                         applyFontFamily(fontName);
                     }, 100);
@@ -6918,14 +6820,11 @@ function setupPhotoVideoSystem() {
         
         function applyFontFamily(fontName) {
             console.log('🔤 폰트 패밀리 적용:', fontName); 
-            
-            
+
             document.documentElement.style.setProperty('--font-family', `'${fontName}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`);
-            
-            
+
             document.body.style.fontFamily = `'${fontName}', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`;
-            
-            
+
             document.body.offsetHeight;
             
             console.log('🔤 폰트 적용 완료'); 
@@ -7159,9 +7058,9 @@ function setupPhotoVideoSystem() {
     const updatePrivateChatSettings = () => {
         const char = db.characters.find(c => c.id === currentChatId);
         if (char) {
-            char.hideMyIcons = hideMyBubblesToggle.checked; // 속성 이름 변경
-            char.hideCharIcons = hideCharBubblesToggle.checked; // 속성 이름 변경
-            // END: 수정할 부분
+            char.hideMyIcons = hideMyBubblesToggle.checked; 
+            char.hideCharIcons = hideCharBubblesToggle.checked; 
+            
             char.fontSize = parseInt(fontSizeSlider.value, 10);
             saveData();
             applyPerChatUISettings();
@@ -7171,14 +7070,11 @@ function setupPhotoVideoSystem() {
     hideMyBubblesToggle.addEventListener('change', updatePrivateChatSettings);
     hideCharBubblesToggle.addEventListener('change', updatePrivateChatSettings);
 
-    // setupChatSettings 함수 안에서, 기존 fontSizeSlider 관련 코드를 찾아 아래 내용으로 교체하세요.
-
     fontSizeSlider.addEventListener('input', () => {
         const newSize = fontSizeSlider.value;
         fontSizeValue.textContent = `${newSize}px`;
         updatePrivateChatSettings();
 
-        // 미리보기 업데이트 코드 추가
         const char = db.characters.find(c => c.id === currentChatId);
         if (char) {
             const privatePreviewBox = document.getElementById('private-bubble-css-preview');
@@ -7208,7 +7104,7 @@ function setupPhotoVideoSystem() {
                 const theme = colorThemes[e.theme || 'white_pink'];
                 updateBubbleCssPreview(privatePreviewBox, e.customBubbleCss, !e.useCustomBubbleCss, theme);
 
-                document.getElementById('setting-hide-my-bubbles-toggle').checked = !!e.hideMyIcons; // 속성 이름 변경
+                document.getElementById('setting-hide-my-bubbles-toggle').checked = !!e.hideMyIcons; 
                 document.getElementById('setting-hide-char-bubbles-toggle').checked = !!e.hideCharIcons;
                 const fontSize = e.fontSize || 14;
                 document.getElementById('setting-font-size-slider').value = fontSize;
@@ -7241,8 +7137,7 @@ function setupPhotoVideoSystem() {
 
         function setupApiSettingsApp() {
             const e = document.getElementById('api-form'), t = document.getElementById('fetch-models-btn'), a = document.getElementById('api-model'), n = document.getElementById('api-provider'), r = document.getElementById('api-url'), s = document.getElementById('api-key');
-            
-            
+
             if (!db.apiSettings || typeof db.apiSettings.provider === 'string') {
                 
                 db.apiSettings = {
@@ -7257,13 +7152,11 @@ function setupPhotoVideoSystem() {
                 saveData();
                 showToast('API 설정이 새로운 방식으로 초기화되었습니다!');
             }
-            
-            
+
             const currentProvider = db.apiSettings.currentProvider || 'newapi';
             n.value = currentProvider;
             loadProviderSettings(currentProvider);
-            
-            
+
             function loadProviderSettings(provider) {
                 const settings = db.apiSettings[provider] || {};
                 const defaultUrls = {
@@ -7279,8 +7172,7 @@ function setupPhotoVideoSystem() {
                 s.value = settings.key || '';
                 a.innerHTML = settings.model ? `<option value="${settings.model}">${settings.model}</option>` : '<option value="">먼저 모델 목록을 가져오세요</option>';
             }
-            
-            
+
             n.addEventListener('change', () => {
                 const newProvider = n.value;
                 db.apiSettings.currentProvider = newProvider;
@@ -7329,8 +7221,7 @@ function setupPhotoVideoSystem() {
             e.addEventListener('submit', e => {
                 e.preventDefault();
                 if (!a.value) return showToast('모델을 선택한 후 저장해주세요!');
-                
-                
+
                 const currentProvider = n.value;
                 db.apiSettings[currentProvider] = {
                     url: r.value,
@@ -7343,12 +7234,10 @@ function setupPhotoVideoSystem() {
                 showToast(`${currentProvider.toUpperCase()} 설정이 저장되었습니다!`);
             });
 
-            
             const modelSearch = document.getElementById('model-search');
             const modelSearchInfo = document.getElementById('model-search-info');
             let searchTimeout;
 
-            
             function renderModelList(models) {
                 a.innerHTML = '';
                 if (models.length === 0) {
@@ -7367,7 +7256,6 @@ function setupPhotoVideoSystem() {
                 modelSearchInfo.textContent = `${models.length}개 모델 표시`;
             }
 
-            
             if (modelSearch) {
                 modelSearch.addEventListener('input', (event) => {
                     clearTimeout(searchTimeout);
@@ -7383,8 +7271,7 @@ function setupPhotoVideoSystem() {
                             
                             renderModelList(window.allModels);
                         } else {
-                            
-                            
+
                             let filteredModels;
                             
                             if (searchTerm.includes('|')) {
@@ -7411,7 +7298,6 @@ function setupPhotoVideoSystem() {
                     }, 300); 
                 });
 
-                
                 modelSearch.addEventListener('keydown', (event) => {
                     if (event.key === 'Escape') {
                         modelSearch.value = '';
@@ -7422,7 +7308,6 @@ function setupPhotoVideoSystem() {
                 });
             }
 
-            
             const toggleApiKeyBtn = document.getElementById('toggle-api-key-btn');
             const apiKeyInput = document.getElementById('api-key');
             
@@ -7438,12 +7323,10 @@ function setupPhotoVideoSystem() {
                         toggleApiKeyBtn.title = 'API 키 보기';
                     }
                 });
-                
-                
+
                 toggleApiKeyBtn.title = 'API 키 보기';
             }
 
-            
             const backupBtn = document.getElementById('backup-data-btn');
             const restoreBtn = document.getElementById('restore-data-btn');
             
@@ -7452,17 +7335,14 @@ function setupPhotoVideoSystem() {
                     
                     (() => {
                         const KEY = 'gemini-chat-app-db';
-                        
-                        
+
                         function pad(n) { return String(n).padStart(2, '0'); }
                         function tsForFilename(d = new Date()) {
                             return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
                         }
-                        
-                        
+
                         const arrLen = (x) => Array.isArray(x) ? x.length : 0;
-                        
-                        
+
                         function backupGeminiDB() {
                             const raw = localStorage.getItem(KEY);
                             if (raw === null) {
@@ -7477,8 +7357,7 @@ function setupPhotoVideoSystem() {
                             } catch (_) {
                                 
                             }
-                            
-                            
+
                             const meta = {
                                 type: 'gemini-chat-app-db-backup',
                                 origin: location.origin,
@@ -7490,18 +7369,15 @@ function setupPhotoVideoSystem() {
                                     worldBooks: arrLen(parsed.worldBooks),
                                 } : null
                             };
-                            
-                            
+
                             const dump = {
                                 meta,
                                 data: parsed ?? {} 
                             };
-                            
-                            
+
                             const c = meta.counts || {};
                             const fname = `gemini-db_${tsForFilename()}_c${c.characters ?? 'NA'}_g${c.groups ?? 'NA'}.json`;
-                            
-                            
+
                             const blob = new Blob([JSON.stringify(dump, null, 2)], { type: 'application/json' });
                             const a = document.createElement('a');
                             a.href = URL.createObjectURL(blob);
@@ -7515,8 +7391,7 @@ function setupPhotoVideoSystem() {
                             
                             showToast(`백업 완료: ${fname}`);
                         }
-                        
-                        
+
                         backupGeminiDB();
                     })();
                 });
@@ -7528,8 +7403,7 @@ function setupPhotoVideoSystem() {
                     (() => {
                         const KEY = 'gemini-chat-app-db';
                         const NORMALIZE = true; 
-                        
-                        
+
                         function normalize(db) {
                             db = db || {};
                             db.apiSettings = db.apiSettings || {};
@@ -7581,8 +7455,7 @@ function setupPhotoVideoSystem() {
                                 
                                 return JSON.stringify(NORMALIZE ? normalize(incoming) : incoming);
                             }
-                            
-                            
+
                             if (typeof originalText === 'string') {
                                 try {
                                     const parsed = JSON.parse(originalText);
@@ -7592,8 +7465,7 @@ function setupPhotoVideoSystem() {
                                     return originalText;
                                 }
                             }
-                            
-                            
+
                             throw new Error('지원하지 않는 입력 형식입니다.');
                         }
                         
@@ -7644,10 +7516,8 @@ function setupPhotoVideoSystem() {
             }
         }
 
-        // 기존 setupWallpaperApp 함수를 찾아 아래 코드로 전체 교체하세요.
-
 function setupWallpaperApp() {
-    // 배경화면 기능 설정
+    
     const wallpaperUpload = document.getElementById('wallpaper-upload');
     const wallpaperPreview = document.getElementById('wallpaper-preview');
     wallpaperPreview.style.backgroundImage = `url(${db.wallpaper})`;
@@ -7668,11 +7538,9 @@ function setupWallpaperApp() {
         }
     });
 
-    // 글꼴 기능 설정 (기존 setupFontSettingsApp의 내용)
     setupFontSettingsApp(); 
 }
 
-        
         function setupGroupChatSystem() {
             createGroupBtn.addEventListener('click', () => {
                 renderMemberSelectionList();
@@ -7897,7 +7765,7 @@ function setupWallpaperApp() {
     const updateGroupChatSettings = () => {
         const group = db.groups.find(g => g.id === currentChatId);
         if (group) {
-            group.hideMyIcons = hideMyBubblesToggle.checked; // 속성 이름 변경
+            group.hideMyIcons = hideMyBubblesToggle.checked; 
         group.hideCharIcons = hideCharBubblesToggle.checked;
             group.fontSize = parseInt(fontSizeSlider.value, 10);
             saveData();
@@ -7908,14 +7776,11 @@ function setupWallpaperApp() {
     hideMyBubblesToggle.addEventListener('change', updateGroupChatSettings);
     hideCharBubblesToggle.addEventListener('change', updateGroupChatSettings);
 
-    // setupGroupChatSystem 함수 안에서, 기존 fontSizeSlider 관련 코드를 찾아 아래 내용으로 교체하세요.
-
     fontSizeSlider.addEventListener('input', () => {
         const newSize = fontSizeSlider.value;
         fontSizeValue.textContent = `${newSize}px`;
         updateGroupChatSettings();
-        
-        // 미리보기 업데이트 코드 추가
+
         const group = db.groups.find(g => g.id === currentChatId);
         if(group) {
             const groupPreviewBox = document.getElementById('group-bubble-css-preview');
@@ -7967,7 +7832,7 @@ function setupWallpaperApp() {
             groupCustomCssTextarea.disabled = !useGroupCustomCssCheckbox.checked;
             const theme = colorThemes[group.theme || 'white_pink'];
             updateBubbleCssPreview(groupPreviewBox, group.customBubbleCss, !group.useCustomBubbleCss, theme);
-            document.getElementById('setting-group-hide-my-bubbles-toggle').checked = !!group.hideMyIcons; // 속성 이름 변경
+            document.getElementById('setting-group-hide-my-bubbles-toggle').checked = !!group.hideMyIcons; 
 document.getElementById('setting-group-hide-char-bubbles-toggle').checked = !!group.hideCharIcons;
     const fontSize = group.fontSize || 14;
     document.getElementById('setting-group-font-size-slider').value = fontSize;
@@ -8078,7 +7943,6 @@ document.getElementById('setting-group-hide-char-bubbles-toggle').checked = !!gr
             group.history.push(message);
         }
 
-        // --- START: 추가할 JavaScript 함수들 ---
         function setupBottomNav() {
             const navBar = document.getElementById('bottom-nav-bar');
             navBar.addEventListener('click', (e) => {
@@ -8091,7 +7955,6 @@ document.getElementById('setting-group-hide-char-bubbles-toggle').checked = !!gr
             });
         }
 
-        // 기존 setupFeedScreen 함수를 아래 코드로 교체
         function setupFeedScreen() {
             const dummyFeedData = [
                 { userId: 'chan', userName: '찬', avatar: 'https://i.postimg.cc/nzP9sgxr/chan-125.png', image: 'https://picsum.photos/id/1015/600/600', content: '오늘 날씨 정말 좋다! ☀️ 다들 좋은 하루 보내세요~ #일상 #산책', likes: 102, comments: [{user:'user2', text:'사진 너무 예뻐요!'}, {user:'user3', text:'어디에요? 가보고 싶다'}], timestamp: '2시간 전' },
@@ -8147,7 +8010,6 @@ document.getElementById('setting-group-hide-char-bubbles-toggle').checked = !!gr
             });
         }
 
-        // 기존 openProfileScreen 함수를 아래 코드로 교체
         function openProfileScreen(userId) {
             const dummyUserData = {
                 'chan': { name: '찬', username: 'chan_photo', bio: '사진 찍는 걸 좋아해요 📸\n일상과 여행 기록', avatar: 'https://i.postimg.cc/nzP9sgxr/chan-125.png', posts: 12, followers: '125K', following: 80, images: ['https://picsum.photos/id/1015/400/400', 'https://picsum.photos/id/10/400/400', 'https://picsum.photos/id/102/400/400', 'https://picsum.photos/id/1024/400/400', 'https://picsum.photos/id/1028/400/400', 'https://picsum.photos/id/103/400/400', 'https://picsum.photos/id/1035/400/400'] },
@@ -8201,6 +8063,5 @@ document.getElementById('setting-group-hide-char-bubbles-toggle').checked = !!gr
 </script>
 
 </body>
-
 
 </html>
