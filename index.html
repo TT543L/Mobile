@@ -647,7 +647,7 @@
         }
 
         .message-bubble {
-            max-width: 70%;
+            max-width: 75%;
             padding: 9px 12px;
             border-radius: var(--border-radius);
             word-wrap: break-word;
@@ -1798,36 +1798,31 @@
             color: var(--text-color);
         }
 
-        #customize-screen .icon-custom-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
+        #wallpaper-font-screen .icon-custom-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
         }
-
-        #customize-screen .icon-custom-item:last-child {
+        #wallpaper-font-screen .icon-custom-item:last-child {
             border-bottom: none;
         }
-
-        #customize-screen .icon-preview {
+        #wallpaper-font-screen .icon-preview {
             width: 50px;
             height: 50px;
             border-radius: 12px;
             object-fit: cover;
             flex-shrink: 0;
         }
-
-        #customize-screen .icon-details {
+        #wallpaper-font-screen .icon-details {
             flex-grow: 1;
         }
-
-        #customize-screen .icon-details p {
+        #wallpaper-font-screen .icon-details p {
             margin: 0 0 8px 0;
             font-weight: 500;
         }
-
-        #customize-screen .reset-icon-btn {
+        #wallpaper-font-screen .reset-icon-btn {
             background: #e0e0e0;
             color: #555;
             border: none;
@@ -2446,10 +2441,10 @@
 
         .pv-zoom-icon {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 28px;
-            height: 28px;
+            top: 5px;       
+            right: 5px;      
+            width: 36px;     
+            height: 36px;    
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 50%;
             display: flex;
@@ -2460,8 +2455,8 @@
         }
 
         .pv-zoom-icon svg {
-            width: 18px;
-            height: 18px;
+            width: 22px;     
+            height: 22px;    
             fill: white;
         }
 
@@ -2606,7 +2601,9 @@
             <div class="title-container">
                 <h1 class="title" id="edit-world-book-title">항목 생성/편집</h1>
             </div>
-            <div class="placeholder"></div>
+            <button class="action-btn" id="delete-world-book-btn" title="항목 삭제" style="display: none; width: 26px; height: 26px;">
+                <svg viewBox="0 0 24 24" fill="#e53935"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+            </button>
         </header>
         <main class="content">
             <form id="edit-world-book-form">
@@ -2640,7 +2637,7 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
             </button>
         <div class="title-container">
-            <h1 class="title">배경화면 & 글꼴</h1>
+            <h1 class="title">커스텀</h1>
         </div>
         <div class="placeholder"></div>
     </header>
@@ -2709,6 +2706,13 @@
                     <button type="button" id="delete-preset-btn" class="btn btn-danger">프리셋 삭제</button>
                 </div>
             </div>
+        </div>
+        <div class="customize-section" id="home-icon-customize-section">
+             <h3 class="section-title">홈 화면 아이콘 커스터마이징</h3>
+             
+             <div class="section-content" id="home-icon-customize-content">
+                
+             </div>
         </div>
     </main>
 </div>
@@ -3430,7 +3434,7 @@
             </button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin: 13px 5px; font-size: 16px;     font-weight: 500; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin: 13px 5px 20px 5px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer; font-size: 14px;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px; margin: 8px 5px">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
         document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
-            </button><div class="title-container"><h1 class="title">홈 화면 커스텀</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
+            </button><div class="title-container"><h1 class="title">프롬프트 관리</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
         document.getElementById('tutorial-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
             </button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
@@ -3453,7 +3457,7 @@
             'api-settings-screen': { name: 'API', url: 'https://i.postimg.cc/50FqT8GL/chan-125.png' },
             'wallpaper-screen': { name: '커스텀', url: 'https://i.postimg.cc/3wqFttL3/chan-90.png' },
             'world-book-screen': { name: '세계관', url: 'https://i.postimg.cc/prCWkrKT/chan-74.png' },
-            'customize-screen': { name: '홈 화면', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
+            'customize-screen': { name: '프롬프트', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
             'font-settings-screen': { name: '글꼴', url: 'https://i.postimg.cc/FzVtC0x4/chan-21.png' },
             'tutorial-screen': { name: '튜토리얼', url: 'https://i.postimg.cc/6QgNzCFf/chan-118.png' },
             'day-mode-btn': { name: '', url: 'https://i.postimg.cc/Jz0tYqnT/chan-145.png' },
@@ -4264,9 +4268,16 @@
                 if (!isInMultiSelectMode) {
                 const avatar = e.target.closest('.message-avatar, .chat-avatar, .profile-avatar-lg');
                 if (avatar) {
-                    e.stopPropagation(); 
-                    showLightbox(avatar.src);
-                    return; 
+                    const currentScreen = e.target.closest('.screen');
+                    
+                    if (avatar.classList.contains('chat-avatar') && currentScreen && currentScreen.id === 'chat-list-screen') {
+                        
+                    } else {
+                        
+                        e.stopPropagation(); 
+                        showLightbox(avatar.src);
+                        return; 
+                    }
                 }
             }
 
@@ -4352,7 +4363,7 @@
                 <a href="#" class="app-icon" data-target="api-settings-screen"><img src="${getIcon('api-settings-screen')}" alt="API" class="icon-img"><span class="app-name">${defaultIcons['api-settings-screen'].name}</span></a>
                 <a href="#" class="app-icon" data-target="wallpaper-font-screen"><img src="${getIcon('wallpaper-screen')}" alt="커스텀" class="icon-img"><span class="app-name">${defaultIcons['wallpaper-screen'].name}</span></a>
                 <a href="#" class="app-icon" data-target="world-book-screen"><img src="${getIcon('world-book-screen')}" alt="세계관" class="icon-img"><span class="app-name">${defaultIcons['world-book-screen'].name}</span></a>
-                <a href="#" class="app-icon" data-target="customize-screen"><img src="${getIcon('customize-screen')}" alt="홈 화면" class="icon-img"><span class="app-name">${defaultIcons['customize-screen'].name}</span></a>
+                <a href="#" class="app-icon" data-target="customize-screen"><img src="${getIcon('customize-screen')}" alt="프롬프트" class="icon-img"><span class="app-name">${defaultIcons['customize-screen'].name}</span></a>
                 <a href="#" class="app-icon" data-target="tutorial-screen"><img src="${getIcon('tutorial-screen')}" alt="튜토리얼" class="icon-img"><span class="app-name">${defaultIcons['tutorial-screen'].name}</span></a>
             </div>
             <div class="dock">
@@ -4367,10 +4378,10 @@
             document.getElementById('day-mode-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyHomeScreenMode('day'); });
             document.getElementById('night-mode-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyHomeScreenMode('night'); });
             document.querySelector('[data-target="wallpaper-font-screen"]').addEventListener('click', () => {
-    
+            renderCustomizeForm();
         });
             document.querySelector('[data-target="world-book-screen"]').addEventListener('click', renderWorldBookList);
-            document.querySelector('[data-target="customize-screen"]').addEventListener('click', renderCustomizeForm);
+
             document.querySelector('[data-target="tutorial-screen"]').addEventListener('click', renderTutorialContent);
         }
 
@@ -4384,25 +4395,28 @@
         }
 
         function setupCustomizeApp() {
-            customizeForm.addEventListener('input', e => {
+            const iconSection = document.getElementById('home-icon-customize-section');
+            if (!iconSection) return;
+
+            iconSection.addEventListener('input', e => {
                 if (e.target.matches('input[type="url"]')) {
                     const iconId = e.target.dataset.id;
                     const newUrl = e.target.value.trim();
                     const previewImg = document.getElementById(`icon-preview-${iconId}`);
                     if (newUrl) {
-                        db.customIcons[iconId] = newUrl;
+                        db.customIcons[id] = newUrl;
                         previewImg.src = newUrl;
                         saveData();
                         setupHomeScreen();
                     }
                 }
             });
-            customizeForm.addEventListener('click', e => {
+            iconSection.addEventListener('click', e => {
                 if (e.target.matches('.reset-icon-btn')) {
                     const iconId = e.target.dataset.id;
                     delete db.customIcons[iconId];
                     saveData();
-                    renderCustomizeForm();
+                    renderCustomizeForm(); 
                     setupHomeScreen();
                     showToast('아이콘이 초기화되었습니다');
                 }
@@ -4489,32 +4503,27 @@
             });
         }
 
-                function renderCustomizeForm() {
-            customizeForm.innerHTML = '';
+        function renderCustomizeForm() {
+            customizeForm.innerHTML = `<div class="placeholder-text"><p>프롬프트 기능은 준비 중입니다.</p></div>`;
 
-            const iconSectionHTML = `
-                <div class="customize-section">
-                    <h3 class="section-title">홈 화면 아이콘 커스터마이징</h3>
-                    <div class="section-content">
-                        ${Object.entries(defaultIcons).map(([id, { name, url }]) => {
-                            const currentIcon = db.customIcons[id] || url;
-                            return `
-                            <div class="icon-custom-item">
-                                <img src="${currentIcon}" alt="${name}" class="icon-preview" id="icon-preview-${id}">
-                                <div class="icon-details">
-                                    <p>${name || '모드 전환'}</p>
-                                    <input type="url" class="form-group" placeholder="새 아이콘 URL 붙여넣기" value="${db.customIcons[id] || ''}" data-id="${id}">
-                                </div>
-                                <button type="button" class="reset-icon-btn" data-id="${id}">초기화</button>
-                            </div>`;
-                        }).join('')}
-                    </div>
-                </div>
+            const iconContainer = document.getElementById('home-icon-customize-content');
+            if (!iconContainer) return; 
+
+            iconContainer.innerHTML = `
+                ${Object.entries(defaultIcons).map(([id, { name, url }]) => {
+                    const currentIcon = db.customIcons[id] || url;
+                    return `
+                    <div class="icon-custom-item">
+                        <img src="${currentIcon}" alt="${name}" class="icon-preview" id="icon-preview-${id}">
+                        <div class="icon-details">
+                            <p>${name || '모드 전환'}</p>
+                            <input type="url" class="form-group" placeholder="새 아이콘 URL 붙여넣기" value="${db.customIcons[id] || ''}" data-id="${id}">
+                        </div>
+                        <button type="button" class="reset-icon-btn" data-id="${id}">초기화</button>
+                    </div>`;
+                }).join('')}
             `;
-            customizeForm.insertAdjacentHTML('beforeend', iconSectionHTML);
-
         }
-
         function setupTutorialApp() {
             tutorialContentArea.addEventListener('click', (e) => {
                 const header = e.target.closest('.tutorial-header');
@@ -6966,12 +6975,16 @@
         }
 
         function setupWorldBookApp() {
+            const deleteBtn = document.getElementById('delete-world-book-btn'); 
+
             addWorldBookBtn.addEventListener('click', () => {
                 currentEditingWorldBookId = null;
                 editWorldBookForm.reset();
                 document.querySelector('input[name="world-book-position"][value="before"]').checked = true;
+                deleteBtn.style.display = 'none'; 
                 switchScreen('edit-world-book-screen');
             });
+
             editWorldBookForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const name = worldBookNameInput.value.trim();
@@ -6993,6 +7006,7 @@
                 renderWorldBookList();
                 switchScreen('world-book-screen');
             });
+
             worldBookListContainer.addEventListener('click', e => {
                 const item = e.target.closest('.world-book-item');
                 if (item) {
@@ -7003,35 +7017,31 @@
                         worldBookNameInput.value = book.name;
                         worldBookContentInput.value = book.content;
                         document.querySelector(`input[name="world-book-position"][value="${book.position}"]`).checked = true;
+                        deleteBtn.style.display = 'flex'; 
                         switchScreen('edit-world-book-screen');
                     }
                 }
             });
-            worldBookListContainer.addEventListener('mousedown', (e) => {
-                if (e.button !== 0) return;
-                const item = e.target.closest('.world-book-item');
-                if (!item) return;
-                longPressTimer = setTimeout(() => {
-                    const bookId = item.dataset.id;
-                    const menuItems = [{
-                        label: '삭제',
-                        danger: true,
-                        action: () => {
-                            if (confirm('이 세계관 항목을 정말 삭제하시겠습니까?')) {
-                                db.worldBooks = db.worldBooks.filter(wb => wb.id !== bookId);
-                                db.characters.forEach(char => { char.worldBookIds = (char.worldBookIds || []).filter(id => id !== bookId); });
-                                db.groups.forEach(group => { group.worldBookIds = (group.worldBookIds || []).filter(id => id !== bookId); });
-                                saveData();
-                                renderWorldBookList();
-                                showToast('항목이 삭제되었습니다');
-                            }
-                        }
-                    }];
-                    createContextMenu(menuItems, e.clientX, e.clientY);
-                }, 500);
+
+            
+            deleteBtn.addEventListener('click', () => {
+                if (!currentEditingWorldBookId) return;
+
+                const book = db.worldBooks.find(wb => wb.id === currentEditingWorldBookId);
+                if (book && confirm(`'${book.name}' 항목을 정말 삭제하시겠습니까?`)) {
+                    db.worldBooks = db.worldBooks.filter(wb => wb.id !== currentEditingWorldBookId);
+                    
+                    db.characters.forEach(char => { char.worldBookIds = (char.worldBookIds || []).filter(id => id !== currentEditingWorldBookId); });
+                    db.groups.forEach(group => { group.worldBookIds = (group.worldBookIds || []).filter(id => id !== currentEditingWorldBookId); });
+                    
+                    saveData();
+                    showToast('항목이 삭제되었습니다');
+                    renderWorldBookList();
+                    switchScreen('world-book-screen');
+                }
             });
-            worldBookListContainer.addEventListener('mouseup', () => clearTimeout(longPressTimer));
-            worldBookListContainer.addEventListener('mouseleave', () => clearTimeout(longPressTimer));
+
+            
         }
 
         function renderWorldBookList() {
