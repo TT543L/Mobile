@@ -13,7 +13,7 @@
         :root {
             --bg-color: #fce4ec;
             --primary-color: #ff80ab;
-            --secondary-color: #f48fb1; 
+            --secondary-color: #f48fb1;
             --accent-color: #90caf9;
             --text-color: #444;
             --white-color: #fff;
@@ -23,12 +23,6 @@
             --font-family-monospace: 'Courier New', 'Monaco', 'Menlo', 'Consolas', monospace;
             --top-pinned-bg: #fff0f5;
             --online-status-color: #4CAF50;
-            
-            --form-border-color: #fce4ec;
-            --sent-bubble-bg: #ffccff;
-            --sent-bubble-text: #a56767;
-            --received-bubble-bg: #ffffff;
-            --received-bubble-text: #6d6d6d;
         }
 
         *,
@@ -89,13 +83,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 7px 15px;
-            
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid #eee;
             flex-shrink: 0;
             position: relative;
             z-index: 10;
-			min-height: 55px;
         }
 
         .app-header .back-btn,
@@ -168,7 +161,7 @@
 
         .app-header .title {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-color);
             margin: 0;
         }
@@ -178,7 +171,7 @@
             color: #888;
             display: flex;
             align-items: center;
-            margin-bottom: 2px;
+            margin-top: 2px;
         }
 
         .online-indicator {
@@ -547,7 +540,6 @@
         #chat-room-screen {
             background-size: cover;
             background-position: center;
-			background-color: #f2edf8;
         }
 
         #chat-room-screen .content {
@@ -571,14 +563,14 @@
 
         .message-wrapper {
             display: flex;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             align-items: flex-start;
             transition: background-color 0.2s;
             flex-direction: column;
         }
 
         .message-wrapper.group-message {
-            margin-bottom: 6px;
+            margin-bottom: 18px;
         }
 
         .message-wrapper.sent {
@@ -655,7 +647,7 @@
         }
 
         .message-bubble {
-            max-width: 75%;
+            max-width: 70%;
             padding: 9px 12px;
             border-radius: var(--border-radius);
             word-wrap: break-word;
@@ -668,22 +660,11 @@
         }
 
         .message-bubble.sent {
-            background-color: var(--sent-bubble-bg);
-            color: var(--sent-bubble-text);
-        }
-        .message-bubble.received {
-            background-color: var(--received-bubble-bg);
-            color: var(--received-bubble-text);
+            border-top-right-radius: 5px;
         }
 
-        .message-bubble.sent {
-            
-            background-color: var(--sent-bubble-bg, #ffccff);
-            color: var(--sent-bubble-text, #a56767);
-        }
         .message-bubble.received {
-            background-color: var(--received-bubble-bg, #ffffff);
-            color: var(--received-bubble-text, #6d6d6d);
+            border-top-left-radius: 5px;
         }
 
         .message-bubble.grouped-bubble.sent,
@@ -702,7 +683,7 @@
         
         .message-wrapper.grouped {
             margin-top: -16px; 
-            margin-bottom: 6px;
+            margin-bottom: 12px;
         }
         
         .system-notification-bubble {
@@ -745,13 +726,13 @@
             object-fit: cover; 
         }
 
-        /* .message-wrapper.sent .photo-bubble {
+        .message-wrapper.sent .photo-bubble {
             border-top-right-radius: 5px;
-        } */
+        }
 
-        /* .message-wrapper.received .photo-bubble {
+        .message-wrapper.received .photo-bubble {
             border-top-left-radius: 5px;
-        } */
+        }
 
         .voice-bubble {
             display: flex;
@@ -768,14 +749,14 @@
             max-width: 200px;
         }
 
-        /* .message-wrapper.sent .voice-bubble {
+        .message-wrapper.sent .voice-bubble {
             border-top-right-radius: 5px;
             flex-direction: row-reverse;
-        } */
+        }
 
-        /* .message-wrapper.received .voice-bubble {
-            border-top-left-radius: 5px; 
-        } */
+        .message-wrapper.received .voice-bubble {
+            border-top-left-radius: 5px;
+        }
 
         .voice-bubble .play-icon {
             width: 18px;
@@ -794,12 +775,13 @@
         }
 
         .voice-transcript {
-            font-size: 12px;
+            font-size: 14px;
             color: #555;
-            background-color: rgba(250, 250, 250, 0.7);
+            background-color: rgba(255, 255, 255, 0.7);
             padding: 8px 12px;
-            margin-left: 44px;
-            margin-right: 44px;
+            margin-top: 5px;
+            margin-left: 54px;
+            margin-right: 54px;
             border-radius: 10px;
             line-height: 1.6;
             max-width: calc(100% - 108px);
@@ -813,13 +795,13 @@
 
         .message-wrapper.sent .voice-transcript {
             align-self: flex-end;
-            margin-right: 46px;
+            margin-right: 54px;
             margin-left: auto;
         }
 
         .message-wrapper.received .voice-transcript {
             align-self: flex-start;
-            margin-left: 46px;
+            margin-left: 54px;
             margin-right: auto;
         }
 
@@ -841,13 +823,13 @@
             height: auto;   
         }
 
-        /* .message-wrapper.sent .pv-card {
+        .message-wrapper.sent .pv-card {
             border-top-right-radius: 5px;
-        } */
+        }
 
-        /* .message-wrapper.received .pv-card {
-             border-top-left-radius: 5px; 
-        } */
+        .message-wrapper.received .pv-card {
+            border-top-left-radius: 5px;
+        }
 
         .pv-card-content {
             position: absolute;
@@ -912,12 +894,12 @@
             color: white;
         }
 
-        /* .message-wrapper.sent .transfer-card {
+        .message-wrapper.sent .transfer-card {
             border-top-right-radius: 5px;
-        } */
+        }
 
         .message-wrapper.received .transfer-card {
-            
+            border-top-left-radius: 5px;
             cursor: pointer;
         }
 
@@ -1014,13 +996,13 @@
             overflow: hidden;
         }
 
-        /* .message-wrapper.sent .gift-card {
+        .message-wrapper.sent .gift-card {
             border-top-right-radius: 5px;
-        } */
+        }
 
-        /* .message-wrapper.received .gift-card {
-            border-top-left-radius: 5px; 
-        } */
+        .message-wrapper.received .gift-card {
+            border-top-left-radius: 5px;
+        }
 
         .gift-card-icon {
             width: 50px;
@@ -1091,12 +1073,12 @@
             background-color: #e0e0e0;
             color: #757575;
             border: none;
-            padding: 4px 12px;
+            padding: 8px 16px;
             margin: 10px auto;
             border-radius: 15px;
             cursor: pointer;
             display: block;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
         }
 
@@ -1292,7 +1274,6 @@
             background-color: #f0f0f0;
             resize: none; 
             font-family: inherit; 
-            font-size: 14px;
             line-height: 1.2;
             max-height: 120px;
             box-sizing: border-box; 
@@ -1344,8 +1325,6 @@
             transform: rotate(45deg);
             background-color: var(--primary-color) !important;
             color: white !important;
-			outline: none;
-            -webkit-tap-highlight-color: transparent; 
         }
 
         .message-input-area .icon-btn.send-btn {
@@ -1455,7 +1434,7 @@
         .form-group textarea {
             width: 100%;
             padding: 10px;
-            border: 2px solid var(--form-border-color, #fce4ec);
+            border: 2px solid #fce4ec;
             border-radius: 10px;
             background-color: #fff;
             transition: border-color 0.3s;
@@ -1499,13 +1478,13 @@
         }
 
         .btn-primary {
-            background-color: var(--primary-color); 
+            background-color: var(--primary-color);
             color: var(--white-color);
         }
-        
+
         .btn-primary:hover {
-            
-            filter: brightness(0.95) saturate(1.1); 
+            background-color: var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(255, 128, 171, 0.5);
         }
 
         label.btn-primary {
@@ -1519,19 +1498,16 @@
         }
 
         .btn-secondary {
-            background-color: var(--accent-color); 
+            background-color: var(--accent-color);
             color: var(--white-color);
+            
         }
 
         .btn-secondary:hover {
-            filter: brightness(0.95) saturate(1.1);
+            background-color: #64b5f6;
+            box-shadow: 0 4px 15px rgba(144, 202, 249, 0.5);
         }
 
-        .btn-primary:hover, .btn-secondary:hover {
-             
-            -webkit-filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-        }
         .btn-neutral {
             background-color: #bdbdbd;
             color: var(--white-color);
@@ -1822,31 +1798,36 @@
             color: var(--text-color);
         }
 
-        #wallpaper-font-screen .icon-custom-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #f0f0f0;
+        #customize-screen .icon-custom-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
         }
-        #wallpaper-font-screen .icon-custom-item:last-child {
+
+        #customize-screen .icon-custom-item:last-child {
             border-bottom: none;
         }
-        #wallpaper-font-screen .icon-preview {
+
+        #customize-screen .icon-preview {
             width: 50px;
             height: 50px;
             border-radius: 12px;
             object-fit: cover;
             flex-shrink: 0;
         }
-        #wallpaper-font-screen .icon-details {
+
+        #customize-screen .icon-details {
             flex-grow: 1;
         }
-        #wallpaper-font-screen .icon-details p {
+
+        #customize-screen .icon-details p {
             margin: 0 0 8px 0;
             font-weight: 500;
         }
-        #wallpaper-font-screen .reset-icon-btn {
+
+        #customize-screen .reset-icon-btn {
             background: #e0e0e0;
             color: #555;
             border: none;
@@ -1961,13 +1942,21 @@
         }
 
         .btn-primary {
-            background-color: var(--btn-primary-bg, #ff80ab);
-            color: var(--white-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
         }
 
         .btn-secondary {
-            background-color: var(--btn-secondary-bg, #90caf9);
-            color: var(--white-color);
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #64b5f6;
         }
 
         .btn-danger {
@@ -2076,12 +2065,12 @@
             white-space: nowrap;
         }
 
-        button, a, input, textarea, select {
+        button:focus, a:focus, input:focus, textarea:focus, select:focus {
             outline: none;
             -webkit-tap-highlight-color: transparent; 
         }
 
-        .back-btn, .action-btn, .icon-btn, .sticker-bar-btn, .app-icon {
+        .back-btn:focus, .action-btn:focus, .icon-btn:focus, .sticker-bar-btn:focus, .app-icon:focus {
             outline: none !important;
             box-shadow: none !important; 
             -webkit-tap-highlight-color: transparent;
@@ -2115,10 +2104,11 @@
             text-decoration: none;
             color: #8e8e8e;
             font-size: 10px;
+            gap: 2px;
         }
         .nav-btn svg {
-            width: 21px;
-            height: 21px;
+            width: 26px;
+            height: 26px;
             fill: currentColor;
         }
         .nav-btn.active {
@@ -2456,10 +2446,10 @@
 
         .pv-zoom-icon {
             position: absolute;
-            top: 5px;       
-            right: 5px;      
-            width: 36px;     
-            height: 36px;    
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 50%;
             display: flex;
@@ -2470,8 +2460,8 @@
         }
 
         .pv-zoom-icon svg {
-            width: 22px;     
-            height: 22px;    
+            width: 18px;
+            height: 18px;
             fill: white;
         }
 
@@ -2487,11 +2477,11 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
             </button>
             <div class="title-container">
-                <h1 class="title">Chats</h1>
+                <h1 class="title">채팅</h1>
             </div>
             <div class="action-btn-group">
                 <button class="action-btn" id="create-group-btn" title="그룹채팅">
-                    <svg viewBox="0 0 24 24" fill="currentColor" style="width: 23px;"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></svg>
                 </button>
                 <button class="action-btn" id="add-chat-btn" title="새 채팅">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path></svg>
@@ -2508,12 +2498,12 @@
         </main>
     </div>
     <div id="chat-room-screen" class="screen">
-        <header class="app-header" id="chat-room-header-default" style="border-bottom: none;">
+        <header class="app-header" id="chat-room-header-default">
             <button class="back-btn" data-target="chat-list-screen">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
 </button>
-            <div class="title-container" style="padding: 10px 0px 5px 0px;">
-                <h1 class="title" id="chat-room-title" style="font-weight: 500;">...</h1>
+            <div class="title-container">
+                <h1 class="title" id="chat-room-title">...</h1>
                 <div class="subtitle" id="chat-room-subtitle">
                     <div class="online-indicator"></div><span id="chat-room-status-text">온라인</span>
                 </div>
@@ -2616,9 +2606,7 @@
             <div class="title-container">
                 <h1 class="title" id="edit-world-book-title">항목 생성/편집</h1>
             </div>
-            <button class="action-btn" id="delete-world-book-btn" title="항목 삭제" style="display: none; width: 24px; height: 24px;">
-                <svg viewBox="0 0 24 24" fill="#e53935"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
-            </button>
+            <div class="placeholder"></div>
         </header>
         <main class="content">
             <form id="edit-world-book-form">
@@ -2652,26 +2640,17 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
             </button>
         <div class="title-container">
-            <h1 class="title">커스텀</h1>
+            <h1 class="title">배경화면 & 글꼴</h1>
         </div>
         <div class="placeholder"></div>
     </header>
     <main class="content">
-
-        <div class="customize-section">
-            <h3 class="section-title">테마 색상 설정</h3>
-            <div class="section-content" id="color-theme-settings">
-                <div class="css-preset-section">
-                    <label for="color-preset-select" class="form-label">색상 프리셋 선택:</label>
-                    <select id="color-preset-select" class="form-select"></select>
-                </div>
-                <div id="color-pickers-container" style="display: flex; flex-direction: column; gap: 5px; font-size: 14px;">
-                </div>
-                <div class="css-actions" style="margin-top: 10px;">
-                    <button type="button" id="save-color-preset-btn" class="btn btn-primary">프리셋 저장</button>
-                    <button type="button" id="delete-color-preset-btn" class="btn btn-danger">프리셋 삭제</button>
-                </div>
-            </div>
+        
+        <div class="customize-section" style="margin-top:0;">
+             <h3 class="section-title">배경화면 변경</h3>
+             <div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div>
+             <input type="file" id="wallpaper-upload" accept="image/*" style="display: none;">
+             <label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label>
         </div>
         
         <div class="customize-section">
@@ -2730,19 +2709,6 @@
                     <button type="button" id="delete-preset-btn" class="btn btn-danger">프리셋 삭제</button>
                 </div>
             </div>
-        </div>
-        <div class="customize-section" style="margin-top:0;">
-             <h3 class="section-title">배경화면 변경</h3>
-             <div class="wallpaper-preview" id="wallpaper-preview"><span>현재 배경화면 미리보기</span></div>
-             <input type="file" id="wallpaper-upload" accept="image/*" style="display: none;">
-             <label for="wallpaper-upload" class="btn btn-primary">앨범에서 새 배경화면 선택</label>
-        </div>
-        <div class="customize-section" id="home-icon-customize-section">
-             <h3 class="section-title">홈 화면 아이콘 커스터마이징</h3>
-             
-             <div class="section-content" id="home-icon-customize-content">
-                
-             </div>
         </div>
     </main>
 </div>
@@ -3464,7 +3430,7 @@
             </button><div class="title-container"><h1 class="title">API 설정</h1></div><div class="placeholder"></div></header><main class="content"><form id="api-form"><div class="form-group"><label for="api-provider">API 공급자</label><select id="api-provider" name="provider"><option value="newapi">NewAPI (사용자 정의)</option><option value="openai">OpenAI (GPT)</option><option value="deepseek">DeepSeek</option><option value="claude">Claude</option><option value="gemini">Gemini</option><option value="openrouter">OpenRouter</option></select></div><div class="form-group"><label for="api-url">API 주소 (끝에 /v1를 추가하지 마세요)</label><input type="url" id="api-url" name="url" placeholder="공급자 선택 시 자동 완성" required></div><div class="form-group"><label for="api-key">API 키 (Key)</label><div style="position: relative;"><input type="password" id="api-key" name="key" placeholder="API 키를 입력하세요" required style="padding-right: 40px;"><button type="button" id="toggle-api-key-btn" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #666;">🔑</button></div></div><button type="button" class="btn btn-secondary" style= "margin-bottom: 20px;" id="fetch-models-btn"><span class="btn-text">모델 목록 가져오기</span><div class="spinner"></div></button><div class="form-group"><label for="api-model">모델 선택</label><div class="model-search-container" style="position: relative;"><input type="text" id="model-search" placeholder="모델명 검색... AND: free,gpt | OR: gpt-4|claude" style="width: 100%; padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 8px; font-size: 14px;"><select id="api-model" name="model" required><option value="">먼저 모델 목록을 가져오세요</option></select><div id="model-search-info" style="font-size: 12px; color: #888; margin-top: 5px; text-align: center;"></div></div></div><button type="submit" class="btn btn-primary" id="save-btn"><span class="btn-text">저장</span><div class="spinner"></div></button></form><hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;"><div style="margin-bottom: 20px;"><h3 style="margin: 13px 5px; font-size: 16px;     font-weight: 500; color: var(--text-color);">데이터 관리</h3><p style="font-size: 14px; color: #888; margin: 13px 5px 20px 5px;">채팅 데이터, 캐릭터, 그룹채팅, 설정 등을 백업하거나 복원할 수 있습니다.</p><button type="button" class="btn btn-primary" id="backup-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 백업 (다운로드)</button><button type="button" class="btn btn-secondary" id="restore-data-btn" style="width: 100%; margin-bottom: 10px;">데이터 복원 (업로드)</button><hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;"><div class="github-sync-section" style="margin-bottom: 20px;"><h4 style="margin-bottom: 15px; color: var(--text-color); cursor: pointer; font-size: 14px;" id="github-sync-toggle">GitHub 동기화 <span style="font-size: 12px; color: #888;">▼</span></h4><div id="github-sync-content" style="display: none;"><div class="form-group"><label for="github-username">GitHub 사용자 이름</label><input type="text" id="github-username" placeholder="YourGitHubUsername"></div><div class="form-group"><label for="github-repo">저장소 이름 (Repository)</label><input type="text" id="github-repo" placeholder="my-chat-data-repo"></div><div class="form-group"><label for="github-pat">개인용 액세스 토큰 (PAT)</label><input type="password" id="github-pat" placeholder="ghp_..."><p style="font-size:12px; color:#888; margin-top:8px; margin: 8px 5px">토큰은 <a href="https://github.com/settings/tokens/new?scopes=repo&description=GeminiChatSync" target="_blank">여기</a>에서 'repo' 권한으로 생성하세요. 토큰은 브라우저에만 저장됩니다.</p></div><div class="form-group"><label for="github-filename">파일명 (선택사항)</label><input type="text" id="github-filename" value="phone-chat-data.json"></div>${patIncludeOption}<div class="form-group-checkbox"><label style="display: flex; align-items: center; gap: 10px;"><input type="checkbox" id="merge-data-on-restore" checked>데이터 복원 시 병합 모드 (안전)</label><p style="font-size:12px; color:#888; margin-top:8px;">체크 시: 기존 데이터와 병합 (손실 없음) | 체크 해제 시: 완전 덮어쓰기 (위험)</p></div><div class="css-actions"><button type="button" id="save-sync-settings-btn" class="btn btn-primary" style="width: 100%;">설정 저장</button><button type="button" id="sync-up-btn" class="btn btn-secondary" style="width: 100%;" disabled>데이터 올리기</button><button type="button" id="sync-down-btn" class="btn btn-danger" style="width: 100%;" disabled>데이터 덮어쓰기</button>${githubInfoButtons}</div></div></div></div></main>`;
         document.getElementById('customize-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
-            </button><div class="title-container"><h1 class="title">프롬프트 관리</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
+            </button><div class="title-container"><h1 class="title">홈 화면 커스텀</h1></div><div class="placeholder"></div></header><main class="content"><form id="customize-form"></form></main>`;
         document.getElementById('tutorial-screen').innerHTML = `<header class="app-header"><button class="back-btn" data-target="home-screen">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg>
             </button><div class="title-container"><h1 class="title">튜토리얼</h1></div><div class="placeholder"></div></header><main class="content" id="tutorial-content-area"></main>`;
@@ -3487,7 +3453,7 @@
             'api-settings-screen': { name: 'API', url: 'https://i.postimg.cc/50FqT8GL/chan-125.png' },
             'wallpaper-screen': { name: '커스텀', url: 'https://i.postimg.cc/3wqFttL3/chan-90.png' },
             'world-book-screen': { name: '세계관', url: 'https://i.postimg.cc/prCWkrKT/chan-74.png' },
-            'customize-screen': { name: '프롬프트', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
+            'customize-screen': { name: '홈 화면', url: 'https://i.postimg.cc/vZVdC7gt/chan-133.png' },
             'font-settings-screen': { name: '글꼴', url: 'https://i.postimg.cc/FzVtC0x4/chan-21.png' },
             'tutorial-screen': { name: '튜토리얼', url: 'https://i.postimg.cc/6QgNzCFf/chan-118.png' },
             'day-mode-btn': { name: '', url: 'https://i.postimg.cc/Jz0tYqnT/chan-145.png' },
@@ -3539,31 +3505,6 @@
             const data = localStorage.getItem('gemini-chat-app-db');
             if (data) db = JSON.parse(data);
             
-            
-            const defaultColors = {
-                '--primary-color': '#ff80ab',
-                '--secondary-color': '#f48fb1',
-                '--accent-color': '#90caf9',
-                '--text-color': '#444444',
-                '--form-border-color': '#fce4ec',
-                '--sent-bubble-bg': '#ffccff',
-                '--sent-bubble-text': '#a56767',
-                '--received-bubble-bg': '#ffffff',
-                '--received-bubble-text': '#6d6d6d'
-            };
-
-            if (!db.colorThemes || !db.colorThemes.presets) {
-                db.colorThemes = {
-                    currentPreset: 'default',
-                    presets: { 'default': { name: '기본 테마 (분홍)', colors: { ...defaultColors } } }
-                };
-            } else {
-                
-                Object.values(db.colorThemes.presets).forEach(preset => {
-                    preset.colors = { ...defaultColors, ...preset.colors };
-                });
-            }
-            
             if (!db.apiSettings) db.apiSettings = {};
             if (!db.wallpaper) db.wallpaper = 'https://i.postimg.cc/W4Z9R9x4/ins-1.jpg';
             if (!db.characters) db.characters = [];
@@ -3576,45 +3517,12 @@
             if (!db.globalCustomCSS) db.globalCustomCSS = { enabled: true, currentPreset: 'default', presets: { 'default': { name: '기본', css: '', description: '기본 테마' } } };
             if (!db.globalFontPresets) db.globalFontPresets = { enabled: true, currentPreset: 'custom', presets: {} };
 
-            if (!db.colorThemes) {
-                db.colorThemes = {
-                    currentPreset: 'default',
-                    presets: {
-                        'default': {
-                            name: '기본 테마 (분홍)',
-                            colors: {
-                                '--bg-color': '#fce4ec',
-                                '--primary-color': '#ff80ab',
-                                '--secondary-color': '#f48fb1',
-                                '--accent-color': '#90caf9',
-                                '--text-color': '#444444',
-                                '--form-border-color': '#fce4ec',
-                                
-                                '--sent-bubble-bg': '#ffccff',
-                                '--sent-bubble-text': '#a56767',
-                                '--received-bubble-bg': '#ffffff',
-                                '--received-bubble-text': '#6d6d6d'
-                            }
-                        }
-                    }
-                };
-            }
-
-            Object.values(db.colorThemes.presets).forEach(preset => {
-                if (!preset.colors['--sent-bubble-bg']) preset.colors['--sent-bubble-bg'] = '#ffccff';
-                if (!preset.colors['--sent-bubble-text']) preset.colors['--sent-bubble-text'] = '#a56767';
-                if (!preset.colors['--received-bubble-bg']) preset.colors['--received-bubble-bg'] = '#ffffff';
-                if (!preset.colors['--received-bubble-text']) preset.colors['--received-bubble-text'] = '#6d6d6d';
-            });
-
             if (!db.globalSettings) {
                 db.globalSettings = {
                     aiCanUseSystem: false,
                     hideUserIcons: false,
                     hideCharacterIcons: false
                 };
-
-                
             }
             
             if (db.globalFontPresets.currentPreset === 'default' || !db.globalFontPresets.currentPreset) {
@@ -4112,81 +4020,115 @@
                 showToast(`❌ 업로드 실패: ${error.message}`);
             }
         }
-
-                async function syncDown() {
+        async function syncDown() {
             const settings = JSON.parse(localStorage.getItem('gemini-chat-sync-settings'));
             if (!settings) return showToast('동기화 설정을 먼저 저장해주세요.');
 
             const mergeCheckbox = document.getElementById('merge-data-on-restore');
             const useMergeMode = mergeCheckbox ? mergeCheckbox.checked : true;
-            const modeText = useMergeMode ? '병합' : '완전 덮어쓰기';
+            const modeText = useMergeMode ? '병합 (기존 데이터 보존)' : '완전 덮어쓰기 (기존 데이터 삭제)';
             
-            if (!confirm(`GitHub 데이터를 복원합니다. (모드: ${modeText})\n계속하시겠습니까?`)) return;
+            console.log('데이터 복원 모드:', useMergeMode ? 'MERGE' : 'REPLACE');
+            
+            if (!confirm(`GitHub의 데이터를 현재 기기에 복원합니다.\n\n모드: ${modeText}\n\n${useMergeMode ? '기존 데이터와 병합되어 데이터 손실이 없습니다.' : '현재 모든 데이터가 삭제됩니다! (API 설정은 유지)'}\n\n진행하시겠습니까?`)) return;
             
             const { username, repo, pat, filename } = settings;
             const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${filename}`;
 
-            showToast(`데이터 다운로드 중...`);
+            showToast(`데이터 다운로드 중... (${useMergeMode ? '병합 모드' : '덮어쓰기 모드'})`);
 
             try {
+                
                 const localDbString = localStorage.getItem('gemini-chat-app-db');
                 const localDb = localDbString ? JSON.parse(localDbString) : {};
                 const localApiSettings = localDb.apiSettings;
 
-                
-                const rawFileResponse = await fetch(apiUrl, {
-                    headers: {
-                        'Authorization': `token ${pat}`,
-                        'Accept': 'application/vnd.github.v3.raw' 
-                    }
+                const backupKey = 'gemini-chat-app-db-emergency-backup';
+                localStorage.setItem(backupKey, localDbString || '{}');
+
+                const response = await fetch(apiUrl, {
+                    headers: { 'Authorization': `token ${pat}` }
                 });
-                if (!rawFileResponse.ok) {
-                    throw new Error(`GitHub 데이터 요청 실패: ${rawFileResponse.statusText}`);
-                }
-                const downloadedJsonData = await rawFileResponse.text();
 
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'File not found');
+                }
+
+                const data = await response.json();
+                const contentBase64 = data.content;
+
+                let downloadedJsonData, downloadedDb;
                 
-                let downloadedDb;
                 try {
-                    let parsedJson = JSON.parse(downloadedJsonData);
-                    if (parsedJson && parsedJson.meta && typeof parsedJson.data === 'object') {
-                        downloadedDb = parsedJson.data;
-                    } else {
-                        downloadedDb = parsedJson;
-                    }
+                    downloadedJsonData = decodeURIComponent(escape(atob(contentBase64)));
+                    downloadedDb = JSON.parse(downloadedJsonData);
+                    
                     if (!downloadedDb || typeof downloadedDb !== 'object') {
-                        throw new Error('파싱된 데이터가 올바른 객체 형식이 아닙니다.');
+                        throw new Error('다운로드한 데이터가 올바른 객체 형식이 아닙니다.');
                     }
+                    
                 } catch (parseError) {
-                    throw new Error(`다운로드한 데이터 파싱 실패: ${parseError.message}`);
+                    throw new Error(`다운로드한 데이터가 손상되었습니다: ${parseError.message}`);
                 }
 
-                
                 let finalDb;
                 if (useMergeMode) {
                     finalDb = deepMerge(localDb, downloadedDb);
                 } else {
                     finalDb = downloadedDb;
                 }
+
                 if (localApiSettings) {
-                    finalDb.apiSettings = localApiSettings; 
+                    finalDb.apiSettings = localApiSettings;
                 }
-                
-                localStorage.setItem('gemini-chat-app-db', JSON.stringify(finalDb));
 
-                db = finalDb;
+                try {
+                    const finalDbString = JSON.stringify(finalDb);
+                    
+                    if (!finalDbString || finalDbString === '{}' || finalDbString === 'null') {
+                        throw new Error('최종 데이터가 비어있거나 유효하지 않습니다.');
+                    }
+                    
+                    localStorage.setItem('gemini-chat-app-db', finalDbString);
+                    
+                    const savedData = localStorage.getItem('gemini-chat-app-db');
+                    if (!savedData) {
+                        throw new Error('데이터 저장 후 검증 실패 - localStorage에 저장되지 않음');
+                    }
 
-                renderAllScreens();
-                
-                
-                showToast(`✅ 데이터 복원 성공! (${modeText} 완료)`);
-                
+                    localStorage.removeItem(backupKey);
+                    
+                    showToast(`✅ 데이터 복원 성공! (${useMergeMode ? '병합 완료' : '덮어쓰기 완료'}) 앱을 새로고침합니다.`);
+                    
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1500);
+                    
+                } catch (saveError) {
+                    throw new Error(`데이터 저장 중 오류가 발생했습니다: ${saveError.message}`);
+                }
+
             } catch (error) {
                 console.error('Sync Down Error:', error);
-                showToast(`❌ 복원 실패: ${error.message}`);
+
+                const backupKey = 'gemini-chat-app-db-emergency-backup';
+                const emergencyBackup = localStorage.getItem(backupKey);
+                
+                if (emergencyBackup) {
+                    try {
+                        localStorage.setItem('gemini-chat-app-db', emergencyBackup);
+                        localStorage.removeItem(backupKey);
+                        showToast(`❌ 복원 실패했지만 기존 데이터는 안전하게 보호되었습니다.\n오류: ${error.message}`);
+                    } catch (restoreError) {
+                        showToast(`❌❌ 심각한 오류: 데이터 복원과 백업 복구 모두 실패했습니다!\n원본 오류: ${error.message}\n복구 오류: ${restoreError.message}`);
+                    }
+                } else {
+                    showToast(`❌ 다운로드 실패: ${error.message}`);
+                }
             }
         }
-        
+
         function applyGlobalUISettings() {
             const phoneScreen = document.querySelector('.phone-screen');
             phoneScreen.classList.toggle('hide-user-icons', !!db.globalSettings.hideUserIcons);
@@ -4322,16 +4264,9 @@
                 if (!isInMultiSelectMode) {
                 const avatar = e.target.closest('.message-avatar, .chat-avatar, .profile-avatar-lg');
                 if (avatar) {
-                    const currentScreen = e.target.closest('.screen');
-                    
-                    if (avatar.classList.contains('chat-avatar') && currentScreen && currentScreen.id === 'chat-list-screen') {
-                        
-                    } else {
-                        
-                        e.stopPropagation(); 
-                        showLightbox(avatar.src);
-                        return; 
-                    }
+                    e.stopPropagation(); 
+                    showLightbox(avatar.src);
+                    return; 
                 }
             }
 
@@ -4382,7 +4317,6 @@
             setupChatSettings();
             setupApiSettingsApp();
             setupWallpaperApp();
-            setupColorThemeCustomizer();
             setupStickerSystem();
             setupVoiceMessageSystem();
             setupPhotoVideoSystem();
@@ -4401,167 +4335,6 @@
             setupPromptPreviewModal();
         };
 
-        function applyColorTheme(presetKey) {
-            
-            if (!db || !db.colorThemes || !db.colorThemes.presets) return;
-            
-            const preset = db.colorThemes.presets[presetKey];
-            if (!preset) return; 
-
-            Object.entries(preset.colors).forEach(([key, value]) => {
-                document.documentElement.style.setProperty(key, value);
-            });
-        }
-
-        /**
-         * 2. [수정된 함수] 데이터 복원 후 모든 UI를 다시 그립니다.
-         */
-        function renderAllScreens() {
-            
-            applyColorTheme(db.colorThemes.currentPreset);
-            applyGlobalCustomCSS();
-            applyGlobalUISettings();
-            setupHomeScreen();
-            renderChatList();
-            
-            const activeScreen = document.querySelector('.screen.active');
-            if (activeScreen) {
-                
-                if (activeScreen.id === 'chat-room-screen' && currentChatId && currentChatType) {
-                    openChatRoom(currentChatId, currentChatType);
-                } else {
-                    switchScreen(activeScreen.id);
-                }
-            }
-        }
-
-        /**
-         * 3. [수정된 함수] 색상 설정 UI를 담당합니다. (이제 applyColorTheme를 포함하지 않음)
-         */
-        function setupColorThemeCustomizer() {
-            const colorVariables = [
-                { var: '--primary-color', label: '주요 색상 (버튼 등)' },
-                { var: '--accent-color', label: '보조/강조 색상' },
-                { var: '--sent-bubble-bg', label: '내 말풍선 배경' },
-                { var: '--sent-bubble-text', label: '내 말풍선 텍스트' },
-                { var: '--received-bubble-bg', label: '상대 말풍선 배경' },
-                { var: '--received-bubble-text', label: '상대 말풍선 텍스트' },
-                { var: '--text-color', label: '기본 텍스트' },
-                { var: '--form-border-color', label: '입력창 테두리' },
-            ];
-
-            const container = document.getElementById('color-theme-settings');
-            if (!container) return;
-
-            container.innerHTML = `
-                <div class="css-preset-section">
-                    <label for="color-preset-select" class="form-label">색상 프리셋:</label>
-                    <select id="color-preset-select" class="form-select"></select>
-                </div>
-                <div id="color-pickers-container" style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;"></div>
-                <div class="css-actions" style="margin-top: 20px; display:flex; flex-direction:column; gap: 10px;">
-                    <button type="button" id="update-color-preset-btn" class="btn btn-primary">현재 프리셋 업데이트</button>
-                    <button type="button" id="save-as-new-color-preset-btn" class="btn btn-secondary">새 프리셋으로 저장</button>
-                    <button type="button" id="reset-to-default-btn" class="btn btn-neutral">기본 테마로 리셋</button>
-                    <button type="button" id="delete-color-preset-btn" class="btn btn-danger">현재 프리셋 삭제</button>
-                </div>
-            `;
-
-            const presetSelect = document.getElementById('color-preset-select');
-            const pickersContainer = document.getElementById('color-pickers-container');
-            const updateBtn = document.getElementById('update-color-preset-btn');
-            const saveAsNewBtn = document.getElementById('save-as-new-color-preset-btn');
-            const deleteBtn = document.getElementById('delete-color-preset-btn');
-            const resetBtn = document.getElementById('reset-to-default-btn');
-
-            function renderColorThemeUI() {
-                const currentKey = db.colorThemes.currentPreset;
-                const currentPreset = db.colorThemes.presets[currentKey];
-
-                presetSelect.innerHTML = Object.entries(db.colorThemes.presets).map(([key, preset]) => 
-                    `<option value="${key}">${preset.name}</option>`
-                ).join('');
-                presetSelect.value = currentKey;
-
-                pickersContainer.innerHTML = colorVariables.map(item => `
-                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 5px 0;">
-                        <label for="color-${item.var}" style="font-size: 14px; color: var(--text-color);">${item.label}</label>
-                        <input type="color" id="color-${item.var}" data-var="${item.var}" value="${currentPreset.colors[item.var] || '#ffffff'}">
-                    </div>
-                `).join('');
-                
-                const isDefault = currentKey === 'default';
-                deleteBtn.style.display = isDefault ? 'none' : 'block';
-                updateBtn.style.display = isDefault ? 'none' : 'block';
-            }
-
-            function getColorsFromPickers() {
-                const colors = {};
-                colorVariables.forEach(item => {
-                    colors[item.var] = document.getElementById(`color-${item.var}`).value;
-                });
-                return colors;
-            }
-
-            presetSelect.addEventListener('change', () => {
-                db.colorThemes.currentPreset = presetSelect.value;
-                applyColorTheme(presetSelect.value); 
-                renderColorThemeUI();
-                saveData();
-            });
-
-            pickersContainer.addEventListener('input', (e) => {
-                if (e.target.type === 'color') {
-                    document.documentElement.style.setProperty(e.target.dataset.var, e.target.value);
-                }
-            });
-
-            updateBtn.addEventListener('click', () => {
-                const currentKey = db.colorThemes.currentPreset;
-                if (currentKey === 'default') return;
-
-                db.colorThemes.presets[currentKey].colors = getColorsFromPickers();
-                saveData();
-                showToast(`'${db.colorThemes.presets[currentKey].name}' 프리셋이 업데이트되었습니다.`);
-            });
-
-            saveAsNewBtn.addEventListener('click', () => {
-                const presetName = prompt('저장할 새 프리셋의 이름을 입력하세요:');
-                if (!presetName) return;
-
-                const newPresetKey = `preset_${Date.now()}`;
-                db.colorThemes.presets[newPresetKey] = { name: presetName, colors: getColorsFromPickers() };
-                db.colorThemes.currentPreset = newPresetKey;
-                saveData();
-                renderColorThemeUI();
-                showToast(`'${presetName}' 프리셋이 저장되었습니다.`);
-            });
-
-            deleteBtn.addEventListener('click', () => {
-                const presetKey = db.colorThemes.currentPreset;
-                if (presetKey === 'default' || !confirm(`'${db.colorThemes.presets[presetKey].name}' 프리셋을 정말 삭제하시겠습니까?`)) return;
-
-                delete db.colorThemes.presets[presetKey];
-                db.colorThemes.currentPreset = 'default';
-                applyColorTheme('default'); 
-                renderColorThemeUI();
-                saveData();
-                showToast(`프리셋이 삭제되었습니다.`);
-            });
-            
-            resetBtn.addEventListener('click', () => {
-                if (!confirm('현재 색상 설정을 기본 테마 값으로 되돌리시겠습니까? 이 작업은 저장되지 않습니다.')) return;
-                
-                applyColorTheme('default'); 
-                renderColorThemeUI(); 
-                showToast('기본 테마 색상으로 리셋되었습니다.');
-            });
-            
-            applyColorTheme(db.colorThemes.currentPreset); 
-            renderColorThemeUI();
-        }
-
-        
         function updateClock() {
             const now = new Date();
             const timeDisplay = document.getElementById('time-display');
@@ -4579,7 +4352,7 @@
                 <a href="#" class="app-icon" data-target="api-settings-screen"><img src="${getIcon('api-settings-screen')}" alt="API" class="icon-img"><span class="app-name">${defaultIcons['api-settings-screen'].name}</span></a>
                 <a href="#" class="app-icon" data-target="wallpaper-font-screen"><img src="${getIcon('wallpaper-screen')}" alt="커스텀" class="icon-img"><span class="app-name">${defaultIcons['wallpaper-screen'].name}</span></a>
                 <a href="#" class="app-icon" data-target="world-book-screen"><img src="${getIcon('world-book-screen')}" alt="세계관" class="icon-img"><span class="app-name">${defaultIcons['world-book-screen'].name}</span></a>
-                <a href="#" class="app-icon" data-target="customize-screen"><img src="${getIcon('customize-screen')}" alt="프롬프트" class="icon-img"><span class="app-name">${defaultIcons['customize-screen'].name}</span></a>
+                <a href="#" class="app-icon" data-target="customize-screen"><img src="${getIcon('customize-screen')}" alt="홈 화면" class="icon-img"><span class="app-name">${defaultIcons['customize-screen'].name}</span></a>
                 <a href="#" class="app-icon" data-target="tutorial-screen"><img src="${getIcon('tutorial-screen')}" alt="튜토리얼" class="icon-img"><span class="app-name">${defaultIcons['tutorial-screen'].name}</span></a>
             </div>
             <div class="dock">
@@ -4594,10 +4367,10 @@
             document.getElementById('day-mode-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyHomeScreenMode('day'); });
             document.getElementById('night-mode-btn')?.addEventListener('click', (e) => { e.preventDefault(); applyHomeScreenMode('night'); });
             document.querySelector('[data-target="wallpaper-font-screen"]').addEventListener('click', () => {
-            renderCustomizeForm();
+    
         });
             document.querySelector('[data-target="world-book-screen"]').addEventListener('click', renderWorldBookList);
-
+            document.querySelector('[data-target="customize-screen"]').addEventListener('click', renderCustomizeForm);
             document.querySelector('[data-target="tutorial-screen"]').addEventListener('click', renderTutorialContent);
         }
 
@@ -4611,28 +4384,25 @@
         }
 
         function setupCustomizeApp() {
-            const iconSection = document.getElementById('home-icon-customize-section');
-            if (!iconSection) return;
-
-            iconSection.addEventListener('input', e => {
+            customizeForm.addEventListener('input', e => {
                 if (e.target.matches('input[type="url"]')) {
                     const iconId = e.target.dataset.id;
                     const newUrl = e.target.value.trim();
                     const previewImg = document.getElementById(`icon-preview-${iconId}`);
                     if (newUrl) {
-                        db.customIcons[id] = newUrl;
+                        db.customIcons[iconId] = newUrl;
                         previewImg.src = newUrl;
                         saveData();
                         setupHomeScreen();
                     }
                 }
             });
-            iconSection.addEventListener('click', e => {
+            customizeForm.addEventListener('click', e => {
                 if (e.target.matches('.reset-icon-btn')) {
                     const iconId = e.target.dataset.id;
                     delete db.customIcons[iconId];
                     saveData();
-                    renderCustomizeForm(); 
+                    renderCustomizeForm();
                     setupHomeScreen();
                     showToast('아이콘이 초기화되었습니다');
                 }
@@ -4719,27 +4489,32 @@
             });
         }
 
-        function renderCustomizeForm() {
-            customizeForm.innerHTML = `<div class="placeholder-text"><p>프롬프트 기능은 준비 중입니다.</p></div>`;
+                function renderCustomizeForm() {
+            customizeForm.innerHTML = '';
 
-            const iconContainer = document.getElementById('home-icon-customize-content');
-            if (!iconContainer) return; 
-
-            iconContainer.innerHTML = `
-                ${Object.entries(defaultIcons).map(([id, { name, url }]) => {
-                    const currentIcon = db.customIcons[id] || url;
-                    return `
-                    <div class="icon-custom-item">
-                        <img src="${currentIcon}" alt="${name}" class="icon-preview" id="icon-preview-${id}">
-                        <div class="icon-details">
-                            <p>${name || '모드 전환'}</p>
-                            <input type="url" class="form-group" placeholder="새 아이콘 URL 붙여넣기" value="${db.customIcons[id] || ''}" data-id="${id}">
-                        </div>
-                        <button type="button" class="reset-icon-btn" data-id="${id}">초기화</button>
-                    </div>`;
-                }).join('')}
+            const iconSectionHTML = `
+                <div class="customize-section">
+                    <h3 class="section-title">홈 화면 아이콘 커스터마이징</h3>
+                    <div class="section-content">
+                        ${Object.entries(defaultIcons).map(([id, { name, url }]) => {
+                            const currentIcon = db.customIcons[id] || url;
+                            return `
+                            <div class="icon-custom-item">
+                                <img src="${currentIcon}" alt="${name}" class="icon-preview" id="icon-preview-${id}">
+                                <div class="icon-details">
+                                    <p>${name || '모드 전환'}</p>
+                                    <input type="url" class="form-group" placeholder="새 아이콘 URL 붙여넣기" value="${db.customIcons[id] || ''}" data-id="${id}">
+                                </div>
+                                <button type="button" class="reset-icon-btn" data-id="${id}">초기화</button>
+                            </div>`;
+                        }).join('')}
+                    </div>
+                </div>
             `;
+            customizeForm.insertAdjacentHTML('beforeend', iconSectionHTML);
+
         }
+
         function setupTutorialApp() {
             tutorialContentArea.addEventListener('click', (e) => {
                 const header = e.target.closest('.tutorial-header');
@@ -5306,15 +5081,6 @@
             chatRoomScreen.className = chatRoomScreen.className.replace(/\b(chat-active-|hide-my-icons|hide-char-icons)[^ ]+\b/g, ''); 
             chatRoomScreen.classList.add(`chat-active-${chatId}`);
             
-            if (chat.theme) {
-                updateCustomBubbleStyle(chatId, chat.customBubbleCss, chat.useCustomBubbleCss);
-            } else {
-                
-                updateCustomBubbleStyle(chatId, '', false);
-            }
-            
-            applyPerChatUISettings();
-
             chatRoomScreen.style.setProperty('--bubble-font-size', '14px'); 
             applyPerChatUISettings();
             updateCustomBubbleStyle(chatId, chat.customBubbleCss, chat.useCustomBubbleCss);
@@ -5373,7 +5139,6 @@
                     const prevSenderId = prevMsg.role === 'user' ? 'user_me' : (prevMsg.senderId || 'assistant');
                     const prevMsgDate = new Date(prevMsg.timestamp);
                     const prevTimeSignature = `${prevMsgDate.getFullYear()}-${pad(prevMsgDate.getMonth() + 1)}-${pad(prevMsgDate.getDate())}-${pad(prevMsgDate.getHours())}-${pad(prevMsgDate.getMinutes())}`;
-                    
                     const isPrevSystemMsg = /\[system-display:.*\]|\[.*초대했습니다\]|\[.*변경했습니다\]|\[system:.*\]|\[.*수령했습니다\]|\[.*반환했습니다\]/.test(prevMsg.content);
 
                     if (currentSenderId === prevSenderId && currentTimeSignature === prevTimeSignature && !isPrevSystemMsg) {
@@ -7201,16 +6966,12 @@
         }
 
         function setupWorldBookApp() {
-            const deleteBtn = document.getElementById('delete-world-book-btn'); 
-
             addWorldBookBtn.addEventListener('click', () => {
                 currentEditingWorldBookId = null;
                 editWorldBookForm.reset();
                 document.querySelector('input[name="world-book-position"][value="before"]').checked = true;
-                deleteBtn.style.display = 'none'; 
                 switchScreen('edit-world-book-screen');
             });
-
             editWorldBookForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const name = worldBookNameInput.value.trim();
@@ -7232,7 +6993,6 @@
                 renderWorldBookList();
                 switchScreen('world-book-screen');
             });
-
             worldBookListContainer.addEventListener('click', e => {
                 const item = e.target.closest('.world-book-item');
                 if (item) {
@@ -7243,31 +7003,35 @@
                         worldBookNameInput.value = book.name;
                         worldBookContentInput.value = book.content;
                         document.querySelector(`input[name="world-book-position"][value="${book.position}"]`).checked = true;
-                        deleteBtn.style.display = 'flex'; 
                         switchScreen('edit-world-book-screen');
                     }
                 }
             });
-
-            
-            deleteBtn.addEventListener('click', () => {
-                if (!currentEditingWorldBookId) return;
-
-                const book = db.worldBooks.find(wb => wb.id === currentEditingWorldBookId);
-                if (book && confirm(`'${book.name}' 항목을 정말 삭제하시겠습니까?`)) {
-                    db.worldBooks = db.worldBooks.filter(wb => wb.id !== currentEditingWorldBookId);
-                    
-                    db.characters.forEach(char => { char.worldBookIds = (char.worldBookIds || []).filter(id => id !== currentEditingWorldBookId); });
-                    db.groups.forEach(group => { group.worldBookIds = (group.worldBookIds || []).filter(id => id !== currentEditingWorldBookId); });
-                    
-                    saveData();
-                    showToast('항목이 삭제되었습니다');
-                    renderWorldBookList();
-                    switchScreen('world-book-screen');
-                }
+            worldBookListContainer.addEventListener('mousedown', (e) => {
+                if (e.button !== 0) return;
+                const item = e.target.closest('.world-book-item');
+                if (!item) return;
+                longPressTimer = setTimeout(() => {
+                    const bookId = item.dataset.id;
+                    const menuItems = [{
+                        label: '삭제',
+                        danger: true,
+                        action: () => {
+                            if (confirm('이 세계관 항목을 정말 삭제하시겠습니까?')) {
+                                db.worldBooks = db.worldBooks.filter(wb => wb.id !== bookId);
+                                db.characters.forEach(char => { char.worldBookIds = (char.worldBookIds || []).filter(id => id !== bookId); });
+                                db.groups.forEach(group => { group.worldBookIds = (group.worldBookIds || []).filter(id => id !== bookId); });
+                                saveData();
+                                renderWorldBookList();
+                                showToast('항목이 삭제되었습니다');
+                            }
+                        }
+                    }];
+                    createContextMenu(menuItems, e.clientX, e.clientY);
+                }, 500);
             });
-
-            
+            worldBookListContainer.addEventListener('mouseup', () => clearTimeout(longPressTimer));
+            worldBookListContainer.addEventListener('mouseleave', () => clearTimeout(longPressTimer));
         }
 
         function renderWorldBookList() {
@@ -7483,108 +7247,52 @@
         }
 
         function loadSettingsToSidebar() {
-            const char = db.characters.find(c => c.id === currentChatId);
-            if (!char) return;
-
-            
-            document.getElementById('setting-char-avatar-preview').src = char.avatar;
-            document.getElementById('setting-char-remark').value = char.remarkName;
-            document.getElementById('setting-char-persona').value = char.persona;
-            document.getElementById('setting-my-avatar-preview').src = char.myAvatar;
-            document.getElementById('setting-my-name').value = char.myName;
-            document.getElementById('setting-my-persona').value = char.myPersona;
-            document.getElementById('setting-max-memory').value = char.maxMemory;
-
-            
-            const themeSelect = document.getElementById('setting-theme-color');
-            const useCustomCssCheckbox = document.getElementById('setting-use-custom-css');
-            const customCssTextarea = document.getElementById('setting-custom-bubble-css');
-
-            if (!themeSelect.querySelector('option[value="global"]')) {
-                const globalOption = document.createElement('option');
-                globalOption.value = 'global';
-                globalOption.textContent = '🎨 전역 설정 사용'; 
-                themeSelect.prepend(globalOption);
-            }
-            
-            themeSelect.value = char.theme || 'global';
-            
-            const isUsingGlobalTheme = (themeSelect.value === 'global');
-
-            
-            useCustomCssCheckbox.disabled = isUsingGlobalTheme;
-            customCssTextarea.disabled = isUsingGlobalTheme;
-
-            if (isUsingGlobalTheme) {
-                
-                useCustomCssCheckbox.checked = false;
-                customCssTextarea.value = '';
-                customCssTextarea.disabled = true; 
-            } else {
-                
-                useCustomCssCheckbox.checked = char.useCustomBubbleCss || false;
-                customCssTextarea.value = char.customBubbleCss || '';
+            const e = db.characters.find(e => e.id === currentChatId);
+            if (e) {
+                document.getElementById('setting-char-avatar-preview').src = e.avatar;
+                document.getElementById('setting-char-remark').value = e.remarkName;
+                document.getElementById('setting-char-persona').value = e.persona;
+                document.getElementById('setting-my-avatar-preview').src = e.myAvatar;
+                document.getElementById('setting-my-name').value = e.myName;
+                document.getElementById('setting-my-persona').value = e.myPersona;
+                document.getElementById('setting-theme-color').value = e.theme || 'white_pink';
+                document.getElementById('setting-max-memory').value = e.maxMemory;
+                const useCustomCssCheckbox = document.getElementById('setting-use-custom-css'), customCssTextarea = document.getElementById('setting-custom-bubble-css'), privatePreviewBox = document.getElementById('private-bubble-css-preview');
+                useCustomCssCheckbox.checked = e.useCustomBubbleCss || false;
+                customCssTextarea.value = e.customBubbleCss || '';
                 customCssTextarea.disabled = !useCustomCssCheckbox.checked;
-            }
+                const theme = colorThemes[e.theme || 'white_pink'];
+                updateBubbleCssPreview(privatePreviewBox, e.customBubbleCss, !e.useCustomBubbleCss, theme);
 
-            
-            document.getElementById('setting-hide-my-bubbles-toggle').checked = !!char.hideMyIcons;
-            document.getElementById('setting-hide-char-bubbles-toggle').checked = !!char.hideCharIcons;
-            const fontSize = char.fontSize || 14;
-            document.getElementById('setting-font-size-slider').value = fontSize;
-            document.getElementById('setting-font-size-value').textContent = `${fontSize}px`;
+                document.getElementById('setting-hide-my-bubbles-toggle').checked = !!e.hideMyIcons; 
+                document.getElementById('setting-hide-char-bubbles-toggle').checked = !!e.hideCharIcons;
+                const fontSize = e.fontSize || 14;
+                document.getElementById('setting-font-size-slider').value = fontSize;
+                document.getElementById('setting-font-size-value').textContent = `${fontSize}px`;
+            }
         }
 
-                function saveSettingsFromSidebar() {
-            const char = db.characters.find(c => c.id === currentChatId);
-            if (!char) return;
-
-            
-            char.avatar = document.getElementById('setting-char-avatar-preview').src;
-            char.remarkName = document.getElementById('setting-char-remark').value;
-            char.persona = document.getElementById('setting-char-persona').value;
-            char.myAvatar = document.getElementById('setting-my-avatar-preview').src;
-            char.myName = document.getElementById('setting-my-name').value;
-            char.myPersona = document.getElementById('setting-my-persona').value;
-            char.maxMemory = document.getElementById('setting-max-memory').value;
-            
-            
-            char.hideMyIcons = document.getElementById('setting-hide-my-bubbles-toggle').checked;
-            char.hideCharIcons = document.getElementById('setting-hide-char-bubbles-toggle').checked;
-            char.fontSize = parseInt(document.getElementById('setting-font-size-slider').value, 10);
-
-            const themeSelectValue = document.getElementById('setting-theme-color').value;
-
-            
-
-            if (themeSelectValue === 'global') {
-                
-                delete char.theme;
-                delete char.useCustomBubbleCss;
-                delete char.customBubbleCss;
-                
-                
-                updateCustomBubbleStyle(currentChatId, '', false);
-
-            } else {
-                
-                char.theme = themeSelectValue;
-                char.useCustomBubbleCss = document.getElementById('setting-use-custom-css').checked;
-                char.customBubbleCss = document.getElementById('setting-custom-bubble-css').value;
-
-                
-                updateCustomBubbleStyle(currentChatId, char.customBubbleCss, char.useCustomBubbleCss);
+        function saveSettingsFromSidebar() {
+            const e = db.characters.find(e => e.id === currentChatId);
+            if (e) {
+                e.avatar = document.getElementById('setting-char-avatar-preview').src;
+                e.remarkName = document.getElementById('setting-char-remark').value;
+                e.persona = document.getElementById('setting-char-persona').value;
+                e.myAvatar = document.getElementById('setting-my-avatar-preview').src;
+                e.myName = document.getElementById('setting-my-name').value;
+                e.myPersona = document.getElementById('setting-my-persona').value;
+                e.theme = document.getElementById('setting-theme-color').value;
+                e.maxMemory = document.getElementById('setting-max-memory').value;
+                e.useCustomBubbleCss = document.getElementById('setting-use-custom-css').checked;
+                e.customBubbleCss = document.getElementById('setting-custom-bubble-css').value;
+                saveData();
+                showToast('설정이 저장되었습니다!');
+                chatRoomTitle.textContent = e.remarkName;
+                renderChatList();
+                updateCustomBubbleStyle(currentChatId, e.customBubbleCss, e.useCustomBubbleCss);
+                currentPage = 1;
+                renderMessages(false, true);
             }
-            
-            saveData();
-            showToast('설정이 저장되었습니다!');
-
-            
-            chatRoomTitle.textContent = char.remarkName;
-            renderChatList();
-            applyPerChatUISettings(); 
-            
-            
         }
 
         function setupApiSettingsApp() {
@@ -8073,7 +7781,7 @@
                 }
             });
         }
-
+        
         function setupGroupChatSystem() {
             createGroupBtn.addEventListener('click', () => {
                 renderMemberSelectionList();
